@@ -8,7 +8,9 @@ import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.ExtraCodeInfo;
 import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO;
+import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.rule.obj.CodeMappingRuleObj;
+import org.kobic.kobis.rule.obj.RuleParamObj;
 import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
@@ -22,7 +24,8 @@ public class CommonServices extends AbstractKobisServices{
 	@Override
 	public void readRecordsInSheet() {
 		if( this.getSheet().getLastRowNum() > 3 ) {
-			
+
+			RuleParamObj params = new RuleParamObj();
 			for( int j=3; j<=this.getSheet().getLastRowNum(); j++ ) {
 				XSSFRow dataRow = this.getSheet().getRow(j);
 				
@@ -30,16 +33,22 @@ public class CommonServices extends AbstractKobisServices{
 				
 				List<PhylogeneticTreeVO> listFromDB = this.getDao().getPhylogeneticTreeByGenus( obj.getGenus() );
 
-				if( listFromDB.size() > 0 ) {
-					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );
+				params.addParam("speciesType", Utils.emptyToNull( obj.getInSpeciesType() ) );
+				params.addParam("genus", obj.getGenus());
+				params.addParam("species", obj.getSpecies());
 
-					String genus	= obj.getGenus();
-					String species	= obj.getSpecies();
+				if( listFromDB.size() > 0 ) {
+					Rule rule = new Rule( this.getInsCd() );
+					rule.rule( params );
+
+//					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );
+//					String genus	= obj.getGenus();
+//					String species	= obj.getSpecies();
 //					ExtraCodeInfo extraInfo = null;
 //					boolean extraType = false; 
 
-					if( speciesType != null ) {
-						// 추출물은행 예외사항
+//					if( speciesType != null ) {
+//						 추출물은행 예외사항
 //						if( this.getInsCd().equals("INS000012") ) {
 //							if( speciesType.equals("f.") )	species.replace(" for. ", " f. ");
 //							if( speciesType.equals("spp."))	speciesType = "ssp.";
@@ -53,9 +62,9 @@ public class CommonServices extends AbstractKobisServices{
 //							else if( speciesType.equals("line") )	extraInfo = new ExtraCodeInfo("line",	divSpecies[1]);
 //							else { }
 //						}
-
+//
 //						extraType = true;
-					}
+//					}
 
 //					CodeMappingRuleObj ruleObj = new CodeMappingRuleObj( genus, species, extraInfo, extraType );
 

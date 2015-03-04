@@ -1,13 +1,21 @@
 package org.kobic.kobis.rule;
 
-import org.kobic.kobis.mybatis.dao.RuleDAO;
-import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
-import org.kobic.kobis.rule.obj.RuleObj;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class Rule {
+import org.kobic.kobis.mybatis.dao.RuleDAO;
+import org.kobic.kobis.mybatis.db.vo.RuleVO;
+import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
+import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
+import org.kobic.kobis.rule.obj.RuleParamObj;
+
+public class Rule {
+	private String insCd;
 	private RuleDAO dao;
 
-	public Rule() {
+	public Rule( String insCd ) {
+		this.insCd = insCd;
+
 		this.dao = new RuleDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
 	}
 
@@ -15,5 +23,12 @@ public abstract class Rule {
 		return this.dao;
 	}
 
-	public abstract boolean rule(RuleObj obj);
+	public boolean rule( RuleParamObj obj ) {
+		List<RuleVO> ruleList = this.dao.getRulesByInsId( this.insCd );
+		for(Iterator<RuleVO> iter = ruleList.iterator(); iter.hasNext();) {
+			LexicalInterpreter.interpret( iter.next(), obj );
+		}
+
+		return true;
+	}
 }

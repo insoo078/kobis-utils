@@ -2,7 +2,7 @@ package org.kobic.kobis.rule.obj;
 
 import org.kobic.kobis.file.excel.obj.internal.ExtraCodeInfo;
 
-public class CodeMappingRuleObj extends RuleObj{
+public class CodeMappingRuleObj extends RuleParamObj{
 	private String genus;
 	private String species;
 
