@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Kobis">
+	<resultMap id="PhylogeneticMap" type="org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO">
+		<id column="code"		property="code"/>
+		<id column="kingdomr"	property="kingdomr"/>
+		<id column="kingdom_id" property="kingdom_id"/>
+		<id column="phylum"		property="phylum"/>
+		<id column="phylum_id"	property="phylum_id"/>
+		<id column="class"		property="clas"/>
+		<id column="clas_id"	property="class_id"/>
+		<id column="ordered"	property="ordered"/>
+		<id column="order_id"	property="order_id"/>
+		<id column="family"		property="family"/>
+		<id column="family_id"	property="family_id"/>
+		<id column="genus"		property="genus"/>
+		<id column="genus_id"	property="genus_id"/>
+		<id column="species"	property="species"/>
+		<id column="species_id"	property="species_id"/>
+		<id column="ssp"		property="ssp"/>
+		<id column="ssp_id"		property="ssp_id"/>
+		<id column="var"		property="var"/>
+		<id column="var_id"		property="var_id"/>
+		<id column="f"			property="f"/>
+	</resultMap>
+
+	<select id="getPhylogeneticTreeByGenus" parameterType="java.lang.String" resultMap="PhylogeneticMap">
+		SELECT
+			*
+		FROM X1_PhylogeneticTree
+		WHERE UPPER(GENUS) LIKE CONCAT(UPPER(#{genus}), + '%')
+	</select>
+	
+	<select id="getInstitutionId" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+			ins_cd
+		FROM X1_InstitutionCode
+		WHERE ins_cd=#{ins_cd}
+	</select>
+
+	<select id="getPhylogeneticTree" parameterType="java.util.Map" resultType="org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO">
+		SELECT
+			*
+		FROM X1_PhylogeneticTree
+		WHERE GENUS=${genus} AND 
+		(
+			UPPER(SSP)=UPPER(#{ssp})
+			OR
+			UPPER(VAR)=UPPER(#{var})
+			OR
+			UPPER(F)=UPPER(#{f})
+		)
+	</select>
+</mapper>
