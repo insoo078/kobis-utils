@@ -1,6 +1,6 @@
 package org.kobic.kobis.mybatis.db.vo;
 
-public class RuleVO {
+public class RuleQueryVO {
 	private String rule_id;
 	private String ins_cd;
 	private String rule_name;

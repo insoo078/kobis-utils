@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.kobic.kobis.mybatis.db.vo.RuleVO;
+import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 
 public class RuleDAO {
 	private SqlSessionFactory sqlSessionFactory = null;
@@ -13,8 +13,8 @@ public class RuleDAO {
         this.sqlSessionFactory = sqlSessionFactory;
     }
     
-    public List<RuleVO> getRulesByInsId( String ins_id) {
-    	List<RuleVO> list = null;
+    public List<RuleQueryVO> getRulesByInsId( String ins_id) {
+    	List<RuleQueryVO> list = null;
     	// autocommit is false
     	SqlSession session = this.sqlSessionFactory.openSession( false );
 
