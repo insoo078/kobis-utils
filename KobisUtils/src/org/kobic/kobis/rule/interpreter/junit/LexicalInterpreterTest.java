@@ -8,8 +8,8 @@ import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 public class LexicalInterpreterTest {
 
 	@Test
-	public void test() {
-		String rule = "IF ${FIELD} EQUAL ${VAL} THEN REPLACE ${FIELD} ${BEFORE} ${AFTER} FI";
+	public void test() throws NoSuchMethodException, SecurityException {
+		String rule = "IF ${FIELD} EQ ${VAL} AND ${FIELD} NE ${VAL2} THEN REPLACE(${FIELD}, ${BEFORE}, ${AFTER}) FI";
 		
 		LexicalInterpreter liptr = new LexicalInterpreter();
 		liptr.test( rule );
