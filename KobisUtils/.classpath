@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/Users/lion/git/kobis-utils/KobisUtils/lib/ooxml-lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="/Users/lion/git/kobis-utils/KobisUtils/lib/poi-ooxml-schemas-3.11-20141221.jar"/>
 	<classpathentry kind="lib" path="/Users/lion/git/kobis-utils/KobisUtils/lib/poi-scratchpad-3.11-20141221.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
