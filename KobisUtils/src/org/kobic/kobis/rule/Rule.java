@@ -23,10 +23,10 @@ public class Rule {
 		return this.dao;
 	}
 
-	public boolean rule( RuleParamObj obj ) {
+	public boolean rule( RuleParamObj obj ) throws NoSuchMethodException, SecurityException {
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
 		for(Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext();) {
-			LexicalInterpreter.interpret( iter.next(), obj );
+			LexicalInterpreter.getInstance().interpret( iter.next(), obj );
 		}
 
 		return true;

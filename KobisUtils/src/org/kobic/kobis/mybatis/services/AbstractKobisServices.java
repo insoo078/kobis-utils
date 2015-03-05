@@ -38,7 +38,7 @@ public abstract class AbstractKobisServices {
 		this.insCd = insCd;
 	}
 
-	public abstract void readRecordsInSheet();
+	public abstract void readRecordsInSheet() throws NoSuchMethodException, SecurityException;
 //	private File rightMappedResult;
 //	private File noGenusMapping;
 //	private File noSpecies;

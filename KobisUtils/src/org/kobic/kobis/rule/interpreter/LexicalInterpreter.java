@@ -8,20 +8,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.poi.ss.formula.functions.Function;
 import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 import org.kobic.kobis.rule.obj.RuleParamObj;
 
 public class LexicalInterpreter {
+	private static LexicalInterpreter interpreter;
+
 	private Stack<String> stack;
+
 	public LexicalInterpreter() {
 		this.stack = new Stack<String>();
 	}
+	
+	public static LexicalInterpreter getInstance() {
+		if( interpreter == null )	return new LexicalInterpreter();
+		
+		return interpreter;
+	}
 
-	public static boolean interpret( RuleQueryVO vo, RuleParamObj param ) {
-//		String rule = vo.getRule();
+	public boolean interpret( RuleQueryVO vo, RuleParamObj param ) throws NoSuchMethodException, SecurityException {
+		String rule = vo.getRule();
 
+		this.parsing( rule );
+		
 		return true;
 	}
 
@@ -36,6 +49,7 @@ public class LexicalInterpreter {
 	public boolean operate(Object operand1, Object operand2, int operator ) {
 		if( operator == KeywordDictionary.EQUAL ) {
 			if( operand1 instanceof Number && operand2 instanceof Number ) {
+				
 				if( operand1 == operand2 )		return true;
 				else							return false;
 			}else {
@@ -79,69 +93,69 @@ public class LexicalInterpreter {
 	}
 	
 	@SuppressWarnings("static-access")
-	public void processIfStatement() throws NoSuchMethodException, SecurityException {
-		Map<String, Object> map = new HashMap<String, Object>(); 
+	private boolean processIfCondition(String ifStatement) {
+		Pattern p1 = Pattern.compile( "(.+)THEN" );
+		Matcher m1 = p1.matcher( ifStatement );
+		 
+		if( m1.find() ) {
+			String line = m1.group(1);
+			
+			StringTokenizer st = new StringTokenizer( line.trim() );
 
-		Boolean condition = null;
-		int conjunction = KeywordDictionary.NOTHING;
-		int operator = KeywordDictionary.NOTHING;
+			Object operand1 = null;
+			Object operand2 = null;
+			int operator = -1;
+			int conjunction = -1;
+			Boolean condition = null;
+			while( st.hasMoreElements() ) {
+				String word = (String) st.nextElement();
 
-		Object operand1 = null;
-		Object operand2 = null;
-
-		Collections.reverse( this.stack );
-		int length = this.stack.size();
-		for(int i=0; i<length; i++) {
-			String currentWord = this.stack.pop();
-
-//			1==2 AND 2==2 OR 3==4
-			boolean isContainInReservedWords	= KeywordDictionary.getInstance().reservedWords.contains(currentWord);
-			boolean isContainInFunctions		= KeywordDictionary.getInstance().functions.contains(currentWord);
-			boolean isContainOperators			= KeywordDictionary.getInstance().operators.contains(currentWord);
-			if( isContainInReservedWords ) {
-				if( currentWord.equals("IF") ) {
-				}else if( currentWord.equals("AND") )	conjunction = KeywordDictionary.AND;
-				else if( currentWord.equals("OR") )		conjunction = KeywordDictionary.OR;
-				else if( currentWord.equals("THEN") ){
-
-				}else if( currentWord.equals("FI") ) {
+				if( KeywordDictionary.getInstance().reservedWords.contains(word) ) {
+					if( word.equals("AND") )		conjunction = KeywordDictionary.AND;
+					else if( word.equals("OR") )	conjunction = KeywordDictionary.OR;
+				}else if( KeywordDictionary.getInstance().operators.contains(word) ){
+					if( word.equals("EQ") )			operator = KeywordDictionary.EQUAL;
+					else if( word.equals("LT") )	operator = KeywordDictionary.LT;
+					else if( word.equals("GT") )	operator = KeywordDictionary.GT;
+					else if( word.equals("LE") )	operator = KeywordDictionary.LE;
+					else if( word.equals("GE") )	operator = KeywordDictionary.GE;
+				}else {
+					if( operand1 == null )	operand1 = word;
+					else					operand2 = word;
 					
+					if( operand1 != null && operand2 != null ) {
+						condition = this.join( operand1, operand2, condition, operator, conjunction );
+					}
 				}
-			}else if( isContainOperators ){
-				if( currentWord.equals("EQ") )		operator = KeywordDictionary.EQUAL;
-				else if( currentWord.equals("LT") )	operator = KeywordDictionary.LT;
-				else if( currentWord.equals("GT") )	operator = KeywordDictionary.GT;
-			}else if( isContainInFunctions ) {
-				java.lang.reflect.Method method = Functions.class.getMethod( currentWord, List.class );
-			}else {
-				if( operand1 == null )	operand1 = currentWord;
-				else					operand2 = currentWord;
-				
-				if( operand1 != null && operand2 != null && operator != KeywordDictionary.NOTHING ) {
-					condition = this.join( operand1, operand2, condition, operator, conjunction );
+			}
+			return condition;
+		}
+		return false;
+	}
 
-					operand1 = null;
-					operand2 = null;
-				}
+	public void processIfStatement(String ifStatement) throws NoSuchMethodException, SecurityException {
+		if( !this.processIfCondition(ifStatement) ) {
+			String pattern = "THEN(.+)";
+			Pattern p = Pattern.compile( pattern );
+			Matcher m = p.matcher( ifStatement );
+			
+			if( m.find() ) {
+				String ifContent = m.group(1).trim();
+				
+				System.out.println( ifContent );
 			}
 		}
 	}
 
-	public void test(String rule) throws NoSuchMethodException, SecurityException {
-		StringTokenizer st = new StringTokenizer( rule );
+	public void parsing( String rule ) throws NoSuchMethodException, SecurityException {
+		String pattern = "^IF(.+)FI";
 
-		while (st.hasMoreElements()) {
-			String word = (String) st.nextElement();
-
-			if( word.toUpperCase().equals("IF") ) {
-				this.stack.push( word );
-			}else if( word.toUpperCase().equals("FI") ){
-				this.stack.push( word );
-				this.processIfStatement();
-			}else {
-				this.stack.push( word );
-			}
-
+		Pattern p = Pattern.compile( pattern );
+		Matcher m = p.matcher( rule.replace("\n", "") );
+		 
+		if( m.find() ) {
+			String ifStatement = m.group(1);
+			this.processIfStatement( ifStatement );
 		}
 	}
 }

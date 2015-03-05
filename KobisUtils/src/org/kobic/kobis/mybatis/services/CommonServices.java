@@ -22,7 +22,7 @@ public class CommonServices extends AbstractKobisServices{
 	}
 
 	@Override
-	public void readRecordsInSheet() {
+	public void readRecordsInSheet() throws NoSuchMethodException, SecurityException {
 		if( this.getSheet().getLastRowNum() > 3 ) {
 
 			RuleParamObj params = new RuleParamObj();
@@ -40,6 +40,8 @@ public class CommonServices extends AbstractKobisServices{
 				if( listFromDB.size() > 0 ) {
 					Rule rule = new Rule( this.getInsCd() );
 					rule.rule( params );
+					
+					break;
 
 //					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );
 //					String genus	= obj.getGenus();
