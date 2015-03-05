@@ -58,6 +58,22 @@ public class LexicalInterpreter {
 				System.err.println("Syntax error : ");
 				System.exit(1);
 			}
+		}else if( operator == KeywordDictionary.LE ) {
+			if( operand1 instanceof Number && operand2 instanceof Number ) {
+				if( (double)operand1  <= (double)operand2 )		return true;
+				else											return false;
+			}else {
+				System.err.println("Syntax error : ");
+				System.exit(1);
+			}
+		}else if( operator == KeywordDictionary.GE ) {
+			if( operand1 instanceof Number && operand2 instanceof Number ) {
+				if( (double)operand1  >= (double)operand2 )		return true;
+				else											return true;
+			}else {
+				System.err.println("Syntax error : ");
+				System.exit(1);
+			}
 		}
 		return false;
 	}
