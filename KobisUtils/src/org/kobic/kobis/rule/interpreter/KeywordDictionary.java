@@ -23,7 +23,7 @@ public class KeywordDictionary {
 	
 	public static List<String> operators = new ArrayList<String>();
 	{
-		operators.addAll( Arrays.asList( new String[]{"EQ", "NE", "LT", "GT"} ) );
+		operators.addAll( Arrays.asList( new String[]{"EQ", "NE", "LT", "GT", "LE", "GE"} ) );
 	}
 	
 	public static List<String> functions = new ArrayList<String>();
