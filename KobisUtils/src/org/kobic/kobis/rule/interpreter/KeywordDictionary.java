@@ -13,6 +13,8 @@ public class KeywordDictionary {
 	public static int EQUAL = 01;
 	public static int LT = 02;
 	public static int GT = 03;
+	public static int LE = 04;
+	public static int GE = 05;
 	
 	public static int NOTHING = -1;
 
