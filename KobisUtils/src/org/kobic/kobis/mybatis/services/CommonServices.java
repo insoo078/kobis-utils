@@ -40,7 +40,7 @@ public class CommonServices extends AbstractKobisServices{
 				if( listFromDB.size() > 0 ) {
 					Rule rule = new Rule( this.getInsCd() );
 					rule.rule( params );
-					
+
 					break;
 
 //					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );

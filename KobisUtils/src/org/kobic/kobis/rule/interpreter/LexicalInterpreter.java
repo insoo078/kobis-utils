@@ -98,6 +98,10 @@ public class LexicalInterpreter {
 		Matcher m1 = p1.matcher( ifStatement );
 		 
 		if( m1.find() ) {
+			for(int i=0; i<m1.groupCount(); i++) {
+				
+			}
+
 			String line = m1.group(1);
 			
 			StringTokenizer st = new StringTokenizer( line.trim() );
@@ -141,12 +145,10 @@ public class LexicalInterpreter {
 			
 			if( m.find() ) {
 				String ifContent = m.group(1).trim();
-				
-				System.out.println( ifContent );
 			}
 		}
 	}
-
+	
 	public void parsing( String rule ) throws NoSuchMethodException, SecurityException {
 		String pattern = "^IF(.+)FI";
 
