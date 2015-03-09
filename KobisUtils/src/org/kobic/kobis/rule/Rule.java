@@ -15,6 +15,7 @@ import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 import org.kobic.kobis.rule.obj.RuleParamObj;
+import org.kobic.kobis.util.Utils;
 
 public class Rule {
 	private String insCd;
@@ -36,6 +37,7 @@ public class Rule {
 		BeanInfo info;
 		try {
 			params = new RuleParamObj();
+
 			info = Introspector.getBeanInfo(obj.getClass(), Object.class);
 		    PropertyDescriptor[] props = info.getPropertyDescriptors();
 		    for (PropertyDescriptor pd : props) {
@@ -60,7 +62,6 @@ public class Rule {
 			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
 		}
 
-		System.out.println( ruleObj.getParam("species") );
 		return true;
 	}
 	
