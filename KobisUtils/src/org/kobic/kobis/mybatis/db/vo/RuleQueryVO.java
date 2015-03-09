@@ -5,6 +5,7 @@ public class RuleQueryVO {
 	private String ins_cd;
 	private String rule_name;
 	private String rule_type;
+	private String rule_condition;
 	private String rule;
 
 	public String getRule_id() {
@@ -37,5 +38,10 @@ public class RuleQueryVO {
 	public void setRule(String rule) {
 		this.rule = rule;
 	}
-
+	public String getRule_condition() {
+		return rule_condition;
+	}
+	public void setRule_condition(String rule_condition) {
+		this.rule_condition = rule_condition;
+	}
 }

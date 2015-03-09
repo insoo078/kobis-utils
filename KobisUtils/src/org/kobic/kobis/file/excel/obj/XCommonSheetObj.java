@@ -9,174 +9,220 @@ public class XCommonSheetObj extends AbstractSheetObj{
 
 	private String family;
 	private String genus;
-	private String subGenus;
+	private String subgenus;
 	private String species;
 	private String synonym;
-	private String commonName;
-	private String koreanName;
-	private String inSpeciesType;
-	private String inSpeciesName;
-	private String lineName;
-	private String varietyName;
+	private String common_name;
+	private String kor_name;
+	private String in_species_type;
+	private String in_species_name;
+	private String line_name;
+	private String variety_name;
 	private String taxonomy;
 	private String institution;
-	private String category1;
-	private String category2;
-	private String category3;
-	private String url4DetailInfo;
-	private String geneName;
-	private String accessionNo;
+	private String category_1;
+	private String category_2;
+	private String category_3;
+	private String detail_url;
+	private String gene_name;
+	private String accession_no;
 	private String sequence;
-	private String keyword;
-	private String imgUrl1;
-	private String insUserEmail;
+	private String keywords;
+	private String img_url_1;
+	private String ins_user_email;
 	
-
 	public String getKobisCode() {
 		return kobisCode;
 	}
+
 	public void setKobisCode(String kobisCode) {
 		this.kobisCode = kobisCode;
 	}
-	public String getTaxonomy() {
-		return taxonomy;
-	}
-	public void setTaxonomy(String taxonomy) {
-		this.taxonomy = taxonomy;
-	}
+
 	public String getFamily() {
 		return family;
 	}
+
 	public void setFamily(String family) {
 		this.family = family;
 	}
+
 	public String getGenus() {
 		return genus;
 	}
+
 	public void setGenus(String genus) {
 		this.genus = genus;
 	}
-	public String getSubGenus() {
-		return subGenus;
+
+	public String getSubgenus() {
+		return subgenus;
 	}
-	public void setSubGenus(String subGenus) {
-		this.subGenus = subGenus;
+
+	public void setSubgenus(String subgenus) {
+		this.subgenus = subgenus;
 	}
+
 	public String getSpecies() {
 		return species;
 	}
+
 	public void setSpecies(String species) {
 		this.species = species;
 	}
+
 	public String getSynonym() {
 		return synonym;
 	}
+
 	public void setSynonym(String synonym) {
 		this.synonym = synonym;
 	}
-	public String getCommonName() {
-		return commonName;
+
+	public String getCommon_name() {
+		return common_name;
 	}
-	public void setCommonName(String commonName) {
-		this.commonName = commonName;
+
+	public void setCommon_name(String common_name) {
+		this.common_name = common_name;
 	}
-	public String getKoreanName() {
-		return koreanName;
+
+	public String getKor_name() {
+		return kor_name;
 	}
-	public void setKoreanName(String koreanName) {
-		this.koreanName = koreanName;
+
+	public void setKor_name(String kor_name) {
+		this.kor_name = kor_name;
 	}
-	public String getInSpeciesType() {
-		return inSpeciesType;
+
+	public String getIn_species_type() {
+		return in_species_type;
 	}
-	public void setInSpeciesType(String inSpeciesType) {
-		this.inSpeciesType = inSpeciesType;
+
+	public void setIn_species_type(String in_species_type) {
+		this.in_species_type = in_species_type;
 	}
-	public String getInSpeciesName() {
-		return inSpeciesName;
+
+	public String getIn_species_name() {
+		return in_species_name;
 	}
-	public void setInSpeciesName(String inSpeciesName) {
-		this.inSpeciesName = inSpeciesName;
+
+	public void setIn_species_name(String in_species_name) {
+		this.in_species_name = in_species_name;
 	}
-	public String getLineName() {
-		return lineName;
+
+	public String getLine_name() {
+		return line_name;
 	}
-	public void setLineName(String lineName) {
-		this.lineName = lineName;
+
+	public void setLine_name(String line_name) {
+		this.line_name = line_name;
 	}
-	public String getVarietyName() {
-		return varietyName;
+
+	public String getVariety_name() {
+		return variety_name;
 	}
-	public void setVarietyName(String varietyName) {
-		this.varietyName = varietyName;
+
+	public void setVariety_name(String variety_name) {
+		this.variety_name = variety_name;
 	}
+
+	public String getTaxonomy() {
+		return taxonomy;
+	}
+
+	public void setTaxonomy(String taxonomy) {
+		this.taxonomy = taxonomy;
+	}
+
 	public String getInstitution() {
 		return institution;
 	}
+
 	public void setInstitution(String institution) {
 		this.institution = institution;
 	}
-	public String getCategory1() {
-		return category1;
+
+	public String getCategory_1() {
+		return category_1;
 	}
-	public void setCategory1(String category1) {
-		this.category1 = category1;
+
+	public void setCategory_1(String category_1) {
+		this.category_1 = category_1;
 	}
-	public String getCategory2() {
-		return category2;
+
+	public String getCategory_2() {
+		return category_2;
 	}
-	public void setCategory2(String category2) {
-		this.category2 = category2;
+
+	public void setCategory_2(String category_2) {
+		this.category_2 = category_2;
 	}
-	public String getCategory3() {
-		return category3;
+
+	public String getCategory_3() {
+		return category_3;
 	}
-	public void setCategory3(String category3) {
-		this.category3 = category3;
+
+	public void setCategory_3(String category_3) {
+		this.category_3 = category_3;
 	}
-	public String getUrl4DetailInfo() {
-		return url4DetailInfo;
+
+	public String getDetail_url() {
+		return detail_url;
 	}
-	public void setUrl4DetailInfo(String url4DetailInfo) {
-		this.url4DetailInfo = url4DetailInfo;
+
+	public void setDetail_url(String detail_url) {
+		this.detail_url = detail_url;
 	}
-	public String getGeneName() {
-		return geneName;
+
+	public String getGene_name() {
+		return gene_name;
 	}
-	public void setGeneName(String geneName) {
-		this.geneName = geneName;
+
+	public void setGene_name(String gene_name) {
+		this.gene_name = gene_name;
 	}
-	public String getAccessionNo() {
-		return accessionNo;
+
+	public String getAccession_no() {
+		return accession_no;
 	}
-	public void setAccessionNo(String accessionNo) {
-		this.accessionNo = accessionNo;
+
+	public void setAccession_no(String accession_no) {
+		this.accession_no = accession_no;
 	}
+
 	public String getSequence() {
 		return sequence;
 	}
+
 	public void setSequence(String sequence) {
 		this.sequence = sequence;
 	}
-	public String getKeyword() {
-		return keyword;
+
+	public String getKeywords() {
+		return keywords;
 	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
-	public String getImgUrl1() {
-		return imgUrl1;
+
+	public String getImg_url_1() {
+		return img_url_1;
 	}
-	public void setImgUrl1(String imgUrl1) {
-		this.imgUrl1 = imgUrl1;
+
+	public void setImg_url_1(String img_url_1) {
+		this.img_url_1 = img_url_1;
 	}
-	public String getInsUserEmail() {
-		return insUserEmail;
+
+	public String getIns_user_email() {
+		return ins_user_email;
 	}
-	public void setInsUserEmail(String insUserEmail) {
-		this.insUserEmail = insUserEmail;
+
+	public void setIns_user_email(String ins_user_email) {
+		this.ins_user_email = ins_user_email;
 	}
-	
+
 	public static XCommonSheetObj getNewInstance(XSSFRow row) {
 		return new XCommonSheetObj().getInstance(row);
 	}
@@ -186,27 +232,27 @@ public class XCommonSheetObj extends AbstractSheetObj{
 		line += this.getAccess_num() + ",";
 		line += this.getFamily() + ",";
 		line += this.getGenus() + ",";
-		line += this.getSubGenus() + ",";
+		line += this.getSubgenus() + ",";
 		line += this.getSpecies() + ",";
 		line += this.getSynonym() + ",";
-		line += this.getCommonName() + ",";
-		line += this.getKoreanName() + ",";
-		line += this.getInSpeciesType() + ",";
-		line += this.getInSpeciesName() + ",";
-		line += this.getLineName() + ",";
-		line += this.getVarietyName() + ",";
+		line += this.getCommon_name() + ",";
+		line += this.getKor_name() + ",";
+		line += this.getIn_species_type() + ",";
+		line += this.getIn_species_name() + ",";
+		line += this.getLine_name() + ",";
+		line += this.getVariety_name() + ",";
 		line += this.getTaxonomy() + ",";
 		line += this.getInstitution() + ",";
-		line += this.getCategory1() + ",";
-		line += this.getCategory2() + ",";
-		line += this.getCategory3() + ",";
-		line += this.getUrl4DetailInfo() + ",";
-		line += this.getGeneName() + ",";
-		line += this.getAccessionNo() + ",";
+		line += this.getCategory_1() + ",";
+		line += this.getCategory_2() + ",";
+		line += this.getCategory_3() + ",";
+		line += this.getDetail_url() + ",";
+		line += this.getGene_name() + ",";
+		line += this.getAccession_no() + ",";
 		line += this.getSequence() + ",";
-		line += this.getKeyword() + ",";
-		line += this.getImgUrl1() + ",";
-		line += this.getInsUserEmail() + ",";
+		line += this.getKeywords() + ",";
+		line += this.getImg_url_1() + ",";
+		line += this.getIns_user_email() + ",";
 		
 		return line;
 	}
@@ -218,27 +264,27 @@ public class XCommonSheetObj extends AbstractSheetObj{
 			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
 			else if( i == 1 )	obj.setFamily( row.getCell(i).toString() );
 			else if( i == 2 )	obj.setGenus( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setSubGenus( row.getCell(i).toString() );
+			else if( i == 3 )	obj.setSubgenus( row.getCell(i).toString() );
 			else if( i == 4 )	obj.setSpecies( row.getCell(i).toString() );
 			else if( i == 5 )	obj.setSynonym( row.getCell(i).toString() );
-			else if( i == 6 )	obj.setCommonName( row.getCell(i).toString() );
-			else if( i == 7 )	obj.setKoreanName( row.getCell(i).toString() );
-			else if( i == 8 )	obj.setInSpeciesType( row.getCell(i).toString() );
-			else if( i == 9 )	obj.setInSpeciesName( row.getCell(i).toString() );
-			else if( i == 10 )	obj.setLineName( row.getCell(i).toString() );
-			else if( i == 11 )	obj.setVarietyName( row.getCell(i).toString() );
+			else if( i == 6 )	obj.setCommon_name( row.getCell(i).toString() );
+			else if( i == 7 )	obj.setKor_name( row.getCell(i).toString() );
+			else if( i == 8 )	obj.setIn_species_type( row.getCell(i).toString() );
+			else if( i == 9 )	obj.setIn_species_name( row.getCell(i).toString() );
+			else if( i == 10 )	obj.setLine_name( row.getCell(i).toString() );
+			else if( i == 11 )	obj.setVariety_name( row.getCell(i).toString() );
 			else if( i == 12 )	obj.setTaxonomy( row.getCell(i).toString() );
 			else if( i == 13 )	obj.setInstitution( row.getCell(i).toString() );
-			else if( i == 14 )	obj.setCategory1( row.getCell(i).toString() );
-			else if( i == 15 )	obj.setCategory2( row.getCell(i).toString() );
-			else if( i == 16 )	obj.setCategory3( row.getCell(i).toString() );
-			else if( i == 17 )	obj.setUrl4DetailInfo( row.getCell(i).toString() );
-			else if( i == 18 )	obj.setGeneName( row.getCell(i).toString() );
-			else if( i == 19 )	obj.setAccessionNo( row.getCell(i).toString() );
+			else if( i == 14 )	obj.setCategory_1( row.getCell(i).toString() );
+			else if( i == 15 )	obj.setCategory_2( row.getCell(i).toString() );
+			else if( i == 16 )	obj.setCategory_3( row.getCell(i).toString() );
+			else if( i == 17 )	obj.setDetail_url( row.getCell(i).toString() );
+			else if( i == 18 )	obj.setGene_name( row.getCell(i).toString() );
+			else if( i == 19 )	obj.setAccession_no( row.getCell(i).toString() );
 			else if( i == 20 )	obj.setSequence( row.getCell(i).toString() );
-			else if( i == 21 )	obj.setKeyword( row.getCell(i).toString() );
-			else if( i == 22 )	obj.setImgUrl1( row.getCell(i).toString() );
-			else if( i == 23 )	obj.setInsUserEmail( row.getCell(i).toString() );
+			else if( i == 21 )	obj.setKeywords( row.getCell(i).toString() );
+			else if( i == 22 )	obj.setImg_url_1( row.getCell(i).toString() );
+			else if( i == 23 )	obj.setIns_user_email( row.getCell(i).toString() );
 		}
 		return obj;
 	}

@@ -14,6 +14,6 @@ public class LexicalInterpreterTest {
 		String rule = "IF ${FIELD} EQ ${VAL} AND ${FIELD} NE ${VAL2} THEN REPLACE(${FIELD}, ${BEFORE}, ${AFTER}) FI";
 		
 		LexicalInterpreter liptr = new LexicalInterpreter();
-		liptr.parsing( rule );
+//		liptr.parsing( rule );
 	}
 }

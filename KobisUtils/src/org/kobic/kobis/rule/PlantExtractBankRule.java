@@ -15,14 +15,14 @@ public class PlantExtractBankRule extends Rule{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean rule( RuleParamObj obj ) {
-		RuleDAO dao = this.getDAO();
-
-		if( obj instanceof CodeMappingRuleObj ) {
-			
-		}
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean rule( RuleParamObj obj ) {
+//		RuleDAO dao = this.getDAO();
+//
+//		if( obj instanceof CodeMappingRuleObj ) {
+//			
+//		}
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 }

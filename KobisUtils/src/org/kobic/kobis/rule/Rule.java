@@ -1,8 +1,15 @@
 package org.kobic.kobis.rule;
 
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 
+import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 import org.kobic.kobis.mybatis.dao.RuleDAO;
 import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
@@ -23,10 +30,34 @@ public class Rule {
 		return this.dao;
 	}
 
-	public boolean rule( RuleParamObj obj ) throws NoSuchMethodException, SecurityException {
+	private RuleParamObj makeParams( XCommonSheetObj obj ) {
+		RuleParamObj params = null;
+
+		BeanInfo info;
+		try {
+			params = new RuleParamObj();
+			info = Introspector.getBeanInfo(obj.getClass(), Object.class);
+		    PropertyDescriptor[] props = info.getPropertyDescriptors();
+		    for (PropertyDescriptor pd : props) {
+		        String name = pd.getName();
+		        Method getter = pd.getReadMethod();
+		        Object value = getter.invoke( obj);
+		        params.addParam( name, value );
+		    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			params = null;
+		}
+
+		return params;
+	}
+
+	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException {
+		RuleParamObj ruleObj = this.makeParams( obj );
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
+		
 		for(Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext();) {
-			LexicalInterpreter.getInstance().interpret( iter.next(), obj );
+			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
 		}
 
 		return true;

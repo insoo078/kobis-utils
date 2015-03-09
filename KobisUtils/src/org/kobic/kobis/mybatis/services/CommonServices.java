@@ -25,23 +25,33 @@ public class CommonServices extends AbstractKobisServices{
 	public void readRecordsInSheet() throws NoSuchMethodException, SecurityException {
 		if( this.getSheet().getLastRowNum() > 3 ) {
 
-			RuleParamObj params = new RuleParamObj();
+//			RuleParamObj params = new RuleParamObj();
 			for( int j=3; j<=this.getSheet().getLastRowNum(); j++ ) {
 				XSSFRow dataRow = this.getSheet().getRow(j);
-				
+
 				XCommonSheetObj obj = XCommonSheetObj.getNewInstance( dataRow );
 				
 				List<PhylogeneticTreeVO> listFromDB = this.getDao().getPhylogeneticTreeByGenus( obj.getGenus() );
 
-				params.addParam("speciesType", Utils.emptyToNull( obj.getInSpeciesType() ) );
-				params.addParam("genus", obj.getGenus());
-				params.addParam("species", obj.getSpecies());
-
 				if( listFromDB.size() > 0 ) {
 					Rule rule = new Rule( this.getInsCd() );
-					rule.rule( params );
+					rule.rule( obj );
 
 					break;
+
+//				XCommonSheetObj obj = XCommonSheetObj.getNewInstance( dataRow );
+//				
+//				List<PhylogeneticTreeVO> listFromDB = this.getDao().getPhylogeneticTreeByGenus( obj.getGenus() );
+//
+//				params.addParam("speciesType", Utils.emptyToNull( obj.getInSpeciesType() ) );
+//				params.addParam("genus", obj.getGenus());
+//				params.addParam("species", obj.getSpecies());
+//
+//				if( listFromDB.size() > 0 ) {
+//					Rule rule = new Rule( this.getInsCd() );
+//					rule.rule( params );
+//
+//					break;
 
 //					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );
 //					String genus	= obj.getGenus();

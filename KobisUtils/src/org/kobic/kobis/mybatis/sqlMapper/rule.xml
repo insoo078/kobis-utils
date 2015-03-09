@@ -3,11 +3,12 @@
 
 <mapper namespace="Rule">
 	<resultMap id="RuleMap" type="org.kobic.kobis.mybatis.db.vo.RuleQueryVO">
-		<id column="rule_id"	property="rule_id"/>
-		<id column="ins_cd"		property="ins_cd"/>
-		<id column="rule_name"	property="rule_name"/>
-		<id column="rule_type"	property="rule_type"/>
-		<id column="rule"		property="rule"/>
+		<id column="rule_id"		property="rule_id"/>
+		<id column="ins_cd"			property="ins_cd"/>
+		<id column="rule_name"		property="rule_name"/>
+		<id column="rule_type"		property="rule_type"/>
+		<id column="rule_condition"	property="rule_condition"/>
+		<id column="rule"			property="rule"/>
 	</resultMap>
 
 	<select id="getRulesByInsId" parameterType="java.lang.String" resultMap="RuleMap">
