@@ -52,7 +52,7 @@ public class Rule {
 		return params;
 	}
 
-	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException {
+	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
 		RuleParamObj ruleObj = this.makeParams( obj );
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
 		
@@ -60,6 +60,11 @@ public class Rule {
 			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
 		}
 
+		System.out.println( ruleObj.getParam("species") );
+		return true;
+	}
+	
+	public boolean validate(String statement) {
 		return true;
 	}
 }

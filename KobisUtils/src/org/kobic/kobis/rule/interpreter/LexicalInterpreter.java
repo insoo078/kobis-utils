@@ -2,6 +2,9 @@ package org.kobic.kobis.rule.interpreter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,9 +13,6 @@ import org.kobic.kobis.rule.obj.RuleParamObj;
 import org.kobic.kobis.util.Utils;
 
 public class LexicalInterpreter {
-	public static final String DBL_QUOTATION = "\"";
-	public static final String SNGL_QUOTATION = "\'";
-
 	private static LexicalInterpreter interpreter;
 	
 	public static LexicalInterpreter getInstance() {
@@ -21,34 +21,118 @@ public class LexicalInterpreter {
 		return interpreter;
 	}
 
-	public boolean interpret( RuleQueryVO vo, RuleParamObj param ) throws NoSuchMethodException, SecurityException {
+	public boolean interpret( RuleQueryVO vo, RuleParamObj param ) throws NoSuchMethodException, SecurityException, Exception {
 		vo.setRule_condition( this.bindingParams(vo.getRule_condition(), param) );
 		vo.setRule( this.bindingParams(vo.getRule(), param) );
 
-		if( this.isTrueConditionStatement( vo.getRule_condition() ) ) {
-			;
+		boolean ret = this.isTrueConditionStatement( vo.getRule_condition() );
+		if( ret ) {
+			this.processRuleStatement( vo.getRule(), param );
 		}
+
 		return true;
 	}
-	
-	private boolean isTrueConditionStatement( String condition ) {
-//		String pattern = "([\"|a-zA-Z0-9])\\s+[EQ|NE|GT|LT|GE|LE]\\s+";
-		String pattern = "([EQ|NE|GT|LT|GE|LE])";
-		Pattern p = Pattern.compile( pattern );
-		Matcher m = p.matcher( condition );
-		
-		System.out.println( condition );
-		while( m.find() ) {
-			System.out.println( m.group() );
-		}
 
+	private void processRuleStatement( String statement, RuleParamObj param ) {
+		String pattern = "set\\s+\\:([a-zA-Z0-9|\\_]*)\\s*\\=\\s*(.+)";
+		Pattern p = Pattern.compile( pattern );
+		Matcher m = p.matcher( statement );
+
+		while( m.find() ) {
+			String variable = m.group(1);
+
+			String value = m.group(2).replace("\"", "").replace(";", "");
+
+			param.addParam( variable, value);
+		}
+	}
+
+	private List<Integer> getAllConjunctionsInConditionStatement(String condition) {
+		StringTokenizer st = new StringTokenizer(condition);
+
+		List<Integer> opList = new ArrayList<Integer>();
+		while (st.hasMoreElements()) {
+			String op = (String) st.nextElement();
+			if( KeywordDictionary.getInstance().conjunctions.containsKey( op ) ) {
+				int opcode = KeywordDictionary.getInstance().conjunctions.get(op);
+				opList.add(opcode);
+			}
+		}
+		return opList;
+	}
+
+	private boolean compare(String oper1, String oper2, int opcode) throws Exception{
+		if( opcode == KeywordDictionary.EQUAL ) {
+			return oper1.equals(oper2);
+		}else if( opcode == KeywordDictionary.NOT_EQUAL ){
+			return !oper1.equals(oper2);
+		}else{
+			throw new RuntimeException("String variable only compare equal or not-equal");
+		}
+	}
+	
+	private boolean compare(Double oper1, Double oper2, int opcode) throws Exception{
+		if( opcode == KeywordDictionary.EQUAL ) {
+			return oper1 == oper2;
+		}else if( opcode == KeywordDictionary.NOT_EQUAL ){
+			return oper1 != oper2;
+		}else if( opcode == KeywordDictionary.LESS_THAN ){
+			return oper1 < oper2;
+		}else if( opcode == KeywordDictionary.GRATER_THAN ){
+			return oper1 > oper2;
+		}else if( opcode == KeywordDictionary.LESS_OR_EQUAL ){
+			return oper1 <= oper2;
+		}else if( opcode == KeywordDictionary.GRATER_OR_EQUAL ){
+			return oper1 >= oper2;
+		}
 		return false;
 	}
-
-	private void parsing( RuleQueryVO query ) {
-		
-	}
 	
+	private boolean isTrueConditionStatement( String condition ) throws Exception{
+		String[] operations = condition.split("AND|OR");
+
+		List<Integer> opList = this.getAllConjunctionsInConditionStatement(condition);
+		List<Boolean> booleanCompare = new ArrayList<Boolean>();
+
+		boolean ret = true;
+		for(int i=0; i<operations.length; i++) {
+			@SuppressWarnings("static-access")
+			String pattern = "([a-zA-Z0-9|\"|\\.|\\s]*)\\s+([" + KeywordDictionary.getInstance().getOperatorString() + "]+)\\s+([a-zA-Z0-9|\"|\\.|\\s]*)";
+			
+			Pattern p = Pattern.compile( pattern );
+			Matcher m = p.matcher( operations[i] );
+			
+			if( m.find() ) {
+				if( m.groupCount() != 3 ) throw new RuntimeException( "잘못된 문장입니다. [oprand] operator [operand] : " + operations[i] );
+				String oper1 = m.group(1);
+				String oper2 = m.group(3);
+				int opcode = Integer.valueOf( KeywordDictionary.getInstance().operators.get( m.group(2) ) );
+
+				if( Utils.isCharacterSequence(oper1, KeywordDictionary.DBL_QUOTATION) && Utils.isCharacterSequence(oper2, KeywordDictionary.DBL_QUOTATION) )
+					booleanCompare.add( this.compare(oper1, oper2, opcode) );
+				else if( Utils.isNumeric( oper1 ) && Utils.isNumeric( oper2 ) )
+					booleanCompare.add( this.compare( Double.valueOf( oper1 ), Double.valueOf( oper2 ), opcode) );
+				else
+					throw new RuntimeException("비교할 수 없는 문장입니다. 문자열끼리 비교 또는 숫자끼리 비교만 가능합니다. " + operations[i] );
+			}
+		}
+
+		if( opList.size() > 0 ) {
+			for(int i=0; i<opList.size(); i++) {
+				int opcode = opList.get(i);
+				if( i == 0 )	ret = true & booleanCompare.get(i);
+				else{
+					if( opcode == KeywordDictionary.AND )	ret &= booleanCompare.get(i);
+					else									ret |= booleanCompare.get(i);
+				}
+			}
+		}else {
+			ret = booleanCompare.get(0);
+		}
+
+		return ret;
+	}
+
 	private String[] functionParameters(String str) {
 		String[] div = str.split(",");
 		
@@ -56,7 +140,7 @@ public class LexicalInterpreter {
 	}
 
 	private String functionTranslate( String statement ) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		String pattern = "([a-zA-Z0-9]+)\\(([\"|\\s|a-zA-Z0-9|\\,]*)\\)";
+		String pattern = "([a-zA-Z0-9]+)\\(([\"\\'|\\s|a-zA-Z0-9|\\,|\\.]*)\\)";
 		Pattern p = Pattern.compile( pattern );
 		Matcher m = p.matcher( statement );
 
@@ -67,13 +151,13 @@ public class LexicalInterpreter {
 			Method method = Functions.class.getMethod( m.group(1), new Class[]{String[].class} );
 			Object result = method.invoke( methodName, new Object[]{params} );
 			
-			if( result instanceof String )	result = LexicalInterpreter.DBL_QUOTATION + result.toString() + LexicalInterpreter.DBL_QUOTATION ;
+			if( result instanceof String )	result = KeywordDictionary.DBL_QUOTATION + result.toString() + KeywordDictionary.DBL_QUOTATION ;
 			statement = statement.replace( m.group(), result.toString() );
 		}
 
 		return statement;
 	}
-	
+
 	private String variableTranslate(String statement, RuleParamObj param) {
 		String pattern = "\\$\\{\\s*[a-z|A-Z|\\_|0-9]+\\s*\\}";
 		Pattern p = Pattern.compile( pattern );
@@ -82,11 +166,12 @@ public class LexicalInterpreter {
 		String condition = statement;
 		while( m.find() ) {
 			String oldStr = m.group();
-			String newStr = Utils.wrap( Utils.nullToEmpty( param.getParam(m.group()) ), LexicalInterpreter.DBL_QUOTATION );
+			String removeBrace = m.group().replace("$",  "").replace("{", "").replace("}", "");
+			String newStr = Utils.wrap( Utils.nullToEmpty( param.getParam(removeBrace) ), KeywordDictionary.DBL_QUOTATION );
 			
 			condition = condition.replace( oldStr, newStr );
 		}
-		condition = condition.replace( LexicalInterpreter.SNGL_QUOTATION, LexicalInterpreter.DBL_QUOTATION );
+		condition = condition.replace( KeywordDictionary.SNGL_QUOTATION, KeywordDictionary.DBL_QUOTATION );
 		
 		return condition;
 	}

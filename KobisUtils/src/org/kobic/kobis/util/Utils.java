@@ -1,6 +1,6 @@
 package org.kobic.kobis.util;
 
-import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
+import org.kobic.kobis.rule.interpreter.KeywordDictionary;
 
 public class Utils {
 	public static String emptyToNull(String value) {
@@ -21,6 +21,14 @@ public class Utils {
 	}
 	
 	public static String removeQuot( String value, String quot ) {
-		return value.replace( LexicalInterpreter.DBL_QUOTATION, "" );
+		return value.replace( KeywordDictionary.DBL_QUOTATION, "" );
+	}
+	
+	public static boolean isCharacterSequence( String value, String quot ) {
+		return value.trim().matches("^\"(\\S|\\s)*\"$");
+	}
+	
+	public static boolean isNumeric( String value ) {
+		return value.matches("-?\\d+(\\.\\d+)?");
 	}
 }

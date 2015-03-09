@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class RuleParamObj {
 	private Map<String, Object> paramMap;
-	
+
 	public void addParam(String name, Object value) {
 		if( this.paramMap == null ) {
 			this.paramMap = new HashMap<String, Object>();

@@ -10,7 +10,6 @@ import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.rule.obj.CodeMappingRuleObj;
-import org.kobic.kobis.rule.obj.RuleParamObj;
 import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
@@ -22,7 +21,7 @@ public class CommonServices extends AbstractKobisServices{
 	}
 
 	@Override
-	public void readRecordsInSheet() throws NoSuchMethodException, SecurityException {
+	public void readRecordsInSheet() throws NoSuchMethodException, SecurityException, Exception {
 		if( this.getSheet().getLastRowNum() > 3 ) {
 
 //			RuleParamObj params = new RuleParamObj();
@@ -35,50 +34,33 @@ public class CommonServices extends AbstractKobisServices{
 
 				if( listFromDB.size() > 0 ) {
 					Rule rule = new Rule( this.getInsCd() );
-					rule.rule( obj );
 
-					break;
+//					if( obj.getIn_species_type().equals("spp.") )
+						rule.rule( obj );
+					
+					String speciesType = Utils.emptyToNull( obj.getIn_species_type() );
+					String genus	= obj.getGenus();
+					String species	= obj.getSpecies();
+					ExtraCodeInfo extraInfo = null;
+					boolean extraType = false; 
 
-//				XCommonSheetObj obj = XCommonSheetObj.getNewInstance( dataRow );
-//				
-//				List<PhylogeneticTreeVO> listFromDB = this.getDao().getPhylogeneticTreeByGenus( obj.getGenus() );
-//
-//				params.addParam("speciesType", Utils.emptyToNull( obj.getInSpeciesType() ) );
-//				params.addParam("genus", obj.getGenus());
-//				params.addParam("species", obj.getSpecies());
-//
-//				if( listFromDB.size() > 0 ) {
-//					Rule rule = new Rule( this.getInsCd() );
-//					rule.rule( params );
-//
-//					break;
-
-//					String speciesType = Utils.emptyToNull( obj.getInSpeciesType() );
-//					String genus	= obj.getGenus();
-//					String species	= obj.getSpecies();
-//					ExtraCodeInfo extraInfo = null;
-//					boolean extraType = false; 
-
-//					if( speciesType != null ) {
+					if( speciesType != null ) {
 //						 추출물은행 예외사항
-//						if( this.getInsCd().equals("INS000012") ) {
-//							if( speciesType.equals("f.") )	species.replace(" for. ", " f. ");
-//							if( speciesType.equals("spp."))	speciesType = "ssp.";
-//	
-//							String[] divSpecies = species.split( speciesType );
-//							species = divSpecies[0];
-//	
-//							if( speciesType.equals("var.") )		extraInfo = new ExtraCodeInfo("var.",	divSpecies[1]);
-//							else if( speciesType.equals("ssp.") )	extraInfo = new ExtraCodeInfo("ssp.",	divSpecies[1]);
-//							else if( speciesType.equals("f.") )		extraInfo = new ExtraCodeInfo("f.",		divSpecies[1]);
-//							else if( speciesType.equals("line") )	extraInfo = new ExtraCodeInfo("line",	divSpecies[1]);
-//							else { }
-//						}
-//
-//						extraType = true;
-//					}
+						if( this.getInsCd().equals("INS00001") ) {
+							String[] divSpecies = species.split( speciesType );
+							species = divSpecies[0];
+	
+							if( speciesType.equals("var.") )		extraInfo = new ExtraCodeInfo("var.",	divSpecies[1]);
+							else if( speciesType.equals("ssp.") )	extraInfo = new ExtraCodeInfo("ssp.",	divSpecies[1]);
+							else if( speciesType.equals("f.") )		extraInfo = new ExtraCodeInfo("f.",		divSpecies[1]);
+							else if( speciesType.equals("line") )	extraInfo = new ExtraCodeInfo("line",	divSpecies[1]);
+							else { }
+						}
 
-//					CodeMappingRuleObj ruleObj = new CodeMappingRuleObj( genus, species, extraInfo, extraType );
+						extraType = true;
+					}
+
+					CodeMappingRuleObj ruleObj = new CodeMappingRuleObj( genus, species, extraInfo, extraType );
 
 //					for(Iterator<PhylogeneticTreeVO> iter=listFromDB.iterator(); iter.hasNext();) {
 //						PhylogeneticTreeVO dbo = iter.next();
