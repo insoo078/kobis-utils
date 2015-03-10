@@ -1,15 +1,15 @@
 package org.kobic.kobis.rule.obj;
 
-import org.kobic.kobis.file.excel.obj.internal.ExtraCodeInfo;
+import org.kobic.kobis.file.excel.obj.internal.ExtraInfo;
 
 public class CodeMappingRuleObj extends RuleParamObj{
 	private String genus;
 	private String species;
 
-	private ExtraCodeInfo extraInfo;
+	private ExtraInfo extraInfo;
 	private boolean extraType;
 	
-	public CodeMappingRuleObj(String genus, String species, ExtraCodeInfo extraInfo, boolean extraType) {
+	public CodeMappingRuleObj(String genus, String species, ExtraInfo extraInfo, boolean extraType) {
 		this.genus = genus;
 		this.species = species;
 		

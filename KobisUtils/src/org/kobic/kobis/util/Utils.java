@@ -40,4 +40,22 @@ public class Utils {
 	public static boolean isNumeric( String value ) {
 		return value.matches("-?\\d+(\\.\\d+)?");
 	}
+	
+	public static Object getValueByField( Object obj, String fieldName ) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		BeanInfo info = Introspector.getBeanInfo(obj.getClass(), Object.class);
+	    PropertyDescriptor[] props = info.getPropertyDescriptors();
+
+	    Object value = null;
+	    for (PropertyDescriptor pd : props) {
+	        String name = pd.getName();
+	        if( !name.equals(fieldName) )	continue;
+
+	        Method getter = pd.getReadMethod();
+	        Class<?> type = pd.getPropertyType();
+
+	        value = getter.invoke( obj ).toString();
+	        break;
+	    }
+	    return value;
+	}
 }

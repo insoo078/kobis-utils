@@ -6,7 +6,6 @@ import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 public class XCommonSheetObj extends AbstractSheetObj{
 
 	private String kobisCode;
-
 	private String family;
 	private String genus;
 	private String subgenus;

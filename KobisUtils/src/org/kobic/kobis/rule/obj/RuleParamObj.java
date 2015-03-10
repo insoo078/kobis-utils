@@ -26,4 +26,8 @@ public class RuleParamObj {
 	public Object getParam(String name) {
 		return this.paramMap.get(name);
 	}
+	
+	public boolean containsParam(String name) {
+		return this.paramMap.containsKey(name);
+	}
 }

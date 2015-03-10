@@ -1,10 +1,8 @@
 package org.kobic.kobis.rule;
 
 import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +13,6 @@ import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 import org.kobic.kobis.rule.obj.RuleParamObj;
-import org.kobic.kobis.util.Utils;
 
 public class Rule {
 	private String insCd;
@@ -42,9 +39,12 @@ public class Rule {
 		    PropertyDescriptor[] props = info.getPropertyDescriptors();
 		    for (PropertyDescriptor pd : props) {
 		        String name = pd.getName();
-		        Method getter = pd.getReadMethod();
-		        Object value = getter.invoke( obj);
-		        params.addParam( name, value );
+
+//				if( XCommonSheetObj.class.getField(name) != null ) {
+			        Method getter = pd.getReadMethod();
+			        Object value = getter.invoke( obj);
+			        params.addParam( name, value );
+//				}
 		    }
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -54,6 +54,28 @@ public class Rule {
 		return params;
 	}
 
+	private void update( XCommonSheetObj obj, RuleParamObj params ) throws Exception {
+		BeanInfo info;
+		try {
+			info = Introspector.getBeanInfo(obj.getClass(), Object.class);
+		    PropertyDescriptor[] props = info.getPropertyDescriptors();
+		    for (PropertyDescriptor pd : props) {
+		        String name = pd.getName();
+		        if( params.containsParam(name) ) {
+			        Method setter = pd.getWriteMethod();
+			        Object val = params.getParam(name);
+
+			        if( setter != null )	setter.invoke( obj, new Object[]{ val } );
+		        }
+		    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw e;
+		}
+
+		return;
+	}
+
 	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
 		RuleParamObj ruleObj = this.makeParams( obj );
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
@@ -61,6 +83,7 @@ public class Rule {
 		for(Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext();) {
 			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
 		}
+		this.update( obj, ruleObj );
 
 		return true;
 	}
