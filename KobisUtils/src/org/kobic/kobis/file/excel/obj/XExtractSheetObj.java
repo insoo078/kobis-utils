@@ -33,6 +33,10 @@ public class XExtractSheetObj extends AbstractSheetObj{
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XExtractSheetObj getNewInstance(XSSFRow row) {
+		return new XExtractSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XExtractSheetObj getInstance( XSSFRow row ) {

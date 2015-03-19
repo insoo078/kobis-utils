@@ -34,8 +34,8 @@
 	
 	<select id="getInstitutionId" parameterType="java.lang.String" resultType="java.lang.String">
 		SELECT
-			ins_cd
-		FROM X1_InstitutionCode
+			ins_name
+		FROM X2_InstitutionCode
 		WHERE ins_cd=#{ins_cd}
 	</select>
 
@@ -51,5 +51,159 @@
 			OR
 			UPPER(F)=UPPER(#{f})
 		)
+	</select>
+
+	<select id="getScientificNameFromNcbiTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			name_txt
+			,tax_id
+		FROM X1_NcbiTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+	
+	<select id="getScientificNameFromGbifTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_GbifTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+	<select id="getScientificNameFromItisTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_ItisTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+	<select id="getScientificNameFromKobicTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		<!-- SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name} -->
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_KobicTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+<!-- 	<select id="getScientificNameFromKobicTaxonomyPure" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND SSP='종소명없음|국명없음' AND VAR='종소명없음|국명없음' AND F='종소명없음|국명없음'
+	</select>
+
+	<select id="getScientificNameFromKobicTaxonomyDetail" parameterType="java.util.Map" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND ( SSP LIKE CONCAT(#{detail}, '%') OR VAR LIKE CONCAT(#{detail}, '%') OR F LIKE CONCAT( #{detail}, '%') )
+	</select> -->
+
+	<insert id="insertD1Common" parameterType="org.kobic.kobis.file.excel.obj.XCommonSheetObj">
+		INSERT INTO D1_Common(
+			accession_num, kobis_id, CODE, common_name, kor_name
+			, line_name, variety_name, taxonomy, institution
+			, category_1, category_2, category_3, detail_url, barcode, keywords, img_url_1, ins_user_email
+			, family, genus, subgenus, species, in_species_type, in_species_name, ins_cd
+		) VALUES(
+			SF_GET_KOBIS_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{ins_cd}), #{access_num}, #{kobisCode}, #{common_name}, #{kor_name}
+			, #{line_name}, #{variety_name}, #{institution}
+			, #{category_1}, #{category_2}, #{category_3}, #{detail_url}, null, #{keywords}, #{img_url_1}, #{ins_user_email}
+			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}
+		)
+	</insert>
+	
+	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT
+			tab_id 
+		FROM T1_ClassificationSystemTable
+		<where>
+			<if test="KOBIS_CODE != null">KOBIS_CODE=#{KOBIS_CODE}</if>
+			<if test="ncbi_tax_id != null">AND ncbi_tax_id=#{ncbi_tax_id}</if>
+			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
+			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
+			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
+		</where>
+	</select>
+	
+	<insert id="insertT1ClassificationSystemTable" parameterType="java.util.Map">
+		INSERT INTO T1_ClassificationSystemTable(
+			KOBIS_CODE, ncbi_tax_id, itis_tax_id, gbif_tax_id, scientific_name
+		) VALUES(
+			#{KOBIS_CODE}, #{ncbi_tax_id}, #{itis_tax_id}, #{gbif_tax_id}, #{scientific_name}
+		)
+	</insert>
+
+	<insert id="insertSynonyms" parameterType="org.kobic.kobis.file.excel.obj.XCommonSheetObj">
+		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
+		VALUES( #{accession_num}, SF_GET_SYNONYM_ID(DATE_FORMAT(CURDATE(), '%Y%m%d')), #{synonym} )
+	</insert>
+
+	<insert id="insertUnmappedD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
+		INSERT INTO T2_UnMappedCommon(
+			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
+			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
+			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
+		) VALUES(
+			'${access_num}', '${family}', '${genus}', '${subgenus}', '${species}', '${synonym}', '${common_name}', '${kor_name}'
+			, '${in_species_type}', '${in_species_name}', '${line_name}', '${variety_name}', '${taxonomy}', '${institution}', '${category_1}'
+			, '${category_2}', '${category_3}', '${detail_url}', '${gene_name}', '${accession_no}', '${sequence}', '${keywords}'
+			, '${img_url_1}', '${ins_user_email}', '${ins_cd}', '${message}'
+		)
+	</insert>
+
+	<insert id="insertMappedD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
+		INSERT INTO T2_MappedCommon(
+			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
+			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
+			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, tab_id
+		) VALUES(
+			'${access_num}', '${family}', '${genus}', '${subgenus}', '${species}', '${synonym}', '${common_name}', '${kor_name}'
+			, '${in_species_type}', '${in_species_name}', '${line_name}', '${variety_name}', '${taxonomy}', '${institution}', '${category_1}'
+			, '${category_2}', '${category_3}', '${detail_url}', '${gene_name}', '${accession_no}', '${sequence}', '${keywords}'
+			, '${img_url_1}', '${ins_user_email}', '${ins_cd}', '${code}'
+		)
+	</insert>
+
+	<delete id="deleteTempNCBI">
+		TRUNCATE TABLE TempNCBI
+	</delete>
+	<insert id="insertTempNCBI" parameterType="java.util.Map">
+		INSERT INTO TempNCBI(lineage, id)
+		VALUES( '${lineage}', '${id}' )
+	</insert>
+	
+	<insert id="insertTempGBIF" parameterType="java.util.Map">
+		INSERT INTO ITIS.taxon(taxonID, parentNameUsageID, acceptedNameUsageID, scientificName, canonicalName, taxonRank, genus, specificEpithet, infraspecificEpithet)
+		VALUES
+		<foreach collection="list" item="element" separator=",">  
+    	( #{element.taxonID}, #{element.parentNameUsageID}, #{element.acceptedNameUsageID}, #{element.scientificName}, #{element.canonicalName}, #{element.taxonRank}, #{element.genus}, #{element.specificEpithet}, #{element.infraspecificEpithet} )  
+		</foreach> 
+	</insert>
+
+	<insert id="insertTempNCBIName" parameterType="java.util.Map">
+		INSERT INTO ITIS.names(tax_id, name_txt, unique_name, name_class)
+		VALUES
+		<foreach collection="list" item="element" separator=",">  
+    	( #{element.tax_id}, #{element.name_txt}, #{element.unique_name}, #{element.name_class} )  
+		</foreach> 
+	</insert>
+
+	<select id="getTempNCBI" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT id FROM TempNCBI
+		WHERE lineage='${lineage}'
 	</select>
 </mapper>

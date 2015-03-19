@@ -6,8 +6,6 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.kobic.kobis.rule.interpreter.KeywordDictionary;
 
@@ -17,6 +15,10 @@ public class Utils {
 		if( value.trim().isEmpty() )	return null;
 		
 		return value.trim();
+	}
+	
+	public static String getTimeStamp( long e, long s ) {
+		return ((double)(e - s) / 1000) + "sec";
 	}
 	
 	public static String nullToEmpty(Object value) {

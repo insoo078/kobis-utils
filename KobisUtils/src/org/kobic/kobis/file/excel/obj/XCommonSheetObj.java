@@ -1,11 +1,11 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
+import org.kobic.kobis.util.Utils;
 
 public class XCommonSheetObj extends AbstractSheetObj{
-
-	private String kobisCode;
 	private String family;
 	private String genus;
 	private String subgenus;
@@ -29,14 +29,6 @@ public class XCommonSheetObj extends AbstractSheetObj{
 	private String keywords;
 	private String img_url_1;
 	private String ins_user_email;
-	
-	public String getKobisCode() {
-		return kobisCode;
-	}
-
-	public void setKobisCode(String kobisCode) {
-		this.kobisCode = kobisCode;
-	}
 
 	public String getFamily() {
 		return family;
@@ -225,10 +217,9 @@ public class XCommonSheetObj extends AbstractSheetObj{
 	public static XCommonSheetObj getNewInstance(XSSFRow row) {
 		return new XCommonSheetObj().getInstance(row);
 	}
-	
+
 	public String getPrintLine() {
-		String line = this.getKobisCode() + ","; 
-		line += this.getAccess_num() + ",";
+		String line = this.getAccess_num() + ",";
 		line += this.getFamily() + ",";
 		line += this.getGenus() + ",";
 		line += this.getSubgenus() + ",";
@@ -256,35 +247,43 @@ public class XCommonSheetObj extends AbstractSheetObj{
 		return line;
 	}
 
+	private String getVal( XSSFCell cell ) {
+		String ret = "";
+//		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replace("\'", "\\\'");
+		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replaceAll("'","\\\\'");
+		
+		return ret;
+	}
+
 	@Override
 	public XCommonSheetObj getInstance( XSSFRow row ) {
 		XCommonSheetObj obj = new XCommonSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setFamily( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setGenus( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setSubgenus( row.getCell(i).toString() );
-			else if( i == 4 )	obj.setSpecies( row.getCell(i).toString() );
-			else if( i == 5 )	obj.setSynonym( row.getCell(i).toString() );
-			else if( i == 6 )	obj.setCommon_name( row.getCell(i).toString() );
-			else if( i == 7 )	obj.setKor_name( row.getCell(i).toString() );
-			else if( i == 8 )	obj.setIn_species_type( row.getCell(i).toString() );
-			else if( i == 9 )	obj.setIn_species_name( row.getCell(i).toString() );
-			else if( i == 10 )	obj.setLine_name( row.getCell(i).toString() );
-			else if( i == 11 )	obj.setVariety_name( row.getCell(i).toString() );
-			else if( i == 12 )	obj.setTaxonomy( row.getCell(i).toString() );
-			else if( i == 13 )	obj.setInstitution( row.getCell(i).toString() );
-			else if( i == 14 )	obj.setCategory_1( row.getCell(i).toString() );
-			else if( i == 15 )	obj.setCategory_2( row.getCell(i).toString() );
-			else if( i == 16 )	obj.setCategory_3( row.getCell(i).toString() );
-			else if( i == 17 )	obj.setDetail_url( row.getCell(i).toString() );
-			else if( i == 18 )	obj.setGene_name( row.getCell(i).toString() );
-			else if( i == 19 )	obj.setAccession_no( row.getCell(i).toString() );
-			else if( i == 20 )	obj.setSequence( row.getCell(i).toString() );
-			else if( i == 21 )	obj.setKeywords( row.getCell(i).toString() );
-			else if( i == 22 )	obj.setImg_url_1( row.getCell(i).toString() );
-			else if( i == 23 )	obj.setIns_user_email( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(		this.getVal( row.getCell(i) ) );
+			else if( i == 1 )	obj.setFamily(			this.getVal( row.getCell(i) ) );
+			else if( i == 2 )	obj.setGenus(			this.getVal( row.getCell(i) ) );
+			else if( i == 3 )	obj.setSubgenus(		this.getVal( row.getCell(i) ) );
+			else if( i == 4 )	obj.setSpecies(			this.getVal( row.getCell(i) ) );
+			else if( i == 5 )	obj.setSynonym(			this.getVal( row.getCell(i) ) );
+			else if( i == 6 )	obj.setCommon_name(		this.getVal( row.getCell(i) ) );
+			else if( i == 7 )	obj.setKor_name(		this.getVal( row.getCell(i) ) );
+			else if( i == 8 )	obj.setIn_species_type(	this.getVal( row.getCell(i) ) );
+			else if( i == 9 )	obj.setIn_species_name(	this.getVal( row.getCell(i) ) );
+			else if( i == 10 )	obj.setLine_name(		this.getVal( row.getCell(i) ) );
+			else if( i == 11 )	obj.setVariety_name(	this.getVal( row.getCell(i) ) );
+			else if( i == 12 )	obj.setTaxonomy(		this.getVal( row.getCell(i) ) );
+			else if( i == 13 )	obj.setInstitution(		this.getVal( row.getCell(i) ) );
+			else if( i == 14 )	obj.setCategory_1(		this.getVal( row.getCell(i) ) );
+			else if( i == 15 )	obj.setCategory_2(		this.getVal( row.getCell(i) ) );
+			else if( i == 16 )	obj.setCategory_3(		this.getVal( row.getCell(i) ) );
+			else if( i == 17 )	obj.setDetail_url(		this.getVal( row.getCell(i) ) );
+			else if( i == 18 )	obj.setGene_name(		this.getVal( row.getCell(i) ) );
+			else if( i == 19 )	obj.setAccession_no(	this.getVal( row.getCell(i) ) );
+			else if( i == 20 )	obj.setSequence(		this.getVal( row.getCell(i) ) );
+			else if( i == 21 )	obj.setKeywords(		this.getVal( row.getCell(i) ) );
+			else if( i == 22 )	obj.setImg_url_1(		this.getVal( row.getCell(i) ) );
+			else if( i == 23 )	obj.setIns_user_email(	this.getVal( row.getCell(i) ) );
 		}
 		return obj;
-	}
+	} 
 }

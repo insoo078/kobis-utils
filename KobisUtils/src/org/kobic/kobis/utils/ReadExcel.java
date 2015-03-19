@@ -97,7 +97,7 @@ public class ReadExcel{
 			XSSFSheet sheet = workbook.getSheetAt( i );
 
 			String className = ExcelWorksheetNameMap.getInstance().getClassNameFromSheetName( sheetName );
-
+  
 			if( className != null ) {
 				@SuppressWarnings("rawtypes")
 				Class c = Class.forName(className);
@@ -106,9 +106,17 @@ public class ReadExcel{
 				Constructor cons = c.getConstructor( new Class[]{String.class, XSSFSheet.class, KobisDAO.class} );
 
 				Object obj = cons.newInstance( header, sheet, this.dao );
+				
+//				AbstractKobisServices ks = (AbstractKobisServices) obj;
+//
+//				ks.readRecordsInSheet();
+
 				if( obj instanceof CommonServices ) {
 					CommonServices cs = (CommonServices)obj;
 					cs.readRecordsInSheet();
+//				}else if( obj instanceof ObservationServices ) {
+//					ObservationServices cs = (ObservationServices)obj;
+//					cs.readRecordsInSheet();
 				}
 			}
 		}
@@ -125,12 +133,24 @@ public class ReadExcel{
 //		String output = "/Users/lion/Desktop";
 //		String inFile = "/Users/lion/Desktop/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx";
 //		String header = "cov";
+
+//		-o /Users/lion/Desktop -i /Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx -header INS00001
 		
-		ReadExcel read = new ReadExcel();
-		try {
-			read.run(args);
-		}catch(Exception e) {
-			e.printStackTrace();
+		String[][] params = new String[][]{
+				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample.xlsx", "-header", "INS00002"},
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"},
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"}
+		};
+
+		for(int i=0; i<params.length; i++) {
+			ReadExcel read = new ReadExcel();
+			try {
+				System.out.println( params[i][5] + " processing");
+				read.run( params[i] );
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

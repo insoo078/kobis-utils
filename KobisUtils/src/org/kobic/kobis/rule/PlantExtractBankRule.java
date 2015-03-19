@@ -1,9 +1,5 @@
 package org.kobic.kobis.rule;
 
-import org.kobic.kobis.mybatis.dao.RuleDAO;
-import org.kobic.kobis.rule.obj.CodeMappingRuleObj;
-import org.kobic.kobis.rule.obj.RuleParamObj;
-
 /************************************************
  * 추출물은행 적용 Rule
  * @author lion

@@ -22,6 +22,10 @@ public class XObservationSheetObj extends AbstractSheetObj{
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XObservationSheetObj getNewInstance(XSSFRow row) {
+		return new XObservationSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XObservationSheetObj getInstance( XSSFRow row ) {

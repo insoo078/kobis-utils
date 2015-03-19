@@ -15,6 +15,8 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 	private OpenObj open;
 	private PatentObj patent;
 	private ReferenceObj reference;
+	private String gene_full_name;
+	private String gene_alias;
 
 	public String getSource() {
 		return source;
@@ -72,6 +74,22 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 		this.reference = reference;
 	}
 
+
+	public String getGene_full_name() {
+		return gene_full_name;
+	}
+
+	public void setGene_full_name(String gene_full_name) {
+		this.gene_full_name = gene_full_name;
+	}
+
+	public String getGene_alias() {
+		return gene_alias;
+	}
+
+	public void setGene_alias(String gene_alias) {
+		this.gene_alias = gene_alias;
+	}
 
 	@Override
 	public XDnaSequenceSheetObj getInstance( XSSFRow row ) {

@@ -1,7 +1,6 @@
 package org.kobic.kobis.file.excel.obj.internal;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 
 public abstract class AbstractSheetObj {
 	private String access_num;
