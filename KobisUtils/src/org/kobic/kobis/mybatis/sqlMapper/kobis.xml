@@ -45,11 +45,7 @@
 		FROM X1_PhylogeneticTree
 		WHERE GENUS=${genus} AND 
 		(
-			UPPER(SSP)=UPPER(#{ssp})
-			OR
-			UPPER(VAR)=UPPER(#{var})
-			OR
-			UPPER(F)=UPPER(#{f})
+			UPPER(SSP)=UPPER(#{ssp}) OR UPPER(VAR)=UPPER(#{var}) OR UPPER(F)=UPPER(#{f})
 		)
 	</select>
 
@@ -81,11 +77,6 @@
 	</select>
 
 	<select id="getScientificNameFromKobicTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
-		<!-- SELECT 
-			CODE tax_id
-			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
-		FROM X1_PhylogeneticTree
-		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name} -->
 		SELECT
 			name_txt
 			, tax_id
@@ -94,23 +85,26 @@
 		HAVING name_txt=#{scientfic_name}
 	</select>
 
-<!-- 	<select id="getScientificNameFromKobicTaxonomyPure" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
-		SELECT 
-			CODE tax_id
-			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
-		FROM X1_PhylogeneticTree
-		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
-		AND SSP='종소명없음|국명없음' AND VAR='종소명없음|국명없음' AND F='종소명없음|국명없음'
+	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT
+			tab_id 
+		FROM T1_ClassificationSystemTable
+		<where>
+			<if test="KOBIS_CODE != null">KOBIS_CODE=#{KOBIS_CODE}</if>
+			<if test="ncbi_tax_id != null">AND ncbi_tax_id=#{ncbi_tax_id}</if>
+			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
+			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
+			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
+		</where>
 	</select>
 
-	<select id="getScientificNameFromKobicTaxonomyDetail" parameterType="java.util.Map" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
-		SELECT
-			CODE tax_id
-			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
-		FROM X1_PhylogeneticTree
-		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
-		AND ( SSP LIKE CONCAT(#{detail}, '%') OR VAR LIKE CONCAT(#{detail}, '%') OR F LIKE CONCAT( #{detail}, '%') )
-	</select> -->
+	<insert id="insertT1ClassificationSystemTable" parameterType="java.util.Map">
+		INSERT INTO T1_ClassificationSystemTable(
+			KOBIS_CODE, ncbi_tax_id, itis_tax_id, gbif_tax_id, scientific_name
+		) VALUES(
+			#{KOBIS_CODE}, #{ncbi_tax_id}, #{itis_tax_id}, #{gbif_tax_id}, #{scientific_name}
+		)
+	</insert>
 
 	<insert id="insertD1Common" parameterType="org.kobic.kobis.file.excel.obj.XCommonSheetObj">
 		INSERT INTO D1_Common(
@@ -125,31 +119,10 @@
 			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}
 		)
 	</insert>
-	
-	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
-		SELECT
-			tab_id 
-		FROM T1_ClassificationSystemTable
-		<where>
-			<if test="KOBIS_CODE != null">KOBIS_CODE=#{KOBIS_CODE}</if>
-			<if test="ncbi_tax_id != null">AND ncbi_tax_id=#{ncbi_tax_id}</if>
-			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
-			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
-			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
-		</where>
-	</select>
-	
-	<insert id="insertT1ClassificationSystemTable" parameterType="java.util.Map">
-		INSERT INTO T1_ClassificationSystemTable(
-			KOBIS_CODE, ncbi_tax_id, itis_tax_id, gbif_tax_id, scientific_name
-		) VALUES(
-			#{KOBIS_CODE}, #{ncbi_tax_id}, #{itis_tax_id}, #{gbif_tax_id}, #{scientific_name}
-		)
-	</insert>
 
-	<insert id="insertSynonyms" parameterType="org.kobic.kobis.file.excel.obj.XCommonSheetObj">
+	<insert id="insertSynonyms" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
 		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
-		VALUES( #{accession_num}, SF_GET_SYNONYM_ID(DATE_FORMAT(CURDATE(), '%Y%m%d')), #{synonym} )
+		VALUES( '${accession_num}', SF_GET_NEW_SYNONYM_ID('${accession_num}'), '${synonym}' )
 	</insert>
 
 	<insert id="insertUnmappedD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
@@ -177,6 +150,32 @@
 			, '${img_url_1}', '${ins_user_email}', '${ins_cd}', '${code}'
 		)
 	</insert>
+
+<!--
+	<select id="getScientificNameFromKobicTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+	</select>
+ 	<select id="getScientificNameFromKobicTaxonomyPure" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND SSP='종소명없음|국명없음' AND VAR='종소명없음|국명없음' AND F='종소명없음|국명없음'
+	</select>
+
+	<select id="getScientificNameFromKobicTaxonomyDetail" parameterType="java.util.Map" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND ( SSP LIKE CONCAT(#{detail}, '%') OR VAR LIKE CONCAT(#{detail}, '%') OR F LIKE CONCAT( #{detail}, '%') )
+	</select>
 
 	<delete id="deleteTempNCBI">
 		TRUNCATE TABLE TempNCBI
@@ -206,4 +205,5 @@
 		SELECT id FROM TempNCBI
 		WHERE lineage='${lineage}'
 	</select>
+ -->
 </mapper>

@@ -20,12 +20,13 @@ import java.util.concurrent.CountDownLatch;
 import org.kobic.kobis.file.csv.obj.GbifObj;
 import org.kobic.kobis.file.csv.obj.NcbiTaxonomyNameObj;
 import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.mybatis.dao.NcbiDAO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.thread.NcbiTaxonomyNameThread;
 import org.kobic.kobis.thread.NcbiTaxonomyNodeThread;
 
 public class NcbiTaxonomyTree {
-	private static KobisDAO dao = new KobisDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
+	private static NcbiDAO dao = new NcbiDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
 
 	public Map<String, String> getNameMap(String filename) {
 		BufferedReader br = null;

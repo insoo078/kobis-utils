@@ -12,6 +12,7 @@ import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
 import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.mybatis.services.CommonServices;
+import org.kobic.kobis.mybatis.services.ObservationServices;
 
 public class ReadExcel{
 	private KobisDAO dao;
@@ -114,9 +115,9 @@ public class ReadExcel{
 				if( obj instanceof CommonServices ) {
 					CommonServices cs = (CommonServices)obj;
 					cs.readRecordsInSheet();
-//				}else if( obj instanceof ObservationServices ) {
-//					ObservationServices cs = (ObservationServices)obj;
-//					cs.readRecordsInSheet();
+				}else if( obj instanceof ObservationServices ) {
+					ObservationServices cs = (ObservationServices)obj;
+					cs.readRecordsInSheet();
 				}
 			}
 		}

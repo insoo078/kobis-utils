@@ -1,25 +1,25 @@
 package org.kobic.kobis.mybatis.services;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+//import java.io.BufferedWriter;
+//import java.io.FileWriter;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
 
-import org.apache.commons.beanutils.BeanUtils;
+//import org.apache.commons.beanutils.BeanUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
-import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
+//import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.mybatis.obj.MultipleClassificationObj;
 import org.kobic.kobis.rule.Rule;
-import org.kobic.kobis.util.Utils;
+//import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
-	private HashMap<String, XCommonSheetObj> mapped;
-	private HashMap<String, XCommonSheetObj> unmapped;
+//	private HashMap<String, XCommonSheetObj> mapped;
+//	private HashMap<String, XCommonSheetObj> unmapped;
 
 	public CommonServices( String insCd, XSSFSheet sheet, KobisDAO dao ) {
 		super( insCd, sheet, dao );
@@ -91,9 +91,8 @@ public class CommonServices extends AbstractKobisServices{
 //					continue;
 //				}
 //				totalCnt++;
-//				
+//
 //				if( totalCnt < 84 )	continue;
-				
 
 				XCommonSheetObj commonSheetRecordObj = XCommonSheetObj.getNewInstance( dataRow );
 
@@ -109,8 +108,9 @@ public class CommonServices extends AbstractKobisServices{
 				MultipleClassificationObj classifyObj = new MultipleClassificationObj( this.getDao() );
 
 				classifyObj.validate( scientificName );
-				
-				classifyObj.updateDatabase( d1CommonVo, scientificName );
+
+				boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
+				if ( canValidateToDatabase ){	mappedCnt++;	}
 
 //				classifyObj.doProcessing( currentDataMappingStatus, scientificName );
 //

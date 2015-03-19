@@ -2,14 +2,14 @@ package org.kobic.kobis.mybatis.obj;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 
 import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
-import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
+//import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.mybatis.db.vo.TaxonProc;
-import org.kobic.kobis.util.Utils;
+//import org.kobic.kobis.util.Utils;
 
 public class MultipleClassificationObj {
 //	private List<NameWithTaxonIdVO> kobicTaxons;
@@ -31,6 +31,7 @@ public class MultipleClassificationObj {
 	public static final String FINE_MAPPING				= "000";
 	public static final String MULTIPLE_MAPPING			= "001";
 	public static final String NOTHING_TO_MAP_IN_ALL	= "002";
+	public static final String ERROR_IN_DB				= "003";
 
 	public MultipleClassificationObj(KobisDAO dao) {
 		this.dao = dao;
@@ -179,32 +180,35 @@ public class MultipleClassificationObj {
 //		}
 //	}
 	
-	public void updateDatabase( D1CommonVO d1CommonVo, String scientificName ) {
+	public boolean updateDatabase( D1CommonVO d1CommonVo, String scientificName ) {
 		if( this.errorCode.equals( MultipleClassificationObj.MULTIPLE_MAPPING ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationObj.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
-			int result = this.dao.insertUnmappedD1Common( d1CommonVo );
+			this.dao.insertUnmappedD1Common( d1CommonVo );
+			
+			return false;
 		}else if( this.errorCode.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
-			int result = this.dao.insertUnmappedD1Common( d1CommonVo );
+			this.dao.insertUnmappedD1Common( d1CommonVo );
+			
+			return false;
 		}else {
 			Map<String, String> map = new HashMap<String, String>();
 			for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
 				TaxonProc taxon = iter.next();
 				if( taxon.getName().equals("KOBIS") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
-				if( taxon.getName().equals("NCBI") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
-				if( taxon.getName().equals("ITIS") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
-				if( taxon.getName().equals("GBIF") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
+				if( taxon.getName().equals("NCBI") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("ncbi_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals("ITIS") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("itis_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals("GBIF") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("gbif_tax_id", taxon.getTaxId() );
 			}
 			map.put("scientific_name", scientificName );
 
-			String tab_id = Utils.nullToEmpty( this.dao.getT1ClassificationSystemTable( map ) );
+			int ret = this.dao.insertCommonSheet( d1CommonVo, map );
+			if( ret == 0 ) {
+				d1CommonVo.setMessage( "["+MultipleClassificationObj.ERROR_IN_DB+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + d1CommonVo.getAccess_num() + " 데이터베이스 반영중 오류 발생." );
+				return false;
+			}
 
-    		if( tab_id.isEmpty() ) {
-    			int ret = this.dao.insertT1ClassificationSystemTable( map );
-    			tab_id = Utils.nullToEmpty( this.dao.getT1ClassificationSystemTable( map ) );
-    		}
-    		d1CommonVo.setCode( tab_id );
-    		this.dao.insertMappedD1Common( d1CommonVo );
+    		return true;
 		}
 	}
 
