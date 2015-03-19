@@ -1,5 +1,5 @@
 package org.kobic.kobis.rule.antlr4;
-// Generated from Rule.g4 by ANTLR 4.5
+// Generated from Rule.g4 by ANTLR 4.4
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -17,2874 +17,2868 @@ public class RuleBaseListener implements RuleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteral(RuleParser.LiteralContext ctx) { 
-		
-	}
+	@Override public void enterFieldAccess(@NotNull RuleParser.FieldAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteral(RuleParser.LiteralContext ctx) { }
+	@Override public void exitFieldAccess(@NotNull RuleParser.FieldAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(RuleParser.TypeContext ctx) { }
+	@Override public void enterConstructorDeclarator(@NotNull RuleParser.ConstructorDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(RuleParser.TypeContext ctx) { }
+	@Override public void exitConstructorDeclarator(@NotNull RuleParser.ConstructorDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimitiveType(RuleParser.PrimitiveTypeContext ctx) { }
+	@Override public void enterMethodModifier(@NotNull RuleParser.MethodModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimitiveType(RuleParser.PrimitiveTypeContext ctx) { }
+	@Override public void exitMethodModifier(@NotNull RuleParser.MethodModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumericType(RuleParser.NumericTypeContext ctx) { }
+	@Override public void enterTypeDeclaration(@NotNull RuleParser.TypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumericType(RuleParser.NumericTypeContext ctx) { }
+	@Override public void exitTypeDeclaration(@NotNull RuleParser.TypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIntegralType(RuleParser.IntegralTypeContext ctx) { }
+	@Override public void enterLambdaParameters(@NotNull RuleParser.LambdaParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIntegralType(RuleParser.IntegralTypeContext ctx) { }
+	@Override public void exitLambdaParameters(@NotNull RuleParser.LambdaParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFloatingPointType(RuleParser.FloatingPointTypeContext ctx) { }
+	@Override public void enterClassMemberDeclaration(@NotNull RuleParser.ClassMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFloatingPointType(RuleParser.FloatingPointTypeContext ctx) { }
+	@Override public void exitClassMemberDeclaration(@NotNull RuleParser.ClassMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReferenceType(RuleParser.ReferenceTypeContext ctx) { }
+	@Override public void enterInterfaceMethodModifier(@NotNull RuleParser.InterfaceMethodModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReferenceType(RuleParser.ReferenceTypeContext ctx) { }
+	@Override public void exitInterfaceMethodModifier(@NotNull RuleParser.InterfaceMethodModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassOrInterfaceType(RuleParser.ClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterThrows_(@NotNull RuleParser.Throws_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassOrInterfaceType(RuleParser.ClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitThrows_(@NotNull RuleParser.Throws_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassType(RuleParser.ClassTypeContext ctx) { }
+	@Override public void enterNormalClassDeclaration(@NotNull RuleParser.NormalClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassType(RuleParser.ClassTypeContext ctx) { }
+	@Override public void exitNormalClassDeclaration(@NotNull RuleParser.NormalClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassType_lf_classOrInterfaceType(RuleParser.ClassType_lf_classOrInterfaceTypeContext ctx) { }
+	@Override public void enterPostDecrementExpression_lf_postfixExpression(@NotNull RuleParser.PostDecrementExpression_lf_postfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassType_lf_classOrInterfaceType(RuleParser.ClassType_lf_classOrInterfaceTypeContext ctx) { }
+	@Override public void exitPostDecrementExpression_lf_postfixExpression(@NotNull RuleParser.PostDecrementExpression_lf_postfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassType_lfno_classOrInterfaceType(RuleParser.ClassType_lfno_classOrInterfaceTypeContext ctx) { }
+	@Override public void enterClassInstanceCreationExpression(@NotNull RuleParser.ClassInstanceCreationExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassType_lfno_classOrInterfaceType(RuleParser.ClassType_lfno_classOrInterfaceTypeContext ctx) { }
+	@Override public void exitClassInstanceCreationExpression(@NotNull RuleParser.ClassInstanceCreationExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceType(RuleParser.InterfaceTypeContext ctx) { }
+	@Override public void enterMethodName(@NotNull RuleParser.MethodNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceType(RuleParser.InterfaceTypeContext ctx) { }
+	@Override public void exitMethodName(@NotNull RuleParser.MethodNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceType_lf_classOrInterfaceType(RuleParser.InterfaceType_lf_classOrInterfaceTypeContext ctx) { }
+	@Override public void enterEnumConstantName(@NotNull RuleParser.EnumConstantNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceType_lf_classOrInterfaceType(RuleParser.InterfaceType_lf_classOrInterfaceTypeContext ctx) { }
+	@Override public void exitEnumConstantName(@NotNull RuleParser.EnumConstantNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceType_lfno_classOrInterfaceType(RuleParser.InterfaceType_lfno_classOrInterfaceTypeContext ctx) { }
+	@Override public void enterAssignmentExpression(@NotNull RuleParser.AssignmentExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceType_lfno_classOrInterfaceType(RuleParser.InterfaceType_lfno_classOrInterfaceTypeContext ctx) { }
+	@Override public void exitAssignmentExpression(@NotNull RuleParser.AssignmentExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeVariable(RuleParser.TypeVariableContext ctx) { }
+	@Override public void enterSimpleTypeName(@NotNull RuleParser.SimpleTypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeVariable(RuleParser.TypeVariableContext ctx) { }
+	@Override public void exitSimpleTypeName(@NotNull RuleParser.SimpleTypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayType(RuleParser.ArrayTypeContext ctx) { }
+	@Override public void enterInterfaceTypeList(@NotNull RuleParser.InterfaceTypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayType(RuleParser.ArrayTypeContext ctx) { }
+	@Override public void exitInterfaceTypeList(@NotNull RuleParser.InterfaceTypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDims(RuleParser.DimsContext ctx) { }
+	@Override public void enterClassModifier(@NotNull RuleParser.ClassModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDims(RuleParser.DimsContext ctx) { }
+	@Override public void exitClassModifier(@NotNull RuleParser.ClassModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameter(RuleParser.TypeParameterContext ctx) { }
+	@Override public void enterInterfaceMethodDeclaration(@NotNull RuleParser.InterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameter(RuleParser.TypeParameterContext ctx) { }
+	@Override public void exitInterfaceMethodDeclaration(@NotNull RuleParser.InterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameterModifier(RuleParser.TypeParameterModifierContext ctx) { }
+	@Override public void enterSuperclass(@NotNull RuleParser.SuperclassContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameterModifier(RuleParser.TypeParameterModifierContext ctx) { }
+	@Override public void exitSuperclass(@NotNull RuleParser.SuperclassContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeBound(RuleParser.TypeBoundContext ctx) { }
+	@Override public void enterMarkerAnnotation(@NotNull RuleParser.MarkerAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeBound(RuleParser.TypeBoundContext ctx) { }
+	@Override public void exitMarkerAnnotation(@NotNull RuleParser.MarkerAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditionalBound(RuleParser.AdditionalBoundContext ctx) { }
+	@Override public void enterCatchClause(@NotNull RuleParser.CatchClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditionalBound(RuleParser.AdditionalBoundContext ctx) { }
+	@Override public void exitCatchClause(@NotNull RuleParser.CatchClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArguments(RuleParser.TypeArgumentsContext ctx) { }
+	@Override public void enterConstantExpression(@NotNull RuleParser.ConstantExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArguments(RuleParser.TypeArgumentsContext ctx) { }
+	@Override public void exitConstantExpression(@NotNull RuleParser.ConstantExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArgumentList(RuleParser.TypeArgumentListContext ctx) { }
+	@Override public void enterSingleElementAnnotation(@NotNull RuleParser.SingleElementAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArgumentList(RuleParser.TypeArgumentListContext ctx) { }
+	@Override public void exitSingleElementAnnotation(@NotNull RuleParser.SingleElementAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArgument(RuleParser.TypeArgumentContext ctx) { }
+	@Override public void enterEnumBody(@NotNull RuleParser.EnumBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArgument(RuleParser.TypeArgumentContext ctx) { }
+	@Override public void exitEnumBody(@NotNull RuleParser.EnumBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWildcard(RuleParser.WildcardContext ctx) { }
+	@Override public void enterExplicitConstructorInvocation(@NotNull RuleParser.ExplicitConstructorInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWildcard(RuleParser.WildcardContext ctx) { }
+	@Override public void exitExplicitConstructorInvocation(@NotNull RuleParser.ExplicitConstructorInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWildcardBounds(RuleParser.WildcardBoundsContext ctx) { }
+	@Override public void enterInterfaceType(@NotNull RuleParser.InterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWildcardBounds(RuleParser.WildcardBoundsContext ctx) { }
+	@Override public void exitInterfaceType(@NotNull RuleParser.InterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPackageName(RuleParser.PackageNameContext ctx) { }
+	@Override public void enterDimExprs(@NotNull RuleParser.DimExprsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageName(RuleParser.PackageNameContext ctx) { }
+	@Override public void exitDimExprs(@NotNull RuleParser.DimExprsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeName(RuleParser.TypeNameContext ctx) { }
+	@Override public void enterFieldModifier(@NotNull RuleParser.FieldModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeName(RuleParser.TypeNameContext ctx) { }
+	@Override public void exitFieldModifier(@NotNull RuleParser.FieldModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPackageOrTypeName(RuleParser.PackageOrTypeNameContext ctx) { }
+	@Override public void enterTypeBound(@NotNull RuleParser.TypeBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageOrTypeName(RuleParser.PackageOrTypeNameContext ctx) { }
+	@Override public void exitTypeBound(@NotNull RuleParser.TypeBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressionName(RuleParser.ExpressionNameContext ctx) { }
+	@Override public void enterUnannClassType(@NotNull RuleParser.UnannClassTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressionName(RuleParser.ExpressionNameContext ctx) { }
+	@Override public void exitUnannClassType(@NotNull RuleParser.UnannClassTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodName(RuleParser.MethodNameContext ctx) { }
+	@Override public void enterVariableInitializer(@NotNull RuleParser.VariableInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodName(RuleParser.MethodNameContext ctx) { }
+	@Override public void exitVariableInitializer(@NotNull RuleParser.VariableInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAmbiguousName(RuleParser.AmbiguousNameContext ctx) { }
+	@Override public void enterPreDecrementExpression(@NotNull RuleParser.PreDecrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAmbiguousName(RuleParser.AmbiguousNameContext ctx) { }
+	@Override public void exitPreDecrementExpression(@NotNull RuleParser.PreDecrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCompilationUnit(RuleParser.CompilationUnitContext ctx) { }
+	@Override public void enterPrimaryNoNewArray(@NotNull RuleParser.PrimaryNoNewArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCompilationUnit(RuleParser.CompilationUnitContext ctx) { }
+	@Override public void exitPrimaryNoNewArray(@NotNull RuleParser.PrimaryNoNewArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPackageDeclaration(RuleParser.PackageDeclarationContext ctx) { }
+	@Override public void enterAndExpression(@NotNull RuleParser.AndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageDeclaration(RuleParser.PackageDeclarationContext ctx) { }
+	@Override public void exitAndExpression(@NotNull RuleParser.AndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPackageModifier(RuleParser.PackageModifierContext ctx) { }
+	@Override public void enterWildcardBounds(@NotNull RuleParser.WildcardBoundsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageModifier(RuleParser.PackageModifierContext ctx) { }
+	@Override public void exitWildcardBounds(@NotNull RuleParser.WildcardBoundsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterImportDeclaration(RuleParser.ImportDeclarationContext ctx) { }
+	@Override public void enterExpressionName(@NotNull RuleParser.ExpressionNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitImportDeclaration(RuleParser.ImportDeclarationContext ctx) { }
+	@Override public void exitExpressionName(@NotNull RuleParser.ExpressionNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleTypeImportDeclaration(RuleParser.SingleTypeImportDeclarationContext ctx) { }
+	@Override public void enterStatementWithoutTrailingSubstatement(@NotNull RuleParser.StatementWithoutTrailingSubstatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleTypeImportDeclaration(RuleParser.SingleTypeImportDeclarationContext ctx) { }
+	@Override public void exitStatementWithoutTrailingSubstatement(@NotNull RuleParser.StatementWithoutTrailingSubstatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeImportOnDemandDeclaration(RuleParser.TypeImportOnDemandDeclarationContext ctx) { }
+	@Override public void enterStatementNoShortIf(@NotNull RuleParser.StatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeImportOnDemandDeclaration(RuleParser.TypeImportOnDemandDeclarationContext ctx) { }
+	@Override public void exitStatementNoShortIf(@NotNull RuleParser.StatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleStaticImportDeclaration(RuleParser.SingleStaticImportDeclarationContext ctx) { }
+	@Override public void enterFieldDeclaration(@NotNull RuleParser.FieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleStaticImportDeclaration(RuleParser.SingleStaticImportDeclarationContext ctx) { }
+	@Override public void exitFieldDeclaration(@NotNull RuleParser.FieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStaticImportOnDemandDeclaration(RuleParser.StaticImportOnDemandDeclarationContext ctx) { }
+	@Override public void enterNormalInterfaceDeclaration(@NotNull RuleParser.NormalInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStaticImportOnDemandDeclaration(RuleParser.StaticImportOnDemandDeclarationContext ctx) { }
+	@Override public void exitNormalInterfaceDeclaration(@NotNull RuleParser.NormalInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeDeclaration(RuleParser.TypeDeclarationContext ctx) { }
+	@Override public void enterUnannTypeVariable(@NotNull RuleParser.UnannTypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeDeclaration(RuleParser.TypeDeclarationContext ctx) { }
+	@Override public void exitUnannTypeVariable(@NotNull RuleParser.UnannTypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassDeclaration(RuleParser.ClassDeclarationContext ctx) { }
+	@Override public void enterFormalParameterList(@NotNull RuleParser.FormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassDeclaration(RuleParser.ClassDeclarationContext ctx) { }
+	@Override public void exitFormalParameterList(@NotNull RuleParser.FormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalClassDeclaration(RuleParser.NormalClassDeclarationContext ctx) { }
+	@Override public void enterCatches(@NotNull RuleParser.CatchesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalClassDeclaration(RuleParser.NormalClassDeclarationContext ctx) { }
+	@Override public void exitCatches(@NotNull RuleParser.CatchesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassModifier(RuleParser.ClassModifierContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassModifier(RuleParser.ClassModifierContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameters(RuleParser.TypeParametersContext ctx) { }
+	@Override public void enterClassDeclaration(@NotNull RuleParser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameters(RuleParser.TypeParametersContext ctx) { }
+	@Override public void exitClassDeclaration(@NotNull RuleParser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameterList(RuleParser.TypeParameterListContext ctx) { }
+	@Override public void enterPostIncrementExpression(@NotNull RuleParser.PostIncrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameterList(RuleParser.TypeParameterListContext ctx) { }
+	@Override public void exitPostIncrementExpression(@NotNull RuleParser.PostIncrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSuperclass(RuleParser.SuperclassContext ctx) { }
+	@Override public void enterAssignment(@NotNull RuleParser.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSuperclass(RuleParser.SuperclassContext ctx) { }
+	@Override public void exitAssignment(@NotNull RuleParser.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSuperinterfaces(RuleParser.SuperinterfacesContext ctx) { }
+	@Override public void enterSwitchStatement(@NotNull RuleParser.SwitchStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSuperinterfaces(RuleParser.SuperinterfacesContext ctx) { }
+	@Override public void exitSwitchStatement(@NotNull RuleParser.SwitchStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceTypeList(RuleParser.InterfaceTypeListContext ctx) { }
+	@Override public void enterPackageModifier(@NotNull RuleParser.PackageModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceTypeList(RuleParser.InterfaceTypeListContext ctx) { }
+	@Override public void exitPackageModifier(@NotNull RuleParser.PackageModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassBody(RuleParser.ClassBodyContext ctx) { }
+	@Override public void enterFormalParameters(@NotNull RuleParser.FormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassBody(RuleParser.ClassBodyContext ctx) { }
+	@Override public void exitFormalParameters(@NotNull RuleParser.FormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassBodyDeclaration(RuleParser.ClassBodyDeclarationContext ctx) { }
+	@Override public void enterCastExpression(@NotNull RuleParser.CastExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassBodyDeclaration(RuleParser.ClassBodyDeclarationContext ctx) { }
+	@Override public void exitCastExpression(@NotNull RuleParser.CastExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassMemberDeclaration(RuleParser.ClassMemberDeclarationContext ctx) { }
+	@Override public void enterTypeArgument(@NotNull RuleParser.TypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassMemberDeclaration(RuleParser.ClassMemberDeclarationContext ctx) { }
+	@Override public void exitTypeArgument(@NotNull RuleParser.TypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldDeclaration(RuleParser.FieldDeclarationContext ctx) { }
+	@Override public void enterTryWithResourcesStatement(@NotNull RuleParser.TryWithResourcesStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldDeclaration(RuleParser.FieldDeclarationContext ctx) { }
+	@Override public void exitTryWithResourcesStatement(@NotNull RuleParser.TryWithResourcesStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldModifier(RuleParser.FieldModifierContext ctx) { }
+	@Override public void enterLambdaBody(@NotNull RuleParser.LambdaBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldModifier(RuleParser.FieldModifierContext ctx) { }
+	@Override public void exitLambdaBody(@NotNull RuleParser.LambdaBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableDeclaratorList(RuleParser.VariableDeclaratorListContext ctx) { }
+	@Override public void enterThrowStatement(@NotNull RuleParser.ThrowStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclaratorList(RuleParser.VariableDeclaratorListContext ctx) { }
+	@Override public void exitThrowStatement(@NotNull RuleParser.ThrowStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableDeclarator(RuleParser.VariableDeclaratorContext ctx) { }
+	@Override public void enterEnhancedForStatementNoShortIf(@NotNull RuleParser.EnhancedForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclarator(RuleParser.VariableDeclaratorContext ctx) { }
+	@Override public void exitEnhancedForStatementNoShortIf(@NotNull RuleParser.EnhancedForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableDeclaratorId(RuleParser.VariableDeclaratorIdContext ctx) { }
+	@Override public void enterTypeArgumentList(@NotNull RuleParser.TypeArgumentListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclaratorId(RuleParser.VariableDeclaratorIdContext ctx) { }
+	@Override public void exitTypeArgumentList(@NotNull RuleParser.TypeArgumentListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableInitializer(RuleParser.VariableInitializerContext ctx) { }
+	@Override public void enterExpression(@NotNull RuleParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableInitializer(RuleParser.VariableInitializerContext ctx) { }
+	@Override public void exitExpression(@NotNull RuleParser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannType(RuleParser.UnannTypeContext ctx) { }
+	@Override public void enterVariableDeclarator(@NotNull RuleParser.VariableDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannType(RuleParser.UnannTypeContext ctx) { }
+	@Override public void exitVariableDeclarator(@NotNull RuleParser.VariableDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannPrimitiveType(RuleParser.UnannPrimitiveTypeContext ctx) { }
+	@Override public void enterAnnotationTypeDeclaration(@NotNull RuleParser.AnnotationTypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannPrimitiveType(RuleParser.UnannPrimitiveTypeContext ctx) { }
+	@Override public void exitAnnotationTypeDeclaration(@NotNull RuleParser.AnnotationTypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannReferenceType(RuleParser.UnannReferenceTypeContext ctx) { }
+	@Override public void enterEnumConstantModifier(@NotNull RuleParser.EnumConstantModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannReferenceType(RuleParser.UnannReferenceTypeContext ctx) { }
+	@Override public void exitEnumConstantModifier(@NotNull RuleParser.EnumConstantModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannClassOrInterfaceType(RuleParser.UnannClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterUnannInterfaceType_lf_unannClassOrInterfaceType(@NotNull RuleParser.UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannClassOrInterfaceType(RuleParser.UnannClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitUnannInterfaceType_lf_unannClassOrInterfaceType(@NotNull RuleParser.UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannClassType(RuleParser.UnannClassTypeContext ctx) { }
+	@Override public void enterFormalParameter(@NotNull RuleParser.FormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannClassType(RuleParser.UnannClassTypeContext ctx) { }
+	@Override public void exitFormalParameter(@NotNull RuleParser.FormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannClassType_lf_unannClassOrInterfaceType(RuleParser.UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterEnhancedForStatement(@NotNull RuleParser.EnhancedForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannClassType_lf_unannClassOrInterfaceType(RuleParser.UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitEnhancedForStatement(@NotNull RuleParser.EnhancedForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannClassType_lfno_unannClassOrInterfaceType(RuleParser.UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterReturnStatement(@NotNull RuleParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannClassType_lfno_unannClassOrInterfaceType(RuleParser.UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitReturnStatement(@NotNull RuleParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannInterfaceType(RuleParser.UnannInterfaceTypeContext ctx) { }
+	@Override public void enterPreIncrementExpression(@NotNull RuleParser.PreIncrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannInterfaceType(RuleParser.UnannInterfaceTypeContext ctx) { }
+	@Override public void exitPreIncrementExpression(@NotNull RuleParser.PreIncrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannInterfaceType_lf_unannClassOrInterfaceType(RuleParser.UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterConstantModifier(@NotNull RuleParser.ConstantModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannInterfaceType_lf_unannClassOrInterfaceType(RuleParser.UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitConstantModifier(@NotNull RuleParser.ConstantModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannInterfaceType_lfno_unannClassOrInterfaceType(RuleParser.UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterAssertStatement(@NotNull RuleParser.AssertStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannInterfaceType_lfno_unannClassOrInterfaceType(RuleParser.UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) { }
+	@Override public void exitAssertStatement(@NotNull RuleParser.AssertStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannTypeVariable(RuleParser.UnannTypeVariableContext ctx) { }
+	@Override public void enterMethodDeclarator(@NotNull RuleParser.MethodDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannTypeVariable(RuleParser.UnannTypeVariableContext ctx) { }
+	@Override public void exitMethodDeclarator(@NotNull RuleParser.MethodDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnannArrayType(RuleParser.UnannArrayTypeContext ctx) { }
+	@Override public void enterForStatementNoShortIf(@NotNull RuleParser.ForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnannArrayType(RuleParser.UnannArrayTypeContext ctx) { }
+	@Override public void exitForStatementNoShortIf(@NotNull RuleParser.ForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodDeclaration(RuleParser.MethodDeclarationContext ctx) { }
+	@Override public void enterClassBody(@NotNull RuleParser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodDeclaration(RuleParser.MethodDeclarationContext ctx) { }
+	@Override public void exitClassBody(@NotNull RuleParser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodModifier(RuleParser.MethodModifierContext ctx) { }
+	@Override public void enterSuperinterfaces(@NotNull RuleParser.SuperinterfacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodModifier(RuleParser.MethodModifierContext ctx) { }
+	@Override public void exitSuperinterfaces(@NotNull RuleParser.SuperinterfacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodHeader(RuleParser.MethodHeaderContext ctx) { }
+	@Override public void enterInterfaceDeclaration(@NotNull RuleParser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodHeader(RuleParser.MethodHeaderContext ctx) { }
+	@Override public void exitInterfaceDeclaration(@NotNull RuleParser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResult(RuleParser.ResultContext ctx) { }
+	@Override public void enterExceptionType(@NotNull RuleParser.ExceptionTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResult(RuleParser.ResultContext ctx) { }
+	@Override public void exitExceptionType(@NotNull RuleParser.ExceptionTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodDeclarator(RuleParser.MethodDeclaratorContext ctx) { }
+	@Override public void enterCatchType(@NotNull RuleParser.CatchTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodDeclarator(RuleParser.MethodDeclaratorContext ctx) { }
+	@Override public void exitCatchType(@NotNull RuleParser.CatchTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameterList(RuleParser.FormalParameterListContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lf_arrayAccess(@NotNull RuleParser.PrimaryNoNewArray_lf_arrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameterList(RuleParser.FormalParameterListContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lf_arrayAccess(@NotNull RuleParser.PrimaryNoNewArray_lf_arrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameters(RuleParser.FormalParametersContext ctx) { }
+	@Override public void enterTypeArguments(@NotNull RuleParser.TypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameters(RuleParser.FormalParametersContext ctx) { }
+	@Override public void exitTypeArguments(@NotNull RuleParser.TypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameter(RuleParser.FormalParameterContext ctx) { }
+	@Override public void enterSingleStaticImportDeclaration(@NotNull RuleParser.SingleStaticImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameter(RuleParser.FormalParameterContext ctx) { }
+	@Override public void exitSingleStaticImportDeclaration(@NotNull RuleParser.SingleStaticImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableModifier(RuleParser.VariableModifierContext ctx) { }
+	@Override public void enterPostfixExpression(@NotNull RuleParser.PostfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableModifier(RuleParser.VariableModifierContext ctx) { }
+	@Override public void exitPostfixExpression(@NotNull RuleParser.PostfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLastFormalParameter(RuleParser.LastFormalParameterContext ctx) { }
+	@Override public void enterEmptyStatement(@NotNull RuleParser.EmptyStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLastFormalParameter(RuleParser.LastFormalParameterContext ctx) { }
+	@Override public void exitEmptyStatement(@NotNull RuleParser.EmptyStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReceiverParameter(RuleParser.ReceiverParameterContext ctx) { }
+	@Override public void enterSwitchLabels(@NotNull RuleParser.SwitchLabelsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReceiverParameter(RuleParser.ReceiverParameterContext ctx) { }
+	@Override public void exitSwitchLabels(@NotNull RuleParser.SwitchLabelsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterThrows_(RuleParser.Throws_Context ctx) { }
+	@Override public void enterClassBodyDeclaration(@NotNull RuleParser.ClassBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitThrows_(RuleParser.Throws_Context ctx) { }
+	@Override public void exitClassBodyDeclaration(@NotNull RuleParser.ClassBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExceptionTypeList(RuleParser.ExceptionTypeListContext ctx) { }
+	@Override public void enterClassType_lf_classOrInterfaceType(@NotNull RuleParser.ClassType_lf_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExceptionTypeList(RuleParser.ExceptionTypeListContext ctx) { }
+	@Override public void exitClassType_lf_classOrInterfaceType(@NotNull RuleParser.ClassType_lf_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExceptionType(RuleParser.ExceptionTypeContext ctx) { }
+	@Override public void enterLastFormalParameter(@NotNull RuleParser.LastFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExceptionType(RuleParser.ExceptionTypeContext ctx) { }
+	@Override public void exitLastFormalParameter(@NotNull RuleParser.LastFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodBody(RuleParser.MethodBodyContext ctx) { }
+	@Override public void enterLocalVariableDeclaration(@NotNull RuleParser.LocalVariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodBody(RuleParser.MethodBodyContext ctx) { }
+	@Override public void exitLocalVariableDeclaration(@NotNull RuleParser.LocalVariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstanceInitializer(RuleParser.InstanceInitializerContext ctx) { }
+	@Override public void enterResult(@NotNull RuleParser.ResultContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstanceInitializer(RuleParser.InstanceInitializerContext ctx) { }
+	@Override public void exitResult(@NotNull RuleParser.ResultContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStaticInitializer(RuleParser.StaticInitializerContext ctx) { }
+	@Override public void enterVariableDeclaratorId(@NotNull RuleParser.VariableDeclaratorIdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStaticInitializer(RuleParser.StaticInitializerContext ctx) { }
+	@Override public void exitVariableDeclaratorId(@NotNull RuleParser.VariableDeclaratorIdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorDeclaration(RuleParser.ConstructorDeclarationContext ctx) { }
+	@Override public void enterCompilationUnit(@NotNull RuleParser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorDeclaration(RuleParser.ConstructorDeclarationContext ctx) { }
+	@Override public void exitCompilationUnit(@NotNull RuleParser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorModifier(RuleParser.ConstructorModifierContext ctx) { }
+	@Override public void enterTypeParameterList(@NotNull RuleParser.TypeParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorModifier(RuleParser.ConstructorModifierContext ctx) { }
+	@Override public void exitTypeParameterList(@NotNull RuleParser.TypeParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorDeclarator(RuleParser.ConstructorDeclaratorContext ctx) { }
+	@Override public void enterUnaryExpressionNotPlusMinus(@NotNull RuleParser.UnaryExpressionNotPlusMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorDeclarator(RuleParser.ConstructorDeclaratorContext ctx) { }
+	@Override public void exitUnaryExpressionNotPlusMinus(@NotNull RuleParser.UnaryExpressionNotPlusMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimpleTypeName(RuleParser.SimpleTypeNameContext ctx) { }
+	@Override public void enterSingleTypeImportDeclaration(@NotNull RuleParser.SingleTypeImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimpleTypeName(RuleParser.SimpleTypeNameContext ctx) { }
+	@Override public void exitSingleTypeImportDeclaration(@NotNull RuleParser.SingleTypeImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorBody(RuleParser.ConstructorBodyContext ctx) { }
+	@Override public void enterTypeArgumentsOrDiamond(@NotNull RuleParser.TypeArgumentsOrDiamondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorBody(RuleParser.ConstructorBodyContext ctx) { }
+	@Override public void exitTypeArgumentsOrDiamond(@NotNull RuleParser.TypeArgumentsOrDiamondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExplicitConstructorInvocation(RuleParser.ExplicitConstructorInvocationContext ctx) { }
+	@Override public void enterAnnotationTypeElementDeclaration(@NotNull RuleParser.AnnotationTypeElementDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExplicitConstructorInvocation(RuleParser.ExplicitConstructorInvocationContext ctx) { }
+	@Override public void exitAnnotationTypeElementDeclaration(@NotNull RuleParser.AnnotationTypeElementDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumDeclaration(RuleParser.EnumDeclarationContext ctx) { }
+	@Override public void enterAnnotationTypeBody(@NotNull RuleParser.AnnotationTypeBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumDeclaration(RuleParser.EnumDeclarationContext ctx) { }
+	@Override public void exitAnnotationTypeBody(@NotNull RuleParser.AnnotationTypeBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumBody(RuleParser.EnumBodyContext ctx) { }
+	@Override public void enterLabeledStatement(@NotNull RuleParser.LabeledStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumBody(RuleParser.EnumBodyContext ctx) { }
+	@Override public void exitLabeledStatement(@NotNull RuleParser.LabeledStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstantList(RuleParser.EnumConstantListContext ctx) { }
+	@Override public void enterTryStatement(@NotNull RuleParser.TryStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstantList(RuleParser.EnumConstantListContext ctx) { }
+	@Override public void exitTryStatement(@NotNull RuleParser.TryStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstant(RuleParser.EnumConstantContext ctx) { }
+	@Override public void enterInterfaceType_lf_classOrInterfaceType(@NotNull RuleParser.InterfaceType_lf_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstant(RuleParser.EnumConstantContext ctx) { }
+	@Override public void exitInterfaceType_lf_classOrInterfaceType(@NotNull RuleParser.InterfaceType_lf_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstantModifier(RuleParser.EnumConstantModifierContext ctx) { }
+	@Override public void enterNormalAnnotation(@NotNull RuleParser.NormalAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstantModifier(RuleParser.EnumConstantModifierContext ctx) { }
+	@Override public void exitNormalAnnotation(@NotNull RuleParser.NormalAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumBodyDeclarations(RuleParser.EnumBodyDeclarationsContext ctx) { }
+	@Override public void enterRelationalExpression(@NotNull RuleParser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumBodyDeclarations(RuleParser.EnumBodyDeclarationsContext ctx) { }
+	@Override public void exitRelationalExpression(@NotNull RuleParser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceDeclaration(RuleParser.InterfaceDeclarationContext ctx) { }
+	@Override public void enterWhileStatementNoShortIf(@NotNull RuleParser.WhileStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceDeclaration(RuleParser.InterfaceDeclarationContext ctx) { }
+	@Override public void exitWhileStatementNoShortIf(@NotNull RuleParser.WhileStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalInterfaceDeclaration(RuleParser.NormalInterfaceDeclarationContext ctx) { }
+	@Override public void enterReceiverParameter(@NotNull RuleParser.ReceiverParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalInterfaceDeclaration(RuleParser.NormalInterfaceDeclarationContext ctx) { }
+	@Override public void exitReceiverParameter(@NotNull RuleParser.ReceiverParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceModifier(RuleParser.InterfaceModifierContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceModifier(RuleParser.InterfaceModifierContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExtendsInterfaces(RuleParser.ExtendsInterfacesContext ctx) { }
+	@Override public void enterElementValuePairList(@NotNull RuleParser.ElementValuePairListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExtendsInterfaces(RuleParser.ExtendsInterfacesContext ctx) { }
+	@Override public void exitElementValuePairList(@NotNull RuleParser.ElementValuePairListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceBody(RuleParser.InterfaceBodyContext ctx) { }
+	@Override public void enterMethodDeclaration(@NotNull RuleParser.MethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceBody(RuleParser.InterfaceBodyContext ctx) { }
+	@Override public void exitMethodDeclaration(@NotNull RuleParser.MethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceMemberDeclaration(RuleParser.InterfaceMemberDeclarationContext ctx) { }
+	@Override public void enterInterfaceType_lfno_classOrInterfaceType(@NotNull RuleParser.InterfaceType_lfno_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceMemberDeclaration(RuleParser.InterfaceMemberDeclarationContext ctx) { }
+	@Override public void exitInterfaceType_lfno_classOrInterfaceType(@NotNull RuleParser.InterfaceType_lfno_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstantDeclaration(RuleParser.ConstantDeclarationContext ctx) { }
+	@Override public void enterResourceSpecification(@NotNull RuleParser.ResourceSpecificationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstantDeclaration(RuleParser.ConstantDeclarationContext ctx) { }
+	@Override public void exitResourceSpecification(@NotNull RuleParser.ResourceSpecificationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstantModifier(RuleParser.ConstantModifierContext ctx) { }
+	@Override public void enterLeftHandSide(@NotNull RuleParser.LeftHandSideContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstantModifier(RuleParser.ConstantModifierContext ctx) { }
+	@Override public void exitLeftHandSide(@NotNull RuleParser.LeftHandSideContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceMethodDeclaration(RuleParser.InterfaceMethodDeclarationContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lfno_arrayAccess(@NotNull RuleParser.PrimaryNoNewArray_lfno_arrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceMethodDeclaration(RuleParser.InterfaceMethodDeclarationContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lfno_arrayAccess(@NotNull RuleParser.PrimaryNoNewArray_lfno_arrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceMethodModifier(RuleParser.InterfaceMethodModifierContext ctx) { }
+	@Override public void enterLabeledStatementNoShortIf(@NotNull RuleParser.LabeledStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceMethodModifier(RuleParser.InterfaceMethodModifierContext ctx) { }
+	@Override public void exitLabeledStatementNoShortIf(@NotNull RuleParser.LabeledStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeDeclaration(RuleParser.AnnotationTypeDeclarationContext ctx) { }
+	@Override public void enterDims(@NotNull RuleParser.DimsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeDeclaration(RuleParser.AnnotationTypeDeclarationContext ctx) { }
+	@Override public void exitDims(@NotNull RuleParser.DimsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeBody(RuleParser.AnnotationTypeBodyContext ctx) { }
+	@Override public void enterVariableDeclaratorList(@NotNull RuleParser.VariableDeclaratorListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeBody(RuleParser.AnnotationTypeBodyContext ctx) { }
+	@Override public void exitVariableDeclaratorList(@NotNull RuleParser.VariableDeclaratorListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeMemberDeclaration(RuleParser.AnnotationTypeMemberDeclarationContext ctx) { }
+	@Override public void enterClassType(@NotNull RuleParser.ClassTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeMemberDeclaration(RuleParser.AnnotationTypeMemberDeclarationContext ctx) { }
+	@Override public void exitClassType(@NotNull RuleParser.ClassTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeElementDeclaration(RuleParser.AnnotationTypeElementDeclarationContext ctx) { }
+	@Override public void enterArgumentList(@NotNull RuleParser.ArgumentListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeElementDeclaration(RuleParser.AnnotationTypeElementDeclarationContext ctx) { }
+	@Override public void exitArgumentList(@NotNull RuleParser.ArgumentListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeElementModifier(RuleParser.AnnotationTypeElementModifierContext ctx) { }
+	@Override public void enterContinueStatement(@NotNull RuleParser.ContinueStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeElementModifier(RuleParser.AnnotationTypeElementModifierContext ctx) { }
+	@Override public void exitContinueStatement(@NotNull RuleParser.ContinueStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefaultValue(RuleParser.DefaultValueContext ctx) { }
+	@Override public void enterEnumConstantList(@NotNull RuleParser.EnumConstantListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefaultValue(RuleParser.DefaultValueContext ctx) { }
+	@Override public void exitEnumConstantList(@NotNull RuleParser.EnumConstantListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotation(RuleParser.AnnotationContext ctx) { }
+	@Override public void enterMethodHeader(@NotNull RuleParser.MethodHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotation(RuleParser.AnnotationContext ctx) { }
+	@Override public void exitMethodHeader(@NotNull RuleParser.MethodHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalAnnotation(RuleParser.NormalAnnotationContext ctx) { }
+	@Override public void enterIfThenElseStatementNoShortIf(@NotNull RuleParser.IfThenElseStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalAnnotation(RuleParser.NormalAnnotationContext ctx) { }
+	@Override public void exitIfThenElseStatementNoShortIf(@NotNull RuleParser.IfThenElseStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValuePairList(RuleParser.ElementValuePairListContext ctx) { }
+	@Override public void enterArrayInitializer(@NotNull RuleParser.ArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValuePairList(RuleParser.ElementValuePairListContext ctx) { }
+	@Override public void exitArrayInitializer(@NotNull RuleParser.ArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValuePair(RuleParser.ElementValuePairContext ctx) { }
+	@Override public void enterExtendsInterfaces(@NotNull RuleParser.ExtendsInterfacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValuePair(RuleParser.ElementValuePairContext ctx) { }
+	@Override public void exitExtendsInterfaces(@NotNull RuleParser.ExtendsInterfacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValue(RuleParser.ElementValueContext ctx) { }
+	@Override public void enterWhileStatement(@NotNull RuleParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValue(RuleParser.ElementValueContext ctx) { }
+	@Override public void exitWhileStatement(@NotNull RuleParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValueArrayInitializer(RuleParser.ElementValueArrayInitializerContext ctx) { }
+	@Override public void enterConstructorModifier(@NotNull RuleParser.ConstructorModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValueArrayInitializer(RuleParser.ElementValueArrayInitializerContext ctx) { }
+	@Override public void exitConstructorModifier(@NotNull RuleParser.ConstructorModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValueList(RuleParser.ElementValueListContext ctx) { }
+	@Override public void enterUnannInterfaceType_lfno_unannClassOrInterfaceType(@NotNull RuleParser.UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValueList(RuleParser.ElementValueListContext ctx) { }
+	@Override public void exitUnannInterfaceType_lfno_unannClassOrInterfaceType(@NotNull RuleParser.UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMarkerAnnotation(RuleParser.MarkerAnnotationContext ctx) { }
+	@Override public void enterPrimitiveType(@NotNull RuleParser.PrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMarkerAnnotation(RuleParser.MarkerAnnotationContext ctx) { }
+	@Override public void exitPrimitiveType(@NotNull RuleParser.PrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleElementAnnotation(RuleParser.SingleElementAnnotationContext ctx) { }
+	@Override public void enterUnannClassOrInterfaceType(@NotNull RuleParser.UnannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleElementAnnotation(RuleParser.SingleElementAnnotationContext ctx) { }
+	@Override public void exitUnannClassOrInterfaceType(@NotNull RuleParser.UnannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayInitializer(RuleParser.ArrayInitializerContext ctx) { }
+	@Override public void enterFinally_(@NotNull RuleParser.Finally_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayInitializer(RuleParser.ArrayInitializerContext ctx) { }
+	@Override public void exitFinally_(@NotNull RuleParser.Finally_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableInitializerList(RuleParser.VariableInitializerListContext ctx) { }
+	@Override public void enterDimExpr(@NotNull RuleParser.DimExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableInitializerList(RuleParser.VariableInitializerListContext ctx) { }
+	@Override public void exitDimExpr(@NotNull RuleParser.DimExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(RuleParser.BlockContext ctx) { }
+	@Override public void enterArrayType(@NotNull RuleParser.ArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(RuleParser.BlockContext ctx) { }
+	@Override public void exitArrayType(@NotNull RuleParser.ArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlockStatements(RuleParser.BlockStatementsContext ctx) { }
+	@Override public void enterPackageName(@NotNull RuleParser.PackageNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlockStatements(RuleParser.BlockStatementsContext ctx) { }
+	@Override public void exitPackageName(@NotNull RuleParser.PackageNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlockStatement(RuleParser.BlockStatementContext ctx) { }
+	@Override public void enterExpressionStatement(@NotNull RuleParser.ExpressionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlockStatement(RuleParser.BlockStatementContext ctx) { }
+	@Override public void exitExpressionStatement(@NotNull RuleParser.ExpressionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLocalVariableDeclarationStatement(RuleParser.LocalVariableDeclarationStatementContext ctx) { }
+	@Override public void enterForUpdate(@NotNull RuleParser.ForUpdateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableDeclarationStatement(RuleParser.LocalVariableDeclarationStatementContext ctx) { }
+	@Override public void exitForUpdate(@NotNull RuleParser.ForUpdateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLocalVariableDeclaration(RuleParser.LocalVariableDeclarationContext ctx) { }
+	@Override public void enterIntegralType(@NotNull RuleParser.IntegralTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableDeclaration(RuleParser.LocalVariableDeclarationContext ctx) { }
+	@Override public void exitIntegralType(@NotNull RuleParser.IntegralTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(RuleParser.StatementContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(RuleParser.StatementContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementNoShortIf(RuleParser.StatementNoShortIfContext ctx) { }
+	@Override public void enterAnnotation(@NotNull RuleParser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementNoShortIf(RuleParser.StatementNoShortIfContext ctx) { }
+	@Override public void exitAnnotation(@NotNull RuleParser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementWithoutTrailingSubstatement(RuleParser.StatementWithoutTrailingSubstatementContext ctx) { }
+	@Override public void enterEnumConstant(@NotNull RuleParser.EnumConstantContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementWithoutTrailingSubstatement(RuleParser.StatementWithoutTrailingSubstatementContext ctx) { }
+	@Override public void exitEnumConstant(@NotNull RuleParser.EnumConstantContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEmptyStatement(RuleParser.EmptyStatementContext ctx) { }
+	@Override public void enterClassInstanceCreationExpression_lfno_primary(@NotNull RuleParser.ClassInstanceCreationExpression_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEmptyStatement(RuleParser.EmptyStatementContext ctx) { }
+	@Override public void exitClassInstanceCreationExpression_lfno_primary(@NotNull RuleParser.ClassInstanceCreationExpression_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLabeledStatement(RuleParser.LabeledStatementContext ctx) { }
+	@Override public void enterConstantDeclaration(@NotNull RuleParser.ConstantDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLabeledStatement(RuleParser.LabeledStatementContext ctx) { }
+	@Override public void exitConstantDeclaration(@NotNull RuleParser.ConstantDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLabeledStatementNoShortIf(RuleParser.LabeledStatementNoShortIfContext ctx) { }
+	@Override public void enterAnnotationTypeMemberDeclaration(@NotNull RuleParser.AnnotationTypeMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLabeledStatementNoShortIf(RuleParser.LabeledStatementNoShortIfContext ctx) { }
+	@Override public void exitAnnotationTypeMemberDeclaration(@NotNull RuleParser.AnnotationTypeMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressionStatement(RuleParser.ExpressionStatementContext ctx) { }
+	@Override public void enterUnannReferenceType(@NotNull RuleParser.UnannReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressionStatement(RuleParser.ExpressionStatementContext ctx) { }
+	@Override public void exitUnannReferenceType(@NotNull RuleParser.UnannReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementExpression(RuleParser.StatementExpressionContext ctx) { }
+	@Override public void enterImportDeclaration(@NotNull RuleParser.ImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementExpression(RuleParser.StatementExpressionContext ctx) { }
+	@Override public void exitImportDeclaration(@NotNull RuleParser.ImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfThenStatement(RuleParser.IfThenStatementContext ctx) { }
+	@Override public void enterInstanceInitializer(@NotNull RuleParser.InstanceInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfThenStatement(RuleParser.IfThenStatementContext ctx) { }
+	@Override public void exitInstanceInitializer(@NotNull RuleParser.InstanceInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfThenElseStatement(RuleParser.IfThenElseStatementContext ctx) { 
-		System.out.println( "enterIfThenElseStatement");
-	}
+	@Override public void enterBasicForStatementNoShortIf(@NotNull RuleParser.BasicForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfThenElseStatement(RuleParser.IfThenElseStatementContext ctx) { 
-		System.out.println( "exitIfThenElseStatement");
-	}
+	@Override public void exitBasicForStatementNoShortIf(@NotNull RuleParser.BasicForStatementNoShortIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfThenElseStatementNoShortIf(RuleParser.IfThenElseStatementNoShortIfContext ctx) { }
+	@Override public void enterAnnotationTypeElementModifier(@NotNull RuleParser.AnnotationTypeElementModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfThenElseStatementNoShortIf(RuleParser.IfThenElseStatementNoShortIfContext ctx) { }
+	@Override public void exitAnnotationTypeElementModifier(@NotNull RuleParser.AnnotationTypeElementModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssertStatement(RuleParser.AssertStatementContext ctx) { }
+	@Override public void enterSwitchBlock(@NotNull RuleParser.SwitchBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssertStatement(RuleParser.AssertStatementContext ctx) { }
+	@Override public void exitSwitchBlock(@NotNull RuleParser.SwitchBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchStatement(RuleParser.SwitchStatementContext ctx) { }
+	@Override public void enterExclusiveOrExpression(@NotNull RuleParser.ExclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchStatement(RuleParser.SwitchStatementContext ctx) { }
+	@Override public void exitExclusiveOrExpression(@NotNull RuleParser.ExclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchBlock(RuleParser.SwitchBlockContext ctx) { }
+	@Override public void enterEnumDeclaration(@NotNull RuleParser.EnumDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchBlock(RuleParser.SwitchBlockContext ctx) { }
+	@Override public void exitEnumDeclaration(@NotNull RuleParser.EnumDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchBlockStatementGroup(RuleParser.SwitchBlockStatementGroupContext ctx) { }
+	@Override public void enterBreakStatement(@NotNull RuleParser.BreakStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchBlockStatementGroup(RuleParser.SwitchBlockStatementGroupContext ctx) { }
+	@Override public void exitBreakStatement(@NotNull RuleParser.BreakStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchLabels(RuleParser.SwitchLabelsContext ctx) { }
+	@Override public void enterTypeParameter(@NotNull RuleParser.TypeParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchLabels(RuleParser.SwitchLabelsContext ctx) { }
+	@Override public void exitTypeParameter(@NotNull RuleParser.TypeParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchLabel(RuleParser.SwitchLabelContext ctx) { }
+	@Override public void enterArrayAccess_lf_primary(@NotNull RuleParser.ArrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchLabel(RuleParser.SwitchLabelContext ctx) { }
+	@Override public void exitArrayAccess_lf_primary(@NotNull RuleParser.ArrayAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstantName(RuleParser.EnumConstantNameContext ctx) { }
+	@Override public void enterEnumBodyDeclarations(@NotNull RuleParser.EnumBodyDeclarationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstantName(RuleParser.EnumConstantNameContext ctx) { }
+	@Override public void exitEnumBodyDeclarations(@NotNull RuleParser.EnumBodyDeclarationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhileStatement(RuleParser.WhileStatementContext ctx) { }
+	@Override public void enterForStatement(@NotNull RuleParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhileStatement(RuleParser.WhileStatementContext ctx) { }
+	@Override public void exitForStatement(@NotNull RuleParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhileStatementNoShortIf(RuleParser.WhileStatementNoShortIfContext ctx) { }
+	@Override public void enterStatementExpression(@NotNull RuleParser.StatementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhileStatementNoShortIf(RuleParser.WhileStatementNoShortIfContext ctx) { }
+	@Override public void exitStatementExpression(@NotNull RuleParser.StatementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDoStatement(RuleParser.DoStatementContext ctx) { }
+	@Override public void enterBlock(@NotNull RuleParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDoStatement(RuleParser.DoStatementContext ctx) { }
+	@Override public void exitBlock(@NotNull RuleParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForStatement(RuleParser.ForStatementContext ctx) { }
+	@Override public void enterMethodInvocation_lfno_primary(@NotNull RuleParser.MethodInvocation_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForStatement(RuleParser.ForStatementContext ctx) { }
+	@Override public void exitMethodInvocation_lfno_primary(@NotNull RuleParser.MethodInvocation_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForStatementNoShortIf(RuleParser.ForStatementNoShortIfContext ctx) { }
+	@Override public void enterConditionalExpression(@NotNull RuleParser.ConditionalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForStatementNoShortIf(RuleParser.ForStatementNoShortIfContext ctx) { }
+	@Override public void exitConditionalExpression(@NotNull RuleParser.ConditionalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBasicForStatement(RuleParser.BasicForStatementContext ctx) { }
+	@Override public void enterElementValueList(@NotNull RuleParser.ElementValueListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBasicForStatement(RuleParser.BasicForStatementContext ctx) { }
+	@Override public void exitElementValueList(@NotNull RuleParser.ElementValueListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBasicForStatementNoShortIf(RuleParser.BasicForStatementNoShortIfContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBasicForStatementNoShortIf(RuleParser.BasicForStatementNoShortIfContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForInit(RuleParser.ForInitContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForInit(RuleParser.ForInitContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(@NotNull RuleParser.PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForUpdate(RuleParser.ForUpdateContext ctx) { }
+	@Override public void enterLocalVariableDeclarationStatement(@NotNull RuleParser.LocalVariableDeclarationStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForUpdate(RuleParser.ForUpdateContext ctx) { }
+	@Override public void exitLocalVariableDeclarationStatement(@NotNull RuleParser.LocalVariableDeclarationStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementExpressionList(RuleParser.StatementExpressionListContext ctx) { }
+	@Override public void enterArrayCreationExpression(@NotNull RuleParser.ArrayCreationExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementExpressionList(RuleParser.StatementExpressionListContext ctx) { }
+	@Override public void exitArrayCreationExpression(@NotNull RuleParser.ArrayCreationExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnhancedForStatement(RuleParser.EnhancedForStatementContext ctx) { }
+	@Override public void enterSynchronizedStatement(@NotNull RuleParser.SynchronizedStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnhancedForStatement(RuleParser.EnhancedForStatementContext ctx) { }
+	@Override public void exitSynchronizedStatement(@NotNull RuleParser.SynchronizedStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnhancedForStatementNoShortIf(RuleParser.EnhancedForStatementNoShortIfContext ctx) { }
+	@Override public void enterSwitchLabel(@NotNull RuleParser.SwitchLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnhancedForStatementNoShortIf(RuleParser.EnhancedForStatementNoShortIfContext ctx) { }
+	@Override public void exitSwitchLabel(@NotNull RuleParser.SwitchLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBreakStatement(RuleParser.BreakStatementContext ctx) { }
+	@Override public void enterBasicForStatement(@NotNull RuleParser.BasicForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBreakStatement(RuleParser.BreakStatementContext ctx) { }
+	@Override public void exitBasicForStatement(@NotNull RuleParser.BasicForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContinueStatement(RuleParser.ContinueStatementContext ctx) { }
+	@Override public void enterUnannType(@NotNull RuleParser.UnannTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContinueStatement(RuleParser.ContinueStatementContext ctx) { }
+	@Override public void exitUnannType(@NotNull RuleParser.UnannTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturnStatement(RuleParser.ReturnStatementContext ctx) { }
+	@Override public void enterTypeParameterModifier(@NotNull RuleParser.TypeParameterModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturnStatement(RuleParser.ReturnStatementContext ctx) { }
+	@Override public void exitTypeParameterModifier(@NotNull RuleParser.TypeParameterModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterThrowStatement(RuleParser.ThrowStatementContext ctx) { }
+	@Override public void enterTypeParameters(@NotNull RuleParser.TypeParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitThrowStatement(RuleParser.ThrowStatementContext ctx) { }
+	@Override public void exitTypeParameters(@NotNull RuleParser.TypeParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSynchronizedStatement(RuleParser.SynchronizedStatementContext ctx) { }
+	@Override public void enterArrayAccess_lfno_primary(@NotNull RuleParser.ArrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSynchronizedStatement(RuleParser.SynchronizedStatementContext ctx) { }
+	@Override public void exitArrayAccess_lfno_primary(@NotNull RuleParser.ArrayAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTryStatement(RuleParser.TryStatementContext ctx) { }
+	@Override public void enterMethodInvocation(@NotNull RuleParser.MethodInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTryStatement(RuleParser.TryStatementContext ctx) { }
+	@Override public void exitMethodInvocation(@NotNull RuleParser.MethodInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatches(RuleParser.CatchesContext ctx) { }
+	@Override public void enterInclusiveOrExpression(@NotNull RuleParser.InclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatches(RuleParser.CatchesContext ctx) { }
+	@Override public void exitInclusiveOrExpression(@NotNull RuleParser.InclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatchClause(RuleParser.CatchClauseContext ctx) { }
+	@Override public void enterUnannClassType_lfno_unannClassOrInterfaceType(@NotNull RuleParser.UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatchClause(RuleParser.CatchClauseContext ctx) { }
+	@Override public void exitUnannClassType_lfno_unannClassOrInterfaceType(@NotNull RuleParser.UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatchFormalParameter(RuleParser.CatchFormalParameterContext ctx) { }
+	@Override public void enterTypeName(@NotNull RuleParser.TypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatchFormalParameter(RuleParser.CatchFormalParameterContext ctx) { }
+	@Override public void exitTypeName(@NotNull RuleParser.TypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatchType(RuleParser.CatchTypeContext ctx) { }
+	@Override public void enterEqualityExpression(@NotNull RuleParser.EqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatchType(RuleParser.CatchTypeContext ctx) { }
+	@Override public void exitEqualityExpression(@NotNull RuleParser.EqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFinally_(RuleParser.Finally_Context ctx) { }
+	@Override public void enterConstructorBody(@NotNull RuleParser.ConstructorBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFinally_(RuleParser.Finally_Context ctx) { }
+	@Override public void exitConstructorBody(@NotNull RuleParser.ConstructorBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTryWithResourcesStatement(RuleParser.TryWithResourcesStatementContext ctx) { }
+	@Override public void enterClassInstanceCreationExpression_lf_primary(@NotNull RuleParser.ClassInstanceCreationExpression_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTryWithResourcesStatement(RuleParser.TryWithResourcesStatementContext ctx) { }
+	@Override public void exitClassInstanceCreationExpression_lf_primary(@NotNull RuleParser.ClassInstanceCreationExpression_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResourceSpecification(RuleParser.ResourceSpecificationContext ctx) { }
+	@Override public void enterInferredFormalParameterList(@NotNull RuleParser.InferredFormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResourceSpecification(RuleParser.ResourceSpecificationContext ctx) { }
+	@Override public void exitInferredFormalParameterList(@NotNull RuleParser.InferredFormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResourceList(RuleParser.ResourceListContext ctx) { }
+	@Override public void enterForInit(@NotNull RuleParser.ForInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResourceList(RuleParser.ResourceListContext ctx) { }
+	@Override public void exitForInit(@NotNull RuleParser.ForInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResource(RuleParser.ResourceContext ctx) { }
+	@Override public void enterLambdaExpression(@NotNull RuleParser.LambdaExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResource(RuleParser.ResourceContext ctx) { }
+	@Override public void exitLambdaExpression(@NotNull RuleParser.LambdaExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimary(RuleParser.PrimaryContext ctx) { }
+	@Override public void enterNumericType(@NotNull RuleParser.NumericTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimary(RuleParser.PrimaryContext ctx) { }
+	@Override public void exitNumericType(@NotNull RuleParser.NumericTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray(RuleParser.PrimaryNoNewArrayContext ctx) { }
+	@Override public void enterMethodReference(@NotNull RuleParser.MethodReferenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray(RuleParser.PrimaryNoNewArrayContext ctx) { }
+	@Override public void exitMethodReference(@NotNull RuleParser.MethodReferenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lf_arrayAccess(RuleParser.PrimaryNoNewArray_lf_arrayAccessContext ctx) { }
+	@Override public void enterUnaryExpression(@NotNull RuleParser.UnaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lf_arrayAccess(RuleParser.PrimaryNoNewArray_lf_arrayAccessContext ctx) { }
+	@Override public void exitUnaryExpression(@NotNull RuleParser.UnaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lfno_arrayAccess(RuleParser.PrimaryNoNewArray_lfno_arrayAccessContext ctx) { }
+	@Override public void enterMethodReference_lf_primary(@NotNull RuleParser.MethodReference_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lfno_arrayAccess(RuleParser.PrimaryNoNewArray_lfno_arrayAccessContext ctx) { }
+	@Override public void exitMethodReference_lf_primary(@NotNull RuleParser.MethodReference_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lf_primary(RuleParser.PrimaryNoNewArray_lf_primaryContext ctx) { }
+	@Override public void enterPrimaryNoNewArray_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lf_primary(RuleParser.PrimaryNoNewArray_lf_primaryContext ctx) { }
+	@Override public void exitPrimaryNoNewArray_lf_primary(@NotNull RuleParser.PrimaryNoNewArray_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(RuleParser.PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) { }
+	@Override public void enterMethodReference_lfno_primary(@NotNull RuleParser.MethodReference_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(RuleParser.PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) { }
+	@Override public void exitMethodReference_lfno_primary(@NotNull RuleParser.MethodReference_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(RuleParser.PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) { }
+	@Override public void enterType(@NotNull RuleParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(RuleParser.PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) { }
+	@Override public void exitType(@NotNull RuleParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primaryContext ctx) { }
+	@Override public void enterFieldAccess_lf_primary(@NotNull RuleParser.FieldAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primaryContext ctx) { }
+	@Override public void exitFieldAccess_lf_primary(@NotNull RuleParser.FieldAccess_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) { }
+	@Override public void enterElementValueArrayInitializer(@NotNull RuleParser.ElementValueArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) { }
+	@Override public void exitElementValueArrayInitializer(@NotNull RuleParser.ElementValueArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) { }
+	@Override public void enterFieldAccess_lfno_primary(@NotNull RuleParser.FieldAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(RuleParser.PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) { }
+	@Override public void exitFieldAccess_lfno_primary(@NotNull RuleParser.FieldAccess_lfno_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassInstanceCreationExpression(RuleParser.ClassInstanceCreationExpressionContext ctx) { }
+	@Override public void enterAmbiguousName(@NotNull RuleParser.AmbiguousNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassInstanceCreationExpression(RuleParser.ClassInstanceCreationExpressionContext ctx) { }
+	@Override public void exitAmbiguousName(@NotNull RuleParser.AmbiguousNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassInstanceCreationExpression_lf_primary(RuleParser.ClassInstanceCreationExpression_lf_primaryContext ctx) { }
+	@Override public void enterPrimary(@NotNull RuleParser.PrimaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassInstanceCreationExpression_lf_primary(RuleParser.ClassInstanceCreationExpression_lf_primaryContext ctx) { }
+	@Override public void exitPrimary(@NotNull RuleParser.PrimaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassInstanceCreationExpression_lfno_primary(RuleParser.ClassInstanceCreationExpression_lfno_primaryContext ctx) { }
+	@Override public void enterShiftExpression(@NotNull RuleParser.ShiftExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassInstanceCreationExpression_lfno_primary(RuleParser.ClassInstanceCreationExpression_lfno_primaryContext ctx) { }
+	@Override public void exitShiftExpression(@NotNull RuleParser.ShiftExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArgumentsOrDiamond(RuleParser.TypeArgumentsOrDiamondContext ctx) { }
+	@Override public void enterDefaultValue(@NotNull RuleParser.DefaultValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArgumentsOrDiamond(RuleParser.TypeArgumentsOrDiamondContext ctx) { }
+	@Override public void exitDefaultValue(@NotNull RuleParser.DefaultValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldAccess(RuleParser.FieldAccessContext ctx) { }
+	@Override public void enterVariableModifier(@NotNull RuleParser.VariableModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldAccess(RuleParser.FieldAccessContext ctx) { }
+	@Override public void exitVariableModifier(@NotNull RuleParser.VariableModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldAccess_lf_primary(RuleParser.FieldAccess_lf_primaryContext ctx) { }
+	@Override public void enterInterfaceModifier(@NotNull RuleParser.InterfaceModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldAccess_lf_primary(RuleParser.FieldAccess_lf_primaryContext ctx) { }
+	@Override public void exitInterfaceModifier(@NotNull RuleParser.InterfaceModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldAccess_lfno_primary(RuleParser.FieldAccess_lfno_primaryContext ctx) { }
+	@Override public void enterPackageDeclaration(@NotNull RuleParser.PackageDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldAccess_lfno_primary(RuleParser.FieldAccess_lfno_primaryContext ctx) { }
+	@Override public void exitPackageDeclaration(@NotNull RuleParser.PackageDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayAccess(RuleParser.ArrayAccessContext ctx) { }
+	@Override public void enterTypeImportOnDemandDeclaration(@NotNull RuleParser.TypeImportOnDemandDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayAccess(RuleParser.ArrayAccessContext ctx) { }
+	@Override public void exitTypeImportOnDemandDeclaration(@NotNull RuleParser.TypeImportOnDemandDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayAccess_lf_primary(RuleParser.ArrayAccess_lf_primaryContext ctx) { }
+	@Override public void enterConditionalAndExpression(@NotNull RuleParser.ConditionalAndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayAccess_lf_primary(RuleParser.ArrayAccess_lf_primaryContext ctx) { }
+	@Override public void exitConditionalAndExpression(@NotNull RuleParser.ConditionalAndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayAccess_lfno_primary(RuleParser.ArrayAccess_lfno_primaryContext ctx) { }
+	@Override public void enterAdditiveExpression(@NotNull RuleParser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayAccess_lfno_primary(RuleParser.ArrayAccess_lfno_primaryContext ctx) { }
+	@Override public void exitAdditiveExpression(@NotNull RuleParser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodInvocation(RuleParser.MethodInvocationContext ctx) { }
+	@Override public void enterCatchFormalParameter(@NotNull RuleParser.CatchFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodInvocation(RuleParser.MethodInvocationContext ctx) { }
+	@Override public void exitCatchFormalParameter(@NotNull RuleParser.CatchFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodInvocation_lf_primary(RuleParser.MethodInvocation_lf_primaryContext ctx) { }
+	@Override public void enterArrayAccess(@NotNull RuleParser.ArrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodInvocation_lf_primary(RuleParser.MethodInvocation_lf_primaryContext ctx) { }
+	@Override public void exitArrayAccess(@NotNull RuleParser.ArrayAccessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodInvocation_lfno_primary(RuleParser.MethodInvocation_lfno_primaryContext ctx) { }
+	@Override public void enterStatement(@NotNull RuleParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodInvocation_lfno_primary(RuleParser.MethodInvocation_lfno_primaryContext ctx) { }
+	@Override public void exitStatement(@NotNull RuleParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArgumentList(RuleParser.ArgumentListContext ctx) { }
+	@Override public void enterPostDecrementExpression(@NotNull RuleParser.PostDecrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArgumentList(RuleParser.ArgumentListContext ctx) { }
+	@Override public void exitPostDecrementExpression(@NotNull RuleParser.PostDecrementExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodReference(RuleParser.MethodReferenceContext ctx) { }
+	@Override public void enterUnannInterfaceType(@NotNull RuleParser.UnannInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodReference(RuleParser.MethodReferenceContext ctx) { }
+	@Override public void exitUnannInterfaceType(@NotNull RuleParser.UnannInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodReference_lf_primary(RuleParser.MethodReference_lf_primaryContext ctx) { }
+	@Override public void enterInterfaceBody(@NotNull RuleParser.InterfaceBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodReference_lf_primary(RuleParser.MethodReference_lf_primaryContext ctx) { }
+	@Override public void exitInterfaceBody(@NotNull RuleParser.InterfaceBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodReference_lfno_primary(RuleParser.MethodReference_lfno_primaryContext ctx) { }
+	@Override public void enterUnannArrayType(@NotNull RuleParser.UnannArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodReference_lfno_primary(RuleParser.MethodReference_lfno_primaryContext ctx) { }
+	@Override public void exitUnannArrayType(@NotNull RuleParser.UnannArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayCreationExpression(RuleParser.ArrayCreationExpressionContext ctx) { }
+	@Override public void enterPackageOrTypeName(@NotNull RuleParser.PackageOrTypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayCreationExpression(RuleParser.ArrayCreationExpressionContext ctx) { }
+	@Override public void exitPackageOrTypeName(@NotNull RuleParser.PackageOrTypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDimExprs(RuleParser.DimExprsContext ctx) { }
+	@Override public void enterMethodInvocation_lf_primary(@NotNull RuleParser.MethodInvocation_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDimExprs(RuleParser.DimExprsContext ctx) { }
+	@Override public void exitMethodInvocation_lf_primary(@NotNull RuleParser.MethodInvocation_lf_primaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDimExpr(RuleParser.DimExprContext ctx) { }
+	@Override public void enterMultiplicativeExpression(@NotNull RuleParser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDimExpr(RuleParser.DimExprContext ctx) { }
+	@Override public void exitMultiplicativeExpression(@NotNull RuleParser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstantExpression(RuleParser.ConstantExpressionContext ctx) { }
+	@Override public void enterAssignmentOperator(@NotNull RuleParser.AssignmentOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstantExpression(RuleParser.ConstantExpressionContext ctx) { }
+	@Override public void exitAssignmentOperator(@NotNull RuleParser.AssignmentOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(RuleParser.ExpressionContext ctx) { }
+	@Override public void enterElementValue(@NotNull RuleParser.ElementValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpression(RuleParser.ExpressionContext ctx) { }
+	@Override public void exitElementValue(@NotNull RuleParser.ElementValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaExpression(RuleParser.LambdaExpressionContext ctx) { }
+	@Override public void enterClassOrInterfaceType(@NotNull RuleParser.ClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaExpression(RuleParser.LambdaExpressionContext ctx) { }
+	@Override public void exitClassOrInterfaceType(@NotNull RuleParser.ClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaParameters(RuleParser.LambdaParametersContext ctx) { }
+	@Override public void enterBlockStatement(@NotNull RuleParser.BlockStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaParameters(RuleParser.LambdaParametersContext ctx) { }
+	@Override public void exitBlockStatement(@NotNull RuleParser.BlockStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInferredFormalParameterList(RuleParser.InferredFormalParameterListContext ctx) { }
+	@Override public void enterTypeVariable(@NotNull RuleParser.TypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInferredFormalParameterList(RuleParser.InferredFormalParameterListContext ctx) { }
+	@Override public void exitTypeVariable(@NotNull RuleParser.TypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaBody(RuleParser.LambdaBodyContext ctx) { }
+	@Override public void enterBlockStatements(@NotNull RuleParser.BlockStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaBody(RuleParser.LambdaBodyContext ctx) { }
+	@Override public void exitBlockStatements(@NotNull RuleParser.BlockStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignmentExpression(RuleParser.AssignmentExpressionContext ctx) { }
+	@Override public void enterAdditionalBound(@NotNull RuleParser.AdditionalBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignmentExpression(RuleParser.AssignmentExpressionContext ctx) { }
+	@Override public void exitAdditionalBound(@NotNull RuleParser.AdditionalBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment(RuleParser.AssignmentContext ctx) { }
+	@Override public void enterReferenceType(@NotNull RuleParser.ReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignment(RuleParser.AssignmentContext ctx) { }
+	@Override public void exitReferenceType(@NotNull RuleParser.ReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLeftHandSide(RuleParser.LeftHandSideContext ctx) { }
+	@Override public void enterIfThenElseStatement(@NotNull RuleParser.IfThenElseStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLeftHandSide(RuleParser.LeftHandSideContext ctx) { }
+	@Override public void exitIfThenElseStatement(@NotNull RuleParser.IfThenElseStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignmentOperator(RuleParser.AssignmentOperatorContext ctx) { }
+	@Override public void enterResourceList(@NotNull RuleParser.ResourceListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignmentOperator(RuleParser.AssignmentOperatorContext ctx) { }
+	@Override public void exitResourceList(@NotNull RuleParser.ResourceListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalExpression(RuleParser.ConditionalExpressionContext ctx) { }
+	@Override public void enterConditionalOrExpression(@NotNull RuleParser.ConditionalOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalExpression(RuleParser.ConditionalExpressionContext ctx) { }
+	@Override public void exitConditionalOrExpression(@NotNull RuleParser.ConditionalOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalOrExpression(RuleParser.ConditionalOrExpressionContext ctx) { }
+	@Override public void enterStaticImportOnDemandDeclaration(@NotNull RuleParser.StaticImportOnDemandDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalOrExpression(RuleParser.ConditionalOrExpressionContext ctx) { }
+	@Override public void exitStaticImportOnDemandDeclaration(@NotNull RuleParser.StaticImportOnDemandDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalAndExpression(RuleParser.ConditionalAndExpressionContext ctx) { }
+	@Override public void enterVariableInitializerList(@NotNull RuleParser.VariableInitializerListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalAndExpression(RuleParser.ConditionalAndExpressionContext ctx) { }
+	@Override public void exitVariableInitializerList(@NotNull RuleParser.VariableInitializerListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInclusiveOrExpression(RuleParser.InclusiveOrExpressionContext ctx) { }
+	@Override public void enterDoStatement(@NotNull RuleParser.DoStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInclusiveOrExpression(RuleParser.InclusiveOrExpressionContext ctx) { }
+	@Override public void exitDoStatement(@NotNull RuleParser.DoStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExclusiveOrExpression(RuleParser.ExclusiveOrExpressionContext ctx) { }
+	@Override public void enterIfThenStatement(@NotNull RuleParser.IfThenStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExclusiveOrExpression(RuleParser.ExclusiveOrExpressionContext ctx) { }
+	@Override public void exitIfThenStatement(@NotNull RuleParser.IfThenStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAndExpression(RuleParser.AndExpressionContext ctx) { }
+	@Override public void enterConstructorDeclaration(@NotNull RuleParser.ConstructorDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAndExpression(RuleParser.AndExpressionContext ctx) { }
+	@Override public void exitConstructorDeclaration(@NotNull RuleParser.ConstructorDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEqualityExpression(RuleParser.EqualityExpressionContext ctx) { }
+	@Override public void enterFloatingPointType(@NotNull RuleParser.FloatingPointTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEqualityExpression(RuleParser.EqualityExpressionContext ctx) { }
+	@Override public void exitFloatingPointType(@NotNull RuleParser.FloatingPointTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationalExpression(RuleParser.RelationalExpressionContext ctx) { }
+	@Override public void enterWildcard(@NotNull RuleParser.WildcardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelationalExpression(RuleParser.RelationalExpressionContext ctx) { }
+	@Override public void exitWildcard(@NotNull RuleParser.WildcardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterShiftExpression(RuleParser.ShiftExpressionContext ctx) { }
+	@Override public void enterUnannClassType_lf_unannClassOrInterfaceType(@NotNull RuleParser.UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitShiftExpression(RuleParser.ShiftExpressionContext ctx) { }
+	@Override public void exitUnannClassType_lf_unannClassOrInterfaceType(@NotNull RuleParser.UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditiveExpression(RuleParser.AdditiveExpressionContext ctx) { }
+	@Override public void enterResource(@NotNull RuleParser.ResourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditiveExpression(RuleParser.AdditiveExpressionContext ctx) { }
+	@Override public void exitResource(@NotNull RuleParser.ResourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicativeExpression(RuleParser.MultiplicativeExpressionContext ctx) { }
+	@Override public void enterElementValuePair(@NotNull RuleParser.ElementValuePairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicativeExpression(RuleParser.MultiplicativeExpressionContext ctx) { }
+	@Override public void exitElementValuePair(@NotNull RuleParser.ElementValuePairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnaryExpression(RuleParser.UnaryExpressionContext ctx) { }
+	@Override public void enterPostIncrementExpression_lf_postfixExpression(@NotNull RuleParser.PostIncrementExpression_lf_postfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnaryExpression(RuleParser.UnaryExpressionContext ctx) { }
+	@Override public void exitPostIncrementExpression_lf_postfixExpression(@NotNull RuleParser.PostIncrementExpression_lf_postfixExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPreIncrementExpression(RuleParser.PreIncrementExpressionContext ctx) { }
+	@Override public void enterUnannPrimitiveType(@NotNull RuleParser.UnannPrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPreIncrementExpression(RuleParser.PreIncrementExpressionContext ctx) { }
+	@Override public void exitUnannPrimitiveType(@NotNull RuleParser.UnannPrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPreDecrementExpression(RuleParser.PreDecrementExpressionContext ctx) { }
+	@Override public void enterMethodBody(@NotNull RuleParser.MethodBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPreDecrementExpression(RuleParser.PreDecrementExpressionContext ctx) { }
+	@Override public void exitMethodBody(@NotNull RuleParser.MethodBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnaryExpressionNotPlusMinus(RuleParser.UnaryExpressionNotPlusMinusContext ctx) { }
+	@Override public void enterClassType_lfno_classOrInterfaceType(@NotNull RuleParser.ClassType_lfno_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnaryExpressionNotPlusMinus(RuleParser.UnaryExpressionNotPlusMinusContext ctx) { }
+	@Override public void exitClassType_lfno_classOrInterfaceType(@NotNull RuleParser.ClassType_lfno_classOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostfixExpression(RuleParser.PostfixExpressionContext ctx) { }
+	@Override public void enterStaticInitializer(@NotNull RuleParser.StaticInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostfixExpression(RuleParser.PostfixExpressionContext ctx) { }
+	@Override public void exitStaticInitializer(@NotNull RuleParser.StaticInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostIncrementExpression(RuleParser.PostIncrementExpressionContext ctx) { }
+	@Override public void enterExceptionTypeList(@NotNull RuleParser.ExceptionTypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostIncrementExpression(RuleParser.PostIncrementExpressionContext ctx) { }
+	@Override public void exitExceptionTypeList(@NotNull RuleParser.ExceptionTypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostIncrementExpression_lf_postfixExpression(RuleParser.PostIncrementExpression_lf_postfixExpressionContext ctx) { }
+	@Override public void enterStatementExpressionList(@NotNull RuleParser.StatementExpressionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostIncrementExpression_lf_postfixExpression(RuleParser.PostIncrementExpression_lf_postfixExpressionContext ctx) { }
+	@Override public void exitStatementExpressionList(@NotNull RuleParser.StatementExpressionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostDecrementExpression(RuleParser.PostDecrementExpressionContext ctx) { }
+	@Override public void enterLiteral(@NotNull RuleParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostDecrementExpression(RuleParser.PostDecrementExpressionContext ctx) { }
+	@Override public void exitLiteral(@NotNull RuleParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPostDecrementExpression_lf_postfixExpression(RuleParser.PostDecrementExpression_lf_postfixExpressionContext ctx) { }
+	@Override public void enterInterfaceMemberDeclaration(@NotNull RuleParser.InterfaceMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPostDecrementExpression_lf_postfixExpression(RuleParser.PostDecrementExpression_lf_postfixExpressionContext ctx) { }
+	@Override public void exitInterfaceMemberDeclaration(@NotNull RuleParser.InterfaceMemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCastExpression(RuleParser.CastExpressionContext ctx) { }
+	@Override public void enterSwitchBlockStatementGroup(@NotNull RuleParser.SwitchBlockStatementGroupContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCastExpression(RuleParser.CastExpressionContext ctx) { }
+	@Override public void exitSwitchBlockStatementGroup(@NotNull RuleParser.SwitchBlockStatementGroupContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(@NotNull TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
 }
