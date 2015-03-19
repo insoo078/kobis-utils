@@ -14,6 +14,7 @@ import org.kobic.kobis.mybatis.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
 import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.mybatis.obj.MultipleClassificationObj;
+import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
@@ -93,29 +94,25 @@ public class CommonServices extends AbstractKobisServices{
 //				
 //				if( totalCnt < 84 )	continue;
 				
-				
 
 				XCommonSheetObj commonSheetRecordObj = XCommonSheetObj.getNewInstance( dataRow );
 
-				D1CommonVO d1CommonVo = new D1CommonVO();
+				D1CommonVO d1CommonVo = new D1CommonVO( commonSheetRecordObj );
 				d1CommonVo.setIns_cd( this.getInsCd() );
 
-				BeanUtils.copyProperties( d1CommonVo, commonSheetRecordObj );
+				// Rule 적용
+				Rule rule = new Rule( d1CommonVo.getIns_cd() );
+				rule.rule( d1CommonVo );
 
-				String scientificName = d1CommonVo.getGenus().trim() + " " + d1CommonVo.getSpecies().trim();
+				String scientificName = d1CommonVo.getScientificName();
 				
 				MultipleClassificationObj classifyObj = new MultipleClassificationObj( this.getDao() );
 
-				String currentStatus = classifyObj.validate( scientificName );
-//				
-//				if( currentStatus.equals( MultipleClassificationObj.MULTIPLE_MAPPING ) )
-//					System.out.println("Hello");
-//				else if( currentStatus.equals( MultipleClassificationObj.NOTHING_TO_MAP ) )
-//					System.out.println("Hello2");
-
-				classifyObj.doProcessing( currentStatus, scientificName );
-
+				classifyObj.validate( scientificName );
+				
 				classifyObj.updateDatabase( d1CommonVo, scientificName );
+
+//				classifyObj.doProcessing( currentDataMappingStatus, scientificName );
 //
 //				boolean print = false;
 //				String message = "";

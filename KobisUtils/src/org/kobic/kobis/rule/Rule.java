@@ -79,10 +79,7 @@ public class Rule {
 	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
 		RuleParamObj ruleObj = this.makeParams( obj );
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
-		
-//		if( obj.getAccess_num().equals("012-019") )
-//			System.out.println("Hello") ;
-		
+
 		for(Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext();) {
 			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
 		}

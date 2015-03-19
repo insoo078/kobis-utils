@@ -29,6 +29,10 @@ public class XCommonSheetObj extends AbstractSheetObj{
 	private String keywords;
 	private String img_url_1;
 	private String ins_user_email;
+	
+	public String getScientificName() {
+		return this.genus.trim() + " " + this.species.trim();
+	}
 
 	public String getFamily() {
 		return family;

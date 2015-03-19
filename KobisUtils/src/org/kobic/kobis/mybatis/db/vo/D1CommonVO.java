@@ -1,5 +1,8 @@
 package org.kobic.kobis.mybatis.db.vo;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 
 public class D1CommonVO extends XCommonSheetObj{
@@ -8,6 +11,9 @@ public class D1CommonVO extends XCommonSheetObj{
 	private String ins_cd;
 	private String message;
 
+	public D1CommonVO(XCommonSheetObj commonSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
+		BeanUtils.copyProperties( this, commonSheetRecordObj );
+	}
 	public String getKobis_id() {
 		return kobis_id;
 	}
