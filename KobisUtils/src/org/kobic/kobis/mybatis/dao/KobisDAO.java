@@ -1,10 +1,12 @@
 package org.kobic.kobis.mybatis.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
 import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO;
@@ -89,26 +91,31 @@ public class KobisDAO {
     	return result;
     }
 
-    public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> map ) {
+    public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
     	SqlSession session = this.sqlSessionFactory.openSession( true );
 
     	int ret = 0;
     	try {
 			// 기존 동일한 분류체계가 T1_ClassificationSystemTable에 존재하는지 여부를 조사
-    		String tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", map);
+    		String tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", crossTaxonMap);
 
     		if( tab_id.isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
-    			ret += session.insert( "Kobis.insertT1ClassificationSystemTable", map);
+    			ret += session.insert( "Kobis.insertT1ClassificationSystemTable", crossTaxonMap);
     			
-    			tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", map);
+    			tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", crossTaxonMap);
     		}
     		d1CommonVo.setCode( tab_id );
 
     		ret += session.insert( "Kobis.insertD1Common", d1CommonVo );
 
-    		if( Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() )	
-    			ret += session.insert( "Kobis.insertSynonyms", d1CommonVo );
+    		if( Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() )	 {
+    			Map<String, String> synonynMap = new HashMap<String, String>();
+    			synonynMap.put("accession_num", d1CommonVo.getAccess_num() );
+    			synonynMap.put("synonym", d1CommonVo.getSynonym() );
+
+    			ret += session.insert( "Kobis.insertSynonyms", synonynMap );
+    		}
 
     		session.commit();
     	}catch(Exception e) {
@@ -154,6 +161,22 @@ public class KobisDAO {
     	return ret;
     }
 
+    public int insertObservation( XObservationSheetObj observationSheet ) {
+    	SqlSession session = this.sqlSessionFactory.openSession( true );
+
+    	int ret = 0;
+    	try {
+    		ret = session.insert( "Kobis.insertObservation", observationSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;    	
+    }
 //  public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomyDetail(Map<String, String> map) {
 //	SqlSession session = this.sqlSessionFactory.openSession();
 //	List<NameWithTaxonIdVO> result = null;

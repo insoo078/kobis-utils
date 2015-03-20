@@ -9,8 +9,8 @@ import org.kobic.kobis.file.excel.obj.internal.SequenceObj;
 
 public class XDnaSequenceSheetObj extends AbstractSheetObj{
 	private String source;
-	private String molecular;
-	private String dataType;
+	private String molecular_type;
+	private String data_type;
 	private SequenceObj sequence;
 	private OpenObj open;
 	private PatentObj patent;
@@ -26,20 +26,20 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 		this.source = source;
 	}
 
-	public String getMolecular() {
-		return molecular;
+	public String getMolecular_type() {
+		return molecular_type;
 	}
 
-	public void setMolecular(String molecular) {
-		this.molecular = molecular;
+	public void setMolecular_type(String molecular_type) {
+		this.molecular_type = molecular_type;
 	}
 
-	public String getDataType() {
-		return dataType;
+	public String getData_type() {
+		return data_type;
 	}
 
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
+	public void setData_type(String data_type) {
+		this.data_type = data_type;
 	}
 
 	public SequenceObj getSequence() {
@@ -97,8 +97,8 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
 			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
 			else if( i == 1 )	obj.setSource( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setMolecular( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setDataType( row.getCell(i).toString() );
+			else if( i == 2 )	obj.setMolecular_type( row.getCell(i).toString() );
+			else if( i == 3 )	obj.setData_type( row.getCell(i).toString() );
 			else if( i == 4 )	obj.getSequence().setGeneName( row.getCell(i).toString() );
 			else if( i == 5 )	obj.getSequence().setAccessionNo( row.getCell(i).toString() );
 			else if( i == 6 )	obj.getSequence().setSequence( row.getCell(i).toString() );
@@ -115,8 +115,8 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 	public String getPrintLine() {
 		String line = this.getAccess_num() + ",";
 		line += this.getSource() + ",";
-		line += this.getMolecular() + ",";
-		line += this.getDataType() + ",";
+		line += this.getMolecular_type() + ",";
+		line += this.getData_type() + ",";
 		line += this.getSequence().getGeneName() + ",";
 		line += this.getSequence().getAccessionNo() + ",";
 		line += this.getSequence().getSequence() + ",";
