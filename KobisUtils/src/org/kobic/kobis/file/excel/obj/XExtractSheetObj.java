@@ -1,10 +1,12 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.ExtractionObj;
 
+@Alias("D1_Extract")
 public class XExtractSheetObj extends AbstractSheetObj{
 	private String source;
 	private ExtractionObj extract;

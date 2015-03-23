@@ -1,11 +1,13 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.OpenObj;
 import org.kobic.kobis.file.excel.obj.internal.PatentObj;
 import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
 
+@Alias("D1_Expression")
 public class XExpressionSheetObj extends AbstractSheetObj{
 	private String source;
 	private String sequence;

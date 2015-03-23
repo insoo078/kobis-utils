@@ -1,9 +1,11 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 
+@Alias("D1_Individual")
 public class XIndividualSheetObj extends AbstractSheetObj{
 	private String individualType;
 	private String individualMaintenance;

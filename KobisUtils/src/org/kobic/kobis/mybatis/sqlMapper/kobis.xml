@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Kobis">
-	<insert id="insertD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
+	<insert id="insertD1Common" parameterType="D1_Common">
 		INSERT INTO D1_Common(
 			accession_num, kobis_id, tab_id, common_name, kor_name
 			, line_name, variety_name, taxonomy, institution
@@ -21,17 +21,17 @@
 		VALUES( '${accession_num}', SF_GET_NEW_SYNONYM_ID('${accession_num}'), '${synonym}' )
 	</insert>
 
-	<insert id="insertD1Observation" parameterType="org.kobic.kobis.file.excel.obj.XObservationSheetObj">
+	<insert id="insertD1Observation" parameterType="D1_Observation">
 		INSERT INTO ITIS.D1_Observation( accession_num, obs_id, latitude, longitude )
 		VALUES( #{access_num}, SF_GET_NEW_OBSERVATION_ID(#{access_num}), #{gps.latitude}, #{gps.longitude} )
 	</insert>
 
-	<insert id="insertD1Individual" parameterType="org.kobic.kobis.file.excel.obj.XIndividualSheetObj">
+	<insert id="insertD1Individual" parameterType="D1_Individual">
 		INSERT INTO ITIS.D1_Individual( accession_num, individual_id, individual_type, individual_maintenance )
 		VALUES( #{access_num}, SF_GET_NEW_INDIVIDUAL_ID(#{access_num}), #{individual_type}, #{individual_maintenance} )
 	</insert>
 
-	<insert id="insertD1Specimen" parameterType="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj">
+	<insert id="insertD1Specimen" parameterType="D1_Specimen">
 		INSERT INTO D1_Specimen( 
 			accession_num, specimen_id, morphology, kor_addr, eng_addr, laitude, longitude, collect_user
 			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn  
@@ -42,27 +42,27 @@
 		)
 	</insert>
 
-	<insert id="insertD1Organ" parameterType="org.kobic.kobis.file.excel.obj.XOrganSheetObj">
+	<insert id="insertD1Organ" parameterType="D1_Organ">
 		INSERT INTO ITIS.D1_Organ( accession_num, organ_id, organ_type, disease )
 		VALUES( #{access_num}, SF_GET_NEW_ORGANL_ID(#{access_num}), #{organ_type}, #{disease} )
 	</insert>
 
-	<insert id="insertD1Source" parameterType="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
+	<insert id="insertD1Source" parameterType="D1_Source">
 		INSERT INTO ITIS.D1_Source( accession_num, source_id, source_type, disease )
 		VALUES( #{access_num}, SF_GET_NEW_SOURCE_ID(#{access_num}), #{source_type}, #{disease} )
 	</insert>
   	
-	<insert id="insertD1Seed" parameterType="org.kobic.kobis.file.excel.obj.XSeedSheetObj">
+	<insert id="insertD1Seed" parameterType="D1_Seed">
 		INSERT INTO ITIS.D1_Seed( accession_num, seed_id, seed_sttus )
 		VALUES( #{access_num}, SF_GET_NEW_SEED_ID(#{access_num}), #{seed_status} )
 	</insert>
 	
-	<insert id="insertD1Embryo" parameterType="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj">
+	<insert id="insertD1Embryo" parameterType="D1_Embryo">
 		INSERT INTO ITIS.D1_Embryo( accession_num, embryo_id, embryo_type )
 		VALUES( #{access_num}, SF_GET_NEW_EMBRYO_ID(#{access_num}), #{embryo_type} )
 	</insert>
 
-	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj">
+	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
 		INSERT INTO ITIS.D1_DNA_RNA_Protein_Derivatives
 		( 
 			accession_num, derivatives_id, source, detail_type
@@ -74,37 +74,37 @@
 		)
 	</insert>
 
-	<insert id="insertD1Strain" parameterType="org.kobic.kobis.file.excel.obj.XStrainSheetObj">
+	<insert id="insertD1Strain" parameterType="D1_Strain">
 		INSERT INTO ITIS.D1_Strain( accession_num, cellstrain_id, source, pathogenic_yn, strain_name )
 		VALUES( #{access_num}, SF_GET_NEW_STRAIN_ID(#{access_num}), #{source}, #{pathogenic_yn}, #{strain_name} )
 	</insert>
 
-	<insert id="insertD1CellStrain" parameterType="org.kobic.kobis.file.excel.obj.XCellStrainSheetObj">
+	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
 		INSERT INTO ITIS.D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_STRAIN_ID(#{access_num}), #{source}, #{cell_type}, #{cell_name} )
 	</insert>
 	
-	<insert id="insertD1BodyFluid" parameterType="org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj">
+	<insert id="insertD1BodyFluid" parameterType="D1_BodyFluid">
 		INSERT INTO ITIS.D1_BodyFluid( accession_num, body_fluid_id, body_fluid_type )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_BODY_FLUID_ID(#{access_num}), #{body_fluid_type} )
 	</insert>
 	
-	<insert id="insertD1ProteinSequence" parameterType="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj">
+	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
 		INSERT INTO ITIS.D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_PROTEIN_SEQUENCE_ID(#{access_num}), #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<insert id="insertD1Expression" parameterType="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj">
+	<insert id="insertD1Expression" parameterType="D1_Expression">
 		INSERT INTO ITIS.D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_EXPRESSION_ID(#{access_num}), #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<insert id="insertD1Structure" parameterType="org.kobic.kobis.file.excel.obj.XStructureSheetObj">
+	<insert id="insertD1Structure" parameterType="D1_Structure">
 		INSERT INTO ITIS.D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_EXPRESSION_ID(#{access_num}), #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<insert id="insertD1DnaSequence" parameterType="org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj">
+	<insert id="insertD1DnaSequence" parameterType="D1_DnaSequence">
 		INSERT INTO ITIS.D1_Dna_Sequence
 		( 
 			accession_num, sequence_id, source, molecular_type, data_type
@@ -118,12 +118,12 @@
 		)
 	</insert>
 
-	<insert id="insertD1Etc" parameterType="org.kobic.kobis.file.excel.obj.XEtcSheetObj">
+	<insert id="insertD1Etc" parameterType="D1_Etc">
 		INSERT INTO ITIS.D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_ETC_EXPRESSION_ID(#{access_num}), #{description}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<insert id="insertD1Extraction" parameterType="org.kobic.kobis.file.excel.obj.XExtractSheetObj">
+	<insert id="insertD1Extraction" parameterType="D1_Extract">
 		INSERT INTO ITIS.D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
 		VALUES( #{access_num}, SF_GET_NEW_EXTRACT_EXPRESSION_ID(#{access_num}), #{source}, #{solvent}, #{extract_time} )
 	</insert>
@@ -153,7 +153,7 @@
 		VALUES( #{accession_num}, #{id}, #{application_no}, #{reg_no} )
 	</insert>
 
-	<insert id="insertUnmappedD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
+	<insert id="insertUnmappedD1Common" parameterType="D1_Common">
 		INSERT INTO T2_UnMappedCommon(
 			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
@@ -166,7 +166,7 @@
 		)
 	</insert>
 
-	<insert id="insertMappedD1Common" parameterType="org.kobic.kobis.mybatis.db.vo.D1CommonVO">
+	<insert id="insertMappedD1Common" parameterType="D1_Common">
 		INSERT INTO T2_MappedCommon(
 			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,

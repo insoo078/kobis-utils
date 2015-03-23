@@ -1,5 +1,6 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.OpenObj;
@@ -7,6 +8,7 @@ import org.kobic.kobis.file.excel.obj.internal.PatentObj;
 import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.SequenceObj;
 
+@Alias("D1_DnaSequence")
 public class XDnaSequenceSheetObj extends AbstractSheetObj{
 	private String source;
 	private String molecular_type;

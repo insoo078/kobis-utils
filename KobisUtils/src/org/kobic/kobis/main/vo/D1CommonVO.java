@@ -3,8 +3,10 @@ package org.kobic.kobis.main.vo;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.ibatis.type.Alias;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 
+@Alias("D1_Common")
 public class D1CommonVO extends XCommonSheetObj{
 	private String kobis_id;
 	private String code;
