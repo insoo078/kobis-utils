@@ -112,6 +112,24 @@ public class CommonServices extends AbstractKobisServices{
 				boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
 				if ( canValidateToDatabase ){	mappedCnt++;	}
 
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 //				classifyObj.doProcessing( currentDataMappingStatus, scientificName );
 //
 //				boolean print = false;
