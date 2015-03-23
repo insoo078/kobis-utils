@@ -21,6 +21,7 @@ public class XExtractSheetObj extends AbstractSheetObj{
 	}
 
 	public ExtractionObj getExtract() {
+		if( this.extract == null )	this.extract = new ExtractionObj();
 		return extract;
 	}
 
@@ -29,6 +30,7 @@ public class XExtractSheetObj extends AbstractSheetObj{
 	}
 
 	public DistPatentReferenceObj getExtra() {
+		if( this.extra == null )	this.extra = new DistPatentReferenceObj();
 		return extra;
 	}
 
@@ -44,15 +46,15 @@ public class XExtractSheetObj extends AbstractSheetObj{
 	public XExtractSheetObj getInstance( XSSFRow row ) {
 		XExtractSheetObj obj = new XExtractSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setSource( row.getCell(i).toString() );
-			else if( i == 2 )	obj.getExtract().setSolvent( row.getCell(i).toString() );
-			else if( i == 3 )	obj.getExtract().setExtractTime( row.getCell(i).toString() );
-			else if( i == 4 )	obj.getExtra().getDist().setDistYn( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getExtra().getDist().setDistUrl( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getExtra().getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getExtra().getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 8 )	obj.getExtra().getRef().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(						this.getVal( row.getCell(i) ) );
+			else if( i == 1 )	obj.setSource(							this.getVal( row.getCell(i) ) );
+			else if( i == 2 )	obj.getExtract().setSolvent(			this.getVal( row.getCell(i) ) );
+			else if( i == 3 )	obj.getExtract().setExtractTime(		this.getVal( row.getCell(i) ) );
+			else if( i == 4 )	obj.getExtra().getDist().setDistYn(		this.getVal( row.getCell(i) ) );
+			else if( i == 5 )	obj.getExtra().getDist().setDistUrl(	this.getVal( row.getCell(i) ) );
+			else if( i == 6 )	obj.getExtra().getPatent().setParentNo(	this.getVal( row.getCell(i) ) );
+			else if( i == 7 )	obj.getExtra().getPatent().setRegNo(	this.getVal( row.getCell(i) ) );
+			else if( i == 8 )	obj.getExtra().getRef().setReference(	this.getVal( row.getCell(i) ) );
 		}
 		return obj;
 	}

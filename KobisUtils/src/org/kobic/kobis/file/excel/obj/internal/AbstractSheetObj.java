@@ -1,6 +1,8 @@
 package org.kobic.kobis.file.excel.obj.internal;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.kobic.kobis.util.Utils;
 
 public abstract class AbstractSheetObj {
 	private String access_num;
@@ -11,6 +13,14 @@ public abstract class AbstractSheetObj {
 
 	public void setAccess_num(String access_num) {
 		this.access_num = access_num;
+	}
+	
+	public String getVal( XSSFCell cell ) {
+		String ret = "";
+//		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replace("\'", "\\\'");
+		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replaceAll("'","\\\\'");
+		
+		return ret;
 	}
 	
 	public abstract AbstractSheetObj getInstance(XSSFRow row);

@@ -20,6 +20,8 @@ public class ObservationServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XObservationSheetObj observationSheetRecordObj = XObservationSheetObj.getNewInstance( dataRow );
+				
+				System.out.println( observationSheetRecordObj.getAccess_num() );
 			}
 		}
 	}

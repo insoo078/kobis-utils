@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
 import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.main.services.CommonServices;
+import org.kobic.kobis.main.services.ExtractServices;
 import org.kobic.kobis.main.services.ObservationServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 
@@ -113,10 +114,13 @@ public class ReadExcel{
 //				ks.readRecordsInSheet();
 
 				if( obj instanceof CommonServices ) {
-					CommonServices cs = (CommonServices)obj;
-					cs.readRecordsInSheet();
+//					CommonServices cs = (CommonServices)obj;
+//					cs.readRecordsInSheet();
 				}else if( obj instanceof ObservationServices ) {
 					ObservationServices cs = (ObservationServices)obj;
+					cs.readRecordsInSheet();
+				}else if( obj instanceof ExtractServices ) {
+					ExtractServices cs = (ExtractServices) obj;
 					cs.readRecordsInSheet();
 				}
 			}
@@ -138,7 +142,8 @@ public class ReadExcel{
 //		-o /Users/lion/Desktop -i /Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx -header INS00001
 		
 		String[][] params = new String[][]{
-				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
+				{"-o", "/Users/insoo078/Desktop", "-i", "/Users/insoo078/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample.xlsx", "-header", "INS00002"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"}

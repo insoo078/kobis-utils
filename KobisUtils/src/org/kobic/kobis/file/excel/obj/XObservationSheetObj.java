@@ -13,12 +13,14 @@ public class XObservationSheetObj extends AbstractSheetObj{
 
 
 	public GpsObj getGps() {
+		if( this.gps == null ) this.gps = new GpsObj();
 		return gps;
 	}
 	public void setGps(GpsObj gps) {
 		this.gps = gps;
 	}
 	public DistPatentReferenceObj getExtra() {
+		if( this.extra == null ) this.extra = new DistPatentReferenceObj();
 		return extra;
 	}
 	public void setExtra(DistPatentReferenceObj extra) {
@@ -33,14 +35,14 @@ public class XObservationSheetObj extends AbstractSheetObj{
 	public XObservationSheetObj getInstance( XSSFRow row ) {
 		XObservationSheetObj obj = new XObservationSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.getGps().setLatitude( row.getCell(i).toString() );
-			else if( i == 2 )	obj.getGps().setLongitude( row.getCell(i).toString() );
-			else if( i == 3 )	obj.getExtra().getDist().setDistYn( row.getCell(i).toString() );
-			else if( i == 4 )	obj.getExtra().getDist().setDistUrl( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getExtra().getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getExtra().getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getExtra().getRef().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(						this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.getGps().setLatitude(				this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.getGps().setLongitude(				this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.getExtra().getDist().setDistYn(		this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.getExtra().getDist().setDistUrl(	this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getExtra().getPatent().setParentNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getExtra().getPatent().setRegNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 7 )	obj.getExtra().getRef().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}

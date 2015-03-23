@@ -48,7 +48,7 @@ public class KobisDAO {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
     	try {
-    		result = session.selectList("Kobis.getScientificNameFromNcbiTaxonomy", scientfic_name);
+    		result = session.selectList("Taxon.getScientificNameFromNcbiTaxonomy", scientfic_name);
 	   	}finally{
 	   		session.close();
 	   	}   		
@@ -60,7 +60,7 @@ public class KobisDAO {
     	List<NameWithTaxonIdVO> result = null;
     	
     	try {
-    		result = session.selectList("Kobis.getScientificNameFromGbifTaxonomy", scientfic_name);
+    		result = session.selectList("Taxon.getScientificNameFromGbifTaxonomy", scientfic_name);
 	   	}finally{
 	   		session.close();
 	   	}   	
@@ -71,7 +71,7 @@ public class KobisDAO {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
     	try {
-    		result = session.selectList("Kobis.getScientificNameFromItisTaxonomy", scientfic_name);
+    		result = session.selectList("Taxon.getScientificNameFromItisTaxonomy", scientfic_name);
     	}finally{
     		session.close();
     	}
@@ -83,7 +83,7 @@ public class KobisDAO {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
     	try {
-    		result = session.selectList("Kobis.getScientificNameFromKobicTaxonomy", scientfic_name);
+    		result = session.selectList("Taxon.getScientificNameFromKobicTaxonomy", scientfic_name);
     	}finally{
     		session.close();
     	}
@@ -97,13 +97,13 @@ public class KobisDAO {
     	int ret = 0;
     	try {
 			// 기존 동일한 분류체계가 T1_ClassificationSystemTable에 존재하는지 여부를 조사
-    		String tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", crossTaxonMap);
+    		String tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
 
     		if( tab_id.isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
-    			ret += session.insert( "Kobis.insertT1ClassificationSystemTable", crossTaxonMap);
+    			ret += session.insert( "Taxon.insertT1ClassificationSystemTable", crossTaxonMap);
     			
-    			tab_id = session.selectOne("Kobis.getT1ClassificationSystemTable", crossTaxonMap);
+    			tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
     		}
     		d1CommonVo.setCode( tab_id );
 

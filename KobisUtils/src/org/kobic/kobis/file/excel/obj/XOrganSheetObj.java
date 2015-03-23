@@ -30,6 +30,7 @@ public class XOrganSheetObj extends AbstractSheetObj{
 	}
 
 	public StoreObj getStore() {
+		if( this.store == null )	this.store = new StoreObj();
 		return store;
 	}
 
@@ -38,6 +39,7 @@ public class XOrganSheetObj extends AbstractSheetObj{
 	}
 
 	public DistPatentReferenceObj getExtra() {
+		if( this.extra == null )	this.extra = new DistPatentReferenceObj();
 		return extra;
 	}
 
@@ -49,13 +51,13 @@ public class XOrganSheetObj extends AbstractSheetObj{
 	public XOrganSheetObj getInstance( XSSFRow row ) {
 		XOrganSheetObj obj = new XOrganSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setOrganType( row.getCell(i).toString() );
-			else if( i == 2 )	obj.getExtra().getDist().setDistYn( row.getCell(i).toString() );
-			else if( i == 3 )	obj.getExtra().getDist().setDistUrl( row.getCell(i).toString() );
-			else if( i == 4 )	obj.getExtra().getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getExtra().getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getExtra().getRef().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(						this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.setOrganType(						this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.getExtra().getDist().setDistYn(		this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.getExtra().getDist().setDistUrl(	this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.getExtra().getPatent().setParentNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getExtra().getPatent().setRegNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getExtra().getRef().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}

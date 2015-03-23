@@ -20,6 +20,8 @@ public class ExtractServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XExtractSheetObj extractSheetRecordObj = XExtractSheetObj.getNewInstance( dataRow );
+				
+				System.out.println( extractSheetRecordObj.getAccess_num() );
 			}
 		}
 	}

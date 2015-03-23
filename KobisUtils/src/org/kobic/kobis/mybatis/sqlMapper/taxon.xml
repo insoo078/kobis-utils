@@ -30,13 +30,6 @@
 		<id column="tax_id"		property="tax_id"/>
 	</resultMap>
 
-	<select id="getInstitutionId" parameterType="java.lang.String" resultType="java.lang.String">
-		SELECT
-			ins_name
-		FROM X2_InstitutionCode
-		WHERE ins_cd=#{ins_cd}
-	</select>
-
 	<select id="getPhylogeneticTreeByGenus" parameterType="java.lang.String" resultMap="PhylogeneticMap">
 		SELECT
 			*

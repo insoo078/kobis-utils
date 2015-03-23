@@ -30,6 +30,7 @@ public class XIndividualSheetObj extends AbstractSheetObj{
 	}
 
 	public DistPatentReferenceObj getExtra() {
+		if( this.extra == null )	this.extra = new DistPatentReferenceObj();
 		return extra;
 	}
 
@@ -41,14 +42,14 @@ public class XIndividualSheetObj extends AbstractSheetObj{
 	public XIndividualSheetObj getInstance( XSSFRow row ) {
 		XIndividualSheetObj obj = new XIndividualSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setIndividualType( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setIndividualMaintenance( row.getCell(i).toString() );
-			else if( i == 3 )	obj.getExtra().getDist().setDistYn( row.getCell(i).toString() );
-			else if( i == 4 )	obj.getExtra().getDist().setDistUrl( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getExtra().getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getExtra().getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getExtra().getRef().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(						this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.setIndividualType(					this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.setIndividualMaintenance(			this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.getExtra().getDist().setDistYn(		this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.getExtra().getDist().setDistUrl(	this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getExtra().getPatent().setParentNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getExtra().getPatent().setRegNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 7 )	obj.getExtra().getRef().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}

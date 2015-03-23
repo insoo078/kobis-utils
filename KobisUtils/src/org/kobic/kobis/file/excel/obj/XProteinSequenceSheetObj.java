@@ -50,6 +50,7 @@ public class XProteinSequenceSheetObj extends AbstractSheetObj{
 	}
 
 	public OpenObj getOpen() {
+		if( this.open == null )	this.open = new OpenObj();
 		return open;
 	}
 
@@ -58,6 +59,7 @@ public class XProteinSequenceSheetObj extends AbstractSheetObj{
 	}
 
 	public PatentObj getPatent() {
+		if( this.patent == null )	this.patent = new PatentObj();
 		return patent;
 	}
 
@@ -66,6 +68,7 @@ public class XProteinSequenceSheetObj extends AbstractSheetObj{
 	}
 
 	public ReferenceObj getReference() {
+		if( this.reference == null )	this.reference = new ReferenceObj();
 		return reference;
 	}
 
@@ -78,16 +81,16 @@ public class XProteinSequenceSheetObj extends AbstractSheetObj{
 	public XProteinSequenceSheetObj getInstance( XSSFRow row ) {
 		XProteinSequenceSheetObj obj = new XProteinSequenceSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setSource( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setProteinName( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setAccessionNo( row.getCell(i).toString() );
-			else if( i == 4 )	obj.setSequence( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getOpen().setOpenYn( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getOpen().setOpenUrl( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 8 )	obj.getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 9 )	obj.getReference().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(					this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.setSource(						this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.setProteinName(					this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.setAccessionNo(					this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.setSequence(					this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getOpen().setOpenYn(			this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getOpen().setOpenUrl(			this.getVal(row.getCell(i) ) );
+			else if( i == 7 )	obj.getPatent().setParentNo(		this.getVal(row.getCell(i) ) );
+			else if( i == 8 )	obj.getPatent().setRegNo(			this.getVal(row.getCell(i) ) );
+			else if( i == 9 )	obj.getReference().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}
