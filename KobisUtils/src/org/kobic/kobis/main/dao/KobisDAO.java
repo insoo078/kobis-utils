@@ -12,6 +12,12 @@ import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
 
+/**
+ * KOBIS를 위해 외부기관으로 받은 데이터를 데이터베이스 반영하거나 조회하는 쿼리를 관장하는 Data Access Object
+ * 
+ * @author insoo078
+ *
+ */
 public class KobisDAO {
 	private SqlSessionFactory sqlSessionFactory = null;
 	 
@@ -19,6 +25,13 @@ public class KobisDAO {
         this.sqlSessionFactory = sqlSessionFactory;
     }
     
+    /**
+     * genus를 이용하여 환경부 분류체계를 조회하는 쿼리를 호출하는 메소드
+     * 
+     * @param genus 조회를 위한 genus 정보
+     * 
+     * @return genus로 조회된 분류체계 정보
+     */
     public List<PhylogeneticTreeVO> getPhylogeneticTreeByGenus( String genus) {
     	List<PhylogeneticTreeVO> list = null;
     	// autocommit is false
@@ -37,6 +50,18 @@ public class KobisDAO {
     	String result = null;
     	try {
         	result = session.selectOne("Kobis.getInstitutionId", insCd);
+	   	}finally{
+	   		session.close();
+	   	}
+    	
+    	return Utils.emptyToNull( result );
+    }
+    
+    public String getAccessionNum(String accession_num) {
+    	SqlSession session = this.sqlSessionFactory.openSession();
+    	String result = null;
+    	try {
+        	result = session.selectOne("Kobis.getAccessionNum", accession_num);
 	   	}finally{
 	   		session.close();
 	   	}

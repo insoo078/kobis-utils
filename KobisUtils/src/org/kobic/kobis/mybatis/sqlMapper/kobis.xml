@@ -8,6 +8,11 @@
 		FROM X2_InstitutionCode
 		WHERE ins_cd=#{ins_cd}
 	</select>
+	
+	<select id="getAccessionNum" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT accession_num FROM D1_Common
+		WHERE accession_num=#{accession_num}
+	</select>
 
 	<insert id="insertD1Common" parameterType="D1_Common">
 		INSERT INTO D1_Common(

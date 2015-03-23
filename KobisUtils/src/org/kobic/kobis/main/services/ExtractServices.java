@@ -4,6 +4,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
 import org.kobic.kobis.main.dao.KobisDAO;
+import org.kobic.kobis.rule.Rule;
 
 public class ExtractServices extends AbstractKobisServices{
 
@@ -20,8 +21,14 @@ public class ExtractServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XExtractSheetObj extractSheetRecordObj = XExtractSheetObj.getNewInstance( dataRow );
-				
-				System.out.println( extractSheetRecordObj.getAccess_num() );
+
+				Rule rule = new Rule( this.getInsCd() );
+				rule.rule( extractSheetRecordObj );
+
+				String accesssionNumFromDb = this.getDao().getAccessionNum( extractSheetRecordObj.getAccess_num() );
+				if( !accesssionNumFromDb.isEmpty() ) {
+//					this.getDao().in/
+				}
 			}
 		}
 	}
