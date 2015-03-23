@@ -1,8 +1,8 @@
-package org.kobic.kobis.mybatis.db.vo;
+package org.kobic.kobis.taxon.proc;
 
 import java.util.List;
 
-import org.kobic.kobis.mybatis.obj.MultipleClassificationObj;
+import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
 
 public class TaxonProc {
 	private String name;
@@ -14,9 +14,9 @@ public class TaxonProc {
 		this.list = list;
 
 		if( this.list == null )				this.currentStatus = null;
-		else if( this.list.isEmpty() )		this.currentStatus = MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL;
-		else if( this.list.size() > 1 )		this.currentStatus = MultipleClassificationObj.MULTIPLE_MAPPING;
-		else								this.currentStatus = MultipleClassificationObj.FINE_MAPPING;
+		else if( this.list.isEmpty() )		this.currentStatus = MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL;
+		else if( this.list.size() > 1 )		this.currentStatus = MultipleClassificationProc.MULTIPLE_MAPPING;
+		else								this.currentStatus = MultipleClassificationProc.FINE_MAPPING;
 	}
 	
 	public String getCurrentStatus() {

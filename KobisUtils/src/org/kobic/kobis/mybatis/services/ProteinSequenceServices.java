@@ -1,7 +1,7 @@
 package org.kobic.kobis.mybatis.services;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 
 public class ProteinSequenceServices extends AbstractKobisServices{
 

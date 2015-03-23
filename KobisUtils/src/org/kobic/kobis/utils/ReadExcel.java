@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
-import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.mybatis.services.CommonServices;
 import org.kobic.kobis.mybatis.services.ObservationServices;

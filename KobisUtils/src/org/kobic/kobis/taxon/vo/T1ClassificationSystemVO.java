@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.db.vo;
+package org.kobic.kobis.taxon.vo;
 
 public class T1ClassificationSystemVO {
 	private String tab_id;

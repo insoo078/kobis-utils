@@ -8,11 +8,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
-import org.kobic.kobis.mybatis.dao.RuleDAO;
-import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
+import org.kobic.kobis.rule.dao.RuleDAO;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 import org.kobic.kobis.rule.obj.RuleParamObj;
+import org.kobic.kobis.rule.vo.RuleQueryVO;
 
 public class Rule {
 	private String insCd;

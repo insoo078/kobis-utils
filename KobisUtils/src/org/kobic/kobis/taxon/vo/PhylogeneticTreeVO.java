@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.db.vo;
+package org.kobic.kobis.taxon.vo;
 
 public class PhylogeneticTreeVO {
 	private String code;

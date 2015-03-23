@@ -1,10 +1,10 @@
-package org.kobic.kobis.mybatis.dao;
+package org.kobic.kobis.rule.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
+import org.kobic.kobis.rule.vo.RuleQueryVO;
 
 public class RuleDAO {
 	private SqlSessionFactory sqlSessionFactory = null;

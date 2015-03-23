@@ -3,7 +3,7 @@ package org.kobic.kobis.mybatis.services;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
-import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 
 public class ObservationServices extends AbstractKobisServices{
 

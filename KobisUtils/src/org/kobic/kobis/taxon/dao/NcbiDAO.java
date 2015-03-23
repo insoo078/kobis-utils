@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.dao;
+package org.kobic.kobis.taxon.dao;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -10,8 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.file.csv.obj.GbifObj;
 import org.kobic.kobis.file.csv.obj.NcbiTaxonomyNameObj;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
-import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
-import org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO;
+import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
+import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
 
 public class NcbiDAO {

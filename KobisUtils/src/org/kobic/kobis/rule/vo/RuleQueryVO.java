@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.db.vo;
+package org.kobic.kobis.rule.vo;
 
 public class RuleQueryVO {
 	private String rule_id;

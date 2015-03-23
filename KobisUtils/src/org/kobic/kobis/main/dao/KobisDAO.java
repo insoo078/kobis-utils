@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.dao;
+package org.kobic.kobis.main.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
-import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
-import org.kobic.kobis.mybatis.db.vo.PhylogeneticTreeVO;
+import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
+import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
 
 public class KobisDAO {

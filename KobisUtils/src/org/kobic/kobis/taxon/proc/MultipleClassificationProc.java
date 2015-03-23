@@ -1,17 +1,15 @@
-package org.kobic.kobis.mybatis.obj;
+package org.kobic.kobis.taxon.proc;
 
 import java.util.HashMap;
 import java.util.Iterator;
 //import java.util.List;
 import java.util.Map;
 
-import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
 //import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
-import org.kobic.kobis.mybatis.db.vo.TaxonProc;
-//import org.kobic.kobis.util.Utils;
 
-public class MultipleClassificationObj {
+public class MultipleClassificationProc {
 //	private List<NameWithTaxonIdVO> kobicTaxons;
 //	private List<NameWithTaxonIdVO> ncbiTaxons;
 //	private List<NameWithTaxonIdVO> itisTaxons;
@@ -33,7 +31,7 @@ public class MultipleClassificationObj {
 	public static final String NOTHING_TO_MAP_IN_ALL	= "002";
 	public static final String ERROR_IN_DB				= "003";
 
-	public MultipleClassificationObj(KobisDAO dao) {
+	public MultipleClassificationProc(KobisDAO dao) {
 		this.dao = dao;
 		this.message = "";
 		this.errorCode = "";
@@ -63,17 +61,17 @@ public class MultipleClassificationObj {
 		int emptyTaxons = 0;
 		for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
 			TaxonProc taxon = iter.next();
-			if( taxon.isStatus( MultipleClassificationObj.MULTIPLE_MAPPING) ) {
+			if( taxon.isStatus( MultipleClassificationProc.MULTIPLE_MAPPING) ) {
 				// 어느 하나의 분류체계에서 2개이상 매핑되는 것이 나오면 들어온 레코드 데이터는 중복으로 처리한다
 				this.message += taxon.getMessage();
-				this.errorCode = MultipleClassificationObj.MULTIPLE_MAPPING;
-			}else if( taxon.isStatus( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) )	{ emptyTaxons++;	}
+				this.errorCode = MultipleClassificationProc.MULTIPLE_MAPPING;
+			}else if( taxon.isStatus( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{ emptyTaxons++;	}
 		}
 
-		if( !errorCode.equals( MultipleClassificationObj.MULTIPLE_MAPPING ) ) {
+		if( !errorCode.equals( MultipleClassificationProc.MULTIPLE_MAPPING ) ) {
 			// 모든 분류체계에서 검색이 안되는 레코드는 현재상태를 미매핑으로 처리한다
-			if( emptyTaxons == this.taxons.size() )	this.errorCode = MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL;
-			else									this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+			if( emptyTaxons == this.taxons.size() )	this.errorCode = MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL;
+			else									this.errorCode = MultipleClassificationProc.FINE_MAPPING;
 		}
 
 		return this.errorCode;
@@ -181,13 +179,13 @@ public class MultipleClassificationObj {
 //	}
 	
 	public boolean updateDatabase( D1CommonVO d1CommonVo, String scientificName ) {
-		if( this.errorCode.equals( MultipleClassificationObj.MULTIPLE_MAPPING ) )	{
-			d1CommonVo.setMessage( "["+MultipleClassificationObj.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
+		if( this.errorCode.equals( MultipleClassificationProc.MULTIPLE_MAPPING ) )	{
+			d1CommonVo.setMessage( "["+MultipleClassificationProc.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
 			this.dao.insertUnmappedD1Common( d1CommonVo );
 			
 			return false;
-		}else if( this.errorCode.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) )	{
-			d1CommonVo.setMessage( "["+MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
+		}else if( this.errorCode.equals( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{
+			d1CommonVo.setMessage( "["+MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
 			this.dao.insertUnmappedD1Common( d1CommonVo );
 			
 			return false;
@@ -195,16 +193,16 @@ public class MultipleClassificationObj {
 			Map<String, String> map = new HashMap<String, String>();
 			for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
 				TaxonProc taxon = iter.next();
-				if( taxon.getName().equals("KOBIS") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
-				if( taxon.getName().equals("NCBI") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("ncbi_tax_id", taxon.getTaxId() );
-				if( taxon.getName().equals("ITIS") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("itis_tax_id", taxon.getTaxId() );
-				if( taxon.getName().equals("GBIF") && taxon.getCurrentStatus().equals( MultipleClassificationObj.FINE_MAPPING ) )	map.put("gbif_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals("KOBIS") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
+				if( taxon.getName().equals("NCBI") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("ncbi_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals("ITIS") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("itis_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals("GBIF") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("gbif_tax_id", taxon.getTaxId() );
 			}
 			map.put("scientific_name", scientificName );
 
 			int ret = this.dao.insertCommonSheet( d1CommonVo, map );
 			if( ret == 0 ) {
-				d1CommonVo.setMessage( "["+MultipleClassificationObj.ERROR_IN_DB+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + d1CommonVo.getAccess_num() + " 데이터베이스 반영중 오류 발생." );
+				d1CommonVo.setMessage( "["+MultipleClassificationProc.ERROR_IN_DB+"] " + this.dao.getInstitutionId(d1CommonVo.getIns_cd()) + " " + d1CommonVo.getAccess_num() + " 데이터베이스 반영중 오류 발생." );
 				return false;
 			}
 
@@ -215,9 +213,9 @@ public class MultipleClassificationObj {
 	private String getSubDetailSplitingWords( String scientificName ) {
 		String ret = null;
 
-		for(int i=0; i<MultipleClassificationObj.splitWord.length; i++) {
-			if( scientificName.contains( MultipleClassificationObj.splitWord[i] ) ) {
-				ret = MultipleClassificationObj.splitWord[i];
+		for(int i=0; i<MultipleClassificationProc.splitWord.length; i++) {
+			if( scientificName.contains( MultipleClassificationProc.splitWord[i] ) ) {
+				ret = MultipleClassificationProc.splitWord[i];
 				break;
 			}
 		}

@@ -10,12 +10,12 @@ package org.kobic.kobis.mybatis.services;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
-import org.kobic.kobis.mybatis.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
 //import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
-import org.kobic.kobis.mybatis.obj.MultipleClassificationObj;
 import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;
+import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
 
 public class CommonServices extends AbstractKobisServices{
 //	private HashMap<String, XCommonSheetObj> mapped;
@@ -105,7 +105,7 @@ public class CommonServices extends AbstractKobisServices{
 
 				String scientificName = d1CommonVo.getScientificName();
 				
-				MultipleClassificationObj classifyObj = new MultipleClassificationObj( this.getDao() );
+				MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getDao() );
 
 				classifyObj.validate( scientificName );
 
