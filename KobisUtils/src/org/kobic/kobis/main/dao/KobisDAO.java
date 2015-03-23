@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
-import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
+import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;

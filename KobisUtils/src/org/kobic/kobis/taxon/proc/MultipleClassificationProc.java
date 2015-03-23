@@ -6,8 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.kobic.kobis.main.dao.KobisDAO;
-import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
-//import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
+import org.kobic.kobis.main.vo.D1CommonVO;
 
 public class MultipleClassificationProc {
 //	private List<NameWithTaxonIdVO> kobicTaxons;

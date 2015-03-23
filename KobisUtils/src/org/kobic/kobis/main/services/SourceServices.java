@@ -1,11 +1,11 @@
-package org.kobic.kobis.mybatis.services;
+package org.kobic.kobis.main.services;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.main.dao.KobisDAO;
 
-public class EtcServices extends AbstractKobisServices{
+public class SourceServices extends AbstractKobisServices{
 
-	public EtcServices(String insCd, XSSFSheet sheet, KobisDAO dao) {
+	public SourceServices(String insCd, XSSFSheet sheet, KobisDAO dao) {
 		super(insCd, sheet, dao);
 		// TODO Auto-generated constructor stub
 	}

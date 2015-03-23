@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.services;
+package org.kobic.kobis.main.services;
 
 //import java.io.BufferedWriter;
 //import java.io.FileWriter;
@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 import org.kobic.kobis.main.dao.KobisDAO;
-import org.kobic.kobis.mybatis.db.vo.D1CommonVO;
+import org.kobic.kobis.main.vo.D1CommonVO;
 //import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;

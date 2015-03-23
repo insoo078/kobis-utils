@@ -1,4 +1,4 @@
-package org.kobic.kobis.mybatis.db.vo;
+package org.kobic.kobis.main.vo;
 
 import java.lang.reflect.InvocationTargetException;
 

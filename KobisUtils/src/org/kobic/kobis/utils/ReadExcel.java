@@ -10,9 +10,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
 import org.kobic.kobis.main.dao.KobisDAO;
+import org.kobic.kobis.main.services.CommonServices;
+import org.kobic.kobis.main.services.ObservationServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
-import org.kobic.kobis.mybatis.services.CommonServices;
-import org.kobic.kobis.mybatis.services.ObservationServices;
 
 public class ReadExcel{
 	private KobisDAO dao;
