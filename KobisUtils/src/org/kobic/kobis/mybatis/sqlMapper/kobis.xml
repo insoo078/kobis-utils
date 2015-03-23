@@ -160,10 +160,7 @@
 		INSERT INTO ITIS.D1_Source( accession_num, source_id, source_type, disease )
 		VALUES( #{access_num}, SF_GET_NEW_SOURCE_ID(#{access_num}), #{source_type}, #{disease} )
 	</insert>
-	
-	
-	<!-- 이곳부터 D1_Seed 부터 	-->
-	
+  	
 	<insert id="insertD1Seed" parameterType="org.kobic.kobis.file.excel.obj.XSeedSheetObj">
 		INSERT INTO ITIS.D1_Seed( accession_num, seed_id, seed_sttus )
 		VALUES( #{access_num}, SF_GET_NEW_SEED_ID(#{access_num}), #{seed_status} )
@@ -173,8 +170,8 @@
 		INSERT INTO ITIS.D1_Embryo( accession_num, embryo_id, embryo_type )
 		VALUES( #{access_num}, SF_GET_NEW_EMBRYO_ID(#{access_num}), #{embryo_type} )
 	</insert>
-		
-	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="org.kobic.kobis.file.excel.obj.XEDnaRnaProteinDerivativesSheetObj">
+
+	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj">
 		INSERT INTO ITIS.D1_DNA_RNA_Protein_Derivatives
 		( 
 			accession_num, derivatives_id, source, detail_type
@@ -225,17 +222,17 @@
 		)
 		VALUES(
 			#{access_num}, SF_GET_NEW_DNA_SEQUENCE_ID(#{access_num}), #{source}, #{molecular_type}, #{data_type}
-			, #{gene_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url}
+			, #{gene_name}, #{accession_no}, #{sequence.sequence}, #{open_yn}, #{open_url}
 			, #{gene_full_naem}, #{gene_alias} 
 		)
 	</insert>
-	
+
 	<insert id="insertD1Etc" parameterType="org.kobic.kobis.file.excel.obj.XEtcSheetObj">
 		INSERT INTO ITIS.D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_ETC_EXPRESSION_ID(#{access_num}), #{description}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<insert id="insertD1Extraction" parameterType="org.kobic.kobis.file.excel.obj.XExtractionSheetObj">
+	<insert id="insertD1Extraction" parameterType="org.kobic.kobis.file.excel.obj.XExtractSheetObj">
 		INSERT INTO ITIS.D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
 		VALUES( #{access_num}, SF_GET_NEW_EXTRACT_EXPRESSION_ID(#{access_num}), #{source}, #{solvent}, #{extract_time} )
 	</insert>
