@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 
-import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.rule.dao.RuleDAO;
@@ -43,7 +42,7 @@ public class Rule {
 
 //				if( XCommonSheetObj.class.getField(name) != null ) {
 			        Method getter = pd.getReadMethod();
-			        Object value = getter.invoke( obj);
+			        Object value = getter.invoke( obj );
 			        params.addParam( name, value );
 //				}
 		    }
@@ -78,13 +77,16 @@ public class Rule {
 	}
 
 	public boolean rule( AbstractSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
-		RuleParamObj ruleObj = this.makeParams( obj );
-		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
+		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd, obj.getClass().getName() );
 
-		for(Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext();) {
-			LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
+		if( ruleList.size() > 0 ) {
+			RuleParamObj ruleObj = this.makeParams( obj );
+	
+			for( Iterator<RuleQueryVO> iter = ruleList.iterator(); iter.hasNext(); ) {
+				LexicalInterpreter.getInstance().interpret( iter.next(), ruleObj );
+			}
+			this.update( obj, ruleObj );
 		}
-		this.update( obj, ruleObj );
 
 		return true;
 	}

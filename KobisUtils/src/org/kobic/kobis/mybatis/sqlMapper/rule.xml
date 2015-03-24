@@ -11,10 +11,10 @@
 		<id column="rule"			property="rule"/>
 	</resultMap>
 
-	<select id="getRulesByInsId" parameterType="java.lang.String" resultMap="RuleMap">
+	<select id="getRulesByInsId" parameterType="java.util.Map" resultMap="RuleMap">
 		SELECT
 			*
 		FROM T1_RuleTable
-		WHERE ins_cd=#{ins_cd}
+		WHERE ins_cd=#{ins_cd} AND sheetName=#{className}
 	</select>
 </mapper>
