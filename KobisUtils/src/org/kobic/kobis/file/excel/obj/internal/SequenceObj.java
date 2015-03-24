@@ -4,6 +4,7 @@ public class SequenceObj {
 	private String geneName;
 	private String accessionNo;
 	private String sequence;
+
 	public String getGeneName() {
 		return geneName;
 	}

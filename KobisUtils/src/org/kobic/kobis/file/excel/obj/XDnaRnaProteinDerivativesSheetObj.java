@@ -1,11 +1,13 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.SampleObj;
 import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 
+@Alias("D1_DnaRnaProteinDerivatives")
 public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
 	private String source;
 	private String detailType;
@@ -13,6 +15,7 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
 	private StoreObj store;
 	private SampleObj sample;
 	private DistPatentReferenceObj extra;
+
 	public String getSource() {
 		return source;
 	}
@@ -32,18 +35,21 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
 		this.depositType = depositType;
 	}
 	public StoreObj getStore() {
+		if( this.store == null )	this.store = new StoreObj();
 		return store;
 	}
 	public void setStore(StoreObj store) {
 		this.store = store;
 	}
 	public SampleObj getSample() {
+		if( this.sample == null )	this.sample = new SampleObj();
 		return sample;
 	}
 	public void setSample(SampleObj sample) {
 		this.sample = sample;
 	}
 	public DistPatentReferenceObj getExtra() {
+		if( this.extra == null )	this.extra = new DistPatentReferenceObj();
 		return extra;
 	}
 	public void setExtra(DistPatentReferenceObj extra) {
@@ -53,18 +59,18 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
 	public XDnaRnaProteinDerivativesSheetObj getInstance( XSSFRow row ) {
 		XDnaRnaProteinDerivativesSheetObj obj = new XDnaRnaProteinDerivativesSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setSource( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setDetailType( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setDepositType( row.getCell(i).toString() );
-			else if( i == 4 )	obj.getSample().setSampleType( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getSample().setSampleDetail( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getSample().setSampleEtc( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getExtra().getDist().setDistYn( row.getCell(i).toString() );
-			else if( i == 8 )	obj.getExtra().getDist().setDistUrl( row.getCell(i).toString() );
-			else if( i == 9 )	obj.getExtra().getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 10 )	obj.getExtra().getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 11 )	obj.getExtra().getRef().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(						this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.setSource(							this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.setDetailType(						this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.setDepositType(						this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.getSample().setSampleType(			this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getSample().setSampleDetail(		this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getSample().setSampleEtc(			this.getVal(row.getCell(i) ) );
+			else if( i == 7 )	obj.getExtra().getDist().setDistYn(		this.getVal(row.getCell(i) ) );
+			else if( i == 8 )	obj.getExtra().getDist().setDistUrl(	this.getVal(row.getCell(i) ) );
+			else if( i == 9 )	obj.getExtra().getPatent().setParentNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 10 )	obj.getExtra().getPatent().setRegNo(	this.getVal(row.getCell(i) ) );
+			else if( i == 11 )	obj.getExtra().getRef().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}

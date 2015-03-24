@@ -4,6 +4,7 @@ public class SampleObj {
 	private String sampleType;
 	private String sampleDetail;
 	private String sampleEtc;
+
 	public String getSampleType() {
 		return sampleType;
 	}

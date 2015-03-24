@@ -1,9 +1,7 @@
 package org.kobic.kobis.file.excel.obj;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
-import org.kobic.kobis.util.Utils;
 
 public class XCommonSheetObj extends AbstractSheetObj{
 	private String family;
@@ -251,13 +249,13 @@ public class XCommonSheetObj extends AbstractSheetObj{
 		return line;
 	}
 
-	private String getVal( XSSFCell cell ) {
-		String ret = "";
-//		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replace("\'", "\\\'");
-		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replaceAll("'","\\\\'");
-		
-		return ret;
-	}
+//	private String getVal( XSSFCell cell ) {
+//		String ret = "";
+////		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replace("\'", "\\\'");
+//		if( cell != null ) ret = Utils.nullToEmpty( cell.toString() ).replaceAll("'","\\\\'");
+//		
+//		return ret;
+//	}
 
 	@Override
 	public XCommonSheetObj getInstance( XSSFRow row ) {

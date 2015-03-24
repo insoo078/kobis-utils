@@ -8,11 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
-import org.kobic.kobis.mybatis.dao.RuleDAO;
-import org.kobic.kobis.mybatis.db.vo.RuleQueryVO;
+import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
+import org.kobic.kobis.rule.dao.RuleDAO;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 import org.kobic.kobis.rule.obj.RuleParamObj;
+import org.kobic.kobis.rule.vo.RuleQueryVO;
 
 public class Rule {
 	private String insCd;
@@ -28,7 +29,7 @@ public class Rule {
 		return this.dao;
 	}
 
-	private RuleParamObj makeParams( XCommonSheetObj obj ) {
+	private RuleParamObj makeParams( AbstractSheetObj obj ) {
 		RuleParamObj params = null;
 
 		BeanInfo info;
@@ -54,7 +55,7 @@ public class Rule {
 		return params;
 	}
 
-	private void update( XCommonSheetObj obj, RuleParamObj params ) throws Exception {
+	private void update( AbstractSheetObj obj, RuleParamObj params ) throws Exception {
 		BeanInfo info;
 		try {
 			info = Introspector.getBeanInfo(obj.getClass(), Object.class);
@@ -76,7 +77,7 @@ public class Rule {
 		return;
 	}
 
-	public boolean rule( XCommonSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
+	public boolean rule( AbstractSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
 		RuleParamObj ruleObj = this.makeParams( obj );
 		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd );
 

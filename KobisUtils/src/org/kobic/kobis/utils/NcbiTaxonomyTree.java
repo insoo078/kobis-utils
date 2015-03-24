@@ -19,9 +19,9 @@ import java.util.concurrent.CountDownLatch;
 
 import org.kobic.kobis.file.csv.obj.GbifObj;
 import org.kobic.kobis.file.csv.obj.NcbiTaxonomyNameObj;
-import org.kobic.kobis.mybatis.dao.KobisDAO;
-import org.kobic.kobis.mybatis.dao.NcbiDAO;
+import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
+import org.kobic.kobis.taxon.dao.NcbiDAO;
 import org.kobic.kobis.thread.NcbiTaxonomyNameThread;
 import org.kobic.kobis.thread.NcbiTaxonomyNodeThread;
 

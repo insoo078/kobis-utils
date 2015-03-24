@@ -4,6 +4,13 @@ public class DistPatentReferenceObj {
 	private DistributionObj dist;
 	private PatentObj patent;
 	private ReferenceObj ref;
+	
+	public DistPatentReferenceObj() {
+		this.dist = new DistributionObj();
+		this.patent = new PatentObj();
+		this.ref = new ReferenceObj();
+	}
+
 	public DistributionObj getDist() {
 		return dist;
 	}

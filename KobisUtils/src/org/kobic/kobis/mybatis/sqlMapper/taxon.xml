@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Taxon">
+	<resultMap id="PhylogeneticMap" type="org.kobic.kobis.taxon.vo.PhylogeneticTreeVO">
+		<id column="code"		property="code"/>
+		<id column="kingdomr"	property="kingdomr"/>
+		<id column="kingdom_id" property="kingdom_id"/>
+		<id column="phylum"		property="phylum"/>
+		<id column="phylum_id"	property="phylum_id"/>
+		<id column="class"		property="clas"/>
+		<id column="clas_id"	property="class_id"/>
+		<id column="ordered"	property="ordered"/>
+		<id column="order_id"	property="order_id"/>
+		<id column="family"		property="family"/>
+		<id column="family_id"	property="family_id"/>
+		<id column="genus"		property="genus"/>
+		<id column="genus_id"	property="genus_id"/>
+		<id column="species"	property="species"/>
+		<id column="species_id"	property="species_id"/>
+		<id column="ssp"		property="ssp"/>
+		<id column="ssp_id"		property="ssp_id"/>
+		<id column="var"		property="var"/>
+		<id column="var_id"		property="var_id"/>
+		<id column="f"			property="f"/>
+	</resultMap>
+	
+	<resultMap id="TaxonMap" type="org.kobic.kobis.taxon.vo.NameWithTaxonIdVO">
+		<id column="name_txt"	property="name_txt"/>
+		<id column="tax_id"		property="tax_id"/>
+	</resultMap>
+
+	<select id="getPhylogeneticTreeByGenus" parameterType="java.lang.String" resultMap="PhylogeneticMap">
+		SELECT
+			*
+		FROM X1_PhylogeneticTree
+		WHERE UPPER(GENUS) LIKE CONCAT(UPPER(#{genus}), + '%')
+	</select>
+
+	<select id="getPhylogeneticTree" parameterType="java.util.Map" resultMap="PhylogeneticMap">
+		SELECT
+			*
+		FROM X1_PhylogeneticTree
+		WHERE GENUS=${genus} AND 
+		(
+			UPPER(SSP)=UPPER(#{ssp}) OR UPPER(VAR)=UPPER(#{var}) OR UPPER(F)=UPPER(#{f})
+		)
+	</select>
+
+	<select id="getScientificNameFromNcbiTaxonomy" parameterType="java.lang.String" resultMap="TaxonMap">
+		SELECT
+			name_txt
+			,tax_id
+		FROM X1_NcbiTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+	
+	<select id="getScientificNameFromGbifTaxonomy" parameterType="java.lang.String" resultMap="TaxonMap">
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_GbifTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+	<select id="getScientificNameFromItisTaxonomy" parameterType="java.lang.String" resultMap="TaxonMap">
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_ItisTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+	<select id="getScientificNameFromKobicTaxonomy" parameterType="java.lang.String" resultMap="TaxonMap">
+		SELECT
+			name_txt
+			, tax_id
+		FROM X1_KobicTaxonomyName
+		WHERE MATCH(name_txt) AGAINST(#{scientific_name} IN BOOLEAN MODE)
+		HAVING name_txt=#{scientfic_name}
+	</select>
+
+	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT
+			tab_id 
+		FROM T1_ClassificationSystemTable
+		<where>
+			<if test="KOBIS_CODE != null">KOBIS_CODE=#{KOBIS_CODE}</if>
+			<if test="ncbi_tax_id != null">AND ncbi_tax_id=#{ncbi_tax_id}</if>
+			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
+			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
+			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
+		</where>
+	</select>
+
+<!--
+	<select id="getScientificNameFromKobicTaxonomy" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+	</select>
+ 	<select id="getScientificNameFromKobicTaxonomyPure" parameterType="java.lang.String" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT 
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND SSP='종소명없음|국명없음' AND VAR='종소명없음|국명없음' AND F='종소명없음|국명없음'
+	</select>
+
+	<select id="getScientificNameFromKobicTaxonomyDetail" parameterType="java.util.Map" resultType="org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO">
+		SELECT
+			CODE tax_id
+			, CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) name_txt
+		FROM X1_PhylogeneticTree
+		WHERE CONCAT( trim(substring_index(genus, '|', 1)), ' ', trim(substring_index(species, '|', 1))) = #{scientific_name}
+		AND ( SSP LIKE CONCAT(#{detail}, '%') OR VAR LIKE CONCAT(#{detail}, '%') OR F LIKE CONCAT( #{detail}, '%') )
+	</select>
+ -->
+</mapper>

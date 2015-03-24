@@ -1,11 +1,13 @@
 package org.kobic.kobis.file.excel.obj;
 
+import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.OpenObj;
 import org.kobic.kobis.file.excel.obj.internal.PatentObj;
 import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
 
+@Alias("D1_Structure")
 public class XStructureSheetObj extends AbstractSheetObj{
 	private String source;
 	private String sturctureType;
@@ -48,6 +50,7 @@ public class XStructureSheetObj extends AbstractSheetObj{
 	}
 
 	public OpenObj getOpen() {
+		if( this.open == null )	this.open = new OpenObj();
 		return open;
 	}
 
@@ -56,6 +59,7 @@ public class XStructureSheetObj extends AbstractSheetObj{
 	}
 
 	public PatentObj getPatent() {
+		if( this.patent == null )	this.patent = new PatentObj();
 		return patent;
 	}
 
@@ -64,6 +68,7 @@ public class XStructureSheetObj extends AbstractSheetObj{
 	}
 
 	public ReferenceObj getReference() {
+		if( this.reference == null )	this.reference = new ReferenceObj();
 		return reference;
 	}
 
@@ -76,16 +81,16 @@ public class XStructureSheetObj extends AbstractSheetObj{
 	public XStructureSheetObj getInstance( XSSFRow row ) {
 		XStructureSheetObj obj = new XStructureSheetObj();
 		for(int i=row.getFirstCellNum(); i<=row.getLastCellNum(); i++) {
-			if( i == 0 )		obj.setAccess_num( row.getCell(i).toString() );
-			else if( i == 1 )	obj.setSource( row.getCell(i).toString() );
-			else if( i == 2 )	obj.setSturctureType( row.getCell(i).toString() );
-			else if( i == 3 )	obj.setAccessionNo( row.getCell(i).toString() );
-			else if( i == 4 )	obj.setPdbFormat( row.getCell(i).toString() );
-			else if( i == 5 )	obj.getOpen().setOpenYn( row.getCell(i).toString() );
-			else if( i == 6 )	obj.getOpen().setOpenUrl( row.getCell(i).toString() );
-			else if( i == 7 )	obj.getPatent().setParentNo( row.getCell(i).toString() );
-			else if( i == 8 )	obj.getPatent().setRegNo( row.getCell(i).toString() );
-			else if( i == 9 )	obj.getReference().setReference( row.getCell(i).toString() );
+			if( i == 0 )		obj.setAccess_num(					this.getVal(row.getCell(i) ) );
+			else if( i == 1 )	obj.setSource(						this.getVal(row.getCell(i) ) );
+			else if( i == 2 )	obj.setSturctureType(				this.getVal(row.getCell(i) ) );
+			else if( i == 3 )	obj.setAccessionNo(					this.getVal(row.getCell(i) ) );
+			else if( i == 4 )	obj.setPdbFormat(					this.getVal(row.getCell(i) ) );
+			else if( i == 5 )	obj.getOpen().setOpenYn(			this.getVal(row.getCell(i) ) );
+			else if( i == 6 )	obj.getOpen().setOpenUrl(			this.getVal(row.getCell(i) ) );
+			else if( i == 7 )	obj.getPatent().setParentNo(		this.getVal(row.getCell(i) ) );
+			else if( i == 8 )	obj.getPatent().setRegNo(			this.getVal(row.getCell(i) ) );
+			else if( i == 9 )	obj.getReference().setReference(	this.getVal(row.getCell(i) ) );
 		}
 		return obj;
 	}
