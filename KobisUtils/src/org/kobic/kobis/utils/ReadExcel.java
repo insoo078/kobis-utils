@@ -131,7 +131,7 @@ public class ReadExcel{
 //		String header = "cov";
 
 //		-o /Users/lion/Desktop -i /Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx -header INS00001
-		
+
 		String[][] params = new String[][]{
 //				{"-o", "/Users/insoo078/Desktop", "-i", "/Users/insoo078/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
 				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"},
