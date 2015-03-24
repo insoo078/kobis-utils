@@ -1,4 +1,4 @@
-package org.kobic.kobis.rule.interpreter.junit;
+package junit.test.rule;
 
 import static org.junit.Assert.*;
 

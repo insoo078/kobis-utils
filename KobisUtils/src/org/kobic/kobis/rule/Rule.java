@@ -12,7 +12,7 @@ import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.rule.dao.RuleDAO;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
-import org.kobic.kobis.rule.obj.RuleParamObj;
+import org.kobic.kobis.rule.vo.RuleParamObj;
 import org.kobic.kobis.rule.vo.RuleQueryVO;
 
 public class Rule {

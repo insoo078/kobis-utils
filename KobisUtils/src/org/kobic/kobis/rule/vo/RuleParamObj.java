@@ -1,4 +1,4 @@
-package org.kobic.kobis.rule.obj;
+package org.kobic.kobis.rule.vo;
 
 import java.util.Arrays;
 import java.util.HashMap;

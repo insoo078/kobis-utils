@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.kobic.kobis.rule.obj.RuleParamObj;
+import org.kobic.kobis.rule.vo.RuleParamObj;
 import org.kobic.kobis.rule.vo.RuleQueryVO;
 import org.kobic.kobis.util.Utils;
 
