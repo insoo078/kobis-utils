@@ -138,7 +138,7 @@ public class KobisDAO implements KobisMapper{
 
     		ret += session.insert( "Kobis.insertD1Common", d1CommonVo );
 
-    		if( Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() )	 {
+    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() )	 {
     			Map<String, String> synonynMap = new HashMap<String, String>();
     			synonynMap.put("accession_num", d1CommonVo.getAccess_num() );
     			synonynMap.put("synonym", d1CommonVo.getSynonym() );

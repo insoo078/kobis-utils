@@ -14,14 +14,14 @@
 		WHERE accession_num=#{accession_num}
 	</select>
 
-	<insert id="insertD1Common" parameterType="D1_Common">
+ 	<insert id="insertD1Common" parameterType="D1_Common">
 		INSERT INTO D1_Common(
 			accession_num, kobis_id, tab_id, common_name, kor_name
 			, line_name, variety_name, taxonomy, institution
 			, category_1, category_2, category_3, detail_url, barcode, keywords, img_url_1, ins_user_email
 			, family, genus, subgenus, species, in_species_type, in_species_name, ins_cd, in_dt
 		) VALUES(
-			#{access_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{code}, #{common_name}, #{kor_name}
+			#{access_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{ins_cd}), #{code}, #{common_name}, #{kor_name}
 			, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}
 			, #{category_1}, #{category_2}, #{category_3}, #{detail_url}, null, #{keywords}, #{img_url_1}, #{ins_user_email}
 			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}, CURRENT_TIMESTAMP()
@@ -30,7 +30,7 @@
 
 	<insert id="insertSynonyms" parameterType="java.util.Map">
 		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
-		VALUES( '${accession_num}', SF_GET_NEW_SYNONYM_ID('${accession_num}'), '${synonym}' )
+		VALUES( #{accession_num}, SF_GET_NEW_SYNONYM_ID(#{accession_num}), #{synonym} )
 	</insert>
 
 	<insert id="insertD1Observation" parameterType="D1_Observation">
@@ -171,10 +171,10 @@
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
 			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
 		) VALUES(
-			'${access_num}', '${family}', '${genus}', '${subgenus}', '${species}', '${synonym}', '${common_name}', '${kor_name}'
-			, '${in_species_type}', '${in_species_name}', '${line_name}', '${variety_name}', '${taxonomy}', '${institution}', '${category_1}'
-			, '${category_2}', '${category_3}', '${detail_url}', '${gene_name}', '${accession_no}', '${sequence}', '${keywords}'
-			, '${img_url_1}', '${ins_user_email}', '${ins_cd}', '${message}'
+			#{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
+			, #{in_species_type}, #{in_species_name}, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}, #{category_1}
+			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
+			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{message}
 		)
 	</insert>
 
@@ -184,10 +184,10 @@
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
 			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, tab_id
 		) VALUES(
-			'${access_num}', '${family}', '${genus}', '${subgenus}', '${species}', '${synonym}', '${common_name}', '${kor_name}'
-			, '${in_species_type}', '${in_species_name}', '${line_name}', '${variety_name}', '${taxonomy}', '${institution}', '${category_1}'
-			, '${category_2}', '${category_3}', '${detail_url}', '${gene_name}', '${accession_no}', '${sequence}', '${keywords}'
-			, '${img_url_1}', '${ins_user_email}', '${ins_cd}', '${code}'
+			#{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
+			, #{in_species_type}, #{in_species_name}, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}, #{category_1}
+			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
+			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{code}
 		)
 	</insert>
 </mapper>
