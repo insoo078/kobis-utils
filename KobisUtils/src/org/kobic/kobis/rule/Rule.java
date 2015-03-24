@@ -77,7 +77,7 @@ public class Rule {
 	}
 
 	public boolean rule( AbstractSheetObj obj ) throws NoSuchMethodException, SecurityException, Exception {
-		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd, obj.getClass().getName() );
+		List<RuleQueryVO> ruleList = this.dao.getRulesByInsId( this.insCd, obj.getClass().getSimpleName() );
 
 		if( ruleList.size() > 0 ) {
 			RuleParamObj ruleObj = this.makeParams( obj );

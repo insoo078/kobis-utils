@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
+import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
@@ -18,7 +19,7 @@ import org.kobic.kobis.util.Utils;
  * @author insoo078
  *
  */
-public class KobisDAO {
+public class KobisDAO implements KobisMapper{
 	private SqlSessionFactory sqlSessionFactory = null;
 	 
     public KobisDAO(SqlSessionFactory sqlSessionFactory){
@@ -45,6 +46,7 @@ public class KobisDAO {
     	return list;
     }
 
+    @Override
     public String getInstitutionId(String insCd) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	String result = null;
@@ -56,7 +58,7 @@ public class KobisDAO {
     	
     	return Utils.emptyToNull( result );
     }
-    
+    @Override
     public String getAccessionNum(String accession_num) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	String result = null;
@@ -68,7 +70,7 @@ public class KobisDAO {
     	
     	return Utils.emptyToNull( result );
     }
-
+    @Override
     public List<NameWithTaxonIdVO> getScientificNameFromNcbiTaxonomy(String scientfic_name) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
@@ -80,6 +82,7 @@ public class KobisDAO {
 
     	return result;
     }
+    @Override
     public List<NameWithTaxonIdVO> getScientificNameFromGbifTaxonomy(String scientfic_name) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
@@ -92,6 +95,7 @@ public class KobisDAO {
     	
     	return result;
     }
+    @Override
     public List<NameWithTaxonIdVO> getScientificNameFromItisTaxonomy(String scientfic_name) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
@@ -103,7 +107,7 @@ public class KobisDAO {
     	
     	return result;
     }
-
+    @Override
     public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomy(String scientfic_name) {
     	SqlSession session = this.sqlSessionFactory.openSession();
     	List<NameWithTaxonIdVO> result = null;
@@ -115,16 +119,16 @@ public class KobisDAO {
 
     	return result;
     }
-
+    @Override
     public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( true );
+    	SqlSession session = this.sqlSessionFactory.openSession( false );
 
     	int ret = 0;
     	try {
 			// 기존 동일한 분류체계가 T1_ClassificationSystemTable에 존재하는지 여부를 조사
     		String tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
 
-    		if( tab_id.isEmpty() ) {
+    		if( Utils.nullToEmpty( tab_id ).isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
     			ret += session.insert( "Taxon.insertT1ClassificationSystemTable", crossTaxonMap);
     			
@@ -146,14 +150,15 @@ public class KobisDAO {
     	}catch(Exception e) {
     		ret = 0;
     		session.rollback();
+    		e.printStackTrace();
     	}finally{
     		session.close();
     	}
     	return ret;
     }
-
+    @Override
     public int insertUnmappedD1Common( D1CommonVO commonSheet ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( true );
+    	SqlSession session = this.sqlSessionFactory.openSession( false );
 
     	int ret = 0;
     	try {
@@ -168,9 +173,9 @@ public class KobisDAO {
     	}
     	return ret;
     }
-
+    @Override
     public int insertMappedD1Common( D1CommonVO commonSheet ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( true );
+    	SqlSession session = this.sqlSessionFactory.openSession( false );
 
     	int ret = 0;
     	try {
@@ -185,9 +190,9 @@ public class KobisDAO {
     	}
     	return ret;
     }
-
+    @Override
     public int insertObservation( XObservationSheetObj observationSheet ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( true );
+    	SqlSession session = this.sqlSessionFactory.openSession( false );
 
     	int ret = 0;
     	try {

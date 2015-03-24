@@ -8,6 +8,11 @@ public class TaxonProc {
 	private String name;
 	private String currentStatus;
 	private List<NameWithTaxonIdVO> list;
+	
+	public static final String CLS_TAB_KOBIC = "KOBIC";
+	public static final String CLS_TAB_ITIS = "ITIS";
+	public static final String CLS_TAB_GBIF = "GBIF";
+	public static final String CLS_TAB_NCBI = "NCBI";
 
 	public TaxonProc(String name, List<NameWithTaxonIdVO> list) {
 		this.name = name;

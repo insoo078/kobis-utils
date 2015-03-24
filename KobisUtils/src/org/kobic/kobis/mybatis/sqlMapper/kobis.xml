@@ -21,7 +21,7 @@
 			, category_1, category_2, category_3, detail_url, barcode, keywords, img_url_1, ins_user_email
 			, family, genus, subgenus, species, in_species_type, in_species_name, ins_cd, in_dt
 		) VALUES(
-			#{accession_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{ins_cd}), #{code}, #{common_name}, #{kor_name}
+			#{access_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{code}, #{common_name}, #{kor_name}
 			, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}
 			, #{category_1}, #{category_2}, #{category_3}, #{detail_url}, null, #{keywords}, #{img_url_1}, #{ins_user_email}
 			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}, CURRENT_TIMESTAMP()

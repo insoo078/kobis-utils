@@ -48,10 +48,10 @@ public class MultipleClassificationProc {
 //	}
 
 	public String validate( String scientificName ){
-		this.taxons.put( "KOBIC", new TaxonProc( "KOBIC", this.dao.getScientificNameFromKobicTaxonomy( scientificName ) ) );
-		this.taxons.put( "NCBI", new TaxonProc( "KOBIC", this.dao.getScientificNameFromNcbiTaxonomy( scientificName ) ) );
-		this.taxons.put( "ITIS", new TaxonProc( "KOBIC", this.dao.getScientificNameFromItisTaxonomy( scientificName ) ) );
-		this.taxons.put( "GBIF", new TaxonProc( "KOBIC", this.dao.getScientificNameFromGbifTaxonomy( scientificName ) ) );
+		this.taxons.put( TaxonProc.CLS_TAB_KOBIC,	new TaxonProc( TaxonProc.CLS_TAB_KOBIC,	this.dao.getScientificNameFromKobicTaxonomy( scientificName ) ) );
+		this.taxons.put( TaxonProc.CLS_TAB_NCBI,	new TaxonProc( TaxonProc.CLS_TAB_NCBI,	this.dao.getScientificNameFromNcbiTaxonomy( scientificName ) ) );
+		this.taxons.put( TaxonProc.CLS_TAB_ITIS,	new TaxonProc( TaxonProc.CLS_TAB_ITIS,	this.dao.getScientificNameFromItisTaxonomy( scientificName ) ) );
+		this.taxons.put( TaxonProc.CLS_TAB_GBIF,	new TaxonProc( TaxonProc.CLS_TAB_GBIF,	this.dao.getScientificNameFromGbifTaxonomy( scientificName ) ) );
 
 		return this.errorCode1Check();
 	}
@@ -192,10 +192,10 @@ public class MultipleClassificationProc {
 			Map<String, String> map = new HashMap<String, String>();
 			for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
 				TaxonProc taxon = iter.next();
-				if( taxon.getName().equals("KOBIS") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("KOBIS_CODE", taxon.getTaxId() );
-				if( taxon.getName().equals("NCBI") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("ncbi_tax_id", taxon.getTaxId() );
-				if( taxon.getName().equals("ITIS") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("itis_tax_id", taxon.getTaxId() );
-				if( taxon.getName().equals("GBIF") && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("gbif_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals(TaxonProc.CLS_TAB_KOBIC ) && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )	map.put("kobic_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals(TaxonProc.CLS_TAB_NCBI ) && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )		map.put("ncbi_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals(TaxonProc.CLS_TAB_ITIS ) && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )		map.put("itis_tax_id", taxon.getTaxId() );
+				if( taxon.getName().equals(TaxonProc.CLS_TAB_GBIF ) && taxon.getCurrentStatus().equals( MultipleClassificationProc.FINE_MAPPING ) )		map.put("gbif_tax_id", taxon.getTaxId() );
 			}
 			map.put("scientific_name", scientificName );
 

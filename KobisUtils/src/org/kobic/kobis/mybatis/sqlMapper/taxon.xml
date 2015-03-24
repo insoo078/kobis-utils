@@ -83,12 +83,20 @@
 		HAVING name_txt=#{scientfic_name}
 	</select>
 
+	<insert id="insertT1ClassificationSystemTable" parameterType="java.util.Map">
+		INSERT INTO T1_ClassificationSystemTable(
+			kobic_tax_id, ncbi_tax_id, itis_tax_id, gbif_tax_id, scientific_name
+		) VALUES(
+			#{kobic_tax_id}, #{ncbi_tax_id}, #{itis_tax_id}, #{gbif_tax_id}, #{scientific_name}
+		)
+	</insert>
+
 	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
 		SELECT
 			tab_id 
 		FROM T1_ClassificationSystemTable
 		<where>
-			<if test="KOBIS_CODE != null">KOBIS_CODE=#{KOBIS_CODE}</if>
+			<if test="KOBIS_CODE != null">kobic_tax_id=#{kobic_tax_id}</if>
 			<if test="ncbi_tax_id != null">AND ncbi_tax_id=#{ncbi_tax_id}</if>
 			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
 			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
