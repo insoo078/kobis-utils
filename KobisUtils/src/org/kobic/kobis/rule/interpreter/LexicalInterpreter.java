@@ -70,6 +70,16 @@ public class LexicalInterpreter {
 			throw new RuntimeException("String variable only compare equal or not-equal");
 		}
 	}
+
+	private boolean compare(Boolean oper1, Boolean oper2, int opcode) throws Exception{
+		if( opcode == KeywordDictionary.EQUAL ) {
+			return oper1.equals(oper2);
+		}else if( opcode == KeywordDictionary.NOT_EQUAL ){
+			return !oper1.equals(oper2);
+		}else{
+			throw new RuntimeException("Boolean variable only compare equal or not-equal");
+		}
+	}
 	
 	private boolean compare(Double oper1, Double oper2, int opcode) throws Exception{
 		if( opcode == KeywordDictionary.EQUAL ) {
@@ -104,14 +114,16 @@ public class LexicalInterpreter {
 			
 			if( m.find() ) {
 				if( m.groupCount() != 3 ) throw new RuntimeException( "잘못된 문장입니다. [oprand] operator [operand] : " + operations[i] );
-				String oper1 = m.group(1);
-				String oper2 = m.group(3);
+				String oper1 = m.group(1).trim();
+				String oper2 = m.group(3).trim();
 				int opcode = Integer.valueOf( KeywordDictionary.getInstance().operators.get( m.group(2) ) );
 
 				if( Utils.isCharacterSequence(oper1, KeywordDictionary.DBL_QUOTATION) && Utils.isCharacterSequence(oper2, KeywordDictionary.DBL_QUOTATION) )
 					booleanCompare.add( this.compare(oper1, oper2, opcode) );
 				else if( Utils.isNumeric( oper1 ) && Utils.isNumeric( oper2 ) )
 					booleanCompare.add( this.compare( Double.valueOf( oper1 ), Double.valueOf( oper2 ), opcode) );
+				else if( Utils.isBoolean(oper1) && Utils.isBoolean(oper2) )
+					booleanCompare.add( this.compare( Boolean.valueOf(oper1), Boolean.valueOf( oper2 ), opcode) );
 				else
 					throw new RuntimeException("비교할 수 없는 문장입니다. 문자열끼리 비교 또는 숫자끼리 비교만 가능합니다. " + operations[i] );
 			}
@@ -148,10 +160,15 @@ public class LexicalInterpreter {
 			String methodName= m.group(1);
 			String[] params = this.functionParameters( m.group(2) );
 
-			Method method = Functions.class.getMethod( m.group(1), new Class[]{String[].class} );
+			Method method = Functions.class.getMethod( methodName, new Class[]{String[].class} );
 			Object result = method.invoke( methodName, new Object[]{params} );
 			
-			if( result instanceof String )	result = KeywordDictionary.DBL_QUOTATION + result.toString() + KeywordDictionary.DBL_QUOTATION ;
+			if( result instanceof String )	{
+				if( result.toString().toLowerCase().equals("true") || result.toString().toLowerCase().equals("false") )	
+					result = result.toString();
+				else
+					result = KeywordDictionary.DBL_QUOTATION + result.toString() + KeywordDictionary.DBL_QUOTATION ;
+			}
 			statement = statement.replace( m.group(), result.toString() );
 		}
 

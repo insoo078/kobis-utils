@@ -39,6 +39,11 @@ public class Utils {
 		return value.trim().matches("^\"(\\S|\\s)*\"$");
 	}
 	
+	public static boolean isBoolean(String bool) {
+		if( bool.toLowerCase().equals("true") || bool.toLowerCase().equals("false") )	return true;
+		return false;
+	}
+	
 	public static boolean isNumeric( String value ) {
 		return value.matches("-?\\d+(\\.\\d+)?");
 	}
@@ -53,7 +58,7 @@ public class Utils {
 	        if( !name.equals(fieldName) )	continue;
 
 	        Method getter = pd.getReadMethod();
-	        Class<?> type = pd.getPropertyType();
+//	        Class<?> type = pd.getPropertyType();
 
 	        value = getter.invoke( obj ).toString();
 	        break;

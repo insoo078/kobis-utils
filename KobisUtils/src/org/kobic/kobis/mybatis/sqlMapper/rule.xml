@@ -9,6 +9,7 @@
 		<id column="rule_type"		property="rule_type"/>
 		<id column="rule_condition"	property="rule_condition"/>
 		<id column="rule"			property="rule"/>
+		<id column="sheetName"		property="sheetName"/>
 	</resultMap>
 
 	<select id="getRulesByInsId" parameterType="java.util.Map" resultMap="RuleMap">

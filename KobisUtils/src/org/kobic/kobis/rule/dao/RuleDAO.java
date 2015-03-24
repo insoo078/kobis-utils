@@ -21,11 +21,13 @@ public class RuleDAO {
     	SqlSession session = this.sqlSessionFactory.openSession( false );
 
     	Map<String, String> map = new HashMap<String, String>();
-    	map.put( "ins_id", ins_id );
+    	map.put( "ins_cd", ins_id );
     	map.put( "className", className);
 
     	try {
-    		 list = session.selectList("Rule.getRulesByInsId", className );
+    		 list = session.selectList("Rule.getRulesByInsId", map );
+    	}catch(Exception e) {
+    		e.printStackTrace();
     	}finally{
     		session.close();
     	}

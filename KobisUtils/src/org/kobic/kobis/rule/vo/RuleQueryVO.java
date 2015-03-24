@@ -7,6 +7,7 @@ public class RuleQueryVO {
 	private String rule_type;
 	private String rule_condition;
 	private String rule;
+	private String sheetName;
 
 	public String getRule_id() {
 		return rule_id;
@@ -43,5 +44,11 @@ public class RuleQueryVO {
 	}
 	public void setRule_condition(String rule_condition) {
 		this.rule_condition = rule_condition;
+	}
+	public String getSheetName() {
+		return sheetName;
+	}
+	public void setSheetName(String sheetName) {
+		this.sheetName = sheetName;
 	}
 }
