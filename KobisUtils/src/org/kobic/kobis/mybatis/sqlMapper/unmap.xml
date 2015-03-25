@@ -7,7 +7,7 @@
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
 
-	<insert id="insertUnmappedD1Common" parameterType="D1_Common">
+	<insert id="insertT2UnmappedCommon" parameterType="D1_Common">
 		INSERT INTO T2_UnMappedCommon(
 			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,

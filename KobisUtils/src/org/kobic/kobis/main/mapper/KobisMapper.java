@@ -23,9 +23,9 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 public interface KobisMapper {
     public String getInstitutionId(String insCd);    
     public String getAccessionNum( Map<String, String> map );
-    public int insertE1Synonyms( D1CommonVO d1CommonVo );
     public int insertD1Common( D1CommonVO d1CommonVo );
-    public int insertObservation( XObservationSheetObj observationSheet );
+    public int insertD1Organ( XObservationSheetObj observationSheet );
+    public int insertD1Observation( XObservationSheetObj observationSheet );
     public int insertD1Individual( XIndividualSheetObj individualSheet );
     public int insertD1Specimen( XSpecimenSheetObj specimenSheet );
     public int insertD1Source( XSourceSheetObj sourceSheet );
@@ -41,6 +41,7 @@ public interface KobisMapper {
     public int insertD1DnaSequence( XDnaSequenceSheetObj dnaSequenceSheet );
     public int insertD1Etc( XEtcSheetObj etcSheet);
     public int insertD1Extraction( XExtractSheetObj extractionSheet );
+    public int insertE1Synonyms( D1CommonVO d1CommonVo );
     public int insertE1Culture( Map<String, String> cultureSheet );
     public int insertE1Store( Map<String, String> cultureSheet );
     public int insertE1Distribution( Map<String, String> cultureSheet );

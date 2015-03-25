@@ -94,6 +94,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );
     	int ret = 0;
     	try {
+    		// T1_ClassificationSystemTable에서 입력된 환경부, ITIS, GBIF, NCBI의 분류체계로 코드가 존재하는지 조회
     		String tab_id = taxonMapper.getT1ClassificationSystemTable( crossTaxonMap );
 
     		if( Utils.nullToEmpty( tab_id ).isEmpty() ) {
@@ -104,9 +105,11 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
         		d1CommonVo.setCode( tab_id );
     		}
     		if( !Utils.nullToEmpty( tab_id ).isEmpty() ) {
+    			// 매핑된 분류코드를 record에 삽입한뒤 D1_Common 테이블에 입력
     			ret = kobisMapper.insertD1Common(d1CommonVo);
 
 	    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
+	    			// 만약 record에 Synonym이 존재하면 E1_Synonym 테이블에 등록
 	    			kobisMapper.insertE1Synonyms(d1CommonVo);
 	    		}
     		}
@@ -129,7 +132,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		ret = kobisMapper.insertObservation(observationSheet);
+    		ret = kobisMapper.insertD1Observation(observationSheet);
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

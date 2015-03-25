@@ -72,14 +72,14 @@ public class MultipleClassificationProc {
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
 
 			System.err.println( "unmap[001]");
-			this.unmappedService.insertUnmappedD1Common( d1CommonVo );
+			this.unmappedService.insertT2UnmappedCommon( d1CommonVo );
 
 			return false;
 		}else if( this.errorCode.equals( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL+"] " + this.kobisService.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
 			
 			System.err.println( "unmap[002]");
-			this.unmappedService.insertUnmappedD1Common( d1CommonVo );
+			this.unmappedService.insertT2UnmappedCommon( d1CommonVo );
 
 			return false;
 		}else {
