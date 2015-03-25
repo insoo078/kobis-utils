@@ -7,7 +7,22 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj;
+import org.kobic.kobis.file.excel.obj.XCellStrainSheetObj;
+import org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj;
+import org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj;
+import org.kobic.kobis.file.excel.obj.XEmbryoSheetObj;
+import org.kobic.kobis.file.excel.obj.XEtcSheetObj;
+import org.kobic.kobis.file.excel.obj.XExpressionSheetObj;
+import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
+import org.kobic.kobis.file.excel.obj.XIndividualSheetObj;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
+import org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj;
+import org.kobic.kobis.file.excel.obj.XSeedSheetObj;
+import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
+import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
+import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
+import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
@@ -125,6 +140,310 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;    	
     }
+
+	@Override
+	public int insertD1Individual(XIndividualSheetObj individualSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Individual( individualSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Specimen(XSpecimenSheetObj specimenSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Specimen( specimenSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Source(XSourceSheetObj sourceSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Source( sourceSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Seed(XSeedSheetObj seedSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Seed( seedSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Embryo(XEmbryoSheetObj embryoSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Embryo( embryoSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1DnaRnaProteinDerivatives( XDnaRnaProteinDerivativesSheetObj dnaRnaProteinDerivativeSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1DnaRnaProteinDerivatives( dnaRnaProteinDerivativeSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Strain(XStrainSheetObj strainSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Strain( strainSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1CellStrain(XCellStrainSheetObj cellStrainSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1CellStrain( cellStrainSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1BodyFluid(XBodyFluidSheetObj bodyFluidSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1ProteinSequence( XProteinSequenceSheetObj proteinSequenceSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Expression(XExpressionSheetObj expressionSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Expression( expressionSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Structure(XStructureSheetObj structureSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Structure( structureSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1DnaSequence(XDnaSequenceSheetObj dnaSequenceSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Etc(XEtcSheetObj etcSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Etc( etcSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Extraction(XExtractSheetObj extractionSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Extraction( extractionSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertMappedD1Common(D1CommonVO commonSheet) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertMappedD1Common( commonSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
     
 //
 //  @Override
