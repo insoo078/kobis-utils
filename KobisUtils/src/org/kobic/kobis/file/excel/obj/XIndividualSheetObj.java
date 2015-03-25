@@ -6,12 +6,10 @@ import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 
 @Alias("D1_Individual")
-public class XIndividualSheetObj extends AbstractSheetObj{
+public class XIndividualSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private String individualType;
 	private String individualMaintenance;
 	private DistPatentReferenceObj extra;
-	
-	
 	
 	public String getIndividualType() {
 		return individualType;
@@ -66,5 +64,31 @@ public class XIndividualSheetObj extends AbstractSheetObj{
 		line += this.getExtra().getRef().getReference();
 		
 		return line;
+	}
+	
+	@Override
+	public String getDistYn() {
+		// TODO Auto-generated method stub
+		return this.getExtra().getDist().getDistYn();
+	}
+	@Override
+	public String getDistUrl() {
+		// TODO Auto-generated method stub
+		return this.getExtra().getDist().getDistUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.getExtra().getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.getExtra().getPatent().getRegNo();
+	}
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return this.getExtra().getRef().getReference();
 	}
 }

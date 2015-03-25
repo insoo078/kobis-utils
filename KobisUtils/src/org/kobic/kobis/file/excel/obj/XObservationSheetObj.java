@@ -7,7 +7,7 @@ import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.GpsObj;
 
 @Alias("D1_Observation")
-public class XObservationSheetObj extends AbstractSheetObj{
+public class XObservationSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private GpsObj gps;
 	private DistPatentReferenceObj extra;
 
@@ -59,5 +59,30 @@ public class XObservationSheetObj extends AbstractSheetObj{
 		line += this.getExtra().getRef().getReference();
 		
 		return line;
+	}
+	@Override
+	public String getDistYn() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistYn();
+	}
+	@Override
+	public String getDistUrl() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getRegNo();
+	}
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return this.extra.getRef().getReference();
 	}
 }

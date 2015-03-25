@@ -8,7 +8,7 @@ import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 
 @Alias("D1_BodyFluid")
-public class XBodyFluidSheetObj extends AbstractSheetObj{
+public class XBodyFluidSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private String bodyFluidType;
 	private CultureObj culture;
 	private StoreObj store;
@@ -85,5 +85,30 @@ public class XBodyFluidSheetObj extends AbstractSheetObj{
 		line += this.getExtra().getRef().getReference();
 		
 		return line;
+	}
+	@Override
+	public String getDistYn() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistYn();
+	}
+	@Override
+	public String getDistUrl() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getRegNo();
+	}
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return this.extra.getRef().getReference();
 	}
 }

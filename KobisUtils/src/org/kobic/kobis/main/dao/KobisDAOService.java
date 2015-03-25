@@ -7,6 +7,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.file.excel.obj.DistPatentReferenceInterface;
+import org.kobic.kobis.file.excel.obj.OpenPatentReferenceInterface;
+import org.kobic.kobis.file.excel.obj.SequenceOpenPatentReferenceInterface;
 import org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj;
 import org.kobic.kobis.file.excel.obj.XCellStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj;
@@ -23,6 +26,7 @@ import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
 import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
+import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
@@ -124,15 +128,64 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;
     }
+    
+    private Map<String, Object> getDistributionMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
+    	Map<String, Object> map = null;
+
+    	if( sheetObj instanceof DistPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("dist_yn",		dri.getDistYn());
+    		map.put("dist_url",		dri.getDistUrl());
+    	}
+    	return map;
+    }
+
+    private Map<String, Object> getPatentMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
+    	Map<String, Object> map = null;
+
+    	if( sheetObj instanceof DistPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}else if( sheetObj instanceof OpenPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		OpenPatentReferenceInterface dri = (OpenPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}else if( sheetObj instanceof SequenceOpenPatentReferenceInterface) {
+    		map = new HashMap<String, Object>();
+
+    		SequenceOpenPatentReferenceInterface dri = (SequenceOpenPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}
+    	return map;
+    }
 
     @Override
-    public int insertObservation( XObservationSheetObj observationSheet ) {
+    public int insertD1Observation( XObservationSheetObj observationSheet ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		ret = kobisMapper.insertD1Observation(observationSheet);
+    		ret = kobisMapper.insertD1Observation( observationSheet );
+    		
+    		
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -430,13 +483,13 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertMappedD1Common(D1CommonVO commonSheet) {
+	public int insertT2MappedCommon(D1CommonVO commonSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		ret = kobisMapper.insertMappedD1Common( commonSheet );
+    		ret = kobisMapper.insertT2MappedCommon( commonSheet );
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
