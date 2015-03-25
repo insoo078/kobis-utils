@@ -1,12 +1,12 @@
 package org.kobic.kobis.main.services;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.kobic.kobis.main.dao.KobisDAO;
 
 public class ProteinSequenceServices extends AbstractKobisServices{
 
-	public ProteinSequenceServices(String insCd, XSSFSheet sheet, KobisDAO dao) {
-		super(insCd, sheet, dao);
+	public ProteinSequenceServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
+		super(insCd, sheet, sessionFactory);
 		// TODO Auto-generated constructor stub
 	}
 

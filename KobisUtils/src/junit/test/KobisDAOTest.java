@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.kobic.kobis.main.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 
 public class KobisDAOTest {
@@ -12,7 +13,7 @@ public class KobisDAOTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.dao = new KobisDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
+		this.dao = new KobisDAOService( MyBatisConnectionFactory.getSqlSessionFactory() );
 	}
 
 	@Test

@@ -106,8 +106,9 @@ public class LexicalInterpreter {
 
 		boolean ret = true;
 		for(int i=0; i<operations.length; i++) {
+			KeywordDictionary.getInstance();
 			@SuppressWarnings("static-access")
-			String pattern = "([a-zA-Z0-9|\"|\\.|\\s]*)\\s+([" + KeywordDictionary.getInstance().getOperatorString() + "]+)\\s+([a-zA-Z0-9|\"|\\.|\\s]*)";
+			String pattern = "([a-zA-Z0-9|\"|\\.|\\s]*)\\s+([" + KeywordDictionary.getOperatorString() + "]+)\\s+([a-zA-Z0-9|\"|\\.|\\s]*)";
 			
 			Pattern p = Pattern.compile( pattern );
 			Matcher m = p.matcher( operations[i] );

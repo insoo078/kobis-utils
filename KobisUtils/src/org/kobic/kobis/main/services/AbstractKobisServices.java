@@ -1,17 +1,19 @@
 package org.kobic.kobis.main.services;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.kobic.kobis.main.dao.KobisDAO;
 
 public abstract class AbstractKobisServices {
 	private String insCd;
 	private XSSFSheet sheet;
-	private KobisDAO dao;
+//	private KobisDAO dao;
+	private SqlSessionFactory sessionFactory;
 	
-	public AbstractKobisServices( String insCd, XSSFSheet sheet, KobisDAO dao ) {
+	public AbstractKobisServices( String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory ) {
 		this.insCd = insCd;
 		this.sheet = sheet;
-		this.dao = dao;
+		this.sessionFactory = sessionFactory;
+//		this.dao = dao;
 	}
 
 	public XSSFSheet getSheet() {
@@ -22,12 +24,20 @@ public abstract class AbstractKobisServices {
 		this.sheet = sheet;
 	}
 
-	public KobisDAO getDao() {
-		return dao;
+//	public KobisDAO getDao() {
+//		return dao;
+//	}
+//
+//	public void setDao(KobisDAO dao) {
+//		this.dao = dao;
+//	}
+
+	public SqlSessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	public void setDao(KobisDAO dao) {
-		this.dao = dao;
+	public void setSessionFactory(SqlSessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 	public String getInsCd() {

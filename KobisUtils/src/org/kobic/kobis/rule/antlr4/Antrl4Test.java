@@ -1,25 +1,8 @@
 package org.kobic.kobis.rule.antlr4;
 
-import static org.junit.Assert.*;
-
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.v4.runtime.ParserInterpreter;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
-import org.kobic.kobis.rule.antlr4.RuleParser.CompilationUnitContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.ExpressionContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.IfThenElseStatementContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.IfThenElseStatementNoShortIfContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.ResultContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.StatementContext;
-import org.kobic.kobis.rule.antlr4.RuleParser.StatementNoShortIfContext;
-import org.antlr.v4.runtime.Token;
 
 public class Antrl4Test {
 

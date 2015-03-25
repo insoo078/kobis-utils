@@ -1,14 +1,14 @@
 package org.kobic.kobis.main.services;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
-import org.kobic.kobis.main.dao.KobisDAO;
 
 public class ObservationServices extends AbstractKobisServices{
 
-	public ObservationServices(String insCd, XSSFSheet sheet, KobisDAO dao) {
-		super(insCd, sheet, dao);
+	public ObservationServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
+		super(insCd, sheet, sessionFactory);
 		// TODO Auto-generated constructor stub
 	}
 

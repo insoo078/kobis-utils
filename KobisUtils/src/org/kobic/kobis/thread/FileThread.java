@@ -1,6 +1,5 @@
 package org.kobic.kobis.thread;
 
-import java.io.ObjectInputStream;
 import java.util.concurrent.CountDownLatch;
 
 public abstract class FileThread{

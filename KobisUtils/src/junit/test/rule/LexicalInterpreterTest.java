@@ -1,7 +1,5 @@
 package junit.test.rule;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.kobic.kobis.rule.dao.RuleDAO;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;

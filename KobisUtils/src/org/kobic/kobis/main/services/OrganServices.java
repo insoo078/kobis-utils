@@ -1,12 +1,12 @@
 package org.kobic.kobis.main.services;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.kobic.kobis.main.dao.KobisDAO;
 
 public class OrganServices extends AbstractKobisServices{
 
-	public OrganServices(String insCd, XSSFSheet sheet, KobisDAO dao) {
-		super(insCd, sheet, dao);
+	public OrganServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
+		super(insCd, sheet, sessionFactory);
 		// TODO Auto-generated constructor stub
 	}
 

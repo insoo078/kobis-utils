@@ -2,12 +2,9 @@ package org.kobic.kobis.rule.antlr4;
 // Generated from Rule.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class RuleLexer extends Lexer {
@@ -109,8 +106,8 @@ public class RuleLexer extends Lexer {
 	@Override
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 146: return JavaLetter_sempred((RuleContext)_localctx, predIndex);
-		case 147: return JavaLetterOrDigit_sempred((RuleContext)_localctx, predIndex);
+		case 146: return JavaLetter_sempred(_localctx, predIndex);
+		case 147: return JavaLetterOrDigit_sempred(_localctx, predIndex);
 		}
 		return true;
 	}

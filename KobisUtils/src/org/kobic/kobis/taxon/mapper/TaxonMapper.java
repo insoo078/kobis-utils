@@ -14,4 +14,6 @@ public interface TaxonMapper {
     public List<NameWithTaxonIdVO> getScientificNameFromGbifTaxonomy(String scientfic_name);
     public List<NameWithTaxonIdVO> getScientificNameFromItisTaxonomy(String scientfic_name);
     public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomy(String scientfic_name);
+    public String getT1ClassificationSystemTable(Map<String, String> map);
+    public int insertT1ClassificationSystemTable(Map<String, String> map);
 }

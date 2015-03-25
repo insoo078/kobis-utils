@@ -10,6 +10,7 @@ import java.util.List;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 import org.kobic.kobis.rule.dao.RuleDAO;
+import org.kobic.kobis.rule.dao.RuleDAOService;
 import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 import org.kobic.kobis.rule.vo.RuleParamObj;
 import org.kobic.kobis.rule.vo.RuleQueryVO;
@@ -21,7 +22,7 @@ public class Rule {
 	public Rule( String insCd ) {
 		this.insCd = insCd;
 
-		this.dao = new RuleDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
+		this.dao = new RuleDAOService( MyBatisConnectionFactory.getSqlSessionFactory() );
 	}
 
 	public RuleDAO getDAO() {

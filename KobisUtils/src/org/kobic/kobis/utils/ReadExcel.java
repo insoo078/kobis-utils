@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
 import org.kobic.kobis.main.dao.KobisDAO;
+import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.main.services.AbstractKobisServices;
 import org.kobic.kobis.main.services.CommonServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
@@ -26,9 +27,9 @@ public class ReadExcel{
 		this.output = null;
 		this.header = null;
 
-		this.dao = new KobisDAO( MyBatisConnectionFactory.getSqlSessionFactory() );
+		this.dao = new KobisDAOService( MyBatisConnectionFactory.getSqlSessionFactory() );
 	}
-	
+
 	public void run( String[] args ) {
 		if( this.checkParameters(args) ) {
 			try {
@@ -38,7 +39,7 @@ public class ReadExcel{
 			}
 		}
 	}
-	
+
 	public boolean checkParameters( String[] args ) {
 		for(int i=0; i<args.length-1; i+=2) {
 			if( args[i].equals("-i") || args[i].equals("-I") ) {

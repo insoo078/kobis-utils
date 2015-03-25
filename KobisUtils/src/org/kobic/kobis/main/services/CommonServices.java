@@ -7,10 +7,10 @@ package org.kobic.kobis.main.services;
 //import java.util.Map;
 
 //import org.apache.commons.beanutils.BeanUtils;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
-import org.kobic.kobis.main.dao.KobisDAO;
 import org.kobic.kobis.main.vo.D1CommonVO;
 //import org.kobic.kobis.mybatis.db.vo.NameWithTaxonIdVO;
 import org.kobic.kobis.rule.Rule;
@@ -21,8 +21,8 @@ public class CommonServices extends AbstractKobisServices{
 //	private HashMap<String, XCommonSheetObj> mapped;
 //	private HashMap<String, XCommonSheetObj> unmapped;
 
-	public CommonServices( String insCd, XSSFSheet sheet, KobisDAO dao ) {
-		super( insCd, sheet, dao );
+	public CommonServices( String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory ) {
+		super( insCd, sheet, sessionFactory );
 	}
 
 //	private boolean findKobisCodeInPhylogeneticTree( String speciesType, String species, XCommonSheetObj commonSheetRecordObj, ExtraInfo extraInfo, List<PhylogeneticTreeVO> kobisPhylogeneListFromDB ) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -105,7 +105,7 @@ public class CommonServices extends AbstractKobisServices{
 
 				String scientificName = d1CommonVo.getScientificName();
 				
-				MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getDao() );
+				MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
 
 				classifyObj.validate( scientificName );
 
