@@ -33,7 +33,7 @@ public class ReadExcel{
 	public void run( String[] args ) {
 		if( this.checkParameters(args) ) {
 			try {
-				this.readExcelFile( this.inFile, this.output, this.header );
+//				this.readExcelFile( this.inFile, this.output, this.header );
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

@@ -12,21 +12,14 @@ import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
 
 public class MultipleClassificationProc {
-//	private List<NameWithTaxonIdVO> kobicTaxons;
-//	private List<NameWithTaxonIdVO> ncbiTaxons;
-//	private List<NameWithTaxonIdVO> itisTaxons;
-//	private List<NameWithTaxonIdVO> gbifTaxons;
 	private Map<String, TaxonProc> taxons;
-//	private TaxonProc ncbiTaxons;
-//	private TaxonProc itisTaxons;
-//	private TaxonProc gbifTaxons;
 	
 	private String message;
 	private String errorCode;
 	
 	private SqlSessionFactory sessionFactory;
 
-	private static final String[] splitWord = new String[]{ "var.", "for.", "f.", "ssp.", "spp.", "susp." };
+//	private static final String[] splitWord = new String[]{ "var.", "for.", "f.", "ssp.", "spp.", "susp." };
 
 	public static final String FINE_MAPPING				= "000";
 	public static final String MULTIPLE_MAPPING			= "001";
@@ -71,107 +64,6 @@ public class MultipleClassificationProc {
 		return this.errorCode;
 	}
 
-//	private void toFindMatchedTaxon( String scientificName ) {
-//		String splitChar = this.getSubDetailSplitingWords( scientificName );
-//		if( splitChar != null ) {
-//			String[] ref = scientificName.split( splitChar, -1 );
-//			if( ref.length == 2 ) {
-//				String newScientificName = ref[0];
-//				this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomy(scientfic_name)
-////				Map<String, String> map = new HashMap<String, String>();
-////				map.put("scientific_name", ref[0]);
-////				map.put("detail", ref[1]);
-////
-////				this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
-//				if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//			}
-//		}
-//	}
-
-//	public void doProcessing( String currentStatus, String scientificName ) throws Exception{
-//		if( currentStatus.equals( MultipleClassificationObj.MULTIPLE_MAPPING) ) {
-//			for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
-//				TaxonProc taxon = iter.next();
-//				if( taxon.getCurrentStatus().equals( MultipleClassificationObj.MULTIPLE_MAPPING) )	this.toFindMatchedTaxon( scientificName );
-//			}
-//			this.errorCode1Check();
-//		}else if( currentStatus.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) ) {
-//			for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
-//				TaxonProc taxon = iter.next();
-//				this.toFindMatchedTaxon( scientificName );
-//			}
-//			this.errorCode1Check();
-//		}
-//	}
-
-//	public void doProcessing2( String currentStatus, String scientificName ) throws Exception{
-//		if( currentStatus.equals( MultipleClassificationObj.MULTIPLE_MAPPING) ) {
-//			String splitChar = this.getSubDetailSplitingWords( scientificName );
-//			if( splitChar != null ) {
-//				String[] ref = scientificName.split( splitChar, -1 );
-//				if( ref.length == 2 ) {
-//					String newScientificName = ref[0];
-//					this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomy(scientfic_name)
-////					Map<String, String> map = new HashMap<String, String>();
-////					map.put("scientific_name", ref[0]);
-////					map.put("detail", ref[1]);
-////
-////					this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
-//					if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//				}
-//			}else {
-//				// Litsea japonica 로 검색했을 경우 여러개 매핑이 된다면, 실제 환경부 분류체계에서 '종소명없음|국명없음' 없음을 선택하도록 한다
-//				this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyPure( scientificName );
-//				if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//				else if( this.kobicTaxons.size() == 0 ) {
-//					// 만약 매핑된것이 없다면 species로 var. ssp, f. 를 찾아 일치하는 것을 선택해 준다.
-//					String[] ref = scientificName.split(" ", -1);
-//					if( ref.length == 2 ) {
-//						Map<String, String> map = new HashMap<String, String>();
-//						map.put("scientific_name", scientificName);
-//						map.put("detail", ref[1]);
-//						
-//						this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
-//						if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//					}
-//				}
-//			}
-//		}else if( currentStatus.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) ) {
-//			// 한곳에도 매핑되는 경우가 없는 경우 var. f. ssp. susp. 등을 제거하고 조회해 본다.   Trichosa kirolowil var. japonica
-//			String splitChar = this.getSubDetailSplitingWords( scientificName );
-//			if( splitChar != null ) {
-//				String[] ref = scientificName.split( splitChar, -1 );
-//				if( ref.length == 2 ) {
-//					Map<String, String> map = new HashMap<String, String>();
-//					map.put("scientific_name", scientificName);
-//					map.put("detail", ref[1]);
-//					this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
-//					
-//					if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING; 
-//					else {
-//						scientificName = ref[0];
-//						currentStatus = this.validate( scientificName );
-//		
-//						this.doProcessing( currentStatus, scientificName );
-//					}
-//				}
-//			}else {
-//				// 만약 매핑된것이 없다면 species로 var. ssp, f. 를 찾아 일치하는 것을 선택해 준다.
-//				String[] ref = scientificName.split(" ", -1);
-//				if( ref.length == 2 ) {
-//					Map<String, String> map = new HashMap<String, String>();
-//					map.put("scientific_name", scientificName);
-//					map.put("detail", ref[1]);
-//					
-//					this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
-//					if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//				}
-//			}
-//		}else {
-//			this.errorCode = MultipleClassificationObj.FINE_MAPPING;
-//		}
-//	}
-	
 	public boolean updateDatabase( D1CommonVO d1CommonVo, String scientificName ) {
 		KobisMapper kobisMapper = this.sessionFactory.openSession().getMapper( KobisMapper.class );
 		UnmappedMapper unmappedMapper = this.sessionFactory.openSession().getMapper( UnmappedMapper.class );
@@ -185,7 +77,7 @@ public class MultipleClassificationProc {
 		}else if( this.errorCode.equals( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL+"] " + kobisMapper.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
 			unmappedMapper.insertUnmappedD1Common( d1CommonVo );
-			
+
 			return false;
 		}else {
 			Map<String, String> map = new HashMap<String, String>();
@@ -207,16 +99,120 @@ public class MultipleClassificationProc {
     		return true;
 		}
 	}
-
-	private String getSubDetailSplitingWords( String scientificName ) {
-		String ret = null;
-
-		for(int i=0; i<MultipleClassificationProc.splitWord.length; i++) {
-			if( scientificName.contains( MultipleClassificationProc.splitWord[i] ) ) {
-				ret = MultipleClassificationProc.splitWord[i];
-				break;
-			}
-		}
-		return ret;
-	}
 }
+
+
+
+//private void toFindMatchedTaxon( String scientificName ) {
+//String splitChar = this.getSubDetailSplitingWords( scientificName );
+//if( splitChar != null ) {
+//	String[] ref = scientificName.split( splitChar, -1 );
+//	if( ref.length == 2 ) {
+//		String newScientificName = ref[0];
+//		this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomy(scientfic_name)
+////		Map<String, String> map = new HashMap<String, String>();
+////		map.put("scientific_name", ref[0]);
+////		map.put("detail", ref[1]);
+////
+////		this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
+//		if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//	}
+//}
+//}
+
+//public void doProcessing( String currentStatus, String scientificName ) throws Exception{
+//if( currentStatus.equals( MultipleClassificationObj.MULTIPLE_MAPPING) ) {
+//	for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
+//		TaxonProc taxon = iter.next();
+//		if( taxon.getCurrentStatus().equals( MultipleClassificationObj.MULTIPLE_MAPPING) )	this.toFindMatchedTaxon( scientificName );
+//	}
+//	this.errorCode1Check();
+//}else if( currentStatus.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) ) {
+//	for(Iterator<TaxonProc> iter = this.taxons.values().iterator(); iter.hasNext();) {
+//		TaxonProc taxon = iter.next();
+//		this.toFindMatchedTaxon( scientificName );
+//	}
+//	this.errorCode1Check();
+//}
+//}
+
+//public void doProcessing2( String currentStatus, String scientificName ) throws Exception{
+//if( currentStatus.equals( MultipleClassificationObj.MULTIPLE_MAPPING) ) {
+//	String splitChar = this.getSubDetailSplitingWords( scientificName );
+//	if( splitChar != null ) {
+//		String[] ref = scientificName.split( splitChar, -1 );
+//		if( ref.length == 2 ) {
+//			String newScientificName = ref[0];
+//			this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomy(scientfic_name)
+////			Map<String, String> map = new HashMap<String, String>();
+////			map.put("scientific_name", ref[0]);
+////			map.put("detail", ref[1]);
+////
+////			this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
+//			if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//		}
+//	}else {
+//		// Litsea japonica 로 검색했을 경우 여러개 매핑이 된다면, 실제 환경부 분류체계에서 '종소명없음|국명없음' 없음을 선택하도록 한다
+//		this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyPure( scientificName );
+//		if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//		else if( this.kobicTaxons.size() == 0 ) {
+//			// 만약 매핑된것이 없다면 species로 var. ssp, f. 를 찾아 일치하는 것을 선택해 준다.
+//			String[] ref = scientificName.split(" ", -1);
+//			if( ref.length == 2 ) {
+//				Map<String, String> map = new HashMap<String, String>();
+//				map.put("scientific_name", scientificName);
+//				map.put("detail", ref[1]);
+//				
+//				this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
+//				if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//			}
+//		}
+//	}
+//}else if( currentStatus.equals( MultipleClassificationObj.NOTHING_TO_MAP_IN_ALL ) ) {
+//	// 한곳에도 매핑되는 경우가 없는 경우 var. f. ssp. susp. 등을 제거하고 조회해 본다.   Trichosa kirolowil var. japonica
+//	String splitChar = this.getSubDetailSplitingWords( scientificName );
+//	if( splitChar != null ) {
+//		String[] ref = scientificName.split( splitChar, -1 );
+//		if( ref.length == 2 ) {
+//			Map<String, String> map = new HashMap<String, String>();
+//			map.put("scientific_name", scientificName);
+//			map.put("detail", ref[1]);
+//			this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
+//			
+//			if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING; 
+//			else {
+//				scientificName = ref[0];
+//				currentStatus = this.validate( scientificName );
+//
+//				this.doProcessing( currentStatus, scientificName );
+//			}
+//		}
+//	}else {
+//		// 만약 매핑된것이 없다면 species로 var. ssp, f. 를 찾아 일치하는 것을 선택해 준다.
+//		String[] ref = scientificName.split(" ", -1);
+//		if( ref.length == 2 ) {
+//			Map<String, String> map = new HashMap<String, String>();
+//			map.put("scientific_name", scientificName);
+//			map.put("detail", ref[1]);
+//			
+//			this.kobicTaxons = this.dao.getScientificNameFromKobicTaxonomyDetail( map );
+//			if( this.kobicTaxons.size() == 1 )	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//		}
+//	}
+//}else {
+//	this.errorCode = MultipleClassificationObj.FINE_MAPPING;
+//}
+//}
+//
+//private String getSubDetailSplitingWords( String scientificName ) {
+//String ret = null;
+//
+//for(int i=0; i<MultipleClassificationProc.splitWord.length; i++) {
+//	if( scientificName.contains( MultipleClassificationProc.splitWord[i] ) ) {
+//		ret = MultipleClassificationProc.splitWord[i];
+//		break;
+//	}
+//}
+//return ret;
+//}
+
