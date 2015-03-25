@@ -1,5 +1,6 @@
 package org.kobic.kobis.main.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,12 +55,16 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return Utils.emptyToNull( result );
     }
     @Override
-    public String getAccessionNum(String accession_num) {
+    public String getAccessionNum(String accession_num, String ins_cd) {
     	SqlSession session = this.getSessionFactory().openSession();
     	String result = null;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		result = kobisMapper.getAccessionNum(accession_num);
+    		Map<String, String> map = new HashMap<String, String>();
+    		map.put("accession_num", accession_num);
+    		map.put("ins_cd", ins_cd);
+
+    		result = kobisMapper.getAccessionNum( map );
 	   	}finally{
 	   		session.close();
 	   	}

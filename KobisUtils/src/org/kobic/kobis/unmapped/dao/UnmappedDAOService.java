@@ -1,20 +1,24 @@
 package org.kobic.kobis.unmapped.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
+import org.kobic.kobis.util.Utils;
 
-public class UnmappedDAOService implements UnmappedDAO{
-	private SqlSessionFactory sqlSessionFactory = null;
-
+public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
 	public UnmappedDAOService(SqlSessionFactory sqlSessionFactory){
-		this.sqlSessionFactory = sqlSessionFactory;
+		super(sqlSessionFactory);
 	}
 
 	@Override
 	public int insertUnmappedD1Common( D1CommonVO commonSheet ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( false );
+    	SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
@@ -30,5 +34,22 @@ public class UnmappedDAOService implements UnmappedDAO{
     		session.close();
     	}
     	return ret;
+    }
+    @Override
+    public String getAccessionNum(String accession_num, String ins_cd) {
+    	SqlSession session = this.getSessionFactory().openSession();
+    	String result = null;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		Map<String, String> map = new HashMap<String, String>();
+    		map.put("accession_num", accession_num);
+    		map.put("ins_cd", ins_cd);
+
+    		result = kobisMapper.getAccessionNum( map );
+	   	}finally{
+	   		session.close();
+	   	}
+    	
+    	return Utils.emptyToNull( result );
     }
 }

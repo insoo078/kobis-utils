@@ -9,9 +9,9 @@
 		WHERE ins_cd=#{ins_cd}
 	</select>
 	
-	<select id="getAccessionNum" parameterType="java.lang.String" resultType="java.lang.String">
+	<select id="getAccessionNum" parameterType="java.lang.String" resultType="java.util.Map">
 		SELECT accession_num FROM D1_Common
-		WHERE accession_num=#{accession_num}
+		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
 
  	<insert id="insertD1Common" parameterType="D1_Common">

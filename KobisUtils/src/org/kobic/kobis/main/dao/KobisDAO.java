@@ -13,7 +13,7 @@ import org.kobic.kobis.main.vo.D1CommonVO;
  */
 public interface KobisDAO{
     public String getInstitutionId(String insCd);    
-    public String getAccessionNum(String accession_num);
+    public String getAccessionNum(String accession_num, String ins_cd);
 
     public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
     public int insertObservation( XObservationSheetObj observationSheet );
