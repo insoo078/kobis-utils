@@ -15,11 +15,6 @@
 		)
 	</insert>
 
-	<insert id="insertSynonyms" parameterType="java.util.Map">
-		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
-		VALUES( #{accession_num}, SF_GET_NEW_SYNONYM_ID(#{accession_num}), #{synonym} )
-	</insert>
-
 	<insert id="insertD1Observation" parameterType="D1_Observation">
 		INSERT INTO ITIS.D1_Observation( accession_num, obs_id, latitude, longitude )
 		VALUES( #{access_num}, SF_GET_NEW_OBSERVATION_ID(#{access_num}), #{gps.latitude}, #{gps.longitude} )
@@ -150,31 +145,5 @@
 	<insert id="insertE1Patent" parameterType="java.util.Map">
 		INSERT INTO E1_Patent( accession_num, id, application_no, reg_no )
 		VALUES( #{accession_num}, #{id}, #{application_no}, #{reg_no} )
-	</insert>
-
-	<insert id="insertUnmappedD1Common" parameterType="D1_Common">
-		INSERT INTO T2_UnMappedCommon(
-			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
-			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
-			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
-		) VALUES(
-			#{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
-			, #{in_species_type}, #{in_species_name}, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}, #{category_1}
-			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
-			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{message}
-		)
-	</insert>
-
-	<insert id="insertMappedD1Common" parameterType="D1_Common">
-		INSERT INTO T2_MappedCommon(
-			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
-			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
-			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, tab_id
-		) VALUES(
-			#{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
-			, #{in_species_type}, #{in_species_name}, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}, #{category_1}
-			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
-			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{code}
-		)
 	</insert>
 </mapper>

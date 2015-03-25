@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Taxon">
+<mapper namespace="org.kobic.kobis.taxon.mapper.TaxonMapper">
 	<resultMap id="PhylogeneticMap" type="org.kobic.kobis.taxon.vo.PhylogeneticTreeVO">
 		<id column="code"		property="code"/>
 		<id column="kingdomr"	property="kingdomr"/>

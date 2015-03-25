@@ -48,7 +48,7 @@
     </environments>
 
  	<mappers>
- 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/taxon.xml"/>
+  		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/taxon.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/kobis.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/ncbi.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/rule.xml"/>

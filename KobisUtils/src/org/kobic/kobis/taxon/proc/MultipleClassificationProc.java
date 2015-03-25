@@ -30,7 +30,7 @@ public class MultipleClassificationProc {
 	public static final String NOTHING_TO_MAP_IN_ALL	= "002";
 	public static final String ERROR_IN_DB				= "003";
 
-	public MultipleClassificationProc(KobisDAO dao) {
+	public MultipleClassificationProc( KobisDAO dao ) {
 		this.dao = dao;
 		this.message = "";
 		this.errorCode = "";
@@ -180,6 +180,7 @@ public class MultipleClassificationProc {
 	public boolean updateDatabase( D1CommonVO d1CommonVo, String scientificName ) {
 		if( this.errorCode.equals( MultipleClassificationProc.MULTIPLE_MAPPING ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
+
 			this.dao.insertUnmappedD1Common( d1CommonVo );
 			
 			return false;

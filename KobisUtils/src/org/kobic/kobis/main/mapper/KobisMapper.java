@@ -17,7 +17,7 @@ public interface KobisMapper {
 
     public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomy(String scientfic_name);
     public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
-    public int insertUnmappedD1Common( D1CommonVO commonSheet );
+//    public int insertUnmappedD1Common( D1CommonVO commonSheet );
     public int insertMappedD1Common( D1CommonVO commonSheet );
     public int insertObservation( XObservationSheetObj observationSheet );
 }

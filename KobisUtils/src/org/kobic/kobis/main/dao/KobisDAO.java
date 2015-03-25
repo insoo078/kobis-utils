@@ -131,7 +131,7 @@ public class KobisDAO implements KobisMapper{
     		if( Utils.nullToEmpty( tab_id ).isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
     			ret += session.insert( "Taxon.insertT1ClassificationSystemTable", crossTaxonMap);
-    			
+
     			tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
     		}
     		d1CommonVo.setCode( tab_id );
@@ -156,23 +156,7 @@ public class KobisDAO implements KobisMapper{
     	}
     	return ret;
     }
-    @Override
-    public int insertUnmappedD1Common( D1CommonVO commonSheet ) {
-    	SqlSession session = this.sqlSessionFactory.openSession( false );
 
-    	int ret = 0;
-    	try {
-    		ret = session.insert( "Kobis.insertUnmappedD1Common", commonSheet);
-    		session.commit();
-    	}catch(Exception e) {
-    		ret = 0;
-    		e.printStackTrace();
-    		session.rollback();
-    	}finally{
-    		session.close();
-    	}
-    	return ret;
-    }
     @Override
     public int insertMappedD1Common( D1CommonVO commonSheet ) {
     	SqlSession session = this.sqlSessionFactory.openSession( false );
