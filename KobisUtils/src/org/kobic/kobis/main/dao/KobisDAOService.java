@@ -70,23 +70,24 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
+    	TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );
     	int ret = 0;
     	try {
-    		String tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
+    		String tab_id = taxonMapper.getT1ClassificationSystemTable( crossTaxonMap );
 
     		if( Utils.nullToEmpty( tab_id ).isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
-    			ret += session.insert( "Taxon.insertT1ClassificationSystemTable", crossTaxonMap);
+    			ret += session.insert( "org.kobic.kobis.taxon.mapper.TaxonMapper.insertT1ClassificationSystemTable", crossTaxonMap);
 
-    			tab_id = session.selectOne("Taxon.getT1ClassificationSystemTable", crossTaxonMap);
+    			tab_id = taxonMapper.getT1ClassificationSystemTable( crossTaxonMap );
     			
         		d1CommonVo.setCode( tab_id );
     		}
 
-    		ret += session.insert( "Kobis.insertD1Common", d1CommonVo );
+    		ret += session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertD1Common", d1CommonVo );
 
     		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
-    			ret += session.insert( "Kobis.insertSynonyms", d1CommonVo );
+    			ret += session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertSynonyms", d1CommonVo );
     		}
 
     		session.commit();
@@ -100,23 +101,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return ret;
     }
 
-    @Override
-    public int insertMappedD1Common( D1CommonVO commonSheet ) {
-    	SqlSession session = this.getSessionFactory().openSession( false );
-
-    	int ret = 0;
-    	try {
-    		ret = session.insert( "Kobis.insertMappedD1Common", commonSheet);
-    		session.commit();
-    	}catch(Exception e) {
-    		ret = 0;
-    		e.printStackTrace();
-    		session.rollback();
-    	}finally{
-    		session.close();
-    	}
-    	return ret;
-    }
     @Override
     public int insertObservation( XObservationSheetObj observationSheet ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
@@ -134,6 +118,25 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;    	
     }
+    
+//
+//  @Override
+//  public int insertMappedD1Common( D1CommonVO commonSheet ) {
+//  	SqlSession session = this.getSessionFactory().openSession( false );
+//
+//  	int ret = 0;
+//  	try {
+//  		ret = session.insert( "Kobis.insertMappedD1Common", commonSheet);
+//  		session.commit();
+//  	}catch(Exception e) {
+//  		ret = 0;
+//  		e.printStackTrace();
+//  		session.rollback();
+//  	}finally{
+//  		session.close();
+//  	}
+//  	return ret;
+//  }
 //  public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomyDetail(Map<String, String> map) {
 //	SqlSession session = this.sqlSessionFactory.openSession();
 //	List<NameWithTaxonIdVO> result = null;
@@ -156,10 +159,4 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 //
 //	return result;
 //}
-
-	@Override
-	public int insertUnmappedD1Common(D1CommonVO commonSheet) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

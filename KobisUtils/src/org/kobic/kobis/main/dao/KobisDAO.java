@@ -16,7 +16,7 @@ public interface KobisDAO{
     public String getAccessionNum(String accession_num);
 
     public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
-    public int insertUnmappedD1Common( D1CommonVO commonSheet );
-    public int insertMappedD1Common( D1CommonVO commonSheet );
     public int insertObservation( XObservationSheetObj observationSheet );
+
+//  public int insertMappedD1Common( D1CommonVO commonSheet );
 }

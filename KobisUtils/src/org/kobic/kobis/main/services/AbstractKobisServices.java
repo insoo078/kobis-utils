@@ -24,14 +24,6 @@ public abstract class AbstractKobisServices {
 		this.sheet = sheet;
 	}
 
-//	public KobisDAO getDao() {
-//		return dao;
-//	}
-//
-//	public void setDao(KobisDAO dao) {
-//		this.dao = dao;
-//	}
-
 	public SqlSessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

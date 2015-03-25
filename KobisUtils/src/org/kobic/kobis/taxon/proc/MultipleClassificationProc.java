@@ -72,7 +72,7 @@ public class MultipleClassificationProc {
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.MULTIPLE_MAPPING+"] " + scientificName + "이 여러군데 매핑됩니다. " + message );
 
 			unmappedMapper.insertUnmappedD1Common( d1CommonVo );
-			
+
 			return false;
 		}else if( this.errorCode.equals( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL+"] " + kobisMapper.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
