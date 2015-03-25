@@ -67,7 +67,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return Utils.emptyToNull( result );
     }
     @Override
-    public int insertCommonSheet( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
+    public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
     	TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );

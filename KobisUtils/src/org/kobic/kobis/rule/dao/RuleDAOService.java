@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.rule.mapper.RuleMapper;
 import org.kobic.kobis.rule.vo.RuleQueryVO;
 
 public class RuleDAOService extends CommonDAOService implements RuleDAO{
@@ -20,12 +21,14 @@ public class RuleDAOService extends CommonDAOService implements RuleDAO{
     	// autocommit is false
     	SqlSession session = this.getSessionFactory().openSession( false );
 
+    	RuleMapper ruleMapper = session.getMapper( RuleMapper.class );
+
     	Map<String, String> map = new HashMap<String, String>();
     	map.put( "ins_cd", ins_id );
     	map.put( "className", className);
 
     	try {
-    		 list = session.selectList("Rule.getRulesByInsId", map );
+    		 list = ruleMapper.getRulesByInsId( map );
     	}catch(Exception e) {
     		e.printStackTrace();
     	}finally{

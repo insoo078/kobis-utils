@@ -90,7 +90,7 @@ public class MultipleClassificationProc {
 			}
 			map.put("scientific_name", scientificName );
 
-			int ret = kobisMapper.insertCommonSheet( d1CommonVo, map );
+			int ret = kobisMapper.insertD1Common( d1CommonVo );
 			if( ret == 0 ) {
 				d1CommonVo.setMessage( "["+MultipleClassificationProc.ERROR_IN_DB+"] " + kobisMapper.getInstitutionId(d1CommonVo.getIns_cd()) + " " + d1CommonVo.getAccess_num() + " 데이터베이스 반영중 오류 발생." );
 				return false;

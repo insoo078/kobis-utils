@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Rule">
+<mapper namespace="org.kobic.kobis.rule.mapper.RuleMapper">
 	<resultMap id="RuleMap" type="org.kobic.kobis.rule.vo.RuleQueryVO">
 		<id column="rule_id"		property="rule_id"/>
 		<id column="ins_cd"			property="ins_cd"/>

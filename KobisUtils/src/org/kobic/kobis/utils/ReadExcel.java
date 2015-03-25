@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
-import org.kobic.kobis.main.dao.KobisDAO;
-import org.kobic.kobis.main.dao.KobisDAOService;
+import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.services.AbstractKobisServices;
 import org.kobic.kobis.main.services.CommonServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 
 public class ReadExcel{
-	private KobisDAO dao;
+	private SqlSessionFactory sessionFactory;
 	
 	private String inFile;
 	private String output;
@@ -27,7 +27,7 @@ public class ReadExcel{
 		this.output = null;
 		this.header = null;
 
-		this.dao = new KobisDAOService( MyBatisConnectionFactory.getSqlSessionFactory() );
+		this.sessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();
 	}
 
 	public void run( String[] args ) {
@@ -74,7 +74,8 @@ public class ReadExcel{
 		}
 		
 		System.out.println("Checking institution code....");
-		if( this.dao.getInstitutionId(header) == null ) {
+		KobisMapper kobisMapper = this.sessionFactory.openSession().getMapper( KobisMapper.class );
+		if( kobisMapper.getInstitutionId(header) == null ) {
 			System.err.println( header + "는 기관코드가 아닙니다." );
 			return false;
 		}
@@ -105,9 +106,9 @@ public class ReadExcel{
 				Class c = Class.forName(className);
 
 				@SuppressWarnings({ "unchecked", "rawtypes" })
-				Constructor cons = c.getConstructor( new Class[]{String.class, XSSFSheet.class, KobisDAO.class} );
+				Constructor cons = c.getConstructor( new Class[]{String.class, XSSFSheet.class, SqlSessionFactory.class} );
 
-				Object obj = cons.newInstance( header, sheet, this.dao );
+				Object obj = cons.newInstance( header, sheet, this.sessionFactory );
 				
 				AbstractKobisServices ks = (AbstractKobisServices) obj;
 				
