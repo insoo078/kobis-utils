@@ -47,6 +47,6 @@ public interface KobisMapper {
     public int insertE1Distribution( Map<String, String> cultureSheet );
     public int insertE1Reference( Map<String, String> cultureSheet );
     public int insertE1Paten( Map<String, String> cultureSheet );
-    public int insertMappedD1Common( D1CommonVO commonSheet );
+    public int insertT2MappedCommon( D1CommonVO commonSheet );
 
 }

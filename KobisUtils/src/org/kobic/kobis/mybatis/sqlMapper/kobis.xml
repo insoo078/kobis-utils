@@ -165,7 +165,7 @@
 		VALUES( #{accession_num}, #{id}, #{application_no}, #{reg_no} )
 	</insert>
 
-	<insert id="insertMappedD1Common" parameterType="D1_Common">
+	<insert id="insertT2MappedCommon" parameterType="D1_Common">
 		INSERT INTO T2_MappedCommon(
 			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,

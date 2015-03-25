@@ -23,6 +23,7 @@ import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
 import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
+import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
@@ -124,15 +125,33 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;
     }
+    
+    public Map<String, Object> getE1Distribution( AbstractSheetObj sheet ) {
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	if( sheet instanceof XObservationSheetObj ) {
+    		XObservationSheetObj xoso = (XObservationSheetObj)sheet;
+    		map.put("distribution", xoso.getExtra().getDist() );
+    		map.put("reference", xoso.getExtra().getRef() );
+    		map.put("patent", xoso.getExtra().getPatent() );
+    		map.put("accession_num", xoso.getAccess_num() );
+    		map.put("id", xoso.get)
+    	}
+    	return map;
+    }
 
     @Override
-    public int insertObservation( XObservationSheetObj observationSheet ) {
+    public int insertD1Observation( XObservationSheetObj observationSheet ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Observation(observationSheet);
+    		
+    		
+    		
+    		
+    		
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -430,13 +449,13 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertMappedD1Common(D1CommonVO commonSheet) {
+	public int insertT2MappedCommon(D1CommonVO commonSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		ret = kobisMapper.insertMappedD1Common( commonSheet );
+    		ret = kobisMapper.insertT2MappedCommon( commonSheet );
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

@@ -32,7 +32,7 @@ public interface KobisDAO{
 
     public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
 
-    public int insertObservation( XObservationSheetObj observationSheet );
+    public int insertD1Observation( XObservationSheetObj observationSheet );
     public int insertD1Individual( XIndividualSheetObj individualSheet );
     public int insertD1Specimen( XSpecimenSheetObj specimenSheet );
     public int insertD1Source( XSourceSheetObj sourceSheet );
@@ -48,5 +48,5 @@ public interface KobisDAO{
     public int insertD1DnaSequence( XDnaSequenceSheetObj dnaSequenceSheet );
     public int insertD1Etc( XEtcSheetObj etcSheet);
     public int insertD1Extraction( XExtractSheetObj extractionSheet );
-    public int insertMappedD1Common( D1CommonVO commonSheet );
+    public int insertT2MappedCommon( D1CommonVO commonSheet );
 }
