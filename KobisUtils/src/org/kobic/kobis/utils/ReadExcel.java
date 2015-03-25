@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
-import org.kobic.kobis.main.mapper.KobisMapper;
+import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.main.services.AbstractKobisServices;
 import org.kobic.kobis.main.services.CommonServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
@@ -42,13 +42,10 @@ public class ReadExcel{
 
 	public boolean checkParameters( String[] args ) {
 		for(int i=0; i<args.length-1; i+=2) {
-			if( args[i].equals("-i") || args[i].equals("-I") ) {
-				this.inFile = args[i+1];
-			}else if( args[i].equals("-o") || args[i].equals("-O") ) {
-				this.output = args[i+1];
-			}else if( args[i].equals("-header") ) {
-				this.header = args[i+1];
-			}else {
+			if( args[i].equals("-i") || args[i].equals("-I") )				this.inFile = args[i+1];
+			else if( args[i].equals("-o") || args[i].equals("-O") )			this.output = args[i+1];
+			else if( args[i].equals("-header") )							this.header = args[i+1];
+			else {
 				System.err.println("Your option is not valid : " + args[i]);
 				ReadExcel.usage();
 				return false;
@@ -74,12 +71,12 @@ public class ReadExcel{
 		}
 		
 		System.out.println("Checking institution code....");
-		KobisMapper kobisMapper = this.sessionFactory.openSession().getMapper( KobisMapper.class );
-		if( kobisMapper.getInstitutionId(header) == null ) {
+		KobisDAOService kobisService = new KobisDAOService( this.sessionFactory );
+		if( kobisService.getInstitutionId(header) == null ) {
 			System.err.println( header + "는 기관코드가 아닙니다." );
 			return false;
 		}
-		System.out.println("Pass : check institution code....");
+		System.out.println("Passed : check institution code....");
 		
 		return true;
 	}

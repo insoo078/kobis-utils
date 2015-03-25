@@ -3,6 +3,7 @@ package org.kobic.kobis.unmapped.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.main.vo.D1CommonVO;
+import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
 
 public class UnmappedDAOService implements UnmappedDAO{
 	private SqlSessionFactory sqlSessionFactory = null;
@@ -17,7 +18,9 @@ public class UnmappedDAOService implements UnmappedDAO{
 
     	int ret = 0;
     	try {
-    		ret = session.insert( "Kobis.insertUnmappedD1Common", commonSheet);
+    		UnmappedMapper unmappedMapper = session.getMapper( UnmappedMapper.class );
+    		unmappedMapper.insertUnmappedD1Common(commonSheet);
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

@@ -83,11 +83,12 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			
         		d1CommonVo.setCode( tab_id );
     		}
+    		if( !Utils.nullToEmpty( tab_id ).isEmpty() ) {
+    			ret = session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertD1Common", d1CommonVo );
 
-    		ret += session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertD1Common", d1CommonVo );
-
-    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
-    			ret += session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertSynonyms", d1CommonVo );
+	    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
+	    			session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertSynonyms", d1CommonVo );
+	    		}
     		}
 
     		session.commit();
@@ -107,7 +108,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 
     	int ret = 0;
     	try {
-    		ret = session.insert( "Kobis.insertObservation", observationSheet );
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertObservation(observationSheet);
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
