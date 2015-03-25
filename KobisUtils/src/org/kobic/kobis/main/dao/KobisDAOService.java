@@ -90,6 +90,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
+    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     	TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );
     	int ret = 0;
     	try {
@@ -97,17 +98,16 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 
     		if( Utils.nullToEmpty( tab_id ).isEmpty() ) {
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
-    			ret += session.insert( "org.kobic.kobis.taxon.mapper.TaxonMapper.insertT1ClassificationSystemTable", crossTaxonMap);
-
+    			ret += taxonMapper.insertT1ClassificationSystemTable( crossTaxonMap );
     			tab_id = taxonMapper.getT1ClassificationSystemTable( crossTaxonMap );
     			
         		d1CommonVo.setCode( tab_id );
     		}
     		if( !Utils.nullToEmpty( tab_id ).isEmpty() ) {
-    			ret = session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertD1Common", d1CommonVo );
+    			ret = kobisMapper.insertD1Common(d1CommonVo);
 
 	    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
-	    			session.insert( "org.kobic.kobis.main.mapper.KobisMapper.insertSynonyms", d1CommonVo );
+	    			kobisMapper.insertE1Synonyms(d1CommonVo);
 	    		}
     		}
 

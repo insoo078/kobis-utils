@@ -23,7 +23,7 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 public interface KobisMapper {
     public String getInstitutionId(String insCd);    
     public String getAccessionNum( Map<String, String> map );
-
+    public int insertE1Synonyms( D1CommonVO d1CommonVo );
     public int insertD1Common( D1CommonVO d1CommonVo );
     public int insertObservation( XObservationSheetObj observationSheet );
     public int insertD1Individual( XIndividualSheetObj individualSheet );
