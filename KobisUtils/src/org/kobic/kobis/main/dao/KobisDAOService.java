@@ -318,6 +318,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newObsId = kobisMapper.getNewObservationId( observationSheet.getAccess_num() );
+    		observationSheet.setId( newObsId );
+
     		ret = kobisMapper.insertD1Observation( observationSheet );
     		if( ret > 0 ) {
     			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( observationSheet ) );
@@ -343,6 +347,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newIndiId = kobisMapper.getNewIndividualId( individualSheet.getAccess_num() );
+    		individualSheet.setId( newIndiId );
+
     		ret = kobisMapper.insertD1Individual( individualSheet );
     		
     		if( ret > 0 ) {
@@ -369,6 +377,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newSpecimenId = kobisMapper.getNewSpecimenId( specimenSheet.getAccess_num() );
+    		specimenSheet.setId( newSpecimenId );
+
     		ret = kobisMapper.insertD1Specimen( specimenSheet );
     		
     		if( ret > 0 ) {
@@ -395,6 +407,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newSourceId = kobisMapper.getNewSourceId( sourceSheet.getAccess_num() );
+    		sourceSheet.setId( newSourceId );
+
     		ret = kobisMapper.insertD1Source( sourceSheet );
     		
     		if( ret > 0 ) {
@@ -422,6 +438,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newSeedId = kobisMapper.getNewSeedId( seedSheet.getAccess_num() );
+    		seedSheet.setId( newSeedId );
+
     		ret = kobisMapper.insertD1Seed( seedSheet );
 
     		if( ret > 0 ) {
@@ -449,6 +469,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newEmbryoId = kobisMapper.getNewEmbryoId( embryoSheet.getAccess_num() );
+    		embryoSheet.setId( newEmbryoId );
+
     		ret = kobisMapper.insertD1Embryo( embryoSheet );
     		
     		if( ret > 0 ) {
@@ -476,6 +500,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newDnaRnaProteinDerivativesId = kobisMapper.getNewDnaRnaProteinDerivativesId( dnaRnaProteinDerivativeSheet.getAccess_num() );
+    		dnaRnaProteinDerivativeSheet.setId( newDnaRnaProteinDerivativesId );
+
     		ret = kobisMapper.insertD1DnaRnaProteinDerivatives( dnaRnaProteinDerivativeSheet );
     		
     		if( ret > 0 ) {
@@ -503,6 +531,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newStrainId = kobisMapper.getNewStrainId( strainSheet.getAccess_num() );
+    		strainSheet.setId( newStrainId );
+
     		ret = kobisMapper.insertD1Strain( strainSheet );
 
     		if( ret > 0 ) {
@@ -530,6 +562,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newCellStrainId = kobisMapper.getNewCellStrainId( cellStrainSheet.getAccess_num() );
+    		cellStrainSheet.setId( newCellStrainId );
+
     		ret = kobisMapper.insertD1CellStrain( cellStrainSheet );
 
     		if( ret > 0 ) {
@@ -557,6 +593,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newBodyFluidId = kobisMapper.getNewBodyFluidId( bodyFluidSheet.getAccess_num() );
+    		bodyFluidSheet.setId( newBodyFluidId );
+
     		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
 
     		if( ret > 0 ) {
@@ -584,6 +624,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newProteinSequenceId = kobisMapper.getNewProteinSequenceId( proteinSequenceSheet.getAccess_num() );
+    		proteinSequenceSheet.setId( newProteinSequenceId );
+
     		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
 
     		if( ret > 0 ) {
@@ -609,6 +653,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newExpressionId = kobisMapper.getNewExpressionId( expressionSheet.getAccess_num() );
+    		expressionSheet.setId( newExpressionId );
+
     		ret = kobisMapper.insertD1Expression( expressionSheet );
 
     		if( ret > 0 ) {
@@ -634,6 +682,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newStructureId = kobisMapper.getNewStructureId( structureSheet.getAccess_num() );
+    		structureSheet.setId( newStructureId );
+
     		ret = kobisMapper.insertD1Structure( structureSheet );
 
     		if( ret > 0 ) {
@@ -659,6 +711,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newDnaSequenceId = kobisMapper.getNewDnaSequenceId( dnaSequenceSheet.getAccess_num() );
+    		dnaSequenceSheet.setId( newDnaSequenceId );
+
     		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
     		
     		if( ret > 0 ) {
@@ -684,7 +740,11 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newEtcId = kobisMapper.getNewEtcId( etcSheet.getAccess_num() );
+    		etcSheet.setId( newEtcId );
 
+    		ret = kobisMapper.insertD1Etc(etcSheet);
     		if( ret > 0 ) {
     			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( etcSheet ) );
     			ret = kobisMapper.insertE1Patent( this.getE1Patent( etcSheet ) );
@@ -710,8 +770,12 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+
+			String newExtractId = kobisMapper.getNewExtractionId( extractionSheet.getAccess_num() );
+    		extractionSheet.setId( newExtractId );
+
     		ret = kobisMapper.insertD1Extraction( extractionSheet );
-    		
+
     		if( ret > 0 ) {
     			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( extractionSheet ) );
     			ret = kobisMapper.insertE1Patent( this.getE1Patent( extractionSheet ) );
@@ -756,6 +820,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		
+    		String newOrganId = kobisMapper.getNewOrganId( organSheet.getAccess_num() );
+    		organSheet.setId( newOrganId );
+
     		ret = kobisMapper.insertD1Organ( organSheet );
     		
     		if( ret > 0 ) {

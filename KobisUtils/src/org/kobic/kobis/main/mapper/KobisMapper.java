@@ -67,4 +67,5 @@ public interface KobisMapper {
 	public String getNewDnaSequenceId( String access_num );
 	public String getNewEtcId( String access_num );
 	public String getNewExtractionId( String access_num );
+	public String getNewStructureId( String access_num );
 }
