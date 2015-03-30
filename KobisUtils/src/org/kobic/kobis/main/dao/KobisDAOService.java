@@ -9,10 +9,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
-import org.kobic.kobis.file.excel.obj.DistPatentReferenceInterface;
-import org.kobic.kobis.file.excel.obj.OpenPatentReferenceInterface;
-import org.kobic.kobis.file.excel.obj.SequenceOpenPatentReferenceInterface;
-import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
@@ -47,26 +43,26 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 		super( sqlSessionFactory );
 	}
     
-    /**
-     * genus를 이용하여 환경부 분류체계를 조회하는 쿼리를 호출하는 메소드
-     * 
-     * @param genus 조회를 위한 genus 정보
-     * 
-     * @return genus로 조회된 분류체계 정보
-     */
-    public List<PhylogeneticTreeVO> getPhylogeneticTreeByGenus( String genus) {
-    	List<PhylogeneticTreeVO> list = null;
-    	// autocommit is false
-    	SqlSession session = this.getSessionFactory().openSession();
-    	
-    	try {
-        	TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );
-        	list = taxonMapper.getPhylogeneticTreeByGenus(genus);
-    	}finally{
-    		session.close();
-    	}
-    	return list;
-    }
+	/**
+	 * genus를 이용하여 환경부 분류체계를 조회하는 쿼리를 호출하는 메소드
+	 * 
+	 * @param genus 조회를 위한 genus 정보
+	 * 
+	 * @return genus로 조회된 분류체계 정보
+	 */
+	public List<PhylogeneticTreeVO> getPhylogeneticTreeByGenus( String genus) {
+		List<PhylogeneticTreeVO> list = null;
+		// autocommit is false
+		SqlSession session = this.getSessionFactory().openSession();
+		
+		try {
+			TaxonMapper taxonMapper = session.getMapper( TaxonMapper.class );
+			list = taxonMapper.getPhylogeneticTreeByGenus(genus);
+		}finally{
+			session.close();
+		}
+		return list;
+	}
 
     @Override
     public String getInstitutionId(String insCd) {
@@ -137,52 +133,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return ret;
     }
     
-    private Map<String, Object> getDistributionMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
-    	Map<String, Object> map = null;
-
-    	if( sheetObj instanceof DistPatentReferenceInterface ) {
-    		map = new HashMap<String, Object>();
-
-    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
-    		map.put("access_num",	sheetObj.getAccess_num());
-    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
-    		map.put("dist_yn",		dri.getDistYn());
-    		map.put("dist_url",		dri.getDistUrl());
-    	}
-    	return map;
-    }
-
-    private Map<String, Object> getPatentMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
-    	Map<String, Object> map = null;
-
-    	if( sheetObj instanceof DistPatentReferenceInterface ) {
-    		map = new HashMap<String, Object>();
-
-    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
-    		map.put("access_num",	sheetObj.getAccess_num());
-    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
-    		map.put("patent_no",	dri.getParentNo());
-    		map.put("reg_no",		dri.getRegNo());
-    	}else if( sheetObj instanceof OpenPatentReferenceInterface ) {
-    		map = new HashMap<String, Object>();
-
-    		OpenPatentReferenceInterface dri = (OpenPatentReferenceInterface)sheetObj;
-    		map.put("access_num",	sheetObj.getAccess_num());
-    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
-    		map.put("patent_no",	dri.getParentNo());
-    		map.put("reg_no",		dri.getRegNo());
-    	}else if( sheetObj instanceof SequenceOpenPatentReferenceInterface) {
-    		map = new HashMap<String, Object>();
-
-    		SequenceOpenPatentReferenceInterface dri = (SequenceOpenPatentReferenceInterface)sheetObj;
-    		map.put("access_num",	sheetObj.getAccess_num());
-    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
-    		map.put("patent_no",	dri.getParentNo());
-    		map.put("reg_no",		dri.getRegNo());
-    	}
-    	return map;
-    }
-
     public Map<String, String> getE1Culture( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
 
@@ -796,7 +746,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;
 	}
-    
+
 //
 //  @Override
 //  public int insertMappedD1Common( D1CommonVO commonSheet ) {

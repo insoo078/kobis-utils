@@ -33,6 +33,24 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
 		super(sqlSessionFactory);
 	}
 
+    @Override
+    public String getAccessionNum(String accession_num, String ins_cd) {
+    	SqlSession session = this.getSessionFactory().openSession();
+    	String result = null;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		Map<String, String> map = new HashMap<String, String>();
+    		map.put("accession_num", accession_num);
+    		map.put("ins_cd", ins_cd);
+
+    		result = kobisMapper.getAccessionNum( map );
+	   	}finally{
+	   		session.close();
+	   	}
+    	
+    	return Utils.emptyToNull( result );
+    }
+    
 	@Override
 	public int insertT2UnmappedCommon( D1CommonVO commonSheet ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
@@ -51,23 +69,6 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
     		session.close();
     	}
     	return ret;
-    }
-    @Override
-    public String getAccessionNum(String accession_num, String ins_cd) {
-    	SqlSession session = this.getSessionFactory().openSession();
-    	String result = null;
-    	try {
-    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		Map<String, String> map = new HashMap<String, String>();
-    		map.put("accession_num", accession_num);
-    		map.put("ins_cd", ins_cd);
-
-    		result = kobisMapper.getAccessionNum( map );
-	   	}finally{
-	   		session.close();
-	   	}
-    	
-    	return Utils.emptyToNull( result );
     }
 
 	@Override

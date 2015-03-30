@@ -21,134 +21,177 @@
 	</insert>
 
 	<insert id="insertD1Observation" parameterType="D1_Observation">
-		INSERT INTO ITIS.D1_Observation( accession_num, obs_id, latitude, longitude )
-		VALUES( #{access_num}, SF_GET_NEW_OBSERVATION_ID(#{access_num}), #{gps.latitude}, #{gps.longitude} )
+		INSERT INTO T2_Observation( 
+			accession_num, latitude, longitude, dist_yn
+			, dist_url, reference, application_no, reg_no 
+		)
+		VALUES( 
+			#{access_num}, #{gps.latitude}, #{gps.longitude}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+		)
 	</insert>
 
 	<insert id="insertD1Individual" parameterType="D1_Individual">
-		INSERT INTO ITIS.D1_Individual( accession_num, individual_id, individual_type, individual_maintenance )
-		VALUES( #{access_num}, SF_GET_NEW_INDIVIDUAL_ID(#{access_num}), #{individual_type}, #{individual_maintenance} )
+		INSERT INTO T2_Individual( 
+			accession_num, individual_type, individual_maintenance, dist_yn, dist_url, reference, application_no, reg_no 
+		)
+		VALUES( 
+			#{access_num}, #{individual_type}, #{individual_maintenance}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+		)
 	</insert>
 
 	<insert id="insertD1Specimen" parameterType="D1_Specimen">
-		INSERT INTO D1_Specimen( 
-			accession_num, specimen_id, morphology, kor_addr, eng_addr, laitude, longitude, collect_user
-			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn  
+		INSERT INTO T2_Specimen( 
+			accession_num, morphology, kor_addr, eng_addr, laitude, longitude, collect_user
+			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn
+			, dist_yn, dist_url, reference, application_no, reg_no
 		)
 		VALUES(
-			#{access_num}, SF_GET_NEW_SPECIMEN_ID(#{accession_num}), #{morphology}, #{kor_addr}, #{eng_addr}, #{gps.latitude}, #{gps.longitude}, #{collect_user}
-			, #{collect_dt}, #{nation}, #{ocean}, #{island}, #{specimen_type}, #{kind_of_specimen}, #{public_yn}  
+			#{access_num}, #{morphology}, #{kor_addr}, #{eng_addr}, #{gps.latitude}, #{gps.longitude}, #{collect_user}
+			, #{collect_dt}, #{nation}, #{ocean}, #{island}, #{specimen_type}, #{kind_of_specimen}, #{public_yn} 
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
 		)
 	</insert>
 
 	<insert id="insertD1Organ" parameterType="D1_Organ">
-		INSERT INTO ITIS.D1_Organ( accession_num, organ_id, organ_type, disease )
-		VALUES( #{access_num}, SF_GET_NEW_ORGANL_ID(#{access_num}), #{organ_type}, #{disease} )
+		INSERT INTO T2_Organ( accession_num, organ_type, disease, dist_yn, dist_url, reference, application_no, reg_no, store_no, store_place )
+		VALUES( 
+			#{access_num}, #{organ_type}, #{disease}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{store.store_no}, #{store.store_place}
+		)
 	</insert>
 
 	<insert id="insertD1Source" parameterType="D1_Source">
-		INSERT INTO ITIS.D1_Source( accession_num, source_id, source_type, disease )
-		VALUES( #{access_num}, SF_GET_NEW_SOURCE_ID(#{access_num}), #{source_type}, #{disease} )
+		INSERT INTO T2_Source( accession_num, source_type, disease, dist_yn, dist_url, reference, application_no, reg_no, store_no, store_place )
+		VALUES( 
+			#{access_num}, #{source_type}, #{disease}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{store.store_no}, #{store.store_place} 
+	)
 	</insert>
   	
 	<insert id="insertD1Seed" parameterType="D1_Seed">
-		INSERT INTO ITIS.D1_Seed( accession_num, seed_id, seed_sttus )
-		VALUES( #{access_num}, SF_GET_NEW_SEED_ID(#{access_num}), #{seed_status} )
+		INSERT INTO T2_Seed( accession_num, seed_sttus, dist_yn, dist_url, reference, application_no, reg_no, store_no, store_place )
+		VALUES( #{access_num}, #{seed_status} )
 	</insert>
 	
 	<insert id="insertD1Embryo" parameterType="D1_Embryo">
-		INSERT INTO ITIS.D1_Embryo( accession_num, embryo_id, embryo_type )
-		VALUES( #{access_num}, SF_GET_NEW_EMBRYO_ID(#{access_num}), #{embryo_type} )
+		INSERT INTO T2_Embryo( accession_num, embryo_type, dist_yn, dist_url, reference, application_no, reg_no, store_no, store_place )
+		VALUES(
+			#{access_num}, #{embryo_type}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{store.store_no}, #{store.store_place}
+		)
 	</insert>
 
 	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
-		INSERT INTO ITIS.D1_DNA_RNA_Protein_Derivatives
+		INSERT INTO T2_DNA_RNA_Protein_Derivatives
 		( 
-			accession_num, derivatives_id, source, detail_type
-			, deposit_type, sample_type, sample_detail, sample_etc 
+			accession_num, source, detail_type
+			, deposit_type, sample_type, sample_detail, sample_etc
+			, dist_yn, dist_url, reference, application_no, reg_no, store_no, store_place
 		)
 		VALUES( 
-			#{access_num}, SF_GET_NEW_DNA_RNA_PROT_DEV_ID(#{access_num}), #{source}, #{detail_type}
-			, #{deposit_type}, #{sample_type}, #{sample_detail}, #{sample_etc} 
+			#{access_num}, #{source}, #{detail_type}
+			, #{deposit_type}, #{sample_type}, #{sample_detail}, #{sample_etc}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{store.store_no}, #{store.store_place}
 		)
 	</insert>
 
 	<insert id="insertD1Strain" parameterType="D1_Strain">
-		INSERT INTO ITIS.D1_Strain( accession_num, cellstrain_id, source, pathogenic_yn, strain_name )
-		VALUES( #{access_num}, SF_GET_NEW_STRAIN_ID(#{access_num}), #{source}, #{pathogenic_yn}, #{strain_name} )
+		INSERT INTO T2_Strain( 
+			accession_num, source, pathogenic_yn, strain_name
+			, dist_yn, dist_url, reference, application_no, reg_no
+			, culture_medium_name, condition, succeed_dt, succeed_time
+		)
+		VALUES( 
+			#{access_num}, #{source}, #{pathogenic_yn}, #{strain_name}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time} 
+		)
 	</insert>
 
 	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
-		INSERT INTO ITIS.D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
-		VALUES( #{access_num}, SF_GET_NEW_CELL_STRAIN_ID(#{access_num}), #{source}, #{cell_type}, #{cell_name} )
+		INSERT INTO T2_CellStrain( 
+			accession_num, source, cell_type, cell_name
+			, dist_yn, dist_url, reference, application_no, reg_no
+			, culture_medium_name, condition, succeed_dt, succeed_time 
+		)
+		VALUES( 
+			#{access_num}, #{source}, #{cell_type}, #{cell_name} 
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time}
+		)
 	</insert>
 	
 	<insert id="insertD1BodyFluid" parameterType="D1_BodyFluid">
-		INSERT INTO ITIS.D1_BodyFluid( accession_num, body_fluid_id, body_fluid_type )
-		VALUES( #{access_num}, SF_GET_NEW_CELL_BODY_FLUID_ID(#{access_num}), #{body_fluid_type} )
+		INSERT INTO T2_BodyFluid( 
+			accession_num, body_fluid_type, dist_yn, dist_url, reference, application_no, reg_no
+			, culture_medium_name, condition, succeed_dt, succeed_time
+		)
+		VALUES( 
+			#{access_num}, #{body_fluid_type}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time}
+		 )
 	</insert>
 	
 	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
-		INSERT INTO ITIS.D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
-		VALUES( #{access_num}, SF_GET_NEW_CELL_PROTEIN_SEQUENCE_ID(#{access_num}), #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url} )
+		INSERT INTO T2_ProteinSequence( accession_num, source, protein_name, accession_no, sequence, open_yn, open_url, reference, application_no, reg_no )
+		VALUES( 
+			#{access_num}, #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url}
+			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no}
+		)
 	</insert>
 
 	<insert id="insertD1Expression" parameterType="D1_Expression">
-		INSERT INTO ITIS.D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
-		VALUES( #{access_num}, SF_GET_NEW_CELL_EXPRESSION_ID(#{access_num}), #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url} )
+		INSERT INTO T2_Expression( accession_num, source, data_type, expression_data, open_yn, open_url, reference, application_no, reg_no )
+		VALUES(
+			#{access_num}, #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url}
+			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+		)
 	</insert>
 
 	<insert id="insertD1Structure" parameterType="D1_Structure">
-		INSERT INTO ITIS.D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
-		VALUES( #{access_num}, SF_GET_NEW_CELL_EXPRESSION_ID(#{access_num}), #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url} )
+		INSERT INTO T2_Sturcture( accession_num, source, structure_type, accession_no, pdb_format, open_yn, open_url, reference, application_no, reg_no )
+		VALUES( 
+			#{access_num}, #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url}
+			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+		)
 	</insert>
 
 	<insert id="insertD1DnaSequence" parameterType="D1_DnaSequence">
-		INSERT INTO ITIS.D1_Dna_Sequence
+		INSERT INTO T2_Dna_Sequence
 		( 
-			accession_num, sequence_id, source, molecular_type, data_type
+			accession_num, source, molecular_type, data_type
 			, gene_name, accession_no, sequence, open_yn, open_url
 			, gene_full_name, gene_alias 
+			, reference, application_no, reg_no
 		)
 		VALUES(
-			#{access_num}, SF_GET_NEW_DNA_SEQUENCE_ID(#{access_num}), #{source}, #{molecular_type}, #{data_type}
+			#{access_num}, #{source}, #{molecular_type}, #{data_type}
 			, #{gene_name}, #{accession_no}, #{sequence.sequence}, #{open_yn}, #{open_url}
 			, #{gene_full_naem}, #{gene_alias} 
+			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no}
 		)
 	</insert>
 
 	<insert id="insertD1Etc" parameterType="D1_Etc">
-		INSERT INTO ITIS.D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
-		VALUES( #{access_num}, SF_GET_NEW_ETC_EXPRESSION_ID(#{access_num}), #{description}, #{open_yn}, #{open_url} )
+		INSERT INTO T2_Etc( accession_num, description, oepn_yn, open_url, dist_yn, dist_url, reference, application_no, reg_no )
+		VALUES( 
+			#{access_num}, #{description}, #{open_yn}, #{open_url}
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+		)
 	</insert>
 
 	<insert id="insertD1Extraction" parameterType="D1_Extract">
-		INSERT INTO ITIS.D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
-		VALUES( #{access_num}, SF_GET_NEW_EXTRACT_EXPRESSION_ID(#{access_num}), #{source}, #{solvent}, #{extract_time} )
-	</insert>
-
-	<insert id="insertE1Culture" parameterType="java.util.Map">
-		INSERT INTO E1_Culture( accession_num, id, culture_medium_name, condition, succeed_dt, succeed_time )
-		VALUES( #{accession_num}, #{id}, #{culture_medium_name}, #{condition}, #{succeed_dt}, #{succeed_time} )
-	</insert>
-	
-	<insert id="insertE1Store" parameterType="java.util.Map">
-		INSERT INTO E1_Store( accession_num, id, store_no, store_place )
-		VALUES( #{accession_num}, #{id}, #{store_no}, #{store_place} )
-	</insert>
-
-	<insert id="insertE1Distribution" parameterType="java.util.Map">
-		INSERT INTO E1_Distribution( accession_num, id, dist_yn, dist_url )
-		VALUES( #{accession_num}, #{id}, #{dist_yn}, #{dist_url} )
-	</insert>
-
-	<insert id="insertE1Reference" parameterType="java.util.Map">
-		INSERT INTO E1_Reference( accession_num, id, ord, ref_no, reference )
-		VALUES( #{accession_num}, #{id}, SF_GET_NEW_REFERENCE_ORD(#{accession}, #{id}), #{ref_no}, #{reference} )
-	</insert>
-
-	<insert id="insertE1Patent" parameterType="java.util.Map">
-		INSERT INTO E1_Patent( accession_num, id, application_no, reg_no )
-		VALUES( #{accession_num}, #{id}, #{application_no}, #{reg_no} )
+		INSERT INTO T2_Extraction( accession_num, source, solvent, extract_time, dist_yn, dist_url, reference, application_no, reg_no )
+		VALUES( 
+			#{access_num}, #{source}, #{solvent}, #{extract_time} 
+			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no}
+		)
 	</insert>
 </mapper>
