@@ -35,7 +35,7 @@ public class CellStrainServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1CellStrain( d1CellStrainVo );
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedCellStrain( d1CellStrainVo );
+					this.getUnmapService().insertT2UnmappedCellStrain( cellStrainSheetRecordObj );
 				}
 			}
 		}

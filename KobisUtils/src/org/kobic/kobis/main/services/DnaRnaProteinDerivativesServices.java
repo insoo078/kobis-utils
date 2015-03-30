@@ -35,7 +35,7 @@ public class DnaRnaProteinDerivativesServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1DnaRnaProteinDerivatives(d1DnaRnaProteinDerivativesnVo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives(d1DnaRnaProteinDerivativesnVo);
+					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives(sheetRecordObj);
 				}
 			}
 		}

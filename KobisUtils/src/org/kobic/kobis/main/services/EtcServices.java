@@ -35,7 +35,7 @@ public class EtcServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1Etc(vo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedEtc(vo);
+					this.getUnmapService().insertT2UnmappedEtc(sheetRecordObj);
 				}
 			}
 		}

@@ -8,23 +8,23 @@
 
 	<typeAliases>
 		<typeAlias alias="D1_Common"					type="org.kobic.kobis.main.vo.D1CommonVO" />
-		<typeAlias alias="D1_Observation"				type="org.kobic.kobis.file.excel.obj.XObservationSheetObj" />
-		<typeAlias alias="D1_Individual"				type="org.kobic.kobis.file.excel.obj.XIndividualSheetObj" />
-		<typeAlias alias="D1_Specimen"					type="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj" />
-		<typeAlias alias="D1_Organ"						type="org.kobic.kobis.file.excel.obj.XOrganSheetObj" />
-		<typeAlias alias="D1_Source"					type="org.kobic.kobis.file.excel.obj.XSourceSheetObj" />
-		<typeAlias alias="D1_Seed"						type="org.kobic.kobis.file.excel.obj.XSeedSheetObj" />
-		<typeAlias alias="D1_Embryo"					type="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj" />
-		<typeAlias alias="D1_DnaRnaProteinDerivative"	type="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj" />
-		<typeAlias alias="D1_Strain"					type="org.kobic.kobis.file.excel.obj.XStrainSheetObj" />
-		<typeAlias alias="D1_Cellstrin"					type="org.kobic.kobis.file.excel.obj.XCellStrainSheetObj" />
-		<typeAlias alias="D1_BodyFluid"					type="org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj" />
-		<typeAlias alias="D1_ProteinSequence"			type="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj" />
-		<typeAlias alias="D1_Expression"				type="org.kobic.kobis.file.excel.obj.XExpressionSheetObj" />
-		<typeAlias alias="D1_Structure"					type="org.kobic.kobis.file.excel.obj.XStructureSheetObj" />
-		<typeAlias alias="D1_DnaSequence"				type="org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj" />
-		<typeAlias alias="D1_Etc"						type="org.kobic.kobis.file.excel.obj.XEtcSheetObj" />
-		<typeAlias alias="D1_Extract"					type="org.kobic.kobis.file.excel.obj.XExtractSheetObj" />
+		<typeAlias alias="D1_Observation"				type="org.kobic.kobis.main.vo.D1ObservationVO" />
+		<typeAlias alias="D1_Individual"				type="org.kobic.kobis.main.vo.D1IndividualVO" />
+		<typeAlias alias="D1_Specimen"					type="org.kobic.kobis.main.vo.D1SpecimenVO" />
+		<typeAlias alias="D1_Organ"						type="org.kobic.kobis.main.vo.D1OrganVO" />
+		<typeAlias alias="D1_Source"					type="org.kobic.kobis.main.vo.D1SourceVO" />
+		<typeAlias alias="D1_Seed"						type="org.kobic.kobis.main.vo.D1SeedVO" />
+		<typeAlias alias="D1_Embryo"					type="org.kobic.kobis.main.vo.D1EmbryoVO" />
+		<typeAlias alias="D1_DnaRnaProteinDerivative"	type="org.kobic.kobis.main.vo.D1DnaRnaProteinDerivativesVO" />
+		<typeAlias alias="D1_Strain"					type="org.kobic.kobis.main.vo.D1StrainVO" />
+		<typeAlias alias="D1_Cellstrin"					type="org.kobic.kobis.main.vo.D1CellStrainVO" />
+		<typeAlias alias="D1_BodyFluid"					type="org.kobic.kobis.main.vo.D1BodyFluidVO" />
+		<typeAlias alias="D1_ProteinSequence"			type="org.kobic.kobis.main.vo.D1ProteinSequenceVO" />
+		<typeAlias alias="D1_Expression"				type="org.kobic.kobis.main.vo.D1ExpressionVO" />
+		<typeAlias alias="D1_Structure"					type="org.kobic.kobis.main.vo.D1StructureVO" />
+		<typeAlias alias="D1_DnaSequence"				type="org.kobic.kobis.main.vo.D1DnaSequenceVO" />
+		<typeAlias alias="D1_Etc"						type="org.kobic.kobis.main.vo.D1EtcVO" />
+		<typeAlias alias="D1_Extract"					type="org.kobic.kobis.main.vo.D1ExtractVO" />
 	</typeAliases>
  
     <environments default="development">

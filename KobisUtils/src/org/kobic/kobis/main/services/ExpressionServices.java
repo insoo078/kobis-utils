@@ -35,7 +35,7 @@ public class ExpressionServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1Expression(vo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedExpression(vo);
+					this.getUnmapService().insertT2UnmappedExpression(sheetRecordObj);
 				}
 			}
 		}

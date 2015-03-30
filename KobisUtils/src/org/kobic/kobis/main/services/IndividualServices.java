@@ -36,7 +36,7 @@ public class IndividualServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1Individual(vo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedIndividual(vo);
+					this.getUnmapService().insertT2UnmappedIndividual(sheetRecordObj);
 				}
 			}
 		}

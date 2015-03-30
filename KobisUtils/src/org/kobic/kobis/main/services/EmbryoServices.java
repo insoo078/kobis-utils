@@ -36,7 +36,7 @@ public class EmbryoServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1Embryo(vo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedEmbryo(vo);
+					this.getUnmapService().insertT2UnmappedEmbryo(sheetRecordObj);
 				}
 			}
 		}

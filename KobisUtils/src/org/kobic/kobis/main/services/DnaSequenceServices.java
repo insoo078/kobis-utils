@@ -35,7 +35,7 @@ public class DnaSequenceServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1DnaSequence(d1DnaSequenceVo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedDnaSequence(d1DnaSequenceVo);
+					this.getUnmapService().insertT2UnmappedDnaSequence(sheetRecordObj);
 				}
 			}
 		}

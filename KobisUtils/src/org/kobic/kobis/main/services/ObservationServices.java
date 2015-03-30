@@ -35,7 +35,7 @@ public class ObservationServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
 					this.getKobisService().insertD1Observation(vo);
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedObservation(vo);
+					this.getUnmapService().insertT2UnmappedObservation(sheetRecordObj);
 				}
 			}
 		}
