@@ -1,8 +1,14 @@
 package org.kobic.kobis.main.vo;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XExpressionSheetObj;
 
 public class D1ExpressionVO extends XExpressionSheetObj{
+	public D1ExpressionVO(XExpressionSheetObj expressionSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
+		BeanUtils.copyProperties( this, expressionSheetRecordObj );
+	}
 	private String id;
 
 	public String getId() {

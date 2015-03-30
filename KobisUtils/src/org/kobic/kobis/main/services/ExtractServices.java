@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
 import org.kobic.kobis.main.dao.KobisDAOService;
+import org.kobic.kobis.main.vo.D1ExtractionVO;
 import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.unmapped.dao.UnmappedDAOService;
 import org.kobic.kobis.util.Utils;
@@ -30,14 +31,16 @@ public class ExtractServices extends AbstractKobisServices{
 
 				XExtractSheetObj extractSheetRecordObj = XExtractSheetObj.getNewInstance( dataRow );
 
+				D1ExtractionVO d1ExtractVo = new D1ExtractionVO( extractSheetRecordObj );
+				
 				Rule rule = new Rule( this.getInsCd() );
-				rule.rule( extractSheetRecordObj );
+				rule.rule( d1ExtractVo );
 
-				String accessionNumFromMapTab = Utils.nullToEmpty( this.kobisService.getAccessionNum( extractSheetRecordObj.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab = Utils.nullToEmpty( this.unmapService.getAccessionNum( extractSheetRecordObj.getAccess_num(), this.getInsCd() ) );
+				String accessionNumFromMapTab	= Utils.nullToEmpty( this.kobisService.getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
+				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.unmapService.getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
 
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-					this.kobisService.insertD1Extraction( extractSheetRecordObj );
+					this.kobisService.insertD1Extraction( d1ExtractVo );
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
 //					this.unmapService.insert
 				}
