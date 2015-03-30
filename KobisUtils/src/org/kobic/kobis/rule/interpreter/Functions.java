@@ -32,4 +32,19 @@ public class Functions {
 		if( param1.contains( param2) )	return "true";
 		return "false";
 	}
+	
+	public static String STARTWITH(String[] list) throws Exception{
+		String param1 = Utils.removeQuot( list[0].trim(), KeywordDictionary.DBL_QUOTATION ).trim();
+		String param2 = Utils.removeQuot( list[1].trim(), KeywordDictionary.DBL_QUOTATION ).trim();
+		if( param1.toUpperCase().startsWith( param2.toUpperCase() ) )	return "true";
+		return "false";
+	}
+	
+	public static String CONCAT(String[] list) throws Exception {
+		String ret="";
+		for(String str:list) {
+			ret += str.replace("\"", "").trim();
+		}
+		return KeywordDictionary.DBL_QUOTATION + ret + KeywordDictionary.DBL_QUOTATION;
+	}
 }

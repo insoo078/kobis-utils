@@ -1,8 +1,10 @@
 package org.kobic.kobis.rule;
 
 import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
@@ -43,13 +45,19 @@ public class Rule {
 
 //				if( XCommonSheetObj.class.getField(name) != null ) {
 			        Method getter = pd.getReadMethod();
-			        Object value = getter.invoke( obj );
-			        params.addParam( name, value );
+					try {
+						Object value = getter.invoke( obj );
+				        params.addParam( name, value );
+					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+						// TODO Auto-generated catch block
+//						e.printStackTrace();
+					}
 //				}
 		    }
-		} catch (Exception e) {
+		} catch (IntrospectionException e) {
 			// TODO Auto-generated catch block
 			params = null;
+			e.printStackTrace();
 		}
 
 		return params;

@@ -10,6 +10,10 @@ public class D1DnaRnaProteinDerivativesVO extends XDnaRnaProteinDerivativesSheet
 		BeanUtils.copyProperties( this, dnaRnaProteinDerivativesSheetRecordObj );
 	}
 	
+	public D1DnaRnaProteinDerivativesVO() {
+		super();
+	}
+	
 	private String id;
 
 	public String getId() {

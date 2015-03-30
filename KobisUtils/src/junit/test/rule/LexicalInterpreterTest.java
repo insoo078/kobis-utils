@@ -1,17 +1,19 @@
 package junit.test.rule;
 
 import org.junit.Test;
+import org.kobic.kobis.main.vo.D1DnaRnaProteinDerivativesVO;
+import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.rule.dao.RuleDAO;
-import org.kobic.kobis.rule.interpreter.LexicalInterpreter;
 
 public class LexicalInterpreterTest {
 	private RuleDAO dao;
 	
 	@Test
-	public void test() throws NoSuchMethodException, SecurityException {
-		String rule = "IF ${FIELD} EQ ${VAL} AND ${FIELD} NE ${VAL2} THEN REPLACE(${FIELD}, ${BEFORE}, ${AFTER}) FI";
+	public void test() throws Exception {
+		D1DnaRnaProteinDerivativesVO obj = new D1DnaRnaProteinDerivativesVO();
+		obj.setAccess_num("12345");
 		
-		LexicalInterpreter liptr = new LexicalInterpreter();
-//		liptr.parsing( rule );
+		Rule rule = new Rule( "INS00002" );
+		rule.rule( obj );
 	}
 }
