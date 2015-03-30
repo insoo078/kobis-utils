@@ -12,10 +12,12 @@ public class D1SpecimenVO extends XSpecimenSheetObj implements DBCommonInterface
 		BeanUtils.copyProperties( this, specimenSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}

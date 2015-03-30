@@ -12,10 +12,12 @@ public class D1StructureVO extends XStructureSheetObj implements DBCommonInterfa
 		BeanUtils.copyProperties( this, structureSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}

@@ -12,10 +12,12 @@ public class D1ProteinSequenceVO extends XProteinSequenceSheetObj implements DBC
 		BeanUtils.copyProperties( this, proteinSequenceSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}

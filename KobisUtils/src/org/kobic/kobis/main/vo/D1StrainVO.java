@@ -12,10 +12,12 @@ public class D1StrainVO extends XStrainSheetObj implements DBCommonInterface{
 		BeanUtils.copyProperties( this, strainSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}

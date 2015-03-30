@@ -12,10 +12,12 @@ public class D1SourceVO extends XSourceSheetObj implements DBCommonInterface{
 		BeanUtils.copyProperties( this, sourceSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}

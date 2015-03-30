@@ -12,10 +12,12 @@ public class D1SeedVO extends XSeedSheetObj implements DBCommonInterface{
 		BeanUtils.copyProperties( this, seedSheetRecordObj );
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(String id) {
 		this.id = id;
 	}
