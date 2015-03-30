@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XOrganSheetObj;
 
-public class D1OrganVO extends XOrganSheetObj{
+public class D1OrganVO extends XOrganSheetObj implements DBCommonInterface{
 	public D1OrganVO(XOrganSheetObj organSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, organSheetRecordObj );
 	}

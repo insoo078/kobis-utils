@@ -1,5 +1,7 @@
 package org.kobic.kobis.main.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +10,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
+import org.kobic.kobis.file.excel.obj.internal.CultureObj;
+import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
+import org.kobic.kobis.file.excel.obj.internal.PatentObj;
+import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
+import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
 import org.kobic.kobis.main.vo.D1CellStrainVO;
@@ -27,6 +34,7 @@ import org.kobic.kobis.main.vo.D1SourceVO;
 import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.main.vo.D1StrainVO;
 import org.kobic.kobis.main.vo.D1StructureVO;
+import org.kobic.kobis.main.vo.DBCommonInterface;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
@@ -127,60 +135,180 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return ret;
     }
 
-    public Map<String, String> getE1Culture( AbstractSheetObj sheet ) {
+    public Map<String, String> getE1Culture( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
-    	if( sheet instanceof D1StrainVO ) {
-    		D1StrainVO dsvo = (D1StrainVO)sheet;
-    		map.put("culture_medium_name",		dsvo.getCulture().getCultureMediumName() );
-    		map.put("condition",				dsvo.getCulture().getCondition() );
-    		map.put("succeed_dt",				dsvo.getCulture().getSucceedDt() );
-    		map.put("succeed_time",				dsvo.getCulture().getSucceedTime() );
-    		map.put("accession_num",			dsvo.getAccess_num() );
-    		map.put("id",						dsvo.getId() );
+
+    	try {
+    		Method getCulture = sheet.getClass().getMethod("getCulture" );
+
+    		try {
+    			Object cultureParam = getCulture.invoke( sheet );
+
+    			if( cultureParam instanceof  CultureObj ) {
+    				CultureObj param = (CultureObj)cultureParam;
+    	    		map.put("culture_medium_name",	param.getCultureMediumName() );
+    	    		map.put("condition",			param.getCondition() );
+    	    		map.put("succeed_dt",			param.getSucceedDt() );
+    	    		map.put("succeed_time",			param.getSucceedTime() );
+	        		map.put("accession_num",		sheet.getAccess_num() );
+	        		map.put("id",					sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
     	}
+
     	return map;
     }
-    public Map<String, String> getE1Store( AbstractSheetObj sheet ) {
+    public Map<String, String> getE1Store( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
-    	if( sheet instanceof D1OrganVO ) {
-    		D1OrganVO dovo = (D1OrganVO)sheet;
-    		map.put("store_no",			dovo.getStore().getStoreNo() );
-    		map.put("store_place",		dovo.getStore().getStorePlace() );
-    		map.put("accession_num",	dovo.getAccess_num() );
-    		map.put("id",				dovo.getId() );
+    	
+    	try {
+    		Method getStore = sheet.getClass().getMethod("getStore" );
+
+    		try {
+    			Object storeParam = getStore.invoke( sheet );
+
+    			if( storeParam instanceof  StoreObj ) {
+    				StoreObj param = (StoreObj)storeParam;
+            		map.put("store_no",			param.getStoreNo() );
+            		map.put("store_place",		param.getStorePlace() );
+	        		map.put("accession_num",	sheet.getAccess_num() );
+	        		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
     	}
+
     	return map;
     }
-    public Map<String, String> getE1Reference( AbstractSheetObj sheet ) {
+    public Map<String, String> getE1Reference( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
-    	if( sheet instanceof D1ObservationVO ) {
-    		D1ObservationVO xoso = (D1ObservationVO)sheet;
-    		map.put("patent_no",		xoso.getExtra().getRef().getReference() );
-    		map.put("accession_num",	xoso.getAccess_num() );
-    		map.put("id",				xoso.getId() );
+
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+            		map.put("reference",		param.getRef().getReference() );
+            		map.put("accession_num",	sheet.getAccess_num() );
+            		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		try {
+				Method getPatent = sheet.getClass().getMethod("getReference" );
+				
+				try {
+	    			Object refObj = getPatent.invoke( sheet );
+
+	    			if( refObj instanceof  ReferenceObj ) {
+	    				ReferenceObj param = (ReferenceObj)refObj;
+	            		map.put("reference",		param.getReference() );
+	            		map.put("accession_num",	sheet.getAccess_num() );
+	            		map.put("id",				sheet.getId() );
+	    			}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			} catch (NoSuchMethodException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SecurityException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     	}
+
     	return map;
     }
-    public Map<String, String> getE1Patent( AbstractSheetObj sheet ) {
+    public Map<String, String> getE1Patent( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
-    	if( sheet instanceof D1ObservationVO ) {
-    		D1ObservationVO xoso = (D1ObservationVO)sheet;
-    		map.put("patent_no",		xoso.getExtra().getPatent().getParentNo() );
-    		map.put("dist_yn",			xoso.getExtra().getPatent().getRegNo() );
-    		map.put("accession_num",	xoso.getAccess_num() );
-    		map.put("id",				xoso.getId() );
+    	
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+            		map.put("patent_no",		param.getPatent().getParentNo() );
+            		map.put("reg_no",			param.getPatent().getRegNo() );
+            		map.put("accession_num",	sheet.getAccess_num() );
+            		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		try {
+				Method getPatent = sheet.getClass().getMethod("getPatent" );
+				
+				try {
+	    			Object patentObj = getPatent.invoke( sheet );
+
+	    			if( patentObj instanceof  PatentObj ) {
+	    				PatentObj param = (PatentObj)patentObj;
+	            		map.put("patent_no",		param.getParentNo() );
+	            		map.put("reg_no",			param.getRegNo() );
+	            		map.put("accession_num",	sheet.getAccess_num() );
+	            		map.put("id",				sheet.getId() );
+	    			}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			} catch (NoSuchMethodException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SecurityException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     	}
+
     	return map;
     }
-    public Map<String, String> getE1Distribution( AbstractSheetObj sheet ) {
+    public Map<String, String> getE1Distribution( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
-    	if( sheet instanceof D1ObservationVO ) {
-    		D1ObservationVO xoso = (D1ObservationVO)sheet;
-    		map.put("dist_url",			xoso.getExtra().getDist().getDistUrl() );
-    		map.put("dist_yn",			xoso.getExtra().getDist().getDistYn() );
-    		map.put("accession_num",	xoso.getAccess_num() );
-    		map.put("id",				xoso.getId() );
+
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+	        		map.put("dist_url",			param.getDist().getDistUrl() );
+	        		map.put("dist_yn",			param.getDist().getDistYn() );
+	        		map.put("accession_num",	sheet.getAccess_num() );
+	        		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
     	}
+
     	return map;
     }
 

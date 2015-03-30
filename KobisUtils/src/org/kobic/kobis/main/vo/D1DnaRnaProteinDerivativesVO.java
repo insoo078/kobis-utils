@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj;
 
-public class D1DnaRnaProteinDerivativesVO extends XDnaRnaProteinDerivativesSheetObj{
+public class D1DnaRnaProteinDerivativesVO extends XDnaRnaProteinDerivativesSheetObj implements DBCommonInterface{
 	public D1DnaRnaProteinDerivativesVO(XDnaRnaProteinDerivativesSheetObj dnaRnaProteinDerivativesSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, dnaRnaProteinDerivativesSheetRecordObj );
 	}

@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XEmbryoSheetObj;
 
-public class D1EmbryoVO extends XEmbryoSheetObj{
+public class D1EmbryoVO extends XEmbryoSheetObj implements DBCommonInterface{
 	public D1EmbryoVO(XEmbryoSheetObj embryoSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, embryoSheetRecordObj );
 	}

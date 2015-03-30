@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 
-public class D1SpecimenVO extends XSpecimenSheetObj{
+public class D1SpecimenVO extends XSpecimenSheetObj implements DBCommonInterface{
 	private String id;
 	
 	public D1SpecimenVO(XSpecimenSheetObj specimenSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

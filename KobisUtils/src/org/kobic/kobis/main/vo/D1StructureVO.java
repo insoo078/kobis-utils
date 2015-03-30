@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
 
-public class D1StructureVO extends XStructureSheetObj{
+public class D1StructureVO extends XStructureSheetObj implements DBCommonInterface{
 	private String id;
 	
 	public D1StructureVO(XStructureSheetObj structureSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
