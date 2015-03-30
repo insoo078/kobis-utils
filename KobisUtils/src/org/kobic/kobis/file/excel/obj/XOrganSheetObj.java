@@ -7,7 +7,7 @@ import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 
 @Alias("D1_Organ")
-public class XOrganSheetObj extends AbstractSheetObj{
+public class XOrganSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private String organType;
 	private String disease;
 	private StoreObj store;
@@ -76,5 +76,30 @@ public class XOrganSheetObj extends AbstractSheetObj{
 		line += this.getExtra().getRef().getReference();
 		
 		return line;
+	}
+	@Override
+	public String getDistYn() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistYn();
+	}
+	@Override
+	public String getDistUrl() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getRegNo();
+	}
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return this.extra.getRef().getReference();
 	}
 }

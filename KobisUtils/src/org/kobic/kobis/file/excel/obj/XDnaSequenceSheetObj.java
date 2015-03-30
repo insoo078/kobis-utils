@@ -9,7 +9,7 @@ import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.SequenceObj;
 
 @Alias("D1_DnaSequence")
-public class XDnaSequenceSheetObj extends AbstractSheetObj{
+public class XDnaSequenceSheetObj extends AbstractSheetObj implements SequenceOpenPatentReferenceInterface{
 	private String source;
 	private String molecular_type;
 	private String data_type;
@@ -133,5 +133,49 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj{
 		line += this.getReference().getReference();
 		
 		return line;
+	}
+
+	@Override
+	public String getGeneName() {
+		// TODO Auto-generated method stub
+		return this.sequence.getGeneName();
+	}
+
+	@Override
+	public String getAccessionNo() {
+		// TODO Auto-generated method stub
+		return this.sequence.getAccessionNo();
+	}
+
+	@Override
+	public String getSequenceStr() {
+		// TODO Auto-generated method stub
+		return this.sequence.getSequence();
+	}
+
+	@Override
+	public String getOpenYn() {
+		// TODO Auto-generated method stub
+		return this.open.getOpenYn();
+	}
+	@Override
+	public String getOpenUrl() {
+		// TODO Auto-generated method stub
+		return this.open.getOpenUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.patent.getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.patent.getRegNo();
+	}
+	@Override
+	public String getReferenceStr() {
+		// TODO Auto-generated method stub
+		return this.reference.getReference();
 	}
 }

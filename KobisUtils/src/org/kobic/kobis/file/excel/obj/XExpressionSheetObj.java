@@ -8,7 +8,7 @@ import org.kobic.kobis.file.excel.obj.internal.PatentObj;
 import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
 
 @Alias("D1_Expression")
-public class XExpressionSheetObj extends AbstractSheetObj{
+public class XExpressionSheetObj extends AbstractSheetObj implements OpenPatentReferenceInterface{
 	private String source;
 	private String sequence;
 	private String dataType;
@@ -98,5 +98,31 @@ public class XExpressionSheetObj extends AbstractSheetObj{
 		line += this.getReference().getReference();
 		
 		return line;
+	}
+
+	@Override
+	public String getOpenYn() {
+		// TODO Auto-generated method stub
+		return this.getOpen().getOpenYn();
+	}
+	@Override
+	public String getOpenUrl() {
+		// TODO Auto-generated method stub
+		return this.getOpen().getOpenUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.getPatent().getRegNo();
+	}
+	@Override
+	public String getReferenceStr() {
+		// TODO Auto-generated method stub
+		return this.reference.getReference();
 	}
 }

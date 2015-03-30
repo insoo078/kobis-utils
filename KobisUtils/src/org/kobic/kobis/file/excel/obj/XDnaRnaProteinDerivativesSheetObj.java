@@ -8,7 +8,7 @@ import org.kobic.kobis.file.excel.obj.internal.SampleObj;
 import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 
 @Alias("D1_DnaRnaProteinDerivatives")
-public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
+public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private String source;
 	private String detailType;
 	private String depositType;
@@ -93,5 +93,30 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj{
 		line += this.getExtra().getRef().getReference();
 		
 		return line;
+	}
+	@Override
+	public String getDistYn() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistYn();
+	}
+	@Override
+	public String getDistUrl() {
+		// TODO Auto-generated method stub
+		return this.extra.getDist().getDistUrl();
+	}
+	@Override
+	public String getParentNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getParentNo();
+	}
+	@Override
+	public String getRegNo() {
+		// TODO Auto-generated method stub
+		return this.extra.getPatent().getRegNo();
+	}
+	@Override
+	public String getReference() {
+		// TODO Auto-generated method stub
+		return this.extra.getRef().getReference();
 	}
 }
