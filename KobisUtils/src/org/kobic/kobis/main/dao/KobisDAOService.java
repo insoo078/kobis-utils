@@ -136,6 +136,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public Map<String, String> getE1Culture( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
 
+		map.put("accession_num",	sheet.getAccess_num() );
+		map.put("id",				sheet.getId() );
     	try {
     		Method getCulture = sheet.getClass().getMethod("getCulture" );
 
@@ -148,8 +150,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	    		map.put("condition",			param.getCondition() );
     	    		map.put("succeed_dt",			param.getSucceedDt() );
     	    		map.put("succeed_time",			param.getSucceedTime() );
-	        		map.put("accession_num",		sheet.getAccess_num() );
-	        		map.put("id",					sheet.getId() );
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
@@ -164,6 +164,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public Map<String, String> getE1Store( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
     	
+		map.put("accession_num",	sheet.getAccess_num() );
+		map.put("id",				sheet.getId() );
     	try {
     		Method getStore = sheet.getClass().getMethod("getStore" );
 
@@ -174,8 +176,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     				StoreObj param = (StoreObj)storeParam;
             		map.put("store_no",			param.getStoreNo() );
             		map.put("store_place",		param.getStorePlace() );
-	        		map.put("accession_num",	sheet.getAccess_num() );
-	        		map.put("id",				sheet.getId() );
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
@@ -190,6 +190,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public Map<String, String> getE1Reference( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
 
+		map.put("accession_num",	sheet.getAccess_num() );
+		map.put("id",				sheet.getId() );
     	try {
     		Method getExtra = sheet.getClass().getMethod("getExtra" );
 
@@ -199,8 +201,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
         			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
             		map.put("reference",		param.getRef().getReference() );
-            		map.put("accession_num",	sheet.getAccess_num() );
-            		map.put("id",				sheet.getId() );
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
@@ -237,6 +237,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public Map<String, String> getE1Patent( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
     	
+		map.put("accession_num",	sheet.getAccess_num() );
+		map.put("id",				sheet.getId() );
     	try {
     		Method getExtra = sheet.getClass().getMethod("getExtra" );
 
@@ -247,8 +249,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
         			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
             		map.put("patent_no",		param.getPatent().getParentNo() );
             		map.put("reg_no",			param.getPatent().getRegNo() );
-            		map.put("accession_num",	sheet.getAccess_num() );
-            		map.put("id",				sheet.getId() );
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
@@ -286,6 +286,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     public Map<String, String> getE1Distribution( DBCommonInterface sheet ) {
     	Map<String, String> map = new HashMap<String, String>();
 
+		map.put("accession_num",	sheet.getAccess_num() );
+		map.put("id",				sheet.getId() );
     	try {
     		Method getExtra = sheet.getClass().getMethod("getExtra" );
 
@@ -296,8 +298,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
         			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
 	        		map.put("dist_url",			param.getDist().getDistUrl() );
 	        		map.put("dist_yn",			param.getDist().getDistYn() );
-	        		map.put("accession_num",	sheet.getAccess_num() );
-	        		map.put("id",				sheet.getId() );
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
@@ -746,45 +746,4 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;
 	}
-
-//
-//  @Override
-//  public int insertMappedD1Common( D1CommonVO commonSheet ) {
-//  	SqlSession session = this.getSessionFactory().openSession( false );
-//
-//  	int ret = 0;
-//  	try {
-//  		ret = session.insert( "Kobis.insertMappedD1Common", commonSheet);
-//  		session.commit();
-//  	}catch(Exception e) {
-//  		ret = 0;
-//  		e.printStackTrace();
-//  		session.rollback();
-//  	}finally{
-//  		session.close();
-//  	}
-//  	return ret;
-//  }
-//  public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomyDetail(Map<String, String> map) {
-//	SqlSession session = this.sqlSessionFactory.openSession();
-//	List<NameWithTaxonIdVO> result = null;
-//	try {
-//		result = session.selectList("Kobis.getScientificNameFromKobicTaxonomyDetail", map);
-//   	}finally{
-//   		session.close();
-//   	}   		
-//
-//	return result;
-//}
-//public List<NameWithTaxonIdVO> getScientificNameFromKobicTaxonomyPure(String scientfic_name) {
-//	SqlSession session = this.sqlSessionFactory.openSession();
-//	List<NameWithTaxonIdVO> result = null;
-//	try {
-//		result = session.selectList("Kobis.getScientificNameFromKobicTaxonomyPure", scientfic_name);
-//   	}finally{
-//   		session.close();
-//   	}   		
-//
-//	return result;
-//}
 }
