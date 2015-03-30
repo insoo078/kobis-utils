@@ -1,5 +1,7 @@
 package org.kobic.kobis.main.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,28 +9,37 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.dao.CommonDAOService;
-import org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj;
-import org.kobic.kobis.file.excel.obj.XCellStrainSheetObj;
-import org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj;
-import org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj;
-import org.kobic.kobis.file.excel.obj.XEmbryoSheetObj;
-import org.kobic.kobis.file.excel.obj.XEtcSheetObj;
-import org.kobic.kobis.file.excel.obj.XExpressionSheetObj;
-import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
-import org.kobic.kobis.file.excel.obj.XIndividualSheetObj;
-import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
-import org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj;
-import org.kobic.kobis.file.excel.obj.XSeedSheetObj;
-import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
-import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
-import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
-import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
+import org.kobic.kobis.file.excel.obj.DistPatentReferenceInterface;
+import org.kobic.kobis.file.excel.obj.OpenPatentReferenceInterface;
+import org.kobic.kobis.file.excel.obj.SequenceOpenPatentReferenceInterface;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
+import org.kobic.kobis.file.excel.obj.internal.CultureObj;
+import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
+import org.kobic.kobis.file.excel.obj.internal.PatentObj;
+import org.kobic.kobis.file.excel.obj.internal.ReferenceObj;
+import org.kobic.kobis.file.excel.obj.internal.StoreObj;
+import org.kobic.kobis.main.vo.D1BodyFluidVO;
+import org.kobic.kobis.main.vo.D1CellStrainVO;
+import org.kobic.kobis.main.vo.D1DnaRnaProteinDerivativesVO;
+import org.kobic.kobis.main.vo.D1DnaSequenceVO;
+import org.kobic.kobis.main.vo.D1EmbryoVO;
+import org.kobic.kobis.main.vo.D1EtcVO;
+import org.kobic.kobis.main.vo.D1ExpressionVO;
+import org.kobic.kobis.main.vo.D1ExtractionVO;
+import org.kobic.kobis.main.vo.D1IndividualVO;
+import org.kobic.kobis.main.vo.D1ObservationVO;
+import org.kobic.kobis.main.vo.D1ProteinSequenceVO;
+import org.kobic.kobis.main.vo.D1SeedVO;
+import org.kobic.kobis.main.vo.D1SourceVO;
+import org.kobic.kobis.main.vo.D1SpecimenVO;
+import org.kobic.kobis.main.vo.D1StrainVO;
+import org.kobic.kobis.main.vo.D1StructureVO;
+import org.kobic.kobis.main.vo.DBCommonInterface;
 
 public class KobisDAOService extends CommonDAOService implements KobisDAO{
 
@@ -126,32 +137,243 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return ret;
     }
     
-    public Map<String, Object> getE1Distribution( AbstractSheetObj sheet ) {
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	if( sheet instanceof XObservationSheetObj ) {
-    		XObservationSheetObj xoso = (XObservationSheetObj)sheet;
-    		map.put("distribution", xoso.getExtra().getDist() );
-    		map.put("reference", xoso.getExtra().getRef() );
-    		map.put("patent", xoso.getExtra().getPatent() );
-    		map.put("accession_num", xoso.getAccess_num() );
-    		map.put("id", xoso.get)
+    private Map<String, Object> getDistributionMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
+    	Map<String, Object> map = null;
+
+    	if( sheetObj instanceof DistPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("dist_yn",		dri.getDistYn());
+    		map.put("dist_url",		dri.getDistUrl());
     	}
     	return map;
     }
 
+    private Map<String, Object> getPatentMap( AbstractSheetObj sheetObj, KobisMapper mapper ) {
+    	Map<String, Object> map = null;
+
+    	if( sheetObj instanceof DistPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		DistPatentReferenceInterface dri = (DistPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}else if( sheetObj instanceof OpenPatentReferenceInterface ) {
+    		map = new HashMap<String, Object>();
+
+    		OpenPatentReferenceInterface dri = (OpenPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}else if( sheetObj instanceof SequenceOpenPatentReferenceInterface) {
+    		map = new HashMap<String, Object>();
+
+    		SequenceOpenPatentReferenceInterface dri = (SequenceOpenPatentReferenceInterface)sheetObj;
+    		map.put("access_num",	sheetObj.getAccess_num());
+    		map.put("id",			mapper.getNewObservationId(sheetObj.getAccess_num()) );
+    		map.put("patent_no",	dri.getParentNo());
+    		map.put("reg_no",		dri.getRegNo());
+    	}
+    	return map;
+    }
+
+    public Map<String, String> getE1Culture( DBCommonInterface sheet ) {
+    	Map<String, String> map = new HashMap<String, String>();
+
+    	try {
+    		Method getCulture = sheet.getClass().getMethod("getCulture" );
+
+    		try {
+    			Object cultureParam = getCulture.invoke( sheet );
+
+    			if( cultureParam instanceof  CultureObj ) {
+    				CultureObj param = (CultureObj)cultureParam;
+    	    		map.put("culture_medium_name",	param.getCultureMediumName() );
+    	    		map.put("condition",			param.getCondition() );
+    	    		map.put("succeed_dt",			param.getSucceedDt() );
+    	    		map.put("succeed_time",			param.getSucceedTime() );
+	        		map.put("accession_num",		sheet.getAccess_num() );
+	        		map.put("id",					sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
+    	}
+
+    	return map;
+    }
+    public Map<String, String> getE1Store( DBCommonInterface sheet ) {
+    	Map<String, String> map = new HashMap<String, String>();
+    	
+    	try {
+    		Method getStore = sheet.getClass().getMethod("getStore" );
+
+    		try {
+    			Object storeParam = getStore.invoke( sheet );
+
+    			if( storeParam instanceof  StoreObj ) {
+    				StoreObj param = (StoreObj)storeParam;
+            		map.put("store_no",			param.getStoreNo() );
+            		map.put("store_place",		param.getStorePlace() );
+	        		map.put("accession_num",	sheet.getAccess_num() );
+	        		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
+    	}
+
+    	return map;
+    }
+    public Map<String, String> getE1Reference( DBCommonInterface sheet ) {
+    	Map<String, String> map = new HashMap<String, String>();
+
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+            		map.put("reference",		param.getRef().getReference() );
+            		map.put("accession_num",	sheet.getAccess_num() );
+            		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		try {
+				Method getPatent = sheet.getClass().getMethod("getReference" );
+				
+				try {
+	    			Object refObj = getPatent.invoke( sheet );
+
+	    			if( refObj instanceof  ReferenceObj ) {
+	    				ReferenceObj param = (ReferenceObj)refObj;
+	            		map.put("reference",		param.getReference() );
+	            		map.put("accession_num",	sheet.getAccess_num() );
+	            		map.put("id",				sheet.getId() );
+	    			}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			} catch (NoSuchMethodException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SecurityException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    	}
+
+    	return map;
+    }
+    public Map<String, String> getE1Patent( DBCommonInterface sheet ) {
+    	Map<String, String> map = new HashMap<String, String>();
+    	
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+            		map.put("patent_no",		param.getPatent().getParentNo() );
+            		map.put("reg_no",			param.getPatent().getRegNo() );
+            		map.put("accession_num",	sheet.getAccess_num() );
+            		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		try {
+				Method getPatent = sheet.getClass().getMethod("getPatent" );
+				
+				try {
+	    			Object patentObj = getPatent.invoke( sheet );
+
+	    			if( patentObj instanceof  PatentObj ) {
+	    				PatentObj param = (PatentObj)patentObj;
+	            		map.put("patent_no",		param.getParentNo() );
+	            		map.put("reg_no",			param.getRegNo() );
+	            		map.put("accession_num",	sheet.getAccess_num() );
+	            		map.put("id",				sheet.getId() );
+	    			}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			} catch (NoSuchMethodException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SecurityException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    	}
+
+    	return map;
+    }
+    public Map<String, String> getE1Distribution( DBCommonInterface sheet ) {
+    	Map<String, String> map = new HashMap<String, String>();
+
+    	try {
+    		Method getExtra = sheet.getClass().getMethod("getExtra" );
+
+    		try {
+    			Object distPatentRefParam = getExtra.invoke( sheet );
+
+    			if( distPatentRefParam instanceof  DistPatentReferenceObj ) {
+        			DistPatentReferenceObj param = (DistPatentReferenceObj)distPatentRefParam;
+	        		map.put("dist_url",			param.getDist().getDistUrl() );
+	        		map.put("dist_yn",			param.getDist().getDistYn() );
+	        		map.put("accession_num",	sheet.getAccess_num() );
+	        		map.put("id",				sheet.getId() );
+    			}
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}catch(NoSuchMethodException e) {
+    		e.printStackTrace();
+    	}
+
+    	return map;
+    }
+
     @Override
-    public int insertD1Observation( XObservationSheetObj observationSheet ) {
+    public int insertD1Observation( D1ObservationVO observationSheet ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
-    		ret = kobisMapper.insertD1Observation(observationSheet);
-    		
-    		
-    		
-    		
-    		
+    		ret = kobisMapper.insertD1Observation( observationSheet );
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( observationSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( observationSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( observationSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -164,13 +386,20 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     }
 
 	@Override
-	public int insertD1Individual(XIndividualSheetObj individualSheet) {
+	public int insertD1Individual( D1IndividualVO individualSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Individual( individualSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( individualSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( individualSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( individualSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -183,13 +412,20 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Specimen(XSpecimenSheetObj specimenSheet) {
+	public int insertD1Specimen(D1SpecimenVO specimenSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Specimen( specimenSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( specimenSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( specimenSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( specimenSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -202,13 +438,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Source(XSourceSheetObj sourceSheet) {
+	public int insertD1Source(D1SourceVO sourceSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Source( sourceSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( sourceSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( sourceSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( sourceSheet ) );
+    			ret = kobisMapper.insertE1Store( this.getE1Store( sourceSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -221,13 +465,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Seed(XSeedSheetObj seedSheet) {
+	public int insertD1Seed(D1SeedVO seedSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Seed( seedSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( seedSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( seedSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( seedSheet ) );
+    			ret = kobisMapper.insertE1Store( this.getE1Store( seedSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -240,13 +492,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Embryo(XEmbryoSheetObj embryoSheet) {
+	public int insertD1Embryo(D1EmbryoVO embryoSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Embryo( embryoSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( embryoSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( embryoSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( embryoSheet ) );
+    			ret = kobisMapper.insertE1Store( this.getE1Store( embryoSheet ) );
+    		}
+    		
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -259,13 +519,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1DnaRnaProteinDerivatives( XDnaRnaProteinDerivativesSheetObj dnaRnaProteinDerivativeSheet) {
+	public int insertD1DnaRnaProteinDerivatives( D1DnaRnaProteinDerivativesVO dnaRnaProteinDerivativeSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1DnaRnaProteinDerivatives( dnaRnaProteinDerivativeSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( dnaRnaProteinDerivativeSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( dnaRnaProteinDerivativeSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( dnaRnaProteinDerivativeSheet ) );
+    			ret = kobisMapper.insertE1Store( this.getE1Store( dnaRnaProteinDerivativeSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -278,13 +546,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Strain(XStrainSheetObj strainSheet) {
+	public int insertD1Strain(D1StrainVO strainSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Strain( strainSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( strainSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( strainSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( strainSheet ) );
+    			ret = kobisMapper.insertE1Culture( this.getE1Culture( strainSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -297,13 +573,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1CellStrain(XCellStrainSheetObj cellStrainSheet) {
+	public int insertD1CellStrain(D1CellStrainVO cellStrainSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1CellStrain( cellStrainSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( cellStrainSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( cellStrainSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( cellStrainSheet ) );
+    			ret = kobisMapper.insertE1Culture( this.getE1Culture( cellStrainSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -316,13 +600,21 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1BodyFluid(XBodyFluidSheetObj bodyFluidSheet) {
+	public int insertD1BodyFluid(D1BodyFluidVO bodyFluidSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( bodyFluidSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( bodyFluidSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( bodyFluidSheet ) );
+    			ret = kobisMapper.insertE1Culture( this.getE1Culture( bodyFluidSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -335,13 +627,19 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1ProteinSequence( XProteinSequenceSheetObj proteinSequenceSheet) {
+	public int insertD1ProteinSequence( D1ProteinSequenceVO proteinSequenceSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( proteinSequenceSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( proteinSequenceSheet ) );
+    		}    		
+    		
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -354,13 +652,19 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Expression(XExpressionSheetObj expressionSheet) {
+	public int insertD1Expression(D1ExpressionVO expressionSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Expression( expressionSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( expressionSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( expressionSheet ) );
+    		}   
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -373,13 +677,19 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Structure(XStructureSheetObj structureSheet) {
+	public int insertD1Structure(D1StructureVO structureSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Structure( structureSheet );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( structureSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( structureSheet ) );
+    		}   
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -392,13 +702,19 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1DnaSequence(XDnaSequenceSheetObj dnaSequenceSheet) {
+	public int insertD1DnaSequence(D1DnaSequenceVO dnaSequenceSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( dnaSequenceSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( dnaSequenceSheet ) );
+    		}   
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
@@ -411,12 +727,19 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Etc(XEtcSheetObj etcSheet) {
+	public int insertD1Etc(D1EtcVO etcSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( etcSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( etcSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( etcSheet ) );
+    		}
+
     		ret = kobisMapper.insertD1Etc( etcSheet );
     		session.commit();
     	}catch(Exception e) {
@@ -430,13 +753,20 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Extraction(XExtractSheetObj extractionSheet) {
+	public int insertD1Extraction(D1ExtractionVO extractionSheet) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertD1Extraction( extractionSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( extractionSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( extractionSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( extractionSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
