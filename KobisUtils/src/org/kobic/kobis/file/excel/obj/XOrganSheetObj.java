@@ -46,6 +46,10 @@ public class XOrganSheetObj extends AbstractSheetObj implements DistPatentRefere
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XOrganSheetObj getNewInstance(XSSFRow row) {
+		return new XOrganSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XOrganSheetObj getInstance( XSSFRow row ) {

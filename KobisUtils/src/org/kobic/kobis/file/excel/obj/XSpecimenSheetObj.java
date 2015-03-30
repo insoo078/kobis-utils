@@ -175,6 +175,9 @@ public class XSpecimenSheetObj extends AbstractSheetObj implements DistPatentRef
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	public static XSpecimenSheetObj getNewInstance(XSSFRow row) {
+		return new XSpecimenSheetObj().getInstance(row);
+	}
 
 	@Override
 	public String getPrintLine() {

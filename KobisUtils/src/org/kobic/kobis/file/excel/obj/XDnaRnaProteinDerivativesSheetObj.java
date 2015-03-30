@@ -55,6 +55,9 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj implemen
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	public static XDnaRnaProteinDerivativesSheetObj getNewInstance(XSSFRow row) {
+		return new XDnaRnaProteinDerivativesSheetObj().getInstance(row);
+	}
 	@Override
 	public XDnaRnaProteinDerivativesSheetObj getInstance( XSSFRow row ) {
 		XDnaRnaProteinDerivativesSheetObj obj = new XDnaRnaProteinDerivativesSheetObj();

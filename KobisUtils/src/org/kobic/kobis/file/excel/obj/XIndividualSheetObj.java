@@ -35,6 +35,10 @@ public class XIndividualSheetObj extends AbstractSheetObj implements DistPatentR
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XIndividualSheetObj getNewInstance(XSSFRow row) {
+		return new XIndividualSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XIndividualSheetObj getInstance( XSSFRow row ) {

@@ -37,6 +37,10 @@ public class XEmbryoSheetObj extends AbstractSheetObj implements DistPatentRefer
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XEmbryoSheetObj getNewInstance(XSSFRow row) {
+		return new XEmbryoSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XEmbryoSheetObj getInstance( XSSFRow row ) {

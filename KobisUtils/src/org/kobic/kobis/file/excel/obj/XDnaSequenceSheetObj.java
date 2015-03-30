@@ -97,6 +97,10 @@ public class XDnaSequenceSheetObj extends AbstractSheetObj implements SequenceOp
 		this.gene_alias = gene_alias;
 	}
 
+	public static XDnaSequenceSheetObj getNewInstance(XSSFRow row) {
+		return new XDnaSequenceSheetObj().getInstance(row);
+	}
+
 	@Override
 	public XDnaSequenceSheetObj getInstance( XSSFRow row ) {
 		XDnaSequenceSheetObj obj = new XDnaSequenceSheetObj();

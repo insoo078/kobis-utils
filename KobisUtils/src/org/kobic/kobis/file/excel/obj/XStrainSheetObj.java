@@ -66,7 +66,9 @@ public class XStrainSheetObj extends AbstractSheetObj implements DistPatentRefer
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
-
+	public static XStrainSheetObj getNewInstance(XSSFRow row) {
+		return new XStrainSheetObj().getInstance(row);
+	}
 	@Override
 	public XStrainSheetObj getInstance( XSSFRow row ) {
 		XStrainSheetObj obj = new XStrainSheetObj();

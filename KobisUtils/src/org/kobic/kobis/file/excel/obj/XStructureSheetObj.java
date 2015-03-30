@@ -75,7 +75,9 @@ public class XStructureSheetObj extends AbstractSheetObj implements OpenPatentRe
 	public void setReference(ReferenceObj reference) {
 		this.reference = reference;
 	}
-
+	public static XStructureSheetObj getNewInstance(XSSFRow row) {
+		return new XStructureSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XStructureSheetObj getInstance( XSSFRow row ) {

@@ -33,6 +33,10 @@ public class XEtcSheetObj  extends AbstractSheetObj implements DistPatentReferen
 		this.extra = extra;
 	}
 	
+	public static XEtcSheetObj getNewInstance(XSSFRow row) {
+		return new XEtcSheetObj().getInstance(row);
+	}
+	
 	@Override
 	public XEtcSheetObj getInstance( XSSFRow row ) {
 		XEtcSheetObj obj = new XEtcSheetObj();

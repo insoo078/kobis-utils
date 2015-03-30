@@ -48,6 +48,10 @@ public class XBodyFluidSheetObj extends AbstractSheetObj implements DistPatentRe
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XBodyFluidSheetObj getNewInstance(XSSFRow row) {
+		return new XBodyFluidSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XBodyFluidSheetObj getInstance( XSSFRow row ) {

@@ -2,6 +2,8 @@ package org.kobic.kobis.main.services;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.kobic.kobis.main.dao.KobisDAOService;
+import org.kobic.kobis.unmapped.dao.UnmappedDAOService;
 
 public abstract class AbstractKobisServices {
 	private String insCd;
@@ -9,10 +11,16 @@ public abstract class AbstractKobisServices {
 //	private KobisDAO dao;
 	private SqlSessionFactory sessionFactory;
 	
+	private KobisDAOService kobisService;
+	private UnmappedDAOService unmapService;
+	
 	public AbstractKobisServices( String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory ) {
 		this.insCd = insCd;
 		this.sheet = sheet;
 		this.sessionFactory = sessionFactory;
+		
+		this.kobisService = new KobisDAOService( this.getSessionFactory() );
+		this.unmapService = new UnmappedDAOService( this.getSessionFactory() );
 //		this.dao = dao;
 	}
 
@@ -38,6 +46,16 @@ public abstract class AbstractKobisServices {
 
 	public void setInsCd(String insCd) {
 		this.insCd = insCd;
+	}
+	
+	
+
+	public KobisDAOService getKobisService() {
+		return kobisService;
+	}
+
+	public UnmappedDAOService getUnmapService() {
+		return unmapService;
 	}
 
 	public abstract void readRecordsInSheet() throws NoSuchMethodException, SecurityException, Exception;

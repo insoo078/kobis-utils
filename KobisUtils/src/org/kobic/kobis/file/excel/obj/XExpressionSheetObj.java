@@ -66,7 +66,9 @@ public class XExpressionSheetObj extends AbstractSheetObj implements OpenPatentR
 	public void setReference(ReferenceObj reference) {
 		this.reference = reference;
 	}
-
+	public static XExpressionSheetObj getNewInstance(XSSFRow row) {
+		return new XExpressionSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XExpressionSheetObj getInstance( XSSFRow row ) {

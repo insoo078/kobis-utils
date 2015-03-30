@@ -29,6 +29,7 @@ import org.kobic.kobis.main.vo.D1ExpressionVO;
 import org.kobic.kobis.main.vo.D1ExtractionVO;
 import org.kobic.kobis.main.vo.D1IndividualVO;
 import org.kobic.kobis.main.vo.D1ObservationVO;
+import org.kobic.kobis.main.vo.D1OrganVO;
 import org.kobic.kobis.main.vo.D1ProteinSequenceVO;
 import org.kobic.kobis.main.vo.D1SeedVO;
 import org.kobic.kobis.main.vo.D1SourceVO;
@@ -736,6 +737,34 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		ret = kobisMapper.insertT2MappedCommon( commonSheet );
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		e.printStackTrace();
+    		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertD1Organ(D1OrganVO organSheet) {
+		// TODO Auto-generated method stub
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		ret = kobisMapper.insertD1Organ( organSheet );
+    		
+    		if( ret > 0 ) {
+    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( organSheet ) );
+    			ret = kobisMapper.insertE1Patent( this.getE1Patent( organSheet ) );
+    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( organSheet ) );
+    			ret = kobisMapper.insertE1Store( this.getE1Store( organSheet ) );
+    		}
+
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

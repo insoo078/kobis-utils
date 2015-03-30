@@ -3,7 +3,6 @@ package org.kobic.kobis.main.dao;
 import java.util.Map;
 
 import org.kobic.kobis.main.vo.D1CommonVO;
-
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
 import org.kobic.kobis.main.vo.D1CellStrainVO;
 import org.kobic.kobis.main.vo.D1DnaRnaProteinDerivativesVO;
@@ -14,6 +13,7 @@ import org.kobic.kobis.main.vo.D1ExpressionVO;
 import org.kobic.kobis.main.vo.D1ExtractionVO;
 import org.kobic.kobis.main.vo.D1IndividualVO;
 import org.kobic.kobis.main.vo.D1ObservationVO;
+import org.kobic.kobis.main.vo.D1OrganVO;
 import org.kobic.kobis.main.vo.D1ProteinSequenceVO;
 import org.kobic.kobis.main.vo.D1SeedVO;
 import org.kobic.kobis.main.vo.D1SourceVO;
@@ -32,6 +32,7 @@ public interface KobisDAO{
     public String getAccessionNum(String accession_num, String ins_cd);
 
     public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
+    public int insertD1Organ( D1OrganVO observationSheet );
     public int insertD1Observation( D1ObservationVO observationSheet );
     public int insertD1Individual( D1IndividualVO individualSheet );
     public int insertD1Specimen( D1SpecimenVO specimenSheet );

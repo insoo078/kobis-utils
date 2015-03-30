@@ -37,6 +37,10 @@ public class XSeedSheetObj extends AbstractSheetObj implements DistPatentReferen
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XSeedSheetObj getNewInstance(XSSFRow row) {
+		return new XSeedSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XSeedSheetObj getInstance( XSSFRow row ) {

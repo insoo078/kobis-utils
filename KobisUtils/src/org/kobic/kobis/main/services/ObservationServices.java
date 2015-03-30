@@ -4,6 +4,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
+import org.kobic.kobis.main.vo.D1ObservationVO;
+import org.kobic.kobis.rule.Rule;
+import org.kobic.kobis.util.Utils;
 
 public class ObservationServices extends AbstractKobisServices{
 
@@ -19,9 +22,21 @@ public class ObservationServices extends AbstractKobisServices{
 			for( int j=3; j<=this.getSheet().getLastRowNum(); j++ ) {
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
-				XObservationSheetObj observationSheetRecordObj = XObservationSheetObj.getNewInstance( dataRow );
+				XObservationSheetObj sheetRecordObj = XObservationSheetObj.getNewInstance( dataRow );
+
+				D1ObservationVO vo = new D1ObservationVO( sheetRecordObj );
 				
-				System.out.println( observationSheetRecordObj.getAccess_num() );
+				Rule rule = new Rule( this.getInsCd() );
+				rule.rule( vo );
+
+				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+
+				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+					this.getKobisService().insertD1Observation(vo);
+				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+					this.getUnmapService().insertT2UnmappedObservation(vo);
+				}
 			}
 		}
 	}

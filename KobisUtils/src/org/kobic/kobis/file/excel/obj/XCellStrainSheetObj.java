@@ -66,6 +66,10 @@ public class XCellStrainSheetObj extends AbstractSheetObj implements DistPatentR
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
+	
+	public static XCellStrainSheetObj getNewInstance(XSSFRow row) {
+		return new XCellStrainSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XCellStrainSheetObj getInstance( XSSFRow row ) {

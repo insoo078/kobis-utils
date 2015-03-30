@@ -46,7 +46,9 @@ public class XSourceSheetObj extends AbstractSheetObj implements DistPatentRefer
 	public void setExtra(DistPatentReferenceObj extra) {
 		this.extra = extra;
 	}
-
+	public static XSourceSheetObj getNewInstance(XSSFRow row) {
+		return new XSourceSheetObj().getInstance(row);
+	}
 	@Override
 	public XSourceSheetObj getInstance( XSSFRow row ) {
 		XSourceSheetObj obj = new XSourceSheetObj();

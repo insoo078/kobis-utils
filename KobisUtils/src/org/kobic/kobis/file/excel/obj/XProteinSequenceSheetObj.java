@@ -75,7 +75,9 @@ public class XProteinSequenceSheetObj extends AbstractSheetObj implements OpenPa
 	public void setReference(ReferenceObj reference) {
 		this.reference = reference;
 	}
-
+	public static XProteinSequenceSheetObj getNewInstance(XSSFRow row) {
+		return new XProteinSequenceSheetObj().getInstance(row);
+	}
 
 	@Override
 	public XProteinSequenceSheetObj getInstance( XSSFRow row ) {

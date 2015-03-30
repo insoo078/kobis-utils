@@ -4,22 +4,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
-import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.main.vo.D1ExtractionVO;
 import org.kobic.kobis.rule.Rule;
-import org.kobic.kobis.unmapped.dao.UnmappedDAOService;
 import org.kobic.kobis.util.Utils;
 
 public class ExtractServices extends AbstractKobisServices{
-	private KobisDAOService kobisService;
-	private UnmappedDAOService unmapService;
-
 	public ExtractServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
 		super(insCd, sheet, sessionFactory);
 		// TODO Auto-generated constructor stub
-		
-		this.kobisService = new KobisDAOService( this.getSessionFactory() );
-		this.unmapService = new UnmappedDAOService( this.getSessionFactory() );
 	}
 
 	@Override
@@ -36,13 +28,13 @@ public class ExtractServices extends AbstractKobisServices{
 				Rule rule = new Rule( this.getInsCd() );
 				rule.rule( d1ExtractVo );
 
-				String accessionNumFromMapTab	= Utils.nullToEmpty( this.kobisService.getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.unmapService.getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
+				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
+				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
 
 				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-					this.kobisService.insertD1Extraction( d1ExtractVo );
+					this.getKobisService().insertD1Extraction( d1ExtractVo );
 				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-//					this.unmapService.insert
+					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
 				}
 			}
 		}
