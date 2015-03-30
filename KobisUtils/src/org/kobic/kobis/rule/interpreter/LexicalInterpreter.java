@@ -152,7 +152,8 @@ public class LexicalInterpreter {
 	}
 
 	private String functionTranslate( String statement ) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		String pattern = "([a-zA-Z0-9]+)\\(([\"\\'|\\s|a-zA-Z0-9|\\,|\\.]*)\\)";
+//		String pattern = "([a-zA-Z0-9]+)\\(([\"|\\'|\\s|a-zA-Z0-9|\\,|\\.|\\-]*)\\)";
+		String pattern = "([a-zA-Z0-9]+)\\((.*)\\)";
 		Pattern p = Pattern.compile( pattern );
 		Matcher m = p.matcher( statement );
 

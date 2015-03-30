@@ -32,93 +32,11 @@
 		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
 		VALUES( #{accession_num}, SF_GET_NEW_SYNONYM_ID(#{accession_num}), #{synonym} )
 	</insert>
-
-
-
-
+	
 
 	<select id="getNewObservationId" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_OBSERVATION_ID(#{access_num})
 	</select>
-	
-	<select id="getNewBodyFluidId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_BODY_FLUID_ID(#{access_num})
-	</select>
-	
-	<select id="getNewIndividualId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_INDIVIDUAL_ID(#{access_num})
-	</select>
-	
-	<select id="getNewSpecimenId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_SPECIMEN_ID(#{access_num})
-	</select>
-	
-	<select id="getNewOrganId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_ORGAN_ID(#{access_num})
-	</select>
-	
-	<select id="getNewSourceId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_SOURCE_ID(#{access_num})
-	</select>
-	
-	<select id="getNewSeedId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_SEED_ID(#{access_num})
-	</select>
-	
-	<select id="getNewEmbryoId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_EMBRYO_ID(#{access_num})
-	</select>
-	
-	<select id="getNewDnaRnaProteinDerivativesId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_DNA_RNA_PROT_DEV_ID(#{access_num})
-	</select>
-	
-	<select id="getNewStrainId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_STRAIN_ID(#{access_num})
-	</select>
-	
-	<select id="getNewCellStrainId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_CELL_STRAIN_ID(#{access_num})
-	</select>
-	
-	<select id="getNewBodyFluidId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_BODY_FLUID_ID(#{access_num})
-	</select>
-	
-	<select id="getNewProteinSequenceId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_PROTEIN_SEQUENCE_ID(#{access_num})
-	</select>
-	
-	<select id="getNewExpressionId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_EXPRESSION_ID(#{access_num})
-	</select>
-	
-	<select id="getNewDnaSequenceId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_DNA_SEQUENCE_ID(#{access_num})
-	</select>
-	
-	<select id="getNewEtcId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_ETC_ID(#{access_num})
-	</select>
-	
-	<select id="getNewExtractionId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_EXTRACT_ID(#{access_num})
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	<insert id="insertD1Observation" parameterType="D1_Observation">
 		INSERT INTO ITIS.D1_Observation( accession_num, obs_id, latitude, longitude )
 		VALUES( #{access_num}, SF_GET_NEW_OBSERVATION_ID(#{access_num}), #{gps.latitude}, #{gps.longitude} )
@@ -147,7 +65,7 @@
 	</insert>
 
 	<select id="getNewOrganId" parameterType="java.lang.String">
-		SELECT SF_GET_NEW_ORGANL_ID(#{access_num})
+		SELECT SF_GET_NEW_ORGAN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Organ" parameterType="D1_Organ">
 		INSERT INTO ITIS.D1_Organ( accession_num, organ_id, organ_type, disease )

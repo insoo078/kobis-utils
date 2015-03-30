@@ -29,7 +29,8 @@ public class Functions {
 	public static String CONTAINS(String... list)  throws Exception{
 		String param1 = Utils.removeQuot( list[0].trim(), KeywordDictionary.DBL_QUOTATION ).trim();
 		String param2 = Utils.removeQuot( list[1].trim(), KeywordDictionary.DBL_QUOTATION ).trim();
-		if( param1.contains( param2) )	return "true";
+
+		if( param1.contains( param2 ) )	return "true";
 		return "false";
 	}
 	
