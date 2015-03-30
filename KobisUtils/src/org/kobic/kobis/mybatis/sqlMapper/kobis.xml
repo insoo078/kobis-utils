@@ -38,7 +38,7 @@
 		SELECT SF_GET_NEW_OBSERVATION_ID(#{access_num})
 	</select>
 	<insert id="insertD1Observation" parameterType="D1_Observation">
-		INSERT INTO ITIS.D1_Observation( accession_num, obs_id, latitude, longitude )
+		INSERT INTO D1_Observation( accession_num, obs_id, latitude, longitude )
 		VALUES( #{access_num}, SF_GET_NEW_OBSERVATION_ID(#{access_num}), #{gps.latitude}, #{gps.longitude} )
 	</insert>
 
@@ -46,7 +46,7 @@
 		SELECT SF_GET_NEW_INDIVIDUAL_ID(#{access_num})
 	</select>
 	<insert id="insertD1Individual" parameterType="D1_Individual">
-		INSERT INTO ITIS.D1_Individual( accession_num, individual_id, individual_type, individual_maintenance )
+		INSERT INTO D1_Individual( accession_num, individual_id, individual_type, individual_maintenance )
 		VALUES( #{access_num}, SF_GET_NEW_INDIVIDUAL_ID(#{access_num}), #{individual_type}, #{individual_maintenance} )
 	</insert>
 
@@ -68,7 +68,7 @@
 		SELECT SF_GET_NEW_ORGAN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Organ" parameterType="D1_Organ">
-		INSERT INTO ITIS.D1_Organ( accession_num, organ_id, organ_type, disease )
+		INSERT INTO D1_Organ( accession_num, organ_id, organ_type, disease )
 		VALUES( #{access_num}, SF_GET_NEW_ORGANL_ID(#{access_num}), #{organ_type}, #{disease} )
 	</insert>
 
@@ -76,7 +76,7 @@
 		SELECT SF_GET_NEW_SOURCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1Source" parameterType="D1_Source">
-		INSERT INTO ITIS.D1_Source( accession_num, source_id, source_type, disease )
+		INSERT INTO D1_Source( accession_num, source_id, source_type, disease )
 		VALUES( #{access_num}, SF_GET_NEW_SOURCE_ID(#{access_num}), #{source_type}, #{disease} )
 	</insert>
   	
@@ -84,7 +84,7 @@
 		SELECT SF_GET_NEW_SEED_ID(#{access_num})
 	</select>
 	<insert id="insertD1Seed" parameterType="D1_Seed">
-		INSERT INTO ITIS.D1_Seed( accession_num, seed_id, seed_sttus )
+		INSERT INTO D1_Seed( accession_num, seed_id, seed_sttus )
 		VALUES( #{access_num}, SF_GET_NEW_SEED_ID(#{access_num}), #{seed_status} )
 	</insert>
 	
@@ -92,7 +92,7 @@
 		SELECT SF_GET_NEW_EMBRYO_ID(#{access_num})
 	</select>
 	<insert id="insertD1Embryo" parameterType="D1_Embryo">
-		INSERT INTO ITIS.D1_Embryo( accession_num, embryo_id, embryo_type )
+		INSERT INTO D1_Embryo( accession_num, embryo_id, embryo_type )
 		VALUES( #{access_num}, SF_GET_NEW_EMBRYO_ID(#{access_num}), #{embryo_type} )
 	</insert>
 
@@ -100,7 +100,7 @@
 		SELECT SF_GET_NEW_DNA_RNA_PROT_DEV_ID(#{access_num})
 	</select>
 	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
-		INSERT INTO ITIS.D1_DNA_RNA_Protein_Derivatives
+		INSERT INTO D1_DNA_RNA_Protein_Derivatives
 		( 
 			accession_num, derivatives_id, source, detail_type
 			, deposit_type, sample_type, sample_detail, sample_etc 
@@ -115,7 +115,7 @@
 		SELECT SF_GET_NEW_STRAIN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Strain" parameterType="D1_Strain">
-		INSERT INTO ITIS.D1_Strain( accession_num, cellstrain_id, source, pathogenic_yn, strain_name )
+		INSERT INTO D1_Strain( accession_num, cellstrain_id, source, pathogenic_yn, strain_name )
 		VALUES( #{access_num}, SF_GET_NEW_STRAIN_ID(#{access_num}), #{source}, #{pathogenic_yn}, #{strain_name} )
 	</insert>
 
@@ -123,7 +123,7 @@
 		SELECT SF_GET_NEW_CELL_STRAIN_ID(#{access_num})
 	</select>
 	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
-		INSERT INTO ITIS.D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
+		INSERT INTO D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
 		VALUES( #{access_num}, SF_GET_NEW_CELL_STRAIN_ID(#{access_num}), #{source}, #{cell_type}, #{cell_name} )
 	</insert>
 	
@@ -131,7 +131,7 @@
 		SELECT SF_GET_NEW_BODY_FLUID_ID(#{access_num})
 	</select>
 	<insert id="insertD1BodyFluid" parameterType="D1_BodyFluid">
-		INSERT INTO ITIS.D1_BodyFluid( accession_num, body_fluid_id, body_fluid_type )
+		INSERT INTO D1_BodyFluid( accession_num, body_fluid_id, body_fluid_type )
 		VALUES( #{access_num}, SF_GET_NEW_BODY_FLUID_ID(#{access_num}), #{body_fluid_type} )
 	</insert>
 	
@@ -139,7 +139,7 @@
 		SELECT SF_GET_NEW_PROTEIN_SEQUENCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
-		INSERT INTO ITIS.D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
+		INSERT INTO D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_PROTEIN_SEQUENCE_ID(#{access_num}), #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url} )
 	</insert>
 
@@ -147,7 +147,7 @@
 		SELECT SF_GET_NEW_EXPRESSION_ID(#{access_num})
 	</select>
 	<insert id="insertD1Expression" parameterType="D1_Expression">
-		INSERT INTO ITIS.D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
+		INSERT INTO D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_EXPRESSION_ID(#{access_num}), #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url} )
 	</insert>
 
@@ -155,7 +155,7 @@
 		SELECT SF_GET_NEW_STRUCTURE_ID(#{access_num})
 	</select>
 	<insert id="insertD1Structure" parameterType="D1_Structure">
-		INSERT INTO ITIS.D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
+		INSERT INTO D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_STRUCTURE_ID(#{access_num}), #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url} )
 	</insert>
 
@@ -163,7 +163,7 @@
 		SELECT SF_GET_NEW_DNA_SEQUENCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1DnaSequence" parameterType="D1_DnaSequence">
-		INSERT INTO ITIS.D1_Dna_Sequence
+		INSERT INTO D1_Dna_Sequence
 		( 
 			accession_num, sequence_id, source, molecular_type, data_type
 			, gene_name, accession_no, sequence, open_yn, open_url
@@ -180,7 +180,7 @@
 		SELECT SF_GET_NEW_ETC_ID(#{access_num})
 	</select>
 	<insert id="insertD1Etc" parameterType="D1_Etc">
-		INSERT INTO ITIS.D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
+		INSERT INTO D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
 		VALUES( #{access_num}, SF_GET_NEW_ETC_ID(#{access_num}), #{description}, #{open_yn}, #{open_url} )
 	</insert>
 
@@ -188,7 +188,7 @@
 		SELECT SF_GET_NEW_EXTRACT_ID(#{access_num})
 	</select>
 	<insert id="insertD1Extraction" parameterType="D1_Extract">
-		INSERT INTO ITIS.D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
+		INSERT INTO D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
 		VALUES( #{access_num}, SF_GET_NEW_EXTRACT_ID(#{access_num}), #{source}, #{solvent}, #{extract_time} )
 	</insert>
 
