@@ -24,7 +24,7 @@
 		<typeAlias alias="D1_Structure"					type="org.kobic.kobis.main.vo.D1StructureVO" />
 		<typeAlias alias="D1_DnaSequence"				type="org.kobic.kobis.main.vo.D1DnaSequenceVO" />
 		<typeAlias alias="D1_Etc"						type="org.kobic.kobis.main.vo.D1EtcVO" />
-		<typeAlias alias="D1_Extract"					type="org.kobic.kobis.main.vo.D1ExtractVO" />
+		<typeAlias alias="D1_Extract"					type="org.kobic.kobis.main.vo.D1ExtractionVO" />
 	</typeAliases>
  
     <environments default="development">
