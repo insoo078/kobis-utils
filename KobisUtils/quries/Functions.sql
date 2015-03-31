@@ -1,6 +1,3 @@
-select SF_GET_NEW_KOBIS_UNIQUE_ID(date_format(curdate(), '%Y%m%d'), 'INS00001')
-
-
 DROP FUNCTION IF EXISTS `SF_GET_NEW_KOBIS_UNIQUE_ID`;
 delimiter ;;
 CREATE DEFINER=`root`@`%` FUNCTION `SF_GET_NEW_KOBIS_UNIQUE_ID`(dt varchar(8), input_in_cd varchar(8)) RETURNS varchar(25) CHARSET utf8
@@ -20,9 +17,8 @@ delimiter ;
 
 
 
-
 -- ----------------------------
-:--  Function structure for `SF_GET_NEW_NOTICE_ID`
+--  Function structure for `SF_GET_NEW_NOTICE_ID`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `SF_GET_NEW_NOTICE_ID`;
 delimiter ;;
@@ -48,6 +44,7 @@ delimiter ;
 DROP FUNCTION IF EXISTS `SF_GET_NEXT_ARTICLE_IN_NOTICE`;
 delimiter ;;
 CREATE DEFINER=`root`@`%` FUNCTION `SF_GET_NEXT_ARTICLE_IN_NOTICE`(input_id varchar(16)) RETURNS varchar(16) CHARSET utf8
+DETERMINISTIC
 begin
 declare return_value varchar(16);
 set return_value=null;
@@ -69,6 +66,7 @@ delimiter ;
 DROP FUNCTION IF EXISTS `SF_GET_PREVIOUS_ARTICLE_IN_NOTICE`;
 delimiter ;;
 CREATE DEFINER=`root`@`%` FUNCTION `SF_GET_PREVIOUS_ARTICLE_IN_NOTICE`(input_id varchar(16)) RETURNS varchar(16) CHARSET utf8
+DETERMINISTIC
 begin
 declare return_value varchar(16);
 set return_value=null;
@@ -847,15 +845,12 @@ end
 delimiter ;
 
 
-CREATE FUNCTION SPLIT_STR(
-x VARCHAR(255),
-delim VARCHAR(12),
-pos INT
-)
-RETURNS VARCHAR(255)
-RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
-LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
-delim, '');
-
-
-select SF_MAPPING_TAXONOMIES('Homo sapiens');
+DROP FUNCTION IF EXISTS `SPLIT_STR`;
+delimiter ;;
+CREATE DEFINER=`root`@`%` FUNCTION `SPLIT_STR`(x VARCHAR(255), delim VARCHAR(12), pos INT) RETURNS varchar(200) CHARSET utf8
+    DETERMINISTIC
+begin
+	RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos), LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1), delim, '');
+end
+ ;;
+delimiter ;
