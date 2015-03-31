@@ -110,10 +110,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			// 만약 T1_ClassificationSystemTable에 값이 존재하지 않는 경우 테이블에 데이터 등록후 등록번호 가져옴
     			ret += taxonMapper.insertT1ClassificationSystemTable( crossTaxonMap );
     			tab_id = taxonMapper.getT1ClassificationSystemTable( crossTaxonMap );
-    			
-        		d1CommonVo.setCode( tab_id );
     		}
     		if( !Utils.nullToEmpty( tab_id ).isEmpty() ) {
+    			d1CommonVo.setCode( tab_id );
+
     			// 매핑된 분류코드를 record에 삽입한뒤 D1_Common 테이블에 입력
     			ret = kobisMapper.insertD1Common(d1CommonVo);
 
