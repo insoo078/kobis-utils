@@ -30,7 +30,7 @@
 
 	<insert id="insertE1Synonyms" parameterType="D1_Common">
 		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
-		VALUES( #{accession_num}, SF_GET_NEW_SYNONYM_ID(#{accession_num}), #{synonym} )
+		VALUES( #{access_num}, SF_GET_NEW_SYNONYM_ID(#{access_num}), #{synonym} )
 	</insert>
 	
 
