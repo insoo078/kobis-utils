@@ -30,13 +30,17 @@ public class SpecimenServices extends AbstractKobisServices{
 				rule.rule( vo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+				
+				if( !accessionNumFromMapTab.isEmpty() )		this.getKobisService().insertD1Specimen( vo );
+				else										this.getUnmapService().insertT2UnmappedSpecimen( sheetRecordObj );
 
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-					this.getKobisService().insertD1Specimen( vo );
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-					this.getUnmapService().insertT2UnmappedSpecimen( sheetRecordObj );
-				}
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1Specimen( vo );
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedSpecimen( sheetRecordObj );
+//				}
 			}
 		}
 	}

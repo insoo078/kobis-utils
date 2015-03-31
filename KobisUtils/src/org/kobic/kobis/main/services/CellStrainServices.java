@@ -30,13 +30,20 @@ public class CellStrainServices extends AbstractKobisServices{
 				rule.rule( d1CellStrainVo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1CellStrainVo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1CellStrainVo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+				
+				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1CellStrain( d1CellStrainVo );
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+				}else {
 					this.getUnmapService().insertT2UnmappedCellStrain( cellStrainSheetRecordObj );
 				}
+				
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1CellStrainVo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1CellStrain( d1CellStrainVo );
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedCellStrain( cellStrainSheetRecordObj );
+//				}
 			}
 		}
 	}

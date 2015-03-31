@@ -29,13 +29,20 @@ public class ExtractServices extends AbstractKobisServices{
 				rule.rule( d1ExtractVo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+				
+				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Extraction( d1ExtractVo );
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+				}else {
 					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
 				}
+
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1Extraction( d1ExtractVo );
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
+//				}
 			}
 		}
 	}

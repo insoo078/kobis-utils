@@ -30,13 +30,21 @@ public class BodyFluidServices  extends AbstractKobisServices{
 				rule.rule( d1BodyFluidVo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+				
+				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo );
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+				}else {
 					this.getUnmapService().insertT2UnmappedBodyFluid( bodyFluidSheetRecordObj );
 				}
+				
+				
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo );
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedBodyFluid( bodyFluidSheetRecordObj );
+//				}
 			}
 		}
 	}

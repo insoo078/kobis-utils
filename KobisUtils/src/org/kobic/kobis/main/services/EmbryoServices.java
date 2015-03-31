@@ -31,13 +31,20 @@ public class EmbryoServices extends AbstractKobisServices{
 				rule.rule( vo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+				
+				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Embryo(vo);
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+				}else {
 					this.getUnmapService().insertT2UnmappedEmbryo(sheetRecordObj);
 				}
+
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1Embryo(vo);
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedEmbryo(sheetRecordObj);
+//				}
 			}
 		}
 	}

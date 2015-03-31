@@ -30,13 +30,20 @@ public class DnaRnaProteinDerivativesServices extends AbstractKobisServices{
 				rule.rule( d1DnaRnaProteinDerivativesnVo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1DnaRnaProteinDerivativesnVo.getAccess_num(), this.getInsCd() ) );
-				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1DnaRnaProteinDerivativesnVo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+				
+				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1DnaRnaProteinDerivatives(d1DnaRnaProteinDerivativesnVo);
-				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+				}else {
 					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives(sheetRecordObj);
 				}
+				
+//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1DnaRnaProteinDerivativesnVo.getAccess_num(), this.getInsCd() ) );
+//
+//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getKobisService().insertD1DnaRnaProteinDerivatives(d1DnaRnaProteinDerivativesnVo);
+//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
+//					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives(sheetRecordObj);
+//				}
 			}
 		}
 	}
