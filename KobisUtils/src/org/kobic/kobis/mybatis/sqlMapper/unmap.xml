@@ -124,41 +124,41 @@
 			, store_no, store_place
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{detail_type}
-			, #{deposit_type}, #{sample_type}, #{sample_detail}, #{sample_etc}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.application_no}, #{extra.patent.reg_no} 
-			, #{store.store_no}, #{store.store_place}
+			#{access_num}, #{source}, #{detailType}
+			, #{depositType}, #{sample.sampleType}, #{sample.sampleDetail}, #{sample.sampleEtc}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
+			, #{store.storeNo}, #{store.storePlace}
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedStrain" parameterType="D1_Strain">
 		INSERT INTO T2_UnMappedStrain( 
-			accession_num, source, pathogenic_yn, strain_name
-			, dist_yn, dist_url, reference
-			, application_no, reg_no
-			, culture_medium_name, condition, succeed_dt, succeed_time
+			`accession_num`, `source`, `pathogenic_yn`, `strain_name`
+			, `dist_yn`, `dist_url`, `reference`
+			, `application_no`, `reg_no`
+			, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time`
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{pathogenic_yn}, #{strain_name}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.application_no}, #{extra.patent.reg_no} 
-			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time} 
+			#{access_num}, #{source}, #{pathogenicYn}, #{strainName}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
+			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime} 
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedCellStrain" parameterType="D1_Cellstrin">
 		INSERT INTO T2_UnMappedCellStrain( 
-			accession_num, source, cell_type, cell_name
-			, dist_yn, dist_url, reference
-			, application_no, reg_no
-			, culture_medium_name, condition, succeed_dt, succeed_time 
+			`accession_num`, `source`, `cell_type`, `cell_name`
+			, `dist_yn`, `dist_url`, `reference`
+			, `application_no`, `reg_no`
+			, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time` 
 		)
 		VALUES( 
 			#{access_num}, #{source}, #{cellLineType}, #{cellLineName} 
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.application_no}, #{extra.patent.reg_no} 
-			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
+			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime}
 		)
 	</insert>
 	
