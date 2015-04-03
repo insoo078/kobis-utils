@@ -312,14 +312,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     }
 
     @Override
-    public int insertD1Observation( D1ObservationVO observationSheet ) {
+    public int insertD1Observation( D1ObservationVO observationSheet, String ins_cd ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newObsId = kobisMapper.getNewObservationId( observationSheet.getAccess_num() );
+    		String newObsId = kobisMapper.getNewObservationId( ins_cd );
     		observationSheet.setId( newObsId );
 
     		ret = kobisMapper.insertD1Observation( observationSheet );
@@ -341,14 +341,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     }
 
 	@Override
-	public int insertD1Individual( D1IndividualVO individualSheet) {
+	public int insertD1Individual( D1IndividualVO individualSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newIndiId = kobisMapper.getNewIndividualId( individualSheet.getAccess_num() );
+    		String newIndiId = kobisMapper.getNewIndividualId( ins_cd );
     		individualSheet.setId( newIndiId );
 
     		ret = kobisMapper.insertD1Individual( individualSheet );
@@ -371,14 +371,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Specimen(D1SpecimenVO specimenSheet) {
+	public int insertD1Specimen(D1SpecimenVO specimenSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newSpecimenId = kobisMapper.getNewSpecimenId( specimenSheet.getAccess_num() );
+    		String newSpecimenId = kobisMapper.getNewSpecimenId( ins_cd );
     		specimenSheet.setId( newSpecimenId );
 
     		ret = kobisMapper.insertD1Specimen( specimenSheet );
@@ -401,14 +401,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Source(D1SourceVO sourceSheet) {
+	public int insertD1Source(D1SourceVO sourceSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newSourceId = kobisMapper.getNewSourceId( sourceSheet.getAccess_num() );
+    		String newSourceId = kobisMapper.getNewSourceId( ins_cd );
     		sourceSheet.setId( newSourceId );
 
     		ret = kobisMapper.insertD1Source( sourceSheet );
@@ -432,14 +432,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Seed(D1SeedVO seedSheet) {
+	public int insertD1Seed(D1SeedVO seedSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newSeedId = kobisMapper.getNewSeedId( seedSheet.getAccess_num() );
+    		String newSeedId = kobisMapper.getNewSeedId( ins_cd );
     		seedSheet.setId( newSeedId );
 
     		ret = kobisMapper.insertD1Seed( seedSheet );
@@ -463,14 +463,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Embryo(D1EmbryoVO embryoSheet) {
+	public int insertD1Embryo(D1EmbryoVO embryoSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newEmbryoId = kobisMapper.getNewEmbryoId( embryoSheet.getAccess_num() );
+    		String newEmbryoId = kobisMapper.getNewEmbryoId( ins_cd );
     		embryoSheet.setId( newEmbryoId );
 
     		ret = kobisMapper.insertD1Embryo( embryoSheet );
@@ -494,14 +494,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1DnaRnaProteinDerivatives( D1DnaRnaProteinDerivativesVO dnaRnaProteinDerivativeSheet) {
+	public int insertD1DnaRnaProteinDerivatives( D1DnaRnaProteinDerivativesVO dnaRnaProteinDerivativeSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newDnaRnaProteinDerivativesId = kobisMapper.getNewDnaRnaProteinDerivativesId( dnaRnaProteinDerivativeSheet.getAccess_num() );
+    		String newDnaRnaProteinDerivativesId = kobisMapper.getNewDnaRnaProteinDerivativesId( ins_cd );
     		dnaRnaProteinDerivativeSheet.setId( newDnaRnaProteinDerivativesId );
 
     		ret = kobisMapper.insertD1DnaRnaProteinDerivatives( dnaRnaProteinDerivativeSheet );
@@ -525,14 +525,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Strain(D1StrainVO strainSheet) {
+	public int insertD1Strain(D1StrainVO strainSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newStrainId = kobisMapper.getNewStrainId( strainSheet.getAccess_num() );
+    		String newStrainId = kobisMapper.getNewStrainId( ins_cd );
     		strainSheet.setId( newStrainId );
 
     		ret = kobisMapper.insertD1Strain( strainSheet );
@@ -556,14 +556,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1CellStrain(D1CellStrainVO cellStrainSheet) {
+	public int insertD1CellStrain(D1CellStrainVO cellStrainSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newCellStrainId = kobisMapper.getNewCellStrainId( cellStrainSheet.getAccess_num() );
+    		String newCellStrainId = kobisMapper.getNewCellStrainId( ins_cd );
     		cellStrainSheet.setId( newCellStrainId );
 
     		ret = kobisMapper.insertD1CellStrain( cellStrainSheet );
@@ -587,14 +587,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1BodyFluid(D1BodyFluidVO bodyFluidSheet) {
+	public int insertD1BodyFluid(D1BodyFluidVO bodyFluidSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newBodyFluidId = kobisMapper.getNewBodyFluidId( bodyFluidSheet.getAccess_num() );
+    		String newBodyFluidId = kobisMapper.getNewBodyFluidId( ins_cd );
     		bodyFluidSheet.setId( newBodyFluidId );
 
     		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
@@ -618,14 +618,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1ProteinSequence( D1ProteinSequenceVO proteinSequenceSheet) {
+	public int insertD1ProteinSequence( D1ProteinSequenceVO proteinSequenceSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newProteinSequenceId = kobisMapper.getNewProteinSequenceId( proteinSequenceSheet.getAccess_num() );
+    		String newProteinSequenceId = kobisMapper.getNewProteinSequenceId( ins_cd );
     		proteinSequenceSheet.setId( newProteinSequenceId );
 
     		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
@@ -647,14 +647,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Expression(D1ExpressionVO expressionSheet) {
+	public int insertD1Expression(D1ExpressionVO expressionSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newExpressionId = kobisMapper.getNewExpressionId( expressionSheet.getAccess_num() );
+    		String newExpressionId = kobisMapper.getNewExpressionId( ins_cd );
     		expressionSheet.setId( newExpressionId );
 
     		ret = kobisMapper.insertD1Expression( expressionSheet );
@@ -676,14 +676,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Structure(D1StructureVO structureSheet) {
+	public int insertD1Structure(D1StructureVO structureSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newStructureId = kobisMapper.getNewStructureId( structureSheet.getAccess_num() );
+    		String newStructureId = kobisMapper.getNewStructureId( ins_cd );
     		structureSheet.setId( newStructureId );
 
     		ret = kobisMapper.insertD1Structure( structureSheet );
@@ -705,14 +705,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1DnaSequence(D1DnaSequenceVO dnaSequenceSheet) {
+	public int insertD1DnaSequence(D1DnaSequenceVO dnaSequenceSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newDnaSequenceId = kobisMapper.getNewDnaSequenceId( dnaSequenceSheet.getAccess_num() );
+    		String newDnaSequenceId = kobisMapper.getNewDnaSequenceId( ins_cd );
     		dnaSequenceSheet.setId( newDnaSequenceId );
 
     		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
@@ -734,14 +734,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Etc(D1EtcVO etcSheet) {
+	public int insertD1Etc(D1EtcVO etcSheet, String ins_cd) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newEtcId = kobisMapper.getNewEtcId( etcSheet.getAccess_num() );
+    		String newEtcId = kobisMapper.getNewEtcId( ins_cd );
     		etcSheet.setId( newEtcId );
 
     		ret = kobisMapper.insertD1Etc(etcSheet);
@@ -764,14 +764,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Extraction(D1ExtractionVO extractionSheet) {
+	public int insertD1Extraction( D1ExtractionVO extractionSheet, String ins_cd ) {
 		SqlSession session = this.getSessionFactory().openSession( false );
 
     	int ret = 0;
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
 
-			String newExtractId = kobisMapper.getNewExtractionId( extractionSheet.getAccess_num() );
+			String newExtractId = kobisMapper.getNewExtractionId( ins_cd );
     		extractionSheet.setId( newExtractId );
 
     		ret = kobisMapper.insertD1Extraction( extractionSheet );
@@ -813,7 +813,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	}
 
 	@Override
-	public int insertD1Organ(D1OrganVO organSheet) {
+	public int insertD1Organ(D1OrganVO organSheet, String ins_cd) {
 		// TODO Auto-generated method stub
 		SqlSession session = this.getSessionFactory().openSession( false );
 
@@ -821,7 +821,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
-    		String newOrganId = kobisMapper.getNewOrganId( organSheet.getAccess_num() );
+    		String newOrganId = kobisMapper.getNewOrganId( ins_cd );
     		organSheet.setId( newOrganId );
 
     		ret = kobisMapper.insertD1Organ( organSheet );

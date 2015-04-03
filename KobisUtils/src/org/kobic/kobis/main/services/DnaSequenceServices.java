@@ -32,7 +32,7 @@ public class DnaSequenceServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1DnaSequenceVo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1DnaSequence(d1DnaSequenceVo);
+					this.getKobisService().insertD1DnaSequence(d1DnaSequenceVo, this.getInsCd());
 				}else {
 					this.getUnmapService().insertT2UnmappedDnaSequence(sheetRecordObj);
 				}

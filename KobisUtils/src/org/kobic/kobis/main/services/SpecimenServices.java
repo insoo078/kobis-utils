@@ -31,7 +31,7 @@ public class SpecimenServices extends AbstractKobisServices{
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
-				if( !accessionNumFromMapTab.isEmpty() )		this.getKobisService().insertD1Specimen( vo );
+				if( !accessionNumFromMapTab.isEmpty() )		this.getKobisService().insertD1Specimen( vo, this.getInsCd() );
 				else										this.getUnmapService().insertT2UnmappedSpecimen( sheetRecordObj );
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );

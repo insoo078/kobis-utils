@@ -9,7 +9,7 @@
 		WHERE ins_cd=#{ins_cd}
 	</select>
 	
-	<select id="getAccessionNum" parameterType="java.lang.String" resultType="java.util.Map">
+	<select id="getAccessionNum" parameterType="java.util.Map" resultType="java.lang.String">
 		SELECT accession_num FROM D1_Common
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
@@ -34,7 +34,7 @@
 	</insert>
 	
 
-	<select id="getNewObservationId" parameterType="java.lang.String">
+	<select id="getNewObservationId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_OBSERVATION_ID(#{access_num})
 	</select>
 	<insert id="insertD1Observation" parameterType="D1_Observation">
@@ -42,7 +42,7 @@
 		VALUES( #{access_num}, #{id}, #{gps.latitude}, #{gps.longitude} )
 	</insert>
 
-	<select id="getNewIndividualId" parameterType="java.lang.String">
+	<select id="getNewIndividualId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_INDIVIDUAL_ID(#{access_num})
 	</select>
 	<insert id="insertD1Individual" parameterType="D1_Individual">
@@ -50,7 +50,7 @@
 		VALUES( #{access_num}, #{id}, #{individual_type}, #{individual_maintenance} )
 	</insert>
 
-	<select id="getNewSpecimenId" parameterType="java.lang.String">
+	<select id="getNewSpecimenId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_SPECIMEN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Specimen" parameterType="D1_Specimen">
@@ -64,7 +64,7 @@
 		)
 	</insert>
 
-	<select id="getNewOrganId" parameterType="java.lang.String">
+	<select id="getNewOrganId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_ORGAN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Organ" parameterType="D1_Organ">
@@ -72,7 +72,7 @@
 		VALUES( #{access_num}, #{id}, #{organ_type}, #{disease} )
 	</insert>
 
-	<select id="getNewSourceId" parameterType="java.lang.String">
+	<select id="getNewSourceId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_SOURCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1Source" parameterType="D1_Source">
@@ -80,7 +80,7 @@
 		VALUES( #{access_num}, #{id}, #{source_type}, #{disease} )
 	</insert>
   	
-  	<select id="getNewSeedId" parameterType="java.lang.String">
+  	<select id="getNewSeedId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_SEED_ID(#{access_num})
 	</select>
 	<insert id="insertD1Seed" parameterType="D1_Seed">
@@ -88,7 +88,7 @@
 		VALUES( #{access_num}, #{id}, #{seed_status} )
 	</insert>
 	
-	<select id="getNewEmbryoId" parameterType="java.lang.String">
+	<select id="getNewEmbryoId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EMBRYO_ID(#{access_num})
 	</select>
 	<insert id="insertD1Embryo" parameterType="D1_Embryo">
@@ -96,7 +96,7 @@
 		VALUES( #{access_num}, #{id}, #{embryo_type} )
 	</insert>
 
-	<select id="getNewDnaRnaProteinDerivativesId" parameterType="java.lang.String">
+	<select id="getNewDnaRnaProteinDerivativesId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_DNA_RNA_PROT_DEV_ID(#{access_num})
 	</select>
 	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
@@ -111,7 +111,7 @@
 		)
 	</insert>
 
-	<select id="getNewStrainId" parameterType="java.lang.String">
+	<select id="getNewStrainId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_STRAIN_ID(#{access_num})
 	</select>
 	<insert id="insertD1Strain" parameterType="D1_Strain">
@@ -119,7 +119,7 @@
 		VALUES( #{access_num}, #{id}, #{source}, #{pathogenic_yn}, #{strain_name} )
 	</insert>
 
-	<select id="getNewCellStrainId" parameterType="java.lang.String">
+	<select id="getNewCellStrainId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_CELL_STRAIN_ID(#{access_num})
 	</select>
 	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
@@ -127,7 +127,7 @@
 		VALUES( #{access_num}, #{id}, #{source}, #{cell_type}, #{cell_name} )
 	</insert>
 	
-	<select id="getNewBodyFluidId" parameterType="java.lang.String">
+	<select id="getNewBodyFluidId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_BODY_FLUID_ID(#{access_num})
 	</select>
 	<insert id="insertD1BodyFluid" parameterType="D1_BodyFluid">
@@ -135,7 +135,7 @@
 		VALUES( #{access_num}, #{id}, #{body_fluid_type} )
 	</insert>
 	
-	<select id="getNewProteinSequenceId" parameterType="java.lang.String">
+	<select id="getNewProteinSequenceId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_PROTEIN_SEQUENCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
@@ -143,7 +143,7 @@
 		VALUES( #{access_num}, #{id}, #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<select id="getNewExpressionId" parameterType="java.lang.String">
+	<select id="getNewExpressionId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EXPRESSION_ID(#{access_num})
 	</select>
 	<insert id="insertD1Expression" parameterType="D1_Expression">
@@ -151,7 +151,7 @@
 		VALUES( #{access_num}, #{id}, #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<select id="getNewStructureId" parameterType="java.lang.String">
+	<select id="getNewStructureId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_STRUCTURE_ID(#{access_num})
 	</select>
 	<insert id="insertD1Structure" parameterType="D1_Structure">
@@ -159,7 +159,7 @@
 		VALUES( #{access_num}, #{id}, #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<select id="getNewDnaSequenceId" parameterType="java.lang.String">
+	<select id="getNewDnaSequenceId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_DNA_SEQUENCE_ID(#{access_num})
 	</select>
 	<insert id="insertD1DnaSequence" parameterType="D1_DnaSequence">
@@ -176,7 +176,7 @@
 		)
 	</insert>
 
-	<select id="getNewEtcId" parameterType="java.lang.String">
+	<select id="getNewEtcId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_ETC_ID(#{access_num})
 	</select>
 	<insert id="insertD1Etc" parameterType="D1_Etc">
@@ -184,7 +184,7 @@
 		VALUES( #{access_num}, #{id}, #{description}, #{open_yn}, #{open_url} )
 	</insert>
 
-	<select id="getNewExtractionId" parameterType="java.lang.String">
+	<select id="getNewExtractionId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EXTRACT_ID(#{access_num})
 	</select>
 	<insert id="insertD1Extraction" parameterType="D1_Extract">

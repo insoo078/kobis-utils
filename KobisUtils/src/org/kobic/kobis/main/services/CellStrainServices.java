@@ -32,7 +32,7 @@ public class CellStrainServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1CellStrainVo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1CellStrain( d1CellStrainVo );
+					this.getKobisService().insertD1CellStrain( d1CellStrainVo, this.getInsCd() );
 				}else {
 					this.getUnmapService().insertT2UnmappedCellStrain( cellStrainSheetRecordObj );
 				}

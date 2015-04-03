@@ -32,7 +32,7 @@ public class ProteinSequenceServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1ProteinSequence( vo );
+					this.getKobisService().insertD1ProteinSequence( vo, this.getInsCd() );
 				}else {
 					this.getUnmapService().insertT2UnmappedProteinSequence( sheetRecordObj );
 				}

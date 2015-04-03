@@ -33,7 +33,7 @@ public class IndividualServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Individual(vo);
+					this.getKobisService().insertD1Individual(vo, this.getInsCd());
 				}else {
 					this.getUnmapService().insertT2UnmappedIndividual(sheetRecordObj);
 				}

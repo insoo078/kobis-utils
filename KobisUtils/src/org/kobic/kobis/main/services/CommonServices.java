@@ -84,16 +84,6 @@ public class CommonServices extends AbstractKobisServices{
 			for( int j=3; j<=this.getSheet().getLastRowNum(); j++ ) {
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
-//				String dataRow2 = dataRow.getCell(0).toString();
-//				if( dataRow.getCell(0).toString().equals("002-080") ) {
-//					System.out.println("Hello");
-//				}else{
-//					continue;
-//				}
-//				totalCnt++;
-//
-//				if( totalCnt < 84 )	continue;
-
 				XCommonSheetObj commonSheetRecordObj = XCommonSheetObj.getNewInstance( dataRow );
 
 				D1CommonVO d1CommonVo = new D1CommonVO( commonSheetRecordObj );

@@ -32,7 +32,7 @@ public class SeedServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Seed( vo );
+					this.getKobisService().insertD1Seed( vo, this.getInsCd() );
 				}else {
 					this.getUnmapService().insertT2UnmappedSeed( sheetRecordObj );
 				}

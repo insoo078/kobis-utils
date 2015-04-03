@@ -32,7 +32,7 @@ public class EtcServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Etc(vo);
+					this.getKobisService().insertD1Etc(vo, this.getInsCd());
 				}else {
 					this.getUnmapService().insertT2UnmappedEtc(sheetRecordObj);
 				}

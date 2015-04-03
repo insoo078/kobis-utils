@@ -32,7 +32,7 @@ public class BodyFluidServices  extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo );
+					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo, this.getInsCd() );
 				}else {
 					this.getUnmapService().insertT2UnmappedBodyFluid( bodyFluidSheetRecordObj );
 				}
