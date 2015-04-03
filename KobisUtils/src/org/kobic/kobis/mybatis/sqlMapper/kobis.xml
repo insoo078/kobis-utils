@@ -107,7 +107,7 @@
 		)
 		VALUES( 
 			#{access_num}, #{id}, #{source}, #{detail_type}
-			, #{deposit_type}, #{sample_type}, #{sample_detail}, #{sample_etc} 
+			, #{deposit_type}, #{sample.sample_type}, #{sample.sample_detail}, #{sample.sample_etc} 
 		)
 	</insert>
 
@@ -124,7 +124,7 @@
 	</select>
 	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
 		INSERT INTO D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
-		VALUES( #{access_num}, #{id}, #{source}, #{cell_type}, #{cell_name} )
+		VALUES( #{access_num}, #{id}, #{source}, #{cellLineType}, #{cellLineName} )
 	</insert>
 	
 	<select id="getNewBodyFluidId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -140,7 +140,7 @@
 	</select>
 	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
 		INSERT INTO D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open_yn}, #{open_url} )
+		VALUES( #{access_num}, #{id}, #{source}, #{protein_name}, #{accession_no}, #{sequence}, #{open.open_yn}, #{open.open_url} )
 	</insert>
 
 	<select id="getNewExpressionId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -148,7 +148,7 @@
 	</select>
 	<insert id="insertD1Expression" parameterType="D1_Expression">
 		INSERT INTO D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{data_type}, #{expression_data}, #{open_yn}, #{open_url} )
+		VALUES( #{access_num}, #{id}, #{source}, #{data_type}, #{expression_data}, #{open.open_yn}, #{open.open_url} )
 	</insert>
 
 	<select id="getNewStructureId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -156,7 +156,7 @@
 	</select>
 	<insert id="insertD1Structure" parameterType="D1_Structure">
 		INSERT INTO D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open_yn}, #{open_url} )
+		VALUES( #{access_num}, #{id}, #{source}, #{structure_type}, #{accession_no}, #{pdb_format}, #{open.open_yn}, #{open.open_url} )
 	</insert>
 
 	<select id="getNewDnaSequenceId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -171,7 +171,7 @@
 		)
 		VALUES(
 			#{access_num}, #{id}, #{source}, #{molecular_type}, #{data_type}
-			, #{gene_name}, #{accession_no}, #{sequence.sequence}, #{open_yn}, #{open_url}
+			, #{sequence.gene_name}, #{sequence.accession_no}, #{sequence.sequence}, #{open.open_yn}, #{open.open_url}
 			, #{gene_full_naem}, #{gene_alias} 
 		)
 	</insert>
@@ -189,7 +189,7 @@
 	</select>
 	<insert id="insertD1Extraction" parameterType="D1_Extract">
 		INSERT INTO D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
-		VALUES( #{access_num}, #{id}, #{source}, #{solvent}, #{extract_time} )
+		VALUES( #{access_num}, #{id}, #{source}, #{extract.solvent}, #{extract.extractTime} )
 	</insert>
 
 	<insert id="insertE1Culture" parameterType="java.util.Map">
@@ -228,5 +228,9 @@
 			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
 			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{code}
 		)
+	</insert>
+	
+		<insert id="insertL3ExtendLink" parameterType="java.util.Map">
+		INSERT INTO L3_ExtendLink( accession_num, id ) VALUES( #{access_num}, #{id} )
 	</insert>
 </mapper>

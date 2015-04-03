@@ -155,7 +155,7 @@
 			, culture_medium_name, condition, succeed_dt, succeed_time 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{cell_type}, #{cell_name} 
+			#{access_num}, #{source}, #{cellLineType}, #{cellLineName} 
 			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
 			, #{extra.patent.application_no}, #{extra.patent.reg_no} 
 			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time}
@@ -245,9 +245,9 @@
 			, application_no, reg_no 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{solvent}, #{extract_time} 
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.application_no}, #{extra.patent.reg_no}
+			#{access_num}, #{source}, #{extract.solvent}, #{extract.extractTime} 
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.parentNo}, #{extra.patent.regNo}
 		)
 	</insert>
 </mapper>
