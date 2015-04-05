@@ -95,7 +95,7 @@ public class ReadExcel{
 		// Loop for worksheet
 		for(int i=0; i<workbook.getNumberOfSheets(); i++) {
 			String sheetName = workbook.getSheetName(i);
-			logger.info("Worksheet : " + sheetName );
+			System.out.println("Worksheet : " + sheetName );
 
 			XSSFSheet sheet = workbook.getSheetAt( i );
 
