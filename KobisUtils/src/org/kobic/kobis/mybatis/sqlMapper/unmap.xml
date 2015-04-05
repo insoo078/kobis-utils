@@ -38,8 +38,8 @@
 			accession_num, individual_type, individual_maintenance, dist_yn, dist_url, reference, application_no, reg_no 
 		)
 		VALUES( 
-			#{access_num}, #{individual_type}, #{individual_maintenance}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
+			#{access_num}, #{individualType}, #{individualMaintenance}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}, #{extra.patent.applicationNo}, #{extra.patent.regNo} 
 		)
 	</insert>
 
@@ -79,10 +79,10 @@
 			, store_no, store_place 
 		)
 		VALUES( 
-			#{access_num}, #{source_type}, #{disease}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}
-			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no} 
-			, #{store.store_no}, #{store.store_place} 
+			#{access_num}, #{source}, #{disease}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}
+			, #{extra.ref.reference}, #{extra.patent.applicationNo}, #{extra.patent.regNo} 
+			, #{store.storeNo}, #{store.storePlace} 
 	)
 	</insert>
   	
@@ -169,10 +169,10 @@
 			, culture_medium_name, condition, succeed_dt, succeed_time
 		)
 		VALUES( 
-			#{access_num}, #{body_fluid_type}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.application_no}, #{extra.patent.reg_no} 
-			, #{culture.culture_medium_name}, #{culture.condition}, #{culture.succeed_dt}, #{culture.succeed_time}
+			#{access_num}, #{bodyFluidType}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.applicationNo}, #{extra.patent.regNo} 
+			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime}
 		 )
 	</insert>
 	
@@ -219,8 +219,8 @@
 		)
 		VALUES(
 			#{access_num}, #{source}, #{molecular_type}, #{data_type}
-			, #{gene_name}, #{accession_no}, #{sequence.sequence}, #{open_yn}, #{open_url}
-			, #{gene_full_naem}, #{gene_alias} 
+			, #{sequence.geneName}, #{sequence.accessionNo}, #{sequence.sequence}, #{open.openYn}, #{open.openUrl}
+			, #{gene_full_name}, #{gene_alias} 
 			, #{extra.ref.reference}, #{extra.patent.application_no}, #{extra.patent.reg_no}
 		)
 	</insert>
