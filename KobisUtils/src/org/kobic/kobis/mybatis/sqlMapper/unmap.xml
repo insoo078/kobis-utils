@@ -115,7 +115,7 @@
 	</insert>
 
 	<insert id="insertT2UnmappedDnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
-		INSERT INTO T2_UnMappedDNA_RNA_Protein_Derivatives
+		INSERT INTO T2_UnMapped_DNA_RNA_Protein_Derivatives
 		( 
 			accession_num, source, detail_type
 			, deposit_type, sample_type, sample_detail, sample_etc
