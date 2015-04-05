@@ -19,6 +19,8 @@ public class EtcServices extends AbstractKobisServices{
 	public void readRecordsInSheet() throws NoSuchMethodException, SecurityException, Exception {
 		// TODO Auto-generated method stub
 		if( this.getSheet().getLastRowNum() > 3 ) {
+			int totalCnt = 0;
+
 			for( int j=3; j<=this.getSheet().getLastRowNum(); j++ ) {
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
@@ -44,6 +46,8 @@ public class EtcServices extends AbstractKobisServices{
 //				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
 //					this.getUnmapService().insertT2UnmappedEtc(sheetRecordObj);
 //				}
+				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum() -3) + ")");
+				totalCnt++;
 			}
 		}
 	}
