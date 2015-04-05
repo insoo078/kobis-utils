@@ -8,21 +8,12 @@ import java.lang.reflect.Constructor;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.kobic.kobis.file.excel.obj.internal.ExcelWorksheetNameMap;
 import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.main.services.AbstractKobisServices;
-import org.kobic.kobis.main.services.CellStrainServices;
 import org.kobic.kobis.main.services.CommonServices;
-import org.kobic.kobis.main.services.DnaRnaProteinDerivativesServices;
-import org.kobic.kobis.main.services.ExtractServices;
-import org.kobic.kobis.main.services.IndividualServices;
-import org.kobic.kobis.main.services.SourceServices;
-import org.kobic.kobis.main.services.StrainServices;
 import org.kobic.kobis.mybatis.factory.MyBatisConnectionFactory;
 
 public class ReadExcel{
@@ -104,7 +95,7 @@ public class ReadExcel{
 		// Loop for worksheet
 		for(int i=0; i<workbook.getNumberOfSheets(); i++) {
 			String sheetName = workbook.getSheetName(i);
-			System.out.println("Worksheet : " + sheetName );
+			logger.info("Worksheet : " + sheetName );
 
 			XSSFSheet sheet = workbook.getSheetAt( i );
 
@@ -157,14 +148,14 @@ public class ReadExcel{
 				{"-o", "/Users/insoo078/Desktop", "-i", "/Users/insoo078/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_정보연계표준_20150403 2차 데이터_IRMRC.xlsx", "-header", "INS00005"}
 		};
 
-//		for(int i=0; i<params.length; i++) {
-//			ReadExcel read = new ReadExcel();
-//			try {
-//				System.out.println( params[i][5] + " processing");
-//				read.run( params[i] );
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+		for(int i=0; i<params.length; i++) {
+			ReadExcel read = new ReadExcel();
+			try {
+				logger.info( params[i][5] + " processing" );
+				read.run( params[i] );
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

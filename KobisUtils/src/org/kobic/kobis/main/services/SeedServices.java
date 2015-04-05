@@ -1,6 +1,7 @@
 package org.kobic.kobis.main.services;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XSeedSheetObj;
@@ -9,6 +10,7 @@ import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.util.Utils;
 
 public class SeedServices extends AbstractKobisServices{
+	private static Logger logger = Logger.getLogger(SeedServices.class);
 
 	public SeedServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
 		super(insCd, sheet, sessionFactory);

@@ -8,8 +8,10 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.kobic.kobis.common.dao.CommonDAOService;
 import org.kobic.kobis.main.mapper.KobisMapper;
+import org.kobic.kobis.main.services.StructureServices;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
@@ -39,6 +41,7 @@ import org.kobic.kobis.main.vo.D1StructureVO;
 import org.kobic.kobis.main.vo.DBCommonInterface;
 
 public class KobisDAOService extends CommonDAOService implements KobisDAO{
+	private static Logger logger = Logger.getLogger(KobisDAOService.class);
 
 	public KobisDAOService(SqlSessionFactory sqlSessionFactory){
 		super( sqlSessionFactory );
@@ -127,7 +130,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}catch(Exception e) {
     		ret = 0;
     		session.rollback();
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     	}finally{
     		session.close();
     	}
@@ -165,10 +168,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e.getMessage() );
 			}
     	}catch(NoSuchMethodException e) {
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     	}
 
     	return map;
@@ -199,10 +202,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e.getMessage() );
 			}
     	}catch(NoSuchMethodException e) {
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     	}
 
     	return map;
@@ -232,7 +235,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e.getMessage() );
 			}
     	}catch(NoSuchMethodException e) {
     		try {
@@ -249,14 +252,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	    			}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
 					// TODO Auto-generated catch block
-					ex.printStackTrace();
+					logger.error( ex.getMessage() );
 				}
 			} catch (NoSuchMethodException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				logger.error( e1.getMessage() );
 			} catch (SecurityException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				logger.error( e1.getMessage() );
 			}
     	}
 
@@ -289,7 +292,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e.getMessage() );
 			}
     	}catch(NoSuchMethodException e) {
     		try {
@@ -307,14 +310,14 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	    			}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
 					// TODO Auto-generated catch block
-					ex.printStackTrace();
+					logger.error( ex.getMessage() );
 				}
 			} catch (NoSuchMethodException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				logger.error( e1.getMessage() );
 			} catch (SecurityException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				logger.error( e1.getMessage() );
 			}
     	}
 
@@ -347,10 +350,10 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			}
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e.getMessage() );
 			}
     	}catch(NoSuchMethodException e) {
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     	}
 
     	return map;
@@ -388,7 +391,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -429,7 +432,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -470,7 +473,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -513,7 +516,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -556,7 +559,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -599,7 +602,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -642,7 +645,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -685,7 +688,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -728,7 +731,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -771,7 +774,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -810,7 +813,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -849,7 +852,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -888,7 +891,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -927,7 +930,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -968,7 +971,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -1009,7 +1012,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -1028,7 +1031,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();
@@ -1072,7 +1075,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;
-    		e.printStackTrace();
+    		logger.error( e.getMessage() );
     		session.rollback();
     	}finally{
     		session.close();

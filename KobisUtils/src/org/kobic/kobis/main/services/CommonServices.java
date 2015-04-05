@@ -8,6 +8,7 @@ package org.kobic.kobis.main.services;
 
 //import org.apache.commons.beanutils.BeanUtils;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XCommonSheetObj;
@@ -16,9 +17,10 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
-import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
+	private static Logger logger = Logger.getLogger(CommonServices.class);
+	
 //	private HashMap<String, XCommonSheetObj> mapped;
 //	private HashMap<String, XCommonSheetObj> unmapped;
 

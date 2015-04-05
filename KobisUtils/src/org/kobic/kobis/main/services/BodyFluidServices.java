@@ -1,14 +1,17 @@
 package org.kobic.kobis.main.services;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj;
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
 import org.kobic.kobis.rule.Rule;
 import org.kobic.kobis.util.Utils;
+import org.kobic.kobis.utils.ReadExcel;
 
 public class BodyFluidServices  extends AbstractKobisServices{
+	private static Logger logger = Logger.getLogger(BodyFluidServices.class); 
 
 	public BodyFluidServices(String insCd, XSSFSheet sheet, SqlSessionFactory sessionFactory) {
 		super(insCd, sheet, sessionFactory);
