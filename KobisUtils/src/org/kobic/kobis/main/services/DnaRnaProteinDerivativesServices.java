@@ -27,6 +27,8 @@ public class DnaRnaProteinDerivativesServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XDnaRnaProteinDerivativesSheetObj sheetRecordObj = XDnaRnaProteinDerivativesSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1DnaRnaProteinDerivativesVO d1DnaRnaProteinDerivativesnVo = new D1DnaRnaProteinDerivativesVO( sheetRecordObj );
 				

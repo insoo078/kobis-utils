@@ -26,6 +26,8 @@ public class StrainServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XStrainSheetObj sheetRecordObj = XStrainSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1StrainVO vo = new D1StrainVO( sheetRecordObj );
 				

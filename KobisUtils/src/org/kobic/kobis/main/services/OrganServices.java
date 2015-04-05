@@ -27,6 +27,8 @@ public class OrganServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XOrganSheetObj sheetRecordObj = XOrganSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1OrganVO vo = new D1OrganVO( sheetRecordObj );
 				

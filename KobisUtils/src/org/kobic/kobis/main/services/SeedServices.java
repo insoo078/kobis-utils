@@ -27,6 +27,8 @@ public class SeedServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XSeedSheetObj sheetRecordObj = XSeedSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1SeedVO vo = new D1SeedVO( sheetRecordObj );
 				

@@ -28,13 +28,15 @@ public class BodyFluidServices  extends AbstractKobisServices{
 
 				XBodyFluidSheetObj bodyFluidSheetRecordObj = XBodyFluidSheetObj.getNewInstance( dataRow );
 
+				if( Utils.nullToEmpty( bodyFluidSheetRecordObj.getAccess_num() ).isEmpty() )	continue;
+				
 				D1BodyFluidVO d1BodyFluidVo = new D1BodyFluidVO( bodyFluidSheetRecordObj );
 				
 				Rule rule = new Rule( this.getInsCd() );
 				rule.rule( d1BodyFluidVo );
 
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
-				
+
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo, this.getInsCd() );
 				}else {

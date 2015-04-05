@@ -27,6 +27,8 @@ public class ExpressionServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XExpressionSheetObj sheetRecordObj = XExpressionSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1ExpressionVO vo = new D1ExpressionVO( sheetRecordObj );
 				

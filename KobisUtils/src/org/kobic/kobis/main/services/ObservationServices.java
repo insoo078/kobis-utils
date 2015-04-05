@@ -27,6 +27,8 @@ public class ObservationServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XObservationSheetObj sheetRecordObj = XObservationSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1ObservationVO vo = new D1ObservationVO( sheetRecordObj );
 				

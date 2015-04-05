@@ -27,6 +27,8 @@ public class DnaSequenceServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XDnaSequenceSheetObj sheetRecordObj = XDnaSequenceSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1DnaSequenceVO d1DnaSequenceVo = new D1DnaSequenceVO( sheetRecordObj );
 				

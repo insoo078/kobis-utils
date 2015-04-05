@@ -27,6 +27,8 @@ public class StructureServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XStructureSheetObj sheetRecordObj = XStructureSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1StructureVO vo = new D1StructureVO( sheetRecordObj );
 				

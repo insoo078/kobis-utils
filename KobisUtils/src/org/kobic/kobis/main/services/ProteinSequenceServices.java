@@ -27,6 +27,8 @@ public class ProteinSequenceServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XProteinSequenceSheetObj sheetRecordObj = XProteinSequenceSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1ProteinSequenceVO vo = new D1ProteinSequenceVO( sheetRecordObj );
 				

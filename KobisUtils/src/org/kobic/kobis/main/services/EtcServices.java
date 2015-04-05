@@ -27,6 +27,8 @@ public class EtcServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XEtcSheetObj sheetRecordObj = XEtcSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1EtcVO vo = new D1EtcVO( sheetRecordObj );
 				

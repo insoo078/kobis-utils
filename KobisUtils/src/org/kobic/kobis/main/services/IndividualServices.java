@@ -28,6 +28,8 @@ public class IndividualServices extends AbstractKobisServices{
 
 				XIndividualSheetObj sheetRecordObj = XIndividualSheetObj.getNewInstance( dataRow );
 
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
+				
 				D1IndividualVO vo = new D1IndividualVO( sheetRecordObj );
 				
 				Rule rule = new Rule( this.getInsCd() );

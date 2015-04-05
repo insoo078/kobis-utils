@@ -27,6 +27,8 @@ public class EmbryoServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XEmbryoSheetObj sheetRecordObj = XEmbryoSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1EmbryoVO vo = new D1EmbryoVO( sheetRecordObj );
 				

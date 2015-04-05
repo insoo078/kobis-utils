@@ -27,6 +27,8 @@ public class SpecimenServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XSpecimenSheetObj sheetRecordObj = XSpecimenSheetObj.getNewInstance( dataRow );
+				
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
 				D1SpecimenVO vo = new D1SpecimenVO( sheetRecordObj );
 				

@@ -28,6 +28,8 @@ public class SourceServices extends AbstractKobisServices{
 
 				XSourceSheetObj sheetRecordObj = XSourceSheetObj.getNewInstance( dataRow );
 
+				if( Utils.nullToEmpty( sheetRecordObj.getAccess_num() ).isEmpty() )	continue;
+
 				D1SourceVO vo = new D1SourceVO( sheetRecordObj );
 				
 				Rule rule = new Rule( this.getInsCd() );
