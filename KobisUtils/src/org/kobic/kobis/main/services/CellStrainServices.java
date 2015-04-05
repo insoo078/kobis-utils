@@ -47,7 +47,7 @@ public class CellStrainServices extends AbstractKobisServices{
 //					this.getUnmapService().insertT2UnmappedCellStrain( cellStrainSheetRecordObj );
 //				}
 				
-				System.out.println( "("+totalCnt + "/" + this.getSheet().getLastRowNum() + ")");
+				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum() -3) + ")");
 				totalCnt++;
 			}
 		}

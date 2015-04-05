@@ -46,9 +46,13 @@ public class ExtractServices extends AbstractKobisServices{
 //					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
 //				}
 				
-				System.out.println( "("+totalCnt + "/" + this.getSheet().getLastRowNum() + ")");
+				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum()-3) + ")");
 				totalCnt++;
 			}
+			
+			System.out.println( "=======================================================" );
+			System.out.println( "== Total records : " + totalCnt);
+			System.out.println( "=======================================================" );
 		}
 	}
 }

@@ -366,13 +366,24 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newObsId = kobisMapper.getNewObservationId( ins_cd );
     		observationSheet.setId( newObsId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", observationSheet.getAccess_num() );
+			map.put("id", newObsId );
 
-    		ret = kobisMapper.insertD1Observation( observationSheet );
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( observationSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( observationSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( observationSheet ) );
-    		}
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Observation( observationSheet );
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( observationSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( observationSheet );
+	    			Map<String, String> refMap = this.getE1Reference( observationSheet );;
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -395,14 +406,25 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newIndiId = kobisMapper.getNewIndividualId( ins_cd );
     		individualSheet.setId( newIndiId );
-
-    		ret = kobisMapper.insertD1Individual( individualSheet );
     		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( individualSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( individualSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( individualSheet ) );
-    		}
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", individualSheet.getAccess_num() );
+			map.put("id", newIndiId );
+
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Individual( individualSheet );
+	    		
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( individualSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( individualSheet );
+	    			Map<String, String> refMap = this.getE1Reference( individualSheet );
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -425,14 +447,25 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newSpecimenId = kobisMapper.getNewSpecimenId( ins_cd );
     		specimenSheet.setId( newSpecimenId );
-
-    		ret = kobisMapper.insertD1Specimen( specimenSheet );
     		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( specimenSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( specimenSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( specimenSheet ) );
-    		}
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", specimenSheet.getAccess_num() );
+			map.put("id", newSpecimenId );
+
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Specimen( specimenSheet );
+
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( specimenSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( specimenSheet );
+	    			Map<String, String> refMap = this.getE1Reference( specimenSheet );
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -455,15 +488,27 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newSourceId = kobisMapper.getNewSourceId( ins_cd );
     		sourceSheet.setId( newSourceId );
-
-    		ret = kobisMapper.insertD1Source( sourceSheet );
     		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( sourceSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( sourceSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( sourceSheet ) );
-    			ret = kobisMapper.insertE1Store( this.getE1Store( sourceSheet ) );
-    		}
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", sourceSheet.getAccess_num() );
+			map.put("id", newSourceId );
+
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Source( sourceSheet );
+	    		
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( sourceSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( sourceSheet );
+	    			Map<String, String> refMap = this.getE1Reference( sourceSheet );
+	    			Map<String, String> storeMap = this.getE1Store( sourceSheet );
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    			ret = kobisMapper.insertE1Store( storeMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -486,15 +531,27 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newSeedId = kobisMapper.getNewSeedId( ins_cd );
     		seedSheet.setId( newSeedId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", seedSheet.getAccess_num() );
+			map.put("id", newSeedId );
 
-    		ret = kobisMapper.insertD1Seed( seedSheet );
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Seed( seedSheet );
+	
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( seedSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( seedSheet );
+	    			Map<String, String> refMap = this.getE1Reference( seedSheet );
+	    			Map<String, String> storeMap = this.getE1Store( seedSheet );
 
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( seedSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( seedSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( seedSheet ) );
-    			ret = kobisMapper.insertE1Store( this.getE1Store( seedSheet ) );
-    		}
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    			ret = kobisMapper.insertE1Store( storeMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -518,14 +575,26 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newEmbryoId = kobisMapper.getNewEmbryoId( ins_cd );
     		embryoSheet.setId( newEmbryoId );
 
-    		ret = kobisMapper.insertD1Embryo( embryoSheet );
-    		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( embryoSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( embryoSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( embryoSheet ) );
-    			ret = kobisMapper.insertE1Store( this.getE1Store( embryoSheet ) );
-    		}
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", embryoSheet.getAccess_num() );
+			map.put("id", newEmbryoId );
+
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Embryo( embryoSheet );
+	    		
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( embryoSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( embryoSheet );
+	    			Map<String, String> refMap = this.getE1Reference( embryoSheet );
+	    			Map<String, String> storeMap = this.getE1Store( embryoSheet );
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    			ret = kobisMapper.insertE1Store( storeMap );
+	    		}
+			}
     		
     		session.commit();
     	}catch(Exception e) {
@@ -677,15 +746,27 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newBodyFluidId = kobisMapper.getNewBodyFluidId( ins_cd );
     		bodyFluidSheet.setId( newBodyFluidId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", bodyFluidSheet.getAccess_num() );
+			map.put("id", newBodyFluidId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
+	
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( bodyFluidSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( bodyFluidSheet );
+	    			Map<String, String> refMap = this.getE1Reference( bodyFluidSheet );
+	    			Map<String, String> cultureMap = this.getE1Culture( bodyFluidSheet );
 
-    		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
-
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( bodyFluidSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( bodyFluidSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( bodyFluidSheet ) );
-    			ret = kobisMapper.insertE1Culture( this.getE1Culture( bodyFluidSheet ) );
-    		}
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    			ret = kobisMapper.insertE1Culture( cultureMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -708,13 +789,23 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newProteinSequenceId = kobisMapper.getNewProteinSequenceId( ins_cd );
     		proteinSequenceSheet.setId( newProteinSequenceId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", proteinSequenceSheet.getAccess_num() );
+			map.put("id", newProteinSequenceId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
+	
+	    		if( ret > 0 ) {
+	    			Map<String, String> patentMap = this.getE1Patent( proteinSequenceSheet );
+	    			Map<String, String> refMap = this.getE1Reference( proteinSequenceSheet );
 
-    		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
-
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( proteinSequenceSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( proteinSequenceSheet ) );
-    		}    		
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}    		
+			}
     		
     		session.commit();
     	}catch(Exception e) {
@@ -737,13 +828,23 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newExpressionId = kobisMapper.getNewExpressionId( ins_cd );
     		expressionSheet.setId( newExpressionId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", expressionSheet.getAccess_num() );
+			map.put("id", newExpressionId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Expression( expressionSheet );
+	
+	    		if( ret > 0 ) {
+	    			Map<String, String> patentMap = this.getE1Patent( expressionSheet );
+	    			Map<String, String> refMap = this.getE1Reference( expressionSheet );
 
-    		ret = kobisMapper.insertD1Expression( expressionSheet );
-
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( expressionSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( expressionSheet ) );
-    		}   
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -766,13 +867,23 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newStructureId = kobisMapper.getNewStructureId( ins_cd );
     		structureSheet.setId( newStructureId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", structureSheet.getAccess_num() );
+			map.put("id", newStructureId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Structure( structureSheet );
+	
+	    		if( ret > 0 ) {
+	    			Map<String, String> patentMap = this.getE1Patent( structureSheet );
+	    			Map<String, String> refMap = this.getE1Reference( structureSheet );
 
-    		ret = kobisMapper.insertD1Structure( structureSheet );
-
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( structureSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( structureSheet ) );
-    		}   
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}   
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -795,13 +906,23 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newDnaSequenceId = kobisMapper.getNewDnaSequenceId( ins_cd );
     		dnaSequenceSheet.setId( newDnaSequenceId );
-
-    		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
     		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( dnaSequenceSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( dnaSequenceSheet ) );
-    		}   
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", dnaSequenceSheet.getAccess_num() );
+			map.put("id", newDnaSequenceId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
+	    		
+	    		if( ret > 0 ) {
+	    			Map<String, String> patentMap = this.getE1Patent( dnaSequenceSheet );
+	    			Map<String, String> refMap = this.getE1Reference( dnaSequenceSheet );
+
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference( refMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
@@ -824,13 +945,24 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newEtcId = kobisMapper.getNewEtcId( ins_cd );
     		etcSheet.setId( newEtcId );
+    		
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", etcSheet.getAccess_num() );
+			map.put("id", newEtcId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Etc(etcSheet);
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( etcSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( etcSheet );
+	    			Map<String, String> refMap = this.getE1Reference( etcSheet );
 
-    		ret = kobisMapper.insertD1Etc(etcSheet);
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( etcSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( etcSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( etcSheet ) );
-    		}
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    		}
+			}
 
     		ret = kobisMapper.insertD1Etc( etcSheet );
     		session.commit();
@@ -915,15 +1047,27 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newOrganId = kobisMapper.getNewOrganId( ins_cd );
     		organSheet.setId( newOrganId );
-
-    		ret = kobisMapper.insertD1Organ( organSheet );
     		
-    		if( ret > 0 ) {
-    			ret = kobisMapper.insertE1Distribution( this.getE1Distribution( organSheet ) );
-    			ret = kobisMapper.insertE1Patent( this.getE1Patent( organSheet ) );
-    			ret = kobisMapper.insertE1Reference(  this.getE1Reference( organSheet ) );
-    			ret = kobisMapper.insertE1Store( this.getE1Store( organSheet ) );
-    		}
+			Map<String, String> map = new HashMap<String, String>();
+    		map.put("access_num", organSheet.getAccess_num() );
+			map.put("id", newOrganId );
+			
+			ret = kobisMapper.insertL3ExtendLink( map );
+			if( ret > 0 ) {
+	    		ret = kobisMapper.insertD1Organ( organSheet );
+	    		
+	    		if( ret > 0 ) {
+	    			Map<String, String> distMap = this.getE1Distribution( organSheet );
+	    			Map<String, String> patentMap = this.getE1Patent( organSheet );
+	    			Map<String, String> refMap = this.getE1Reference( organSheet );
+	    			Map<String, String> storeMap = this.getE1Store( organSheet );
+
+	    			ret = kobisMapper.insertE1Distribution( distMap );
+	    			ret = kobisMapper.insertE1Patent( patentMap );
+	    			ret = kobisMapper.insertE1Reference(  refMap );
+	    			ret = kobisMapper.insertE1Store( storeMap );
+	    		}
+			}
 
     		session.commit();
     	}catch(Exception e) {
