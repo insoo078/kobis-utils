@@ -23,7 +23,6 @@ import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
 import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
-import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
 import org.kobic.kobis.util.Utils;
@@ -38,12 +37,12 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
     	SqlSession session = this.getSessionFactory().openSession();
     	String result = null;
     	try {
-    		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    		UnmappedMapper unMappedMapper = session.getMapper( UnmappedMapper.class );
     		Map<String, String> map = new HashMap<String, String>();
     		map.put("accession_num", accession_num);
     		map.put("ins_cd", ins_cd);
 
-    		result = kobisMapper.getAccessionNum( map );
+    		result = unMappedMapper.getAccessionNum( map );
 	   	}finally{
 	   		session.close();
 	   	}

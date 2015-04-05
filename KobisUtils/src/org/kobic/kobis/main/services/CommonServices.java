@@ -16,6 +16,7 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
+import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
 //	private HashMap<String, XCommonSheetObj> mapped;
@@ -85,22 +86,27 @@ public class CommonServices extends AbstractKobisServices{
 				XSSFRow dataRow = this.getSheet().getRow(j);
 
 				XCommonSheetObj commonSheetRecordObj = XCommonSheetObj.getNewInstance( dataRow );
-
-				D1CommonVO d1CommonVo = new D1CommonVO( commonSheetRecordObj );
-				d1CommonVo.setIns_cd( this.getInsCd() );
-
-				// Rule 적용
-				Rule rule = new Rule( d1CommonVo.getIns_cd() );
-				rule.rule( d1CommonVo );
-
-				String scientificName = d1CommonVo.getScientificName();
 				
-				MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
-
-				classifyObj.validate( scientificName );
-
-				boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
-				if ( canValidateToDatabase ){	mappedCnt++;	}
+//				String accession_num = Utils.nullToEmpty( this.getKobisService().getAccessionNum( commonSheetRecordObj.getAccess_num(), this.getInsCd() ) );
+//				String unaccession_num = Utils.nullToEmpty( this.getUnmapService().getAccessionNum( commonSheetRecordObj.getAccess_num(), this.getInsCd() ) );
+//
+//				if( accession_num.isEmpty() && unaccession_num.isEmpty() ) {
+					D1CommonVO d1CommonVo = new D1CommonVO( commonSheetRecordObj );
+					d1CommonVo.setIns_cd( this.getInsCd() );
+	
+					// Rule 적용
+					Rule rule = new Rule( d1CommonVo.getIns_cd() );
+					rule.rule( d1CommonVo );
+	
+					String scientificName = d1CommonVo.getScientificName();
+					
+					MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
+	
+					classifyObj.validate( scientificName );
+	
+					boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
+					if ( canValidateToDatabase ){	mappedCnt++;	}
+//				}
 
 				
 				

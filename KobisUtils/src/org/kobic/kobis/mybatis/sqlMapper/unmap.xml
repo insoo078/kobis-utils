@@ -3,7 +3,7 @@
 
 <mapper namespace="org.kobic.kobis.unmapped.mapper.UnmappedMapper">
 	<select id="getAccessionNum" parameterType="java.util.Map" resultType="java.lang.String">
-		SELECT accession_num FROM T2_UnMappedUnMappedCommon
+		SELECT accession_num FROM T2_UnMappedCommon
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
 
