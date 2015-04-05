@@ -151,7 +151,7 @@ public class ReadExcel{
 		for(int i=0; i<params.length; i++) {
 			ReadExcel read = new ReadExcel();
 			try {
-				logger.info( params[i][5] + " processing" );
+				System.out.println( params[i][5] + " processing" );
 				read.run( params[i] );
 			}catch(Exception e) {
 				e.printStackTrace();
