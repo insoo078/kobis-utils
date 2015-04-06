@@ -40,7 +40,7 @@ public class DnaRnaProteinDerivativesServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1DnaRnaProteinDerivatives(d1DnaRnaProteinDerivativesnVo, this.getInsCd());
 				}else {
-					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives(sheetRecordObj);
+					this.getUnmapService().insertT2UnmappedDnaRnaProteinDerivatives( d1DnaRnaProteinDerivativesnVo );
 				}
 				
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1DnaRnaProteinDerivativesnVo.getAccess_num(), this.getInsCd() ) );

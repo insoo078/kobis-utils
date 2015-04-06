@@ -38,7 +38,7 @@ public class StructureServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() )		this.getKobisService().insertD1Structure( vo, this.getInsCd() );
-				else										this.getUnmapService().insertT2UnmappedStructure( sheetRecordObj );
+				else										this.getUnmapService().insertT2UnmappedStructure( vo );
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 //

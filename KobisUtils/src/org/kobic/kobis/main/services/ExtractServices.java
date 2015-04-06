@@ -40,7 +40,7 @@ public class ExtractServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Extraction( d1ExtractVo, this.getInsCd() );
 				}else {
-					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
+					this.getUnmapService().insertT2UnmappedExtraction( d1ExtractVo );
 				}
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );

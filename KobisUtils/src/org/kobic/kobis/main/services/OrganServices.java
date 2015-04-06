@@ -40,7 +40,7 @@ public class OrganServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Organ( vo, this.getInsCd() );
 				}else {
-					this.getUnmapService().insertT2UnmappedOrgan( sheetRecordObj );
+					this.getUnmapService().insertT2UnmappedOrgan( vo );
 				}
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );

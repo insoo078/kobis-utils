@@ -152,7 +152,7 @@ public class LexicalInterpreter {
 	}
 
 	private String[] functionParameters(String str) {
-		String[] div = str.split(",");
+		String[] div = str.trim().split(",");
 		
 		return div;
 	}

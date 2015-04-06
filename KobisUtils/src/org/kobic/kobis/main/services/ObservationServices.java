@@ -40,7 +40,7 @@ public class ObservationServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Observation(vo, this.getInsCd());
 				}else {
-					this.getUnmapService().insertT2UnmappedObservation(sheetRecordObj);
+					this.getUnmapService().insertT2UnmappedObservation(vo);
 				}
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );

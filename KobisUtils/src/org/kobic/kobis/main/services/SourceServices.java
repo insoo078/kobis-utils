@@ -40,7 +40,7 @@ public class SourceServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Source( vo, this.getInsCd() );
 				}else {
-					this.getUnmapService().insertT2UnmappedSource( sheetRecordObj );
+					this.getUnmapService().insertT2UnmappedSource( vo );
 				}
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );

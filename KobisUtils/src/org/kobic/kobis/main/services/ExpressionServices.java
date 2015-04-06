@@ -40,7 +40,7 @@ public class ExpressionServices extends AbstractKobisServices{
 				if( !accessionNumFromMapTab.isEmpty() ) {
 					this.getKobisService().insertD1Expression(vo, this.getInsCd());
 				}else {
-					this.getUnmapService().insertT2UnmappedExpression(sheetRecordObj);
+					this.getUnmapService().insertT2UnmappedExpression(vo);
 				}
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );

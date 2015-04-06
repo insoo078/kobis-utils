@@ -407,6 +407,7 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
     	}catch(Exception e) {
     		ret = 0;
     		logger.error( e.getMessage() );
+    		logger.error( "Accession is not exist in T2_UnmappedCommon  : " + dnaRnaProteinDerivativeSheet.getAccess_num() );
     		session.rollback();
     	}finally{
     		session.close();

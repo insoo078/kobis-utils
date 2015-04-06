@@ -37,7 +37,7 @@ public class StrainServices extends AbstractKobisServices{
 				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 				
 				if( !accessionNumFromMapTab.isEmpty() )	this.getKobisService().insertD1Strain( vo, this.getInsCd() );
-				else									this.getUnmapService().insertT2UnmappedStrain( sheetRecordObj );
+				else									this.getUnmapService().insertT2UnmappedStrain( vo );
 
 //				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
 //
