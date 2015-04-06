@@ -145,10 +145,10 @@ public class ReadExcel{
 		String[][] params = new String[][]{
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample.xlsx", "-header", "INS00002"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"},
-				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"},
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_201503 06 1차 데이터_IRMRC.xlsx", "-header", "INS00005"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_정보연계표준_20150403 2차 데이터_IRMRC.xlsx", "-header", "INS00005"},
-//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"}
+				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"}
 		};
 
 		for(int i=0; i<params.length; i++) {
