@@ -3,7 +3,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.kobic.kobis.common.services.AbstractCommonServices;
-import org.kobic.kobis.file.excel.obj.XExtractSheetObj;
 import org.kobic.kobis.knnrrc.dao.KnnrrcDAOService;
 import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
@@ -17,19 +16,15 @@ import org.kobic.kobis.main.vo.D1IndividualVO;
 import org.kobic.kobis.main.vo.D1SourceVO;
 import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.main.vo.D1StrainVO;
-import org.kobic.kobis.rule.Rule;
-import org.kobic.kobis.taxon.dao.TaxonDAOService;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
 import org.kobic.kobis.util.Utils;
 
 public class KnnrrcServices extends AbstractCommonServices{
 	private KnnrrcDAOService knnrrcService;
-	private TaxonDAOService taxonService;
 	
 	public KnnrrcServices(String insCd, SqlSessionFactory sessionFactory) {
 		super(insCd, sessionFactory);
 		this.knnrrcService = new KnnrrcDAOService( sessionFactory );
-		this.taxonService = new TaxonDAOService( sessionFactory );
 	}
 	
 	private int processCommon( KnnrrcVO vo, String scientificName ) {
@@ -181,8 +176,13 @@ public class KnnrrcServices extends AbstractCommonServices{
 				String scientificName = vo.getGenus() + " " + vo.getSpecies();
 
 				vo.setSds_no( "KNRRC" + vo.getSds_no() );
-				int ret = this.processCommon( vo, scientificName );
-				mappedCnt += ret;
+				
+				String acc_num = this.getKobisService().getAccessionNum( vo.getAccession_no(), this.getInsCd() );
+				
+				if( Utils.nullToEmpty(acc_num).isEmpty() ) {
+					int ret = this.processCommon( vo, scientificName );
+					mappedCnt += ret;
+				}
 				wholeCnt++;
 				
 				System.out.println( ">" + wholeCnt + "/" + totalCnt );
