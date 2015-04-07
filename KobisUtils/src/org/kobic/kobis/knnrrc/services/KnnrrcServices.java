@@ -177,9 +177,10 @@ public class KnnrrcServices extends AbstractCommonServices{
 
 				vo.setSds_no( "KNRRC" + vo.getSds_no() );
 				
-				String acc_num = this.getKobisService().getAccessionNum( vo.getAccession_no(), this.getInsCd() );
+				String acc_num = this.getKobisService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
+				String un_acc_num = this.getUnmapService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
 				
-				if( Utils.nullToEmpty(acc_num).isEmpty() ) {
+				if( Utils.nullToEmpty(acc_num).isEmpty() && Utils.nullToEmpty( un_acc_num ).isEmpty() ) {
 					int ret = this.processCommon( vo, scientificName );
 					mappedCnt += ret;
 				}
