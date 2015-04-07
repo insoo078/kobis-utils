@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kobic.kobis.knnrrc.mapper.KnnrrcMapper">
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM T9_KNRRC_RESOURCE
+	</select>
+	<select id="getKnnrrcDataList" resultType="org.kobic.kobis.knnrrc.vo.KnnrrcVO" parameterType="java.util.Map">
+		SELECT
+			SDS_NO as sds_no
+			, BANK_NAME as bank_name
+			, CASE WHEN CATEGORY_FIRST='animal' THEN	'동물'
+			WHEN CATEGORY_FIRST='human' THEN			'인체유래'
+			WHEN CATEGORY_FIRST='microorganism' THEN	'미생물'
+			WHEN CATEGORY_FIRST='plant' THEN			'식물'
+			END as category_1
+			, CASE WHEN CATEGORY_FIRST='animal' THEN	
+				CASE WHEN CATEGORY_SECOND in ('animal extract') THEN	'추출물'
+				WHEN CATEGORY_SECOND in ('bioorganic', 'fresh frozen tissue') THEN	'조직'
+				WHEN CATEGORY_SECOND in ('cell line') THEN '세포,세포주'
+				WHEN CATEGORY_SECOND in ('dry specimen', 'immersion specimen', 'paraffin block', 'slide-mounted specimen') THEN '표본'
+				WHEN CATEGORY_SECOND in ('egg') THEN '배아'
+				WHEN CATEGORY_SECOND in ('live animal') THEN '개체'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('serum', 'whole blood') THEN '체액'
+				ELSE 'animal-오류'
+				END
+			WHEN CATEGORY_FIRST='human' THEN
+				CASE WHEN CATEGORY_SECOND in ('body fluid', 'plasma', 'saliva', 'serum', 'urine') THEN '체액'
+				WHEN CATEGORY_SECOND in ('bone marrow mononuclear cell', 'cell line', 'peripheral blood mononuclear cell') THEN '세포,세포주'
+				WHEN CATEGORY_SECOND in ('fixed tissue', 'fresh frozen tissue', 'histologic section') THEN '조직'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('paraffin block') THEN '표본'
+				ELSE 'human-오류'
+				END
+			WHEN CATEGORY_FIRST='microorganism' THEN
+				CASE WHEN CATEGORY_SECOND in ('antibody') THEN '기타'
+				WHEN CATEGORY_SECOND in ('bacteria', 'fungi', 'microalgae', 'mushroom', 'phage', 'virus') THEN '균주'
+				WHEN CATEGORY_SECOND in ('microbial extract') THEN '추출물'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				ELSE 'microorganism-오류'
+				END
+			WHEN CATEGORY_FIRST='plant' THEN
+				CASE WHEN CATEGORY_SECOND in ('cell line') THEN '세포,세포주'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('plant') THEN '표본'
+				WHEN CATEGORY_SECOND in ('plant extract') THEN '추출물'
+				WHEN CATEGORY_SECOND in ('plant metabolite') THEN '기타'
+				ELSE 'plant-오류'
+				END
+			END as category_2
+			, GENUS as genus
+			, SPECIES as species
+			, ISO_SOURCE as iso_source
+			, 'INS00006' as ins_cd
+			, DEPOSIT as deposit
+			, COUNTRY as country
+			, DEPOSIT_ORGAN as deposit_organ
+			, DEPOSIT_DATE as deposit_date
+			, ISO_REGION as iso_region
+			, ISO_DATE as iso_date
+			, SDS_USE as sds_use
+			, REG_DATE as reg_date
+			, SALE_YN as sale_yn
+			, RESOURCE_NAME as resource_name
+			, ACCESSION_NO as accession_no
+			, BANK_CODE as bank_code
+		FROM T9_KNRRC_RESOURCE
+		LIMIT #{pagingIndex}, #{paging}
+	</select>
+</mapper>
