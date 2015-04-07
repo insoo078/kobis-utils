@@ -28,6 +28,32 @@ public class XCommonSheetObj extends AbstractSheetObj{
 	private String img_url_1;
 	private String ins_user_email;
 	
+	public XCommonSheetObj() {
+		this.family="";
+		this.genus="";
+		this.subgenus="";
+		this.species="";
+		this.synonym="";
+		this.common_name="";
+		this.kor_name="";
+		this.in_species_type="";
+		this.in_species_name="";
+		this.line_name="";
+		this.variety_name="";
+		this.taxonomy="";
+		this.institution="";
+		this.category_1="";
+		this.category_2="";
+		this.category_3="";
+		this.detail_url="";
+		this.gene_name="";
+		this.accession_no="";
+		this.sequence="";
+		this.keywords="";
+		this.img_url_1="";
+		this.ins_user_email="";
+	}
+	
 	public String getScientificName() {
 		return this.genus.trim() + " " + this.species.trim();
 	}

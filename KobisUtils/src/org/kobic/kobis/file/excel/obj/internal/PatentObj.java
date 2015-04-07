@@ -3,6 +3,12 @@ package org.kobic.kobis.file.excel.obj.internal;
 public class PatentObj {
 	private String parentNo;
 	private String regNo;
+	
+	public PatentObj() {
+		this.parentNo = "";
+		this.regNo = "";
+	}
+	
 	public String getParentNo() {
 		return parentNo;
 	}

@@ -13,6 +13,14 @@ public class XBodyFluidSheetObj extends AbstractSheetObj implements DistPatentRe
 	private CultureObj culture;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+	
+	public XBodyFluidSheetObj() {
+		super();
+		this.bodyFluidType = "";
+		this.culture = new CultureObj();
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getBodyFluidType() {
 		return bodyFluidType;

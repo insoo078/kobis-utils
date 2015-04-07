@@ -3,6 +3,11 @@ package org.kobic.kobis.file.excel.obj.internal;
 public class ExtractionObj {
 	private String solvent;
 	private String extractTime;
+	
+	public ExtractionObj() {
+		this.solvent = "";
+		this.extractTime = "";
+	}
 
 	public String getSolvent() {
 		return solvent;

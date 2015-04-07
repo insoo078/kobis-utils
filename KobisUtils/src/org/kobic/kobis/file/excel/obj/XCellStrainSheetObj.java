@@ -15,6 +15,15 @@ public class XCellStrainSheetObj extends AbstractSheetObj implements DistPatentR
 	private CultureObj culture;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+	
+	public XCellStrainSheetObj() {
+		this.source = "";
+		this.cellLineType = "";
+		this.cellLineName = "";
+		this.culture = new CultureObj();
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getSource() {
 		return source;

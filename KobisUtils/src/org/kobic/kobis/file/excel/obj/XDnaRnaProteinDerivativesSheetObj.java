@@ -15,6 +15,15 @@ public class XDnaRnaProteinDerivativesSheetObj extends AbstractSheetObj implemen
 	private StoreObj store;
 	private SampleObj sample;
 	private DistPatentReferenceObj extra;
+	
+	public XDnaRnaProteinDerivativesSheetObj() {
+		this.source = "";
+		this.detailType = "";
+		this.depositType = "";
+		this.store = new StoreObj();
+		this.sample = new SampleObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getSource() {
 		return source;

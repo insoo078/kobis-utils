@@ -7,6 +7,10 @@ import org.kobic.kobis.util.Utils;
 
 public abstract class AbstractSheetObj {
 	private String access_num;
+	
+	public AbstractSheetObj() {
+		this.access_num = "";
+	}
 
 	public String getAccess_num() {
 		return access_num;

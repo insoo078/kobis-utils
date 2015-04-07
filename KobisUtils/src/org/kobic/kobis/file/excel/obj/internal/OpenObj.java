@@ -3,6 +3,12 @@ package org.kobic.kobis.file.excel.obj.internal;
 public class OpenObj {
 	private String openYn;
 	private String openUrl;
+	
+	public OpenObj() {
+		this.openUrl = "";
+		this.openYn = "";
+	}
+	
 	public String getOpenYn() {
 		return openYn;
 	}

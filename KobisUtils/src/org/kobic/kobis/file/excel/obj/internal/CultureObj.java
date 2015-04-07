@@ -5,6 +5,13 @@ public class CultureObj {
 	private String condition;
 	private String succeedDt;
 	private String succeedTime;
+	
+	public CultureObj() {
+		this.cultureMediumName = "";
+		this.condition = "";
+		this.succeedDt = "";
+		this.succeedTime = "";
+	}
 
 	public String getCultureMediumName() {
 		return cultureMediumName;

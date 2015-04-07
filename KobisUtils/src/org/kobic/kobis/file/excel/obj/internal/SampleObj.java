@@ -4,6 +4,12 @@ public class SampleObj {
 	private String sampleType;
 	private String sampleDetail;
 	private String sampleEtc;
+	
+	public SampleObj() {
+		this.sampleDetail= "";
+		this.sampleType = "";
+		this.sampleEtc = "";
+	}
 
 	public String getSampleType() {
 		return sampleType;

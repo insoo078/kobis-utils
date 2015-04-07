@@ -11,6 +11,12 @@ public class XIndividualSheetObj extends AbstractSheetObj implements DistPatentR
 	private String individualMaintenance;
 	private DistPatentReferenceObj extra;
 	
+	public XIndividualSheetObj() {
+		this.individualMaintenance = "";
+		this.individualType = "";
+		this.extra = new DistPatentReferenceObj();
+	}
+	
 	public String getIndividualType() {
 		return individualType;
 	}

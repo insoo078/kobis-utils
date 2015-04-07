@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.GpsObj;
+import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
 
 @Alias("D1_Specimen")
 public class XSpecimenSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
@@ -21,6 +22,22 @@ public class XSpecimenSheetObj extends AbstractSheetObj implements DistPatentRef
 	private String kindOfSpecimen;
 	private String publicYn;
 	private DistPatentReferenceObj extra;
+
+	public XSpecimenSheetObj() {
+		this.morphology = "";
+		this.engAddr = "";
+		this.korAddr = "";
+		this.gps = new GpsObj();
+		this.collectDt = "";
+		this.colleUser = "";
+		this.nation = "";
+		this.ocean = "";
+		this.island = "";
+		this.specimenType = "";
+		this.kindOfSpecimen = "";
+		this.publicYn = "";
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getMorphology() {
 		return morphology;

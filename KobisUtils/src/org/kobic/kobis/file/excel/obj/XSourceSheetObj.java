@@ -12,6 +12,13 @@ public class XSourceSheetObj extends AbstractSheetObj implements DistPatentRefer
 	private String disease;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+	
+	public XSourceSheetObj() {
+		this.source = "";
+		this.disease = "";
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getSource() {
 		return source;

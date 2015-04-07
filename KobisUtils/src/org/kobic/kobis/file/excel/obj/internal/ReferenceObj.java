@@ -2,6 +2,10 @@ package org.kobic.kobis.file.excel.obj.internal;
 
 public class ReferenceObj {
 	private String reference;
+	
+	public ReferenceObj() {
+		this.reference = "";
+	}
 
 	public String getReference() {
 		return reference;

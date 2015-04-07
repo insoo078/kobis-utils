@@ -11,6 +11,12 @@ public class XEmbryoSheetObj extends AbstractSheetObj implements DistPatentRefer
 	private String embryo;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+	
+	public XEmbryoSheetObj() {
+		this.embryo = "";
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getEmbryo() {
 		return embryo;

@@ -15,6 +15,15 @@ public class XStrainSheetObj extends AbstractSheetObj implements DistPatentRefer
 	private CultureObj culture;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+	
+	public XStrainSheetObj() {
+		this.source = "";
+		this.pathogenicYn = "";
+		this.strainName = "";
+		this.culture = new CultureObj();
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getSource() {
 		return source;

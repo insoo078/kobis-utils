@@ -11,6 +11,12 @@ public class XEtcSheetObj  extends AbstractSheetObj implements DistPatentReferen
 	private String description;
 	private OpenObj open;
 	private DistPatentReferenceObj extra;
+	
+	public XEtcSheetObj() {
+		this.description = "";
+		this.open = new OpenObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getDescription() {
 		return description;

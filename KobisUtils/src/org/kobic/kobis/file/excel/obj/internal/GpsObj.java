@@ -3,6 +3,12 @@ package org.kobic.kobis.file.excel.obj.internal;
 public class GpsObj {
 	private String latitude;
 	private String longitude;
+	
+	public GpsObj() {
+		this.latitude = "";
+		this.longitude = "";
+	}
+	
 	public String getLatitude() {
 		return latitude;
 	}

@@ -12,6 +12,11 @@ public class XExtractSheetObj extends AbstractSheetObj implements DistPatentRefe
 	private ExtractionObj extract;
 	private DistPatentReferenceObj extra;
 
+	public XExtractSheetObj() {
+		this.source = "";
+		this.extract = new ExtractionObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 	public String getSource() {
 		return source;
 	}

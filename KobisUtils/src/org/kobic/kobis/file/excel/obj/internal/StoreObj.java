@@ -3,6 +3,11 @@ package org.kobic.kobis.file.excel.obj.internal;
 public class StoreObj {
 	private String storePlace;
 	private String storeNo;
+	
+	public StoreObj() {
+		this.storeNo = "";
+		this.storePlace = "";
+	}
 
 	public String getStorePlace() {
 		return storePlace;
