@@ -177,6 +177,8 @@ public class KnnrrcServices extends AbstractCommonServices{
 			List<KnnrrcVO> voList = this.knnrrcService.getKnnrrcDataList(pagingIndex, paging);
 
 			for(KnnrrcVO vo : voList) {
+//				if( !vo.getSds_no().equals("377138") )continue;
+
 				wholeCnt++;
 				System.out.print( ">" + wholeCnt + "/" + totalCnt );
 

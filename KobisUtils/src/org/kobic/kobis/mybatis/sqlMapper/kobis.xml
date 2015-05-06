@@ -55,7 +55,7 @@
 	</select>
 	<insert id="insertD1Specimen" parameterType="D1_Specimen">
 		INSERT INTO D1_Specimen( 
-			accession_num, specimen_id, morphology, kor_addr, eng_addr, laitude, longitude, collect_user
+			accession_num, specimen_id, morphology, kor_addr, eng_addr, latitude, longitude, collect_user
 			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn  
 		)
 		VALUES(
