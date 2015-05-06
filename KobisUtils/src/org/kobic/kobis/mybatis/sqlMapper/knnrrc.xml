@@ -21,7 +21,7 @@
 				WHEN CATEGORY_SECOND in ('dry specimen', 'immersion specimen', 'paraffin block', 'slide-mounted specimen') THEN '표본'
 				WHEN CATEGORY_SECOND in ('egg') THEN '배아'
 				WHEN CATEGORY_SECOND in ('live animal') THEN '개체'
-				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA/RNA/Protein 유래물'
 				WHEN CATEGORY_SECOND in ('serum', 'whole blood') THEN '체액'
 				ELSE 'animal-오류'
 				END
@@ -29,7 +29,7 @@
 				CASE WHEN CATEGORY_SECOND in ('body fluid', 'plasma', 'saliva', 'serum', 'urine') THEN '체액'
 				WHEN CATEGORY_SECOND in ('bone marrow mononuclear cell', 'cell line', 'peripheral blood mononuclear cell') THEN '세포,세포주'
 				WHEN CATEGORY_SECOND in ('fixed tissue', 'fresh frozen tissue', 'histologic section') THEN '조직'
-				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA/RNA/Protein 유래물'
 				WHEN CATEGORY_SECOND in ('paraffin block') THEN '표본'
 				ELSE 'human-오류'
 				END
@@ -37,12 +37,12 @@
 				CASE WHEN CATEGORY_SECOND in ('antibody') THEN '기타'
 				WHEN CATEGORY_SECOND in ('bacteria', 'fungi', 'microalgae', 'mushroom', 'phage', 'virus') THEN '균주'
 				WHEN CATEGORY_SECOND in ('microbial extract') THEN '추출물'
-				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA/RNA/Protein 유래물'
 				ELSE 'microorganism-오류'
 				END
 			WHEN CATEGORY_FIRST='plant' THEN
 				CASE WHEN CATEGORY_SECOND in ('cell line') THEN '세포,세포주'
-				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA_RNA_Protein 유래물'
+				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA/RNA/Protein 유래물'
 				WHEN CATEGORY_SECOND in ('plant') THEN '표본'
 				WHEN CATEGORY_SECOND in ('plant extract') THEN '추출물'
 				WHEN CATEGORY_SECOND in ('plant metabolite') THEN '기타'

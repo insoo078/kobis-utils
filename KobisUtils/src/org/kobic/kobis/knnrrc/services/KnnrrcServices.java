@@ -2,9 +2,11 @@ package org.kobic.kobis.knnrrc.services;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 import org.kobic.kobis.common.services.AbstractCommonServices;
 import org.kobic.kobis.knnrrc.dao.KnnrrcDAOService;
 import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
+import org.kobic.kobis.main.services.DnaSequenceServices;
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
 import org.kobic.kobis.main.vo.D1CellStrainVO;
 import org.kobic.kobis.main.vo.D1CommonVO;
@@ -20,6 +22,8 @@ import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
 import org.kobic.kobis.util.Utils;
 
 public class KnnrrcServices extends AbstractCommonServices{
+	private static Logger logger = Logger.getLogger(KnnrrcServices.class);
+
 	private KnnrrcDAOService knnrrcService;
 	
 	public KnnrrcServices(String insCd, SqlSessionFactory sessionFactory) {
@@ -173,20 +177,41 @@ public class KnnrrcServices extends AbstractCommonServices{
 			List<KnnrrcVO> voList = this.knnrrcService.getKnnrrcDataList(pagingIndex, paging);
 
 			for(KnnrrcVO vo : voList) {
+				wholeCnt++;
+				System.out.print( ">" + wholeCnt + "/" + totalCnt );
+
 				String scientificName = vo.getGenus() + " " + vo.getSpecies();
 
 				vo.setSds_no( "KNRRC" + vo.getSds_no() );
-				
+
 				String acc_num = this.getKobisService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
 				String un_acc_num = this.getUnmapService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
-				
-				if( Utils.nullToEmpty(acc_num).isEmpty() && Utils.nullToEmpty( un_acc_num ).isEmpty() ) {
-					int ret = this.processCommon( vo, scientificName );
-					mappedCnt += ret;
+
+				if( acc_num == null && un_acc_num != null )	{
+					scientificName = "";
+					System.err.println( "[unmapped]" );
+				}else {
+					System.out.println( "[mapped]" );
 				}
-				wholeCnt++;
-				
-				System.out.println( ">" + wholeCnt + "/" + totalCnt );
+
+				if( vo.getCategory_2().equals("체액") )							this.processBodyFluid( vo , scientificName );
+				else if( vo.getCategory_2().equals("세포,세포주") )				this.processCellStrain( vo , scientificName );
+				else if( vo.getCategory_2().equals("DNA/RNA/Protein 유래물") )	this.processDnaRnaProteinDerivatives( vo , scientificName );
+				else if( vo.getCategory_2().equals("배아") )						this.processEmbryo( vo , scientificName );
+				else if( vo.getCategory_2().equals("기타") )						this.processEtc( vo , scientificName );
+				else if( vo.getCategory_2().equals("추출물") )					this.processExtraction( vo , scientificName );
+				else if( vo.getCategory_2().equals("개체") )						this.processIndividual( vo , scientificName );
+				else if( vo.getCategory_2().equals("조직") )						this.processSource( vo , scientificName );
+				else if( vo.getCategory_2().equals("표본") )						this.processSpecimen( vo , scientificName );
+				else if( vo.getCategory_2().equals("균주") )						this.processStrain( vo , scientificName );
+				else															logger.error("잘못된 중구분 : " + vo.getCategory_2() );
+//
+//				if( Utils.nullToEmpty(acc_num).isEmpty() && Utils.nullToEmpty( un_acc_num ).isEmpty() ) {
+//					System.out.println("Hello");
+//					int ret = this.processCommon( vo, scientificName );
+//
+//					mappedCnt += ret;
+//				}
 			}
 		}
 		System.out.println( "=======================================================" );

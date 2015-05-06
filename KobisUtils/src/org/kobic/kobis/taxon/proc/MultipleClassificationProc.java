@@ -80,7 +80,7 @@ public class MultipleClassificationProc {
 			return false;
 		}else if( this.errorCode.equals( MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) )	{
 			d1CommonVo.setMessage( "["+MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL+"] " + this.kobisService.getInstitutionId(d1CommonVo.getIns_cd()) + " " + scientificName + " 는 어디에도 매핑되지 않습니다." );
-			
+
 			System.err.println( "unmap[002]");
 			this.unmappedService.insertT2UnmappedCommon( d1CommonVo );
 

@@ -97,7 +97,6 @@ public class ReadExcel{
 		for(int i=0; i<workbook.getNumberOfSheets(); i++) {
 			String sheetName = workbook.getSheetName(i);
 			System.out.println("Worksheet : " + sheetName );
-			logger.error( "Worksheet : " + sheetName );
 
 			XSSFSheet sheet = workbook.getSheetAt( i );
 
@@ -111,10 +110,10 @@ public class ReadExcel{
 				Constructor cons = c.getConstructor( new Class[]{String.class, XSSFSheet.class, SqlSessionFactory.class} );
 
 				Object obj = cons.newInstance( header, sheet, this.sessionFactory );
-				
+
 				AbstractKobisServices ks = (AbstractKobisServices) obj;
-				
-				if( ks instanceof CommonServices)	continue;
+
+//				if( ks instanceof CommonServices)	continue;
 //				if( ks instanceof IndividualServices )	continue;
 //				if( ks instanceof CellStrainServices)	continue;
 //				if( ks instanceof StrainServices)	continue;
@@ -144,18 +143,19 @@ public class ReadExcel{
 
 		String[][] params = new String[][]{
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample.xlsx", "-header", "INS00002"},
+				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample20150429.xlsx", "-header", "INS00002"},
+
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_201503 06 1차 데이터_IRMRC.xlsx", "-header", "INS00005"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_정보연계표준_20150403 2차 데이터_IRMRC.xlsx", "-header", "INS00005"},
-				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"}
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/20150227_KOBIS_정보연계표준안_수정_ver9_한국식물추출물은행.xlsx", "-header", "INS00001"}
 		};
 
 		for(int i=0; i<params.length; i++) {
 			ReadExcel read = new ReadExcel();
 			try {
 				System.out.println( params[i][5] + " processing" );
-				logger.error( params[i][5] + " processing" );
 				read.run( params[i] );
 			}catch(Exception e) {
 				e.printStackTrace();

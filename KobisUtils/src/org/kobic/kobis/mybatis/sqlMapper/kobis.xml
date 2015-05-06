@@ -214,7 +214,7 @@
 
 	<insert id="insertE1Patent" parameterType="java.util.Map">
 		INSERT INTO E1_Patent( accession_num, id, application_no, reg_no )
-		VALUES( #{accession_num}, #{id}, #{application_no}, #{reg_no} )
+		VALUES( #{accession_num}, #{id}, #{parentNo}, #{reg_no} )
 	</insert>
 
 	<insert id="insertT2MappedCommon" parameterType="D1_Common">

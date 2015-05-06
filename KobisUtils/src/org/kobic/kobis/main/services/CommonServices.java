@@ -17,6 +17,7 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
+import org.kobic.kobis.util.Utils;
 
 public class CommonServices extends AbstractKobisServices{
 	private static Logger logger = Logger.getLogger(CommonServices.class);
@@ -47,13 +48,27 @@ public class CommonServices extends AbstractKobisServices{
 					// Rule 적용
 					Rule rule = new Rule( d1CommonVo.getIns_cd() );
 					rule.rule( d1CommonVo );
-	
+
 					String scientificName = d1CommonVo.getScientificName();
-					
+
 					MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
 	
-					classifyObj.validate( scientificName );
-	
+					String errorCode = classifyObj.validate( scientificName );
+
+					if( errorCode == MultipleClassificationProc.NOTHING_TO_MAP_IN_ALL ) {
+						String synonymStr = d1CommonVo.getSynonym();
+						String[] synonyms = synonymStr.split("\\,");
+						for(int i=0; i<synonyms.length; i++) {
+							String synonym = Utils.nullToEmpty( synonyms[i] ).replace("\"", "");
+							errorCode = classifyObj.validate( synonym );
+
+							if( errorCode == MultipleClassificationProc.FINE_MAPPING ) {
+								scientificName = synonym;
+								break;
+							}
+						}
+					}
+
 					boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
 					if ( canValidateToDatabase ){	mappedCnt++;	}
 //				}
