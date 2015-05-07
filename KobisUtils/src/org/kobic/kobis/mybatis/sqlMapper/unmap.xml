@@ -88,7 +88,7 @@
   	
 	<insert id="insertT2UnmappedSeed" parameterType="D1_Seed">
 		INSERT INTO T2_UnMappedSeed( 
-			accession_num, seed_sttus, dist_yn, dist_url
+			accession_num, seed_status, dist_yn, dist_url
 			, reference, application_no, reg_no
 			, store_no, store_place 
 		)

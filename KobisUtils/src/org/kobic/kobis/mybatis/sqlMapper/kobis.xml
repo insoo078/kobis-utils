@@ -84,7 +84,7 @@
 		SELECT SF_GET_NEW_SEED_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Seed" parameterType="D1_Seed">
-		INSERT INTO D1_Seed( accession_num, seed_id, seed_sttus )
+		INSERT INTO D1_Seed( accession_num, seed_id, seed_status )
 		VALUES( #{access_num}, #{id}, #{seedStatus} )
 	</insert>
 	
