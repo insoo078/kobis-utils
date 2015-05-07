@@ -148,7 +148,7 @@
 	</select>
 	<insert id="insertD1Expression" parameterType="D1_Expression">
 		INSERT INTO D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{dataType}, #{sequence}, #{open.open_yn}, #{open.open_url} )
+		VALUES( #{access_num}, #{id}, #{source}, #{dataType}, #{sequence}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewStructureId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -180,8 +180,8 @@
 		SELECT SF_GET_NEW_ETC_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Etc" parameterType="D1_Etc">
-		INSERT INTO D1_Etc( accession_num, etc_id, description, oepn_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{description}, #{open_yn}, #{open_url} )
+		INSERT INTO D1_Etc( accession_num, etc_id, description, open_yn, open_url )
+		VALUES( #{access_num}, #{id}, #{description}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewExtractionId" resultType="java.lang.String" parameterType="java.lang.String">

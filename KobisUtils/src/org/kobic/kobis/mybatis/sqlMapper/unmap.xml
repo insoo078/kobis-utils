@@ -221,20 +221,20 @@
 			#{access_num}, #{source}, #{molecular_type}, #{data_type}
 			, #{sequence.geneName}, #{sequence.accessionNo}, #{sequence.sequence}, #{open.openYn}, #{open.openUrl}
 			, #{gene_full_name}, #{gene_alias} 
-			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.reg_no}
+			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo}
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedEtc" parameterType="D1_Etc">
 		INSERT INTO T2_UnMappedEtc( 
-			`accession_num`, `description`, `oepn_yn`, `open_url`
+			`accession_num`, `description`, `open_yn`, `open_url`
 			, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no` 
 		)
 		VALUES( 
-			#{access_num}, #{description}, #{open.open_yn}, #{open.open_url}
-			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
-			, #{extra.patent.parentNo}, #{extra.patent.reg_no} 
+			#{access_num}, #{description}, #{open.openYn}, #{open.openUrl}
+			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
+			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
 	</insert>
 

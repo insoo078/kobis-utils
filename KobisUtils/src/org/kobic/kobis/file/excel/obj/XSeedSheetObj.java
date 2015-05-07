@@ -4,6 +4,7 @@ import org.apache.ibatis.type.Alias;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.kobic.kobis.file.excel.obj.internal.AbstractSheetObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
+import org.kobic.kobis.file.excel.obj.internal.OpenObj;
 import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 
 @Alias("D1_Seed")
@@ -11,6 +12,12 @@ public class XSeedSheetObj extends AbstractSheetObj implements DistPatentReferen
 	private String seedStatus;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
+
+	public XSeedSheetObj() {
+		this.seedStatus = "";
+		this.store = new StoreObj();
+		this.extra = new DistPatentReferenceObj();
+	}
 
 	public String getSeedStatus() {
 		return seedStatus;

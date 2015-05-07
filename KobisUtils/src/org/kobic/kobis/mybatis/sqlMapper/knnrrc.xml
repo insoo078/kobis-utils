@@ -46,6 +46,9 @@
 				WHEN CATEGORY_SECOND in ('plant') THEN '표본'
 				WHEN CATEGORY_SECOND in ('plant extract') THEN '추출물'
 				WHEN CATEGORY_SECOND in ('plant metabolite') THEN '기타'
+				WHEN CATEGORY_SECOND in ('seed') THEN '종자'
+				WHEN CATEGORY_SECOND in ('trophosome') THEN '추출물'
+				WHEN CATEGORY_SECOND in ('pollen') THEN '추출물'
 				ELSE 'plant-오류'
 				END
 			END as category_2

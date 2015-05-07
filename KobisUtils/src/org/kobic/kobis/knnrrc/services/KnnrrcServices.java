@@ -15,6 +15,7 @@ import org.kobic.kobis.main.vo.D1EmbryoVO;
 import org.kobic.kobis.main.vo.D1EtcVO;
 import org.kobic.kobis.main.vo.D1ExtractionVO;
 import org.kobic.kobis.main.vo.D1IndividualVO;
+import org.kobic.kobis.main.vo.D1SeedVO;
 import org.kobic.kobis.main.vo.D1SourceVO;
 import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.main.vo.D1StrainVO;
@@ -159,6 +160,19 @@ public class KnnrrcServices extends AbstractCommonServices{
 		return ret;
 	}
 	
+	private int processSeed( KnnrrcVO kvo, String accessionNumFromMapTab ) {
+		D1SeedVO vo = new D1SeedVO( kvo );
+		
+		int ret = 0;
+		if( !accessionNumFromMapTab.isEmpty() ) {
+			ret = this.getKobisService().insertD1Seed(vo, this.getInsCd());
+		}else {
+			ret = this.getUnmapService().insertT2UnmappedSeed(vo);
+		}
+
+		return ret;
+	}
+	
 	public void read() throws NoSuchMethodException, SecurityException, Exception {
 		// TODO Auto-generated method stub
 		int totalCnt = this.knnrrcService.getTotalCount();
@@ -176,11 +190,15 @@ public class KnnrrcServices extends AbstractCommonServices{
 			
 			List<KnnrrcVO> voList = this.knnrrcService.getKnnrrcDataList(pagingIndex, paging);
 
+			boolean printFlag = false;
 			for(KnnrrcVO vo : voList) {
 //				if( !vo.getSds_no().equals("377138") )continue;
 
 				wholeCnt++;
-				System.out.print( ">" + wholeCnt + "/" + totalCnt );
+				if( wholeCnt % 1000 == 0 )	printFlag = true;
+				else						printFlag = false;
+
+				if( printFlag ) System.out.print( ">" + wholeCnt + "/" + totalCnt );
 
 				String scientificName = vo.getGenus() + " " + vo.getSpecies();
 
@@ -191,9 +209,9 @@ public class KnnrrcServices extends AbstractCommonServices{
 
 				if( acc_num == null && un_acc_num != null )	{
 					scientificName = "";
-					System.err.println( "[unmapped]" );
+					if( printFlag ) System.err.println( "[unmapped]" );
 				}else {
-					System.out.println( "[mapped]" );
+					if( printFlag ) System.out.println( "[mapped]" );
 				}
 
 				if( vo.getCategory_2().equals("체액") )							this.processBodyFluid( vo , scientificName );
@@ -206,6 +224,7 @@ public class KnnrrcServices extends AbstractCommonServices{
 				else if( vo.getCategory_2().equals("조직") )						this.processSource( vo , scientificName );
 				else if( vo.getCategory_2().equals("표본") )						this.processSpecimen( vo , scientificName );
 				else if( vo.getCategory_2().equals("균주") )						this.processStrain( vo , scientificName );
+				else if( vo.getCategory_2().equals("종자") )						this.processSeed( vo , scientificName );
 				else															logger.error("잘못된 중구분 : " + vo.getCategory_2() );
 //
 //				if( Utils.nullToEmpty(acc_num).isEmpty() && Utils.nullToEmpty( un_acc_num ).isEmpty() ) {
