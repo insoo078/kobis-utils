@@ -7,6 +7,7 @@ import org.kobic.kobis.util.Utils;
 
 public abstract class AbstractSheetObj {
 	private String access_num;
+	private int uid;
 	
 	public AbstractSheetObj() {
 		this.access_num = "";
@@ -20,6 +21,14 @@ public abstract class AbstractSheetObj {
 		this.access_num = access_num;
 	}
 	
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
 	public String getVal( XSSFCell cell ) {
 		String ret = "";
 		

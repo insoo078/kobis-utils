@@ -113,7 +113,7 @@ public class ReadExcel{
 
 				AbstractKobisServices ks = (AbstractKobisServices) obj;
 
-//				if( ks instanceof CommonServices)	continue;
+				if( ks instanceof CommonServices )	ks.readRecordsInSheet();
 //				if( ks instanceof IndividualServices )	continue;
 //				if( ks instanceof CellStrainServices)	continue;
 //				if( ks instanceof StrainServices)	continue;
@@ -144,7 +144,6 @@ public class ReadExcel{
 		String[][] params = new String[][]{
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample.xlsx", "-header", "INS00002"},
 				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_ver9_KCTC_Sample20150429.xlsx", "-header", "INS00002"},
-
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_201503 06 1차 데이터_IRMRC.xlsx", "-header", "INS00005"},

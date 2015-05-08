@@ -13,6 +13,11 @@
 		SELECT accession_num FROM D1_Common
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
+	
+	<select id="getUid" parameterType="D1_Common" resultType="java.lang.Integer">
+		SELECT uid FROM D1_Common
+		WHERE accession_num=#{access_num} AND ins_cd=#{ins_cd}
+	</select>
 
  	<insert id="insertD1Common" parameterType="D1_Common">
 		INSERT INTO D1_Common(
@@ -25,12 +30,12 @@
 			, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}
 			, #{category_1}, #{category_2}, #{category_3}, #{detail_url}, null, #{keywords}, #{img_url_1}, #{ins_user_email}
 			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}, CURRENT_TIMESTAMP()
-		)
+		) 
 	</insert>
 
 	<insert id="insertE1Synonyms" parameterType="D1_Common">
-		INSERT INTO E1_Synonym( accession_num, synonym_id, synonym )
-		VALUES( #{access_num}, SF_GET_NEW_SYNONYM_ID(#{access_num}), #{synonym} )
+		INSERT INTO E1_Synonym( uid, synonym_id, synonym )
+		VALUES( #{uid}, SF_GET_NEW_SYNONYM_ID(#{uid}), #{synonym} )
 	</insert>
 	
 
@@ -38,16 +43,16 @@
 		SELECT SF_GET_NEW_OBSERVATION_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Observation" parameterType="D1_Observation">
-		INSERT INTO D1_Observation( accession_num, obs_id, latitude, longitude )
-		VALUES( #{access_num}, #{id}, #{gps.latitude}, #{gps.longitude} )
+		INSERT INTO D1_Observation( uid, obs_id, latitude, longitude )
+		VALUES( #{uid}, #{id}, #{gps.latitude}, #{gps.longitude} )
 	</insert>
 
 	<select id="getNewIndividualId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_INDIVIDUAL_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Individual" parameterType="D1_Individual">
-		INSERT INTO D1_Individual( accession_num, individual_id, individual_type, individual_maintenance )
-		VALUES( #{access_num}, #{id}, #{individualType}, #{individualMaintenance} )
+		INSERT INTO D1_Individual( uid, individual_id, individual_type, individual_maintenance )
+		VALUES( #{uid}, #{id}, #{individualType}, #{individualMaintenance} )
 	</insert>
 
 	<select id="getNewSpecimenId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -55,11 +60,11 @@
 	</select>
 	<insert id="insertD1Specimen" parameterType="D1_Specimen">
 		INSERT INTO D1_Specimen( 
-			accession_num, specimen_id, morphology, kor_addr, eng_addr, latitude, longitude, collect_user
+			uid, specimen_id, morphology, kor_addr, eng_addr, latitude, longitude, collect_user
 			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn  
 		)
 		VALUES(
-			#{access_num}, #{id}, #{morphology}, #{korAddr}, #{engAddr}, #{gps.latitude}, #{gps.longitude}, #{colleUser}
+			#{uid}, #{id}, #{morphology}, #{korAddr}, #{engAddr}, #{gps.latitude}, #{gps.longitude}, #{colleUser}
 			, #{collectDt}, #{nation}, #{ocean}, #{island}, #{specimenType}, #{kindOfSpecimen}, #{publicYn}  
 		)
 	</insert>
@@ -68,32 +73,32 @@
 		SELECT SF_GET_NEW_ORGAN_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Organ" parameterType="D1_Organ">
-		INSERT INTO D1_Organ( accession_num, organ_id, organ_type, disease )
-		VALUES( #{access_num}, #{id}, #{organ_type}, #{disease} )
+		INSERT INTO D1_Organ( uid, organ_id, organ_type, disease )
+		VALUES( #{uid}, #{id}, #{organ_type}, #{disease} )
 	</insert>
 
 	<select id="getNewSourceId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_SOURCE_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Source" parameterType="D1_Source">
-		INSERT INTO D1_Source( accession_num, source_id, source_type, disease )
-		VALUES( #{access_num}, #{id}, #{source}, #{disease} )
+		INSERT INTO D1_Source( uid, source_id, source_type, disease )
+		VALUES( #{uid}, #{id}, #{source}, #{disease} )
 	</insert>
   	
   	<select id="getNewSeedId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_SEED_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Seed" parameterType="D1_Seed">
-		INSERT INTO D1_Seed( accession_num, seed_id, seed_status )
-		VALUES( #{access_num}, #{id}, #{seedStatus} )
+		INSERT INTO D1_Seed( uid, seed_id, seed_status )
+		VALUES( #{uid}, #{id}, #{seedStatus} )
 	</insert>
 	
 	<select id="getNewEmbryoId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EMBRYO_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Embryo" parameterType="D1_Embryo">
-		INSERT INTO D1_Embryo( accession_num, embryo_id, embryo_type )
-		VALUES( #{access_num}, #{id}, #{embryo} )
+		INSERT INTO D1_Embryo( uid, embryo_id, embryo_type )
+		VALUES( #{uid}, #{id}, #{embryo} )
 	</insert>
 
 	<select id="getNewDnaRnaProteinDerivativesId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -102,11 +107,11 @@
 	<insert id="insertD1DnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
 		INSERT INTO D1_DNA_RNA_Protein_Derivatives
 		( 
-			accession_num, derivatives_id, source, detail_type
+			uid, derivatives_id, source, detail_type
 			, deposit_type, sample_type, sample_detail, sample_etc 
 		)
 		VALUES( 
-			#{access_num}, #{id}, #{source}, #{detailType}
+			#{uid}, #{id}, #{source}, #{detailType}
 			, #{depositType}, #{sample.sampleType}, #{sample.sampleDetail}, #{sample.sampleEtc} 
 		)
 	</insert>
@@ -115,48 +120,48 @@
 		SELECT SF_GET_NEW_STRAIN_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Strain" parameterType="D1_Strain">
-		INSERT INTO D1_Strain( accession_num, strain_id, source, pathogenic_yn, strain_name )
-		VALUES( #{access_num}, #{id}, #{source}, #{pathogenicYn}, #{strainName} )
+		INSERT INTO D1_Strain( uid, strain_id, source, pathogenic_yn, strain_name )
+		VALUES( #{uid}, #{id}, #{source}, #{pathogenicYn}, #{strainName} )
 	</insert>
 
 	<select id="getNewCellStrainId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_CELL_STRAIN_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1CellStrain" parameterType="D1_Cellstrin">
-		INSERT INTO D1_CellStrain( accession_num, cellstrain_id, source, cell_type, cell_name )
-		VALUES( #{access_num}, #{id}, #{source}, #{cellLineType}, #{cellLineName} )
+		INSERT INTO D1_CellStrain( uid, cellstrain_id, source, cell_type, cell_name )
+		VALUES( #{uid}, #{id}, #{source}, #{cellLineType}, #{cellLineName} )
 	</insert>
 	
 	<select id="getNewBodyFluidId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_BODY_FLUID_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1BodyFluid" parameterType="D1_BodyFluid">
-		INSERT INTO D1_BodyFluid( accession_num, body_fluid_id, body_fluid_type )
-		VALUES( #{access_num}, #{id}, #{bodyFluidType} )
+		INSERT INTO D1_BodyFluid( uid, body_fluid_id, body_fluid_type )
+		VALUES( #{uid}, #{id}, #{bodyFluidType} )
 	</insert>
 	
 	<select id="getNewProteinSequenceId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_PROTEIN_SEQUENCE_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1ProteinSequence" parameterType="D1_ProteinSequence">
-		INSERT INTO D1_ProteinSequence( accession_num, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{proteinName}, #{accessionNo}, #{sequence}, #{open.openYn}, #{open.openUrl} )
+		INSERT INTO D1_ProteinSequence( uid, protein_seq_id, source, protein_name, accession_no, sequence, open_yn, open_url )
+		VALUES( #{uid}, #{id}, #{source}, #{proteinName}, #{accessionNo}, #{sequence}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewExpressionId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EXPRESSION_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Expression" parameterType="D1_Expression">
-		INSERT INTO D1_Expression( accession_num, expression_id, source, data_type, expression_data, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{dataType}, #{sequence}, #{open.openYn}, #{open.openUrl} )
+		INSERT INTO D1_Expression( uid, expression_id, source, data_type, expression_data, open_yn, open_url )
+		VALUES( #{uid}, #{id}, #{source}, #{dataType}, #{sequence}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewStructureId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_STRUCTURE_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Structure" parameterType="D1_Structure">
-		INSERT INTO D1_Sturcture( accession_num, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{source}, #{sturctureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl} )
+		INSERT INTO D1_Sturcture( uid, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
+		VALUES( #{uid}, #{id}, #{source}, #{sturctureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewDnaSequenceId" resultType="java.lang.String" parameterType="java.lang.String">
@@ -165,12 +170,12 @@
 	<insert id="insertD1DnaSequence" parameterType="D1_DnaSequence">
 		INSERT INTO D1_Dna_Sequence
 		( 
-			accession_num, sequence_id, source, molecular_type, data_type
+			uid, sequence_id, source, molecular_type, data_type
 			, gene_name, accession_no, sequence, open_yn, open_url
 			, gene_full_name, gene_alias 
 		)
 		VALUES(
-			#{access_num}, #{id}, #{source}, #{molecular_type}, #{data_type}
+			#{uid}, #{id}, #{source}, #{molecular_type}, #{data_type}
 			, #{sequence.geneName}, #{sequence.accessionNo}, #{sequence.sequence}, #{open.openYn}, #{open.openUrl}
 			, #{gene_full_name}, #{gene_alias} 
 		)
@@ -180,41 +185,41 @@
 		SELECT SF_GET_NEW_ETC_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Etc" parameterType="D1_Etc">
-		INSERT INTO D1_Etc( accession_num, etc_id, description, open_yn, open_url )
-		VALUES( #{access_num}, #{id}, #{description}, #{open.openYn}, #{open.openUrl} )
+		INSERT INTO D1_Etc( uid, etc_id, description, open_yn, open_url )
+		VALUES( #{uid}, #{id}, #{description}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 
 	<select id="getNewExtractionId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_EXTRACT_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Extraction" parameterType="D1_Extract">
-		INSERT INTO D1_Extraction( accession_num, extract_id, source, solvent, extract_time )
-		VALUES( #{access_num}, #{id}, #{source}, #{extract.solvent}, #{extract.extractTime} )
+		INSERT INTO D1_Extraction( uid, extract_id, source, solvent, extract_time )
+		VALUES( #{uid}, #{id}, #{source}, #{extract.solvent}, #{extract.extractTime} )
 	</insert>
 
 	<insert id="insertE1Culture" parameterType="java.util.Map">
-		INSERT INTO E1_Culture( `accession_num`, `id`, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time` )
-		VALUES( #{accession_num}, #{id}, #{culture_medium_name}, #{condition}, #{succeed_dt}, #{succeed_time} )
+		INSERT INTO E1_Culture( `uid`, `id`, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time` )
+		VALUES( #{uid}, #{id}, #{culture_medium_name}, #{condition}, #{succeed_dt}, #{succeed_time} )
 	</insert>
 	
 	<insert id="insertE1Store" parameterType="java.util.Map">
-		INSERT INTO E1_Store( accession_num, id, store_no, store_place )
-		VALUES( #{accession_num}, #{id}, #{storeNo}, #{storePlace} )
+		INSERT INTO E1_Store( uid, id, store_no, store_place )
+		VALUES( #{uid}, #{id}, #{storeNo}, #{storePlace} )
 	</insert>
 
 	<insert id="insertE1Distribution" parameterType="java.util.Map">
-		INSERT INTO E1_Distribution( accession_num, id, dist_yn, dist_url )
-		VALUES( #{accession_num}, #{id}, #{dist_yn}, #{dist_url} )
+		INSERT INTO E1_Distribution( uid, id, dist_yn, dist_url )
+		VALUES( #{uid}, #{id}, #{dist_yn}, #{dist_url} )
 	</insert>
 
 	<insert id="insertE1Reference" parameterType="java.util.Map">
-		INSERT INTO E1_Reference( accession_num, id, ord, ref_no, reference )
-		VALUES( #{accession_num}, #{id}, SF_GET_NEW_REFERENCE_ORD(#{accession}, #{id}), #{ref_no}, #{reference} )
+		INSERT INTO E1_Reference( uid, id, ord, ref_no, reference )
+		VALUES( #{uid}, #{id}, SF_GET_NEW_REFERENCE_ORD(#{accession}, #{id}), #{ref_no}, #{reference} )
 	</insert>
 
 	<insert id="insertE1Patent" parameterType="java.util.Map">
-		INSERT INTO E1_Patent( accession_num, id, application_no, reg_no )
-		VALUES( #{accession_num}, #{id}, #{parentNo}, #{reg_no} )
+		INSERT INTO E1_Patent( uid, id, application_no, reg_no )
+		VALUES( #{uid}, #{id}, #{parentNo}, #{reg_no} )
 	</insert>
 
 	<insert id="insertT2MappedCommon" parameterType="D1_Common">
@@ -231,6 +236,6 @@
 	</insert>
 	
 		<insert id="insertL3ExtendLink" parameterType="java.util.Map">
-		INSERT INTO L3_ExtendLink( accession_num, id ) VALUES( #{access_num}, #{id} )
+		INSERT INTO L3_ExtendLink( uid, id ) VALUES( #{uid}, #{id} )
 	</insert>
 </mapper>

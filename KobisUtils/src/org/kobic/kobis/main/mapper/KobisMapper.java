@@ -69,6 +69,8 @@ public interface KobisMapper {
 	public String getNewExtractionId( String access_num );
 	public String getNewStructureId( String access_num );
 	
+	public int getUid( D1CommonVO commonSheet );
+	
 	
 	
 	public int insertL3ExtendLink( Map<String, String> map );

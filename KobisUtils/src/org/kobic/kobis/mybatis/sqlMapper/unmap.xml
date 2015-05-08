@@ -6,14 +6,19 @@
 		SELECT accession_num FROM T2_UnMappedCommon
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
+	
+	<select id="getUid" parameterType="D1_Common" resultType="java.lang.Integer">
+		SELECT uid FROM T2_UnMappedCommon
+		WHERE accession_num=#{access_num} AND ins_cd=#{ins_cd}
+	</select>
 
 	<insert id="insertT2UnmappedCommon" parameterType="D1_Common">
 		INSERT INTO T2_UnMappedCommon(
-			accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
+			uid, accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
 			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
 		) VALUES(
-			#{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
+			#{uid}, #{access_num}, #{family}, #{genus}, #{subgenus}, #{species}, #{synonym}, #{common_name}, #{kor_name}
 			, #{in_species_type}, #{in_species_name}, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}, #{category_1}
 			, #{category_2}, #{category_3}, #{detail_url}, #{gene_name}, #{accession_no}, #{sequence}, #{keywords}
 			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{message}
@@ -22,12 +27,12 @@
 
 	<insert id="insertT2UnmappedObservation" parameterType="D1_Observation">
 		INSERT INTO T2_UnMappedObservation( 
-			accession_num, latitude, longitude
+			uid, latitude, longitude
 			, dist_yn, dist_url, reference
 			, application_no, reg_no 
 		)
 		VALUES( 
-			#{access_num}, #{gps.latitude}, #{gps.longitude}
+			#{uid}, #{gps.latitude}, #{gps.longitude}
 			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.reg_no} 
 		)
@@ -35,22 +40,22 @@
 
 	<insert id="insertT2UnmappedIndividual" parameterType="D1_Individual">
 		INSERT INTO T2_UnMappedIndividual( 
-			accession_num, individual_type, individual_maintenance, dist_yn, dist_url, reference, application_no, reg_no 
+			uid, individual_type, individual_maintenance, dist_yn, dist_url, reference, application_no, reg_no 
 		)
 		VALUES( 
-			#{access_num}, #{individualType}, #{individualMaintenance}
+			#{uid}, #{individualType}, #{individualMaintenance}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedSpecimen" parameterType="D1_Specimen">
 		INSERT INTO T2_UnMappedSpecimen( 
-			accession_num, morphology, kor_addr, eng_addr, latitude, longitude, collect_user
+			uid, morphology, kor_addr, eng_addr, latitude, longitude, collect_user
 			, collect_dt, nation, ocean, island, specimen_type, kind_of_specimen, public_yn
 			, dist_yn, dist_url, reference, application_no, reg_no
 		)
 		VALUES(
-			#{access_num}, #{morphology}, #{korAddr}, #{engAddr}, #{gps.latitude}, #{gps.longitude}, #{colleUser}
+			#{uid}, #{morphology}, #{korAddr}, #{engAddr}, #{gps.latitude}, #{gps.longitude}, #{colleUser}
 			, #{collectDt}, #{nation}, #{ocean}, #{island}, #{specimenType}, #{kindOfSpecimen}, #{publicYn} 
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
@@ -58,13 +63,13 @@
 
 	<insert id="insertT2UnmappedOrgan" parameterType="D1_Organ">
 		INSERT INTO T2_UnMappedOrgan( 
-			accession_num, organ_type, disease
+			uid, organ_type, disease
 			, dist_yn, dist_url
 			, reference, application_no, reg_no
 			, store_no, store_place 
 		)
 		VALUES( 
-			#{access_num}, #{organ_type}, #{disease}
+			#{uid}, #{organ_type}, #{disease}
 			, #{extra.dist.dist_yn}, #{extra.dist.dist_url}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.reg_no} 
 			, #{store.store_no}, #{store.store_place}
@@ -73,13 +78,13 @@
 
 	<insert id="insertT2UnmappedSource" parameterType="D1_Source">
 		INSERT INTO T2_UnMappedSource( 
-			accession_num, source_type, disease
+			uid, source_type, disease
 			, dist_yn, dist_url
 			, reference, application_no, reg_no
 			, store_no, store_place 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{disease}
+			#{uid}, #{source}, #{disease}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{store.storeNo}, #{store.storePlace} 
@@ -88,12 +93,12 @@
   	
 	<insert id="insertT2UnmappedSeed" parameterType="D1_Seed">
 		INSERT INTO T2_UnMappedSeed( 
-			accession_num, seed_status, dist_yn, dist_url
+			uid, seed_status, dist_yn, dist_url
 			, reference, application_no, reg_no
 			, store_no, store_place 
 		)
 		VALUES( 
-			#{access_num}, #{seedStatus}
+			#{uid}, #{seedStatus}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{store.storeNo}, #{store.storePlace}
@@ -102,12 +107,12 @@
 	
 	<insert id="insertT2UnmappedEmbryo" parameterType="D1_Embryo">
 		INSERT INTO T2_UnMappedEmbryo( 
-			accession_num, embryo_type, dist_yn, dist_url, reference
+			uid, embryo_type, dist_yn, dist_url, reference
 			, application_no, reg_no
 			, store_no, store_place 
 		)
 		VALUES(
-			#{access_num}, #{embryo}
+			#{uid}, #{embryo}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{store.storeNo}, #{store.storePlace}
@@ -117,14 +122,14 @@
 	<insert id="insertT2UnmappedDnaRnaProteinDerivatives" parameterType="D1_DnaRnaProteinDerivative">
 		INSERT INTO T2_UnMapped_DNA_RNA_Protein_Derivatives
 		( 
-			accession_num, source, detail_type
+			uid, source, detail_type
 			, deposit_type, sample_type, sample_detail, sample_etc
 			, dist_yn, dist_url, reference
 			, application_no, reg_no
 			, store_no, store_place
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{detailType}
+			#{uid}, #{source}, #{detailType}
 			, #{depositType}, #{sample.sampleType}, #{sample.sampleDetail}, #{sample.sampleEtc}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
@@ -134,13 +139,13 @@
 
 	<insert id="insertT2UnmappedStrain" parameterType="D1_Strain">
 		INSERT INTO T2_UnMappedStrain( 
-			`accession_num`, `source`, `pathogenic_yn`, `strain_name`
+			`uid`, `source`, `pathogenic_yn`, `strain_name`
 			, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no`
 			, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time`
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{pathogenicYn}, #{strainName}
+			#{uid}, #{source}, #{pathogenicYn}, #{strainName}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime} 
@@ -149,13 +154,13 @@
 
 	<insert id="insertT2UnmappedCellStrain" parameterType="D1_Cellstrin">
 		INSERT INTO T2_UnMappedCellStrain( 
-			`accession_num`, `source`, `cell_type`, `cell_name`
+			`uid`, `source`, `cell_type`, `cell_name`
 			, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no`
 			, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time` 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{cellLineType}, #{cellLineName} 
+			#{uid}, #{source}, #{cellLineType}, #{cellLineName} 
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime}
@@ -164,12 +169,12 @@
 	
 	<insert id="insertT2UnmappedBodyFluid" parameterType="D1_BodyFluid">
 		INSERT INTO T2_UnMappedBodyFluid( 
-			`accession_num`, `body_fluid_type`, `dist_yn`, `dist_url`, `reference`
+			`uid`, `body_fluid_type`, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no`
 			, `culture_medium_name`, `condition`, `succeed_dt`, `succeed_time`
 		)
 		VALUES( 
-			#{access_num}, #{bodyFluidType}
+			#{uid}, #{bodyFluidType}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 			, #{culture.cultureMediumName}, #{culture.condition}, #{culture.succeedDt}, #{culture.succeedTime}
@@ -178,33 +183,33 @@
 	
 	<insert id="insertT2UnmappedProteinSequence" parameterType="D1_ProteinSequence">
 		INSERT INTO T2_UnMappedProteinSequence( 
-			`accession_num`, `source`, `protein_name`, `accession_no`, `sequence`, `open_yn`, `open_url`
+			`uid`, `source`, `protein_name`, `accession_no`, `sequence`, `open_yn`, `open_url`
 			, `reference`, `application_no`, `reg_no`
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{proteinName}, #{accessionNo}, #{sequence}, #{open.openYn}, #{open.openUrl}
+			#{uid}, #{source}, #{proteinName}, #{accessionNo}, #{sequence}, #{open.openYn}, #{open.openUrl}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo}
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedExpression" parameterType="D1_Expression">
 		INSERT INTO T2_UnMappedExpression( 
-			`accession_num`, `source`, `data_type`, `expression_data`, `open_yn`, `open_url`
+			`uid`, `source`, `data_type`, `expression_data`, `open_yn`, `open_url`
 			, `reference`, `application_no`, `reg_no`
 		)
 		VALUES(
-			#{access_num}, #{source}, #{dataType}, #{sequence}, #{open.openYn}, #{open.openUrl}
+			#{uid}, #{source}, #{dataType}, #{sequence}, #{open.openYn}, #{open.openUrl}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
 	</insert>
 
 	<insert id="insertT2UnmappedStructure" parameterType="D1_Structure">
 		INSERT INTO T2_UnMappedSturcture( 
-			`accession_num`, `source`, `structure_type`, `accession_no`, `pdb_format`, `open_yn`, `open_url`
+			`uid`, `source`, `structure_type`, `accession_no`, `pdb_format`, `open_yn`, `open_url`
 			, `reference`, application_no`, `reg_no` 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{structureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl}
+			#{uid}, #{source}, #{structureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl}
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
 	</insert>
@@ -212,13 +217,13 @@
 	<insert id="insertT2UnmappedDnaSequence" parameterType="D1_DnaSequence">
 		INSERT INTO T2_UnMappedDna_Sequence
 		( 
-			`accession_num`, `source`, `molecular_type`, `data_type`
+			`uid`, `source`, `molecular_type`, `data_type`
 			, `gene_name`, `accession_no`, `sequence`, `open_yn`, `open_url`
 			, `gene_full_name`, `gene_alias`
 			, `reference`, `application_no`, `reg_no`
 		)
 		VALUES(
-			#{access_num}, #{source}, #{molecular_type}, #{data_type}
+			#{uid}, #{source}, #{molecular_type}, #{data_type}
 			, #{sequence.geneName}, #{sequence.accessionNo}, #{sequence.sequence}, #{open.openYn}, #{open.openUrl}
 			, #{gene_full_name}, #{gene_alias} 
 			, #{extra.ref.reference}, #{extra.patent.parentNo}, #{extra.patent.regNo}
@@ -227,12 +232,12 @@
 
 	<insert id="insertT2UnmappedEtc" parameterType="D1_Etc">
 		INSERT INTO T2_UnMappedEtc( 
-			`accession_num`, `description`, `open_yn`, `open_url`
+			`uid`, `description`, `open_yn`, `open_url`
 			, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no` 
 		)
 		VALUES( 
-			#{access_num}, #{description}, #{open.openYn}, #{open.openUrl}
+			#{uid}, #{description}, #{open.openYn}, #{open.openUrl}
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo} 
 		)
@@ -240,12 +245,12 @@
 
 	<insert id="insertT2UnmappedExtraction" parameterType="D1_Extract">
 		INSERT INTO T2_UnMappedExtraction( 
-			`accession_num`, `source`, `solvent`, `extract_time`
+			`uid`, `source`, `solvent`, `extract_time`
 			, `dist_yn`, `dist_url`, `reference`
 			, `application_no`, `reg_no` 
 		)
 		VALUES( 
-			#{access_num}, #{source}, #{extract.solvent}, #{extract.extractTime} 
+			#{uid}, #{source}, #{extract.solvent}, #{extract.extractTime} 
 			, #{extra.dist.distYn}, #{extra.dist.distUrl}, #{extra.ref.reference}
 			, #{extra.patent.parentNo}, #{extra.patent.regNo}
 		)

@@ -190,15 +190,15 @@ public class KnnrrcServices extends AbstractCommonServices{
 			
 			List<KnnrrcVO> voList = this.knnrrcService.getKnnrrcDataList(pagingIndex, paging);
 
-			boolean printFlag = false;
+//			boolean printFlag = false;
 			for(KnnrrcVO vo : voList) {
 //				if( !vo.getSds_no().equals("377138") )continue;
 
 				wholeCnt++;
-				if( wholeCnt % 1000 == 0 )	printFlag = true;
-				else						printFlag = false;
+//				if( wholeCnt % 1000 == 0 )	printFlag = true;
+//				else						printFlag = false;
 
-				if( printFlag ) System.out.print( ">" + wholeCnt + "/" + totalCnt );
+				System.out.print( ">" + wholeCnt + "/" + totalCnt );
 
 				String scientificName = vo.getGenus() + " " + vo.getSpecies();
 
@@ -209,9 +209,9 @@ public class KnnrrcServices extends AbstractCommonServices{
 
 				if( acc_num == null && un_acc_num != null )	{
 					scientificName = "";
-					if( printFlag ) System.err.println( "[unmapped]" );
+					System.err.println( "[unmapped]" );
 				}else {
-					if( printFlag ) System.out.println( "[mapped]" );
+					System.out.println( "[mapped]" );
 				}
 
 				if( vo.getCategory_2().equals("체액") )							this.processBodyFluid( vo , scientificName );

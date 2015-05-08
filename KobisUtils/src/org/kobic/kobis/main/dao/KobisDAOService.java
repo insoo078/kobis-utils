@@ -119,11 +119,15 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 
     			// 매핑된 분류코드를 record에 삽입한뒤 D1_Common 테이블에 입력
     			ret = kobisMapper.insertD1Common(d1CommonVo);
+    			int uid = kobisMapper.getUid( d1CommonVo );
+    			if( uid > 0 ) {
+    				d1CommonVo.setUid(uid);
 
-	    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
-	    			// 만약 record에 Synonym이 존재하면 E1_Synonym 테이블에 등록
-	    			kobisMapper.insertE1Synonyms(d1CommonVo);
-	    		}
+		    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
+		    			// 만약 record에 Synonym이 존재하면 E1_Synonym 테이블에 등록
+		    			ret += kobisMapper.insertE1Synonyms(d1CommonVo);
+		    		}
+    			}
     		}
 
     		session.commit();
