@@ -35,21 +35,26 @@ public class ExpressionServices extends AbstractKobisServices{
 				Rule rule = new Rule( this.getInsCd() );
 				rule.rule( vo );
 
-				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+//				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
+//				
+//				if( !accessionNumFromMapTab.isEmpty() ) {
+//					this.getKobisService().insertD1Expression(vo, this.getInsCd());
+//				}else {
+//					this.getUnmapService().insertT2UnmappedExpression(vo);
+//				}
 				
-				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Expression(vo, this.getInsCd());
-				}else {
-					this.getUnmapService().insertT2UnmappedExpression(vo);
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				vo.setUid( uid );
+
+				if( uid > 0 )	this.getKobisService().insertD1Expression( vo, this.getInsCd() );
+				else {
+					uid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
+					vo.setUid( uid );
+
+					if( uid > 0 )	this.getUnmapService().insertT2UnmappedExpression(vo);
+					else			logger.error( vo.getAccess_num() + " is not assigned ");
 				}
 
-//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-//
-//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getKobisService().insertD1Expression(vo);
-//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getUnmapService().insertT2UnmappedExpression(sheetRecordObj);
-//				}
 				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum() -3) + ")");
 				totalCnt++;
 			}

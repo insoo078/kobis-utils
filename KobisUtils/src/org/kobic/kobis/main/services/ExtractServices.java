@@ -30,26 +30,30 @@ public class ExtractServices extends AbstractKobisServices{
 				
 				if( Utils.nullToEmpty( extractSheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 
-				D1ExtractionVO d1ExtractVo = new D1ExtractionVO( extractSheetRecordObj );
+				D1ExtractionVO vo = new D1ExtractionVO( extractSheetRecordObj );
 				
 				Rule rule = new Rule( this.getInsCd() );
-				rule.rule( d1ExtractVo );
+				rule.rule( vo );
 
-				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-				
-				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Extraction( d1ExtractVo, this.getInsCd() );
-				}else {
-					this.getUnmapService().insertT2UnmappedExtraction( d1ExtractVo );
-				}
-
-//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-//
-//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getKobisService().insertD1Extraction( d1ExtractVo );
-//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getUnmapService().insertT2UnmappedExtraction( extractSheetRecordObj );
+//				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
+//				
+//				if( !accessionNumFromMapTab.isEmpty() ) {
+//					this.getKobisService().insertD1Extraction( d1ExtractVo, this.getInsCd() );
+//				}else {
+//					this.getUnmapService().insertT2UnmappedExtraction( d1ExtractVo );
 //				}
+
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				vo.setUid( uid );
+
+				if( uid > 0 )	this.getKobisService().insertD1Extraction( vo, this.getInsCd() );
+				else {
+					uid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
+					vo.setUid( uid );
+
+					if( uid > 0 )	this.getUnmapService().insertT2UnmappedExtraction(vo);
+					else			logger.error( vo.getAccess_num() + " is not assigned ");
+				}
 				
 				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum()-3) + ")");
 				totalCnt++;

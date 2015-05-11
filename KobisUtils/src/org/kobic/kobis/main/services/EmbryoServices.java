@@ -35,21 +35,17 @@ public class EmbryoServices extends AbstractKobisServices{
 				Rule rule = new Rule( this.getInsCd() );
 				rule.rule( vo );
 
-				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-				
-				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1Embryo(vo, this.getInsCd());
-				}else {
-					this.getUnmapService().insertT2UnmappedEmbryo(vo);
-				}
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				vo.setUid( uid );
 
-//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( vo.getAccess_num(), this.getInsCd() ) );
-//
-//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getKobisService().insertD1Embryo(vo);
-//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getUnmapService().insertT2UnmappedEmbryo(sheetRecordObj);
-//				}
+				if( uid > 0 )	this.getKobisService().insertD1Embryo( vo, this.getInsCd() );
+				else {
+					uid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
+					vo.setUid( uid );
+
+					if( uid > 0 )	this.getUnmapService().insertT2UnmappedEmbryo(vo);
+					else			logger.error( vo.getAccess_num() + " is not assigned ");
+				}
 				
 				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum() -3) + ")");
 				totalCnt++;

@@ -42,4 +42,6 @@ public interface UnmappedMapper {
 	public int insertT2UnmappedSeed( XSeedSheetObj seedSheet );
 	public int insertT2UnmappedEmbryo( XEmbryoSheetObj embryoSheet );
 	public int insertT2UnmappedDnaRnaProteinDerivatives( XDnaRnaProteinDerivativesSheetObj dnaRnaProteinDerivativeSheet );
+	
+	public int getUid( Map<String, Object> map );
 }

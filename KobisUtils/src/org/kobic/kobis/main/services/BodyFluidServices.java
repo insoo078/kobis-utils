@@ -30,27 +30,30 @@ public class BodyFluidServices  extends AbstractKobisServices{
 
 				if( Utils.nullToEmpty( bodyFluidSheetRecordObj.getAccess_num() ).isEmpty() )	continue;
 				
-				D1BodyFluidVO d1BodyFluidVo = new D1BodyFluidVO( bodyFluidSheetRecordObj );
+				D1BodyFluidVO vo = new D1BodyFluidVO( bodyFluidSheetRecordObj );
 				
 				Rule rule = new Rule( this.getInsCd() );
-				rule.rule( d1BodyFluidVo );
+				rule.rule( vo );
 
-				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
-
-				if( !accessionNumFromMapTab.isEmpty() ) {
-					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo, this.getInsCd() );
-				}else {
-					this.getUnmapService().insertT2UnmappedBodyFluid( d1BodyFluidVo );
-				}
-				
-				
-//				String accessionNumFromUnmapTab	= Utils.nullToEmpty( this.getUnmapService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
+//				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1BodyFluidVo.getAccess_num(), this.getInsCd() ) );
 //
-//				if( !accessionNumFromMapTab.isEmpty() && accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo );
-//				}else if( accessionNumFromMapTab.isEmpty() && !accessionNumFromUnmapTab.isEmpty() ) {
-//					this.getUnmapService().insertT2UnmappedBodyFluid( bodyFluidSheetRecordObj );
+//				if( !accessionNumFromMapTab.isEmpty() ) {
+//					this.getKobisService().insertD1BodyFluid( d1BodyFluidVo, this.getInsCd() );
+//				}else {
+//					this.getUnmapService().insertT2UnmappedBodyFluid( d1BodyFluidVo );
 //				}
+				
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				vo.setUid( uid );
+
+				if( uid > 0 )	this.getKobisService().insertD1BodyFluid( vo, this.getInsCd() );
+				else {
+					uid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
+					vo.setUid( uid );
+
+					if( uid > 0 )	this.getUnmapService().insertT2UnmappedBodyFluid(vo);
+					else			logger.error( vo.getAccess_num() + " is not assigned ");
+				}
 				
 				System.out.println( "("+totalCnt + "/" + (this.getSheet().getLastRowNum() - 3) + ")");
 				totalCnt++;

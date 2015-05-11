@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.dao.CommonDAOService;
 import org.kobic.kobis.main.mapper.KobisMapper;
-import org.kobic.kobis.main.services.StructureServices;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
@@ -119,7 +118,13 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 
     			// 매핑된 분류코드를 record에 삽입한뒤 D1_Common 테이블에 입력
     			ret = kobisMapper.insertD1Common(d1CommonVo);
-    			int uid = kobisMapper.getUid( d1CommonVo );
+    			
+    			Map<String, Object> map = new HashMap<String, Object>();
+    			map.put("accession_num", d1CommonVo.getAccess_num());
+        		map.put("ins_cd", d1CommonVo.getIns_cd());
+
+    			int uid = kobisMapper.getUid( map );
+
     			if( uid > 0 ) {
     				d1CommonVo.setUid(uid);
 
@@ -363,6 +368,46 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return map;
     }
 
+    public int getUid(String accession_num, String ins_cd) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int result = -1;
+    	try {
+	    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+	    	Map<String, Object> map = new HashMap<String, Object>();
+			map.put("access_num", accession_num );
+			map.put("id", ins_cd );
+			
+			result = kobisMapper.getUid( map );
+    	}catch(Exception e) {
+    		result = -1;
+    	}finally{
+    		session.close();
+    	}
+    	return result;
+    }
+    
+    private int insertL3ExtendLink( DBCommonInterface param ) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int ret = 0;
+    	try {
+	    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", param.getUid() );
+			map.put("id", param.getId() );
+	
+			ret = kobisMapper.insertL3ExtendLink( map );
+    	}catch(Exception e) {
+    		session.rollback();
+    		ret = -1;
+    	}finally{
+    		session.close();
+    	}
+		
+		return ret;
+    }
+   
     @Override
     public int insertD1Observation( D1ObservationVO observationSheet, String ins_cd ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
@@ -373,12 +418,8 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		
     		String newObsId = kobisMapper.getNewObservationId( ins_cd );
     		observationSheet.setId( newObsId );
-    		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", observationSheet.getAccess_num() );
-			map.put("id", newObsId );
 
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( observationSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Observation( observationSheet );
 	    		if( ret > 0 ) {
@@ -414,11 +455,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newIndiId = kobisMapper.getNewIndividualId( ins_cd );
     		individualSheet.setId( newIndiId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", individualSheet.getAccess_num() );
-			map.put("id", newIndiId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( individualSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Individual( individualSheet );
 	    		
@@ -455,11 +492,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newSpecimenId = kobisMapper.getNewSpecimenId( ins_cd );
     		specimenSheet.setId( newSpecimenId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", specimenSheet.getAccess_num() );
-			map.put("id", newSpecimenId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( specimenSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Specimen( specimenSheet );
 
@@ -496,11 +529,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newSourceId = kobisMapper.getNewSourceId( ins_cd );
     		sourceSheet.setId( newSourceId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", sourceSheet.getAccess_num() );
-			map.put("id", newSourceId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( sourceSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Source( sourceSheet );
 	    		
@@ -539,11 +568,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newSeedId = kobisMapper.getNewSeedId( ins_cd );
     		seedSheet.setId( newSeedId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", seedSheet.getAccess_num() );
-			map.put("id", newSeedId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( seedSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Seed( seedSheet );
 	
@@ -582,11 +607,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newEmbryoId = kobisMapper.getNewEmbryoId( ins_cd );
     		embryoSheet.setId( newEmbryoId );
 
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", embryoSheet.getAccess_num() );
-			map.put("id", newEmbryoId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( embryoSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Embryo( embryoSheet );
 	    		
@@ -625,11 +646,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newDnaRnaProteinDerivativesId = kobisMapper.getNewDnaRnaProteinDerivativesId( ins_cd );
     		dnaRnaProteinDerivativeSheet.setId( newDnaRnaProteinDerivativesId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", dnaRnaProteinDerivativeSheet.getAccess_num() );
-			map.put("id", newDnaRnaProteinDerivativesId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( dnaRnaProteinDerivativeSheet );
 			if( ret > 0 ) {
 				ret = kobisMapper.insertD1DnaRnaProteinDerivatives( dnaRnaProteinDerivativeSheet );
 	
@@ -668,11 +685,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newStrainId = kobisMapper.getNewStrainId( ins_cd );
     		strainSheet.setId( newStrainId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", strainSheet.getAccess_num() );
-			map.put("id", newStrainId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( strainSheet );
 			if( ret > 0 ) {
 				ret = kobisMapper.insertD1Strain( strainSheet );
 	
@@ -711,11 +724,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newCellStrainId = kobisMapper.getNewCellStrainId( ins_cd );
     		cellStrainSheet.setId( newCellStrainId );
 
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", cellStrainSheet.getAccess_num() );
-			map.put("id", newCellStrainId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( cellStrainSheet );
 			if( ret > 0 ) {
 				ret = kobisMapper.insertD1CellStrain( cellStrainSheet );
 	
@@ -751,14 +760,12 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	try {
     		KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
     		
+    		
+    		
     		String newBodyFluidId = kobisMapper.getNewBodyFluidId( ins_cd );
     		bodyFluidSheet.setId( newBodyFluidId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", bodyFluidSheet.getAccess_num() );
-			map.put("id", newBodyFluidId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( bodyFluidSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1BodyFluid( bodyFluidSheet );
 	
@@ -797,11 +804,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newProteinSequenceId = kobisMapper.getNewProteinSequenceId( ins_cd );
     		proteinSequenceSheet.setId( newProteinSequenceId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", proteinSequenceSheet.getAccess_num() );
-			map.put("id", newProteinSequenceId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( proteinSequenceSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1ProteinSequence( proteinSequenceSheet );
 	
@@ -836,11 +839,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newExpressionId = kobisMapper.getNewExpressionId( ins_cd );
     		expressionSheet.setId( newExpressionId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", expressionSheet.getAccess_num() );
-			map.put("id", newExpressionId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( expressionSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Expression( expressionSheet );
 	
@@ -875,11 +874,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newStructureId = kobisMapper.getNewStructureId( ins_cd );
     		structureSheet.setId( newStructureId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", structureSheet.getAccess_num() );
-			map.put("id", newStructureId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( structureSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Structure( structureSheet );
 	
@@ -914,11 +909,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newDnaSequenceId = kobisMapper.getNewDnaSequenceId( ins_cd );
     		dnaSequenceSheet.setId( newDnaSequenceId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", dnaSequenceSheet.getAccess_num() );
-			map.put("id", newDnaSequenceId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( dnaSequenceSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1DnaSequence( dnaSequenceSheet );
 	    		
@@ -953,11 +944,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newEtcId = kobisMapper.getNewEtcId( ins_cd );
     		etcSheet.setId( newEtcId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", etcSheet.getAccess_num() );
-			map.put("id", newEtcId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( etcSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Etc(etcSheet);
 	    		if( ret > 0 ) {
@@ -994,11 +981,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 			String newExtractId = kobisMapper.getNewExtractionId( ins_cd );
     		extractionSheet.setId( newExtractId );
 
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", extractionSheet.getAccess_num() );
-			map.put("id", newExtractId );
-
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( extractionSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Extraction( extractionSheet );
 	
@@ -1055,11 +1038,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     		String newOrganId = kobisMapper.getNewOrganId( ins_cd );
     		organSheet.setId( newOrganId );
     		
-			Map<String, String> map = new HashMap<String, String>();
-    		map.put("access_num", organSheet.getAccess_num() );
-			map.put("id", newOrganId );
-			
-			ret = kobisMapper.insertL3ExtendLink( map );
+    		ret = this.insertL3ExtendLink( organSheet );
 			if( ret > 0 ) {
 	    		ret = kobisMapper.insertD1Organ( organSheet );
 	    		

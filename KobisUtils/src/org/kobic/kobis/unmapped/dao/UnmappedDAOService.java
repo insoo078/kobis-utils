@@ -24,6 +24,7 @@ import org.kobic.kobis.file.excel.obj.XSourceSheetObj;
 import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
+import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.proc.TaxonProc;
 import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
@@ -36,6 +37,25 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
 		super(sqlSessionFactory);
 	}
 
+    public int getUid(String accession_num, String ins_cd) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	int result = -1;
+    	try {
+    		UnmappedMapper unMappedMapper = session.getMapper( UnmappedMapper.class );
+	    	Map<String, Object> map = new HashMap<String, Object>();
+			map.put("access_num", accession_num );
+			map.put("id", ins_cd );
+			
+			result = unMappedMapper.getUid( map );
+    	}catch(Exception e) {
+    		result = -1;
+    	}finally{
+    		session.close();
+    	}
+    	return result;
+    }
+	
     @Override
     public String getAccessionNum(String accession_num, String ins_cd) {
     	SqlSession session = this.getSessionFactory().openSession();

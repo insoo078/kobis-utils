@@ -14,7 +14,7 @@
 		WHERE accession_num=#{accession_num} AND ins_cd=#{ins_cd}
 	</select>
 	
-	<select id="getUid" parameterType="D1_Common" resultType="java.lang.Integer">
+	<select id="getUid" parameterType="java.util.Map" resultType="java.lang.Integer">
 		SELECT uid FROM D1_Common
 		WHERE accession_num=#{access_num} AND ins_cd=#{ins_cd}
 	</select>
