@@ -35,14 +35,6 @@ public class ExtractServices extends AbstractKobisServices{
 				Rule rule = new Rule( this.getInsCd() );
 				rule.rule( vo );
 
-//				String accessionNumFromMapTab	= Utils.nullToEmpty( this.getKobisService().getAccessionNum( d1ExtractVo.getAccess_num(), this.getInsCd() ) );
-//				
-//				if( !accessionNumFromMapTab.isEmpty() ) {
-//					this.getKobisService().insertD1Extraction( d1ExtractVo, this.getInsCd() );
-//				}else {
-//					this.getUnmapService().insertT2UnmappedExtraction( d1ExtractVo );
-//				}
-
 				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
 				vo.setUid( uid );
 

@@ -45,7 +45,7 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
     		UnmappedMapper unMappedMapper = session.getMapper( UnmappedMapper.class );
 	    	Map<String, Object> map = new HashMap<String, Object>();
 			map.put("access_num", accession_num );
-			map.put("id", ins_cd );
+			map.put("ins_cd", ins_cd );
 			
 			result = unMappedMapper.getUid( map );
     	}catch(Exception e) {

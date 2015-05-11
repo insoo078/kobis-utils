@@ -44,11 +44,11 @@ public interface KobisMapper {
     public int insertD1Etc( D1EtcVO etcSheet);
     public int insertD1Extraction( D1ExtractionVO extractionSheet );
     public int insertE1Synonyms( D1CommonVO d1CommonVo );
-    public int insertE1Culture( Map<String, String> cultureSheet );
-    public int insertE1Store( Map<String, String> cultureSheet );
-    public int insertE1Distribution( Map<String, String> cultureSheet );
-    public int insertE1Reference( Map<String, String> cultureSheet );
-    public int insertE1Patent( Map<String, String> cultureSheet );
+    public int insertE1Culture( Map<String, Object> cultureSheet );
+    public int insertE1Store( Map<String, Object> cultureSheet );
+    public int insertE1Distribution( Map<String, Object> cultureSheet );
+    public int insertE1Reference( Map<String, Object> cultureSheet );
+    public int insertE1Patent( Map<String, Object> cultureSheet );
     public int insertT2MappedCommon( D1CommonVO commonSheet );
 
 	public String getNewObservationId( String access_num );
