@@ -204,35 +204,38 @@ public class KnnrrcServices extends AbstractCommonServices{
 
 				vo.setSds_no( "KNRRC" + vo.getSds_no() );
 
-				String acc_num = this.getKobisService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
-				String un_acc_num = this.getUnmapService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
+//				String acc_num = this.getKobisService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
+//				String un_acc_num = this.getUnmapService().getAccessionNum( vo.getSds_no(), this.getInsCd() );
+				int uid = this.getKobisService().getUid( vo.getAccession_no(), this.getInsCd() );
+				int unUid = this.getUnmapService().getUid( vo.getAccession_no(), this.getInsCd() );
 
-				if( acc_num == null && un_acc_num != null )	{
+//				if( acc_num == null && un_acc_num != null )	{
+				if( uid < 0 && unUid > 0 ) {
 					scientificName = "";
 					System.err.println( "[unmapped]" );
 				}else {
 					System.out.println( "[mapped]" );
 				}
 
-				if( vo.getCategory_2().equals("체액") )							this.processBodyFluid( vo , scientificName );
-				else if( vo.getCategory_2().equals("세포,세포주") )				this.processCellStrain( vo , scientificName );
-				else if( vo.getCategory_2().equals("DNA/RNA/Protein 유래물") )	this.processDnaRnaProteinDerivatives( vo , scientificName );
-				else if( vo.getCategory_2().equals("배아") )						this.processEmbryo( vo , scientificName );
-				else if( vo.getCategory_2().equals("기타") )						this.processEtc( vo , scientificName );
-				else if( vo.getCategory_2().equals("추출물") )					this.processExtraction( vo , scientificName );
-				else if( vo.getCategory_2().equals("개체") )						this.processIndividual( vo , scientificName );
-				else if( vo.getCategory_2().equals("조직") )						this.processSource( vo , scientificName );
-				else if( vo.getCategory_2().equals("표본") )						this.processSpecimen( vo , scientificName );
-				else if( vo.getCategory_2().equals("균주") )						this.processStrain( vo , scientificName );
-				else if( vo.getCategory_2().equals("종자") )						this.processSeed( vo , scientificName );
-				else															logger.error("잘못된 중구분 : " + vo.getCategory_2() );
+//				if( vo.getCategory_2().equals("체액") )							this.processBodyFluid( vo , scientificName );
+//				else if( vo.getCategory_2().equals("세포,세포주") )				this.processCellStrain( vo , scientificName );
+//				else if( vo.getCategory_2().equals("DNA/RNA/Protein 유래물") )	this.processDnaRnaProteinDerivatives( vo , scientificName );
+//				else if( vo.getCategory_2().equals("배아") )						this.processEmbryo( vo , scientificName );
+//				else if( vo.getCategory_2().equals("기타") )						this.processEtc( vo , scientificName );
+//				else if( vo.getCategory_2().equals("추출물") )					this.processExtraction( vo , scientificName );
+//				else if( vo.getCategory_2().equals("개체") )						this.processIndividual( vo , scientificName );
+//				else if( vo.getCategory_2().equals("조직") )						this.processSource( vo , scientificName );
+//				else if( vo.getCategory_2().equals("표본") )						this.processSpecimen( vo , scientificName );
+//				else if( vo.getCategory_2().equals("균주") )						this.processStrain( vo , scientificName );
+//				else if( vo.getCategory_2().equals("종자") )						this.processSeed( vo , scientificName );
+//				else															logger.error("잘못된 중구분 : " + vo.getCategory_2() );
 //
 //				if( Utils.nullToEmpty(acc_num).isEmpty() && Utils.nullToEmpty( un_acc_num ).isEmpty() ) {
-//					System.out.println("Hello");
-//					int ret = this.processCommon( vo, scientificName );
-//
-//					mappedCnt += ret;
-//				}
+				if( uid < 0 && unUid < 0 ) {
+					int ret = this.processCommon( vo, scientificName );
+
+					mappedCnt += ret;
+				}
 			}
 		}
 		System.out.println( "=======================================================" );

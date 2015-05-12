@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kobic.kobis.unmap2map.mapper.Unmap2MapMapper">
+	<select id="getUnmappedCommonTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM T2_UnMappedCommon
+	</select>
+
+	<select id="getUnmappedCommon" parameterType="java.util.Map" resultType="D1_Common">
+		SELECT
+			* 
+		FROM T2_UnMappedCommon
+		LIMIT #{pagingIndex}, #{paging}
+	</select>
+</mapper>

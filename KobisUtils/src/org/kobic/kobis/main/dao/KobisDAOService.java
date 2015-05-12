@@ -120,7 +120,7 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     			ret = kobisMapper.insertD1Common(d1CommonVo);
     			
     			Map<String, Object> map = new HashMap<String, Object>();
-    			map.put("accession_num", d1CommonVo.getAccess_num());
+    			map.put("access_num", d1CommonVo.getAccess_num());
         		map.put("ins_cd", d1CommonVo.getIns_cd());
 
     			int uid = kobisMapper.getUid( map );
