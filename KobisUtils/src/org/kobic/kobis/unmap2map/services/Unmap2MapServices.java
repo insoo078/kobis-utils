@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.services.AbstractCommonServices;
 import org.kobic.kobis.main.vo.D1CommonVO;
+import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
 import org.kobic.kobis.unmap2map.dao.Unmap2MapDAOService;
 
 public class Unmap2MapServices extends AbstractCommonServices{
@@ -35,8 +36,20 @@ public class Unmap2MapServices extends AbstractCommonServices{
 			List<D1CommonVO> voList = this.unmap2MapService.getUnmappedCommon( pagingIndex, pagingIndex );
 			
 			for( D1CommonVO vo : voList ) {
-				int uid = this.getKobisService().getUid( vo.getAccession_no(), vo.getIns_cd() );
-				int unUid = this.getUnmapService().getUid( vo.getAccession_no(), vo.getIns_cd() );
+				String accessoinNum = vo.getAccess_num();
+				String insCd = vo.getIns_cd();
+
+				int uid = this.getKobisService().getUid(accessoinNum, insCd);
+
+				if( uid == -1 ) {
+					String scientificName = vo.getScientificName();
+
+					MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
+	
+					String errorCode = classifyObj.validate( scientificName );
+					
+					System.out.println( vo.getAccess_num() + " " + errorCode );
+				}
 			}
 		}
 	}

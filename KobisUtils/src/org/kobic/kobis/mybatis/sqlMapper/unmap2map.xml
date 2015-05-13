@@ -2,11 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.kobic.kobis.unmap2map.mapper.Unmap2MapMapper">
+	<resultMap id="D1CommonMap" type="org.kobic.kobis.main.vo.D1CommonVO">
+		<id column="uid"				property="uid"/>
+		<id column="accession_num"		property="access_num"/>
+		<id column="ins_cd"				property="ins_cd"/>
+		<id column="message"			property="message"/>
+		<id column="ins_user_email"		property="ins_user_email"/>
+		<id column="img_url_1"			property="img_url_1"/>
+		<id column="keywords"			property="keywords"/>
+		<id column="sequence"			property="sequence"/>
+		<id column="accession_no"		property="accession_no"/>
+		<id column="gene_name"			property="gene_name"/>
+		<id column="detail_url"			property="detail_url"/>
+		<id column="category_3"			property="category_3"/>
+		<id column="category_2"			property="category_2"/>
+		<id column="category_1"			property="category_1"/>
+		<id column="institution"		property="institution"/>
+		<id column="taxonomy"			property="taxonomy"/>
+		<id column="variety_name"		property="variety_name"/>
+		<id column="line_name"			property="line_name"/>
+		<id column="in_species_name"	property="in_species_name"/>
+		<id column="in_species_type"	property="in_species_type"/>
+		<id column="kor_name"			property="kor_name"/>
+		<id column="common_name"		property="common_name"/>
+		<id column="synonym"			property="synonym"/>
+		<id column="species"			property="species"/>
+		<id column="subgenus"			property="subgenus"/>
+		<id column="genus"				property="genus"/>
+		<id column="family"				property="family"/>
+	</resultMap>
+
 	<select id="getUnmappedCommonTotalCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM T2_UnMappedCommon
 	</select>
 
-	<select id="getUnmappedCommon" parameterType="java.util.Map" resultType="D1_Common">
+	<select id="getUnmappedCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
 		SELECT
 			* 
 		FROM T2_UnMappedCommon
