@@ -14,6 +14,7 @@ public class D1StrainVO extends XStrainSheetObj implements DBCommonInterface{
 		this.id = "";
 		this.setSource( kvo.getIso_source() );
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	
 	public D1StrainVO(XStrainSheetObj strainSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

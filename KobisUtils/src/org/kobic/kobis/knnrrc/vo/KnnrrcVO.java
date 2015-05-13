@@ -1,6 +1,7 @@
 package org.kobic.kobis.knnrrc.vo;
 
 public class KnnrrcVO {
+	private int uid;
 	private String sds_no;
 	private String bank_name;
 	private String category_1;
@@ -141,5 +142,11 @@ public class KnnrrcVO {
 	}
 	public void setBank_code(String bank_code) {
 		this.bank_code = bank_code;
+	}
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 }

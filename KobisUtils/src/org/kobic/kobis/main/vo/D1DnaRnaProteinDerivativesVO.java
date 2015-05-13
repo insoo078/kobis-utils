@@ -12,6 +12,7 @@ public class D1DnaRnaProteinDerivativesVO extends XDnaRnaProteinDerivativesSheet
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
 		this.setSource( kvo.getIso_source() );
+		this.setUid( kvo.getUid() );
 	}
 
 	public D1DnaRnaProteinDerivativesVO(XDnaRnaProteinDerivativesSheetObj dnaRnaProteinDerivativesSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

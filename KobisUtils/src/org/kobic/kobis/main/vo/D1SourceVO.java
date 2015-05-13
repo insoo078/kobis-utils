@@ -14,6 +14,7 @@ public class D1SourceVO extends XSourceSheetObj implements DBCommonInterface{
 		this.id = "";
 		this.setSource( kvo.getIso_source() );
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	
 	public D1SourceVO(XSourceSheetObj sourceSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

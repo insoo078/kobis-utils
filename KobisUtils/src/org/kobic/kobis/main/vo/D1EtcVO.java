@@ -11,6 +11,7 @@ public class D1EtcVO extends XEtcSheetObj implements DBCommonInterface{
 		super();
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	public D1EtcVO(XEtcSheetObj etcSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, etcSheetRecordObj );

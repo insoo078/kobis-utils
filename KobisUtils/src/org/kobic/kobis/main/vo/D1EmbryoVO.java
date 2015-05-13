@@ -13,6 +13,7 @@ public class D1EmbryoVO extends XEmbryoSheetObj implements DBCommonInterface{
 		super();
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	public D1EmbryoVO(XEmbryoSheetObj embryoSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, embryoSheetRecordObj );

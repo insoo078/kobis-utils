@@ -949,7 +949,6 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
 	    		}
 			}
 
-    		ret = kobisMapper.insertD1Etc( etcSheet );
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

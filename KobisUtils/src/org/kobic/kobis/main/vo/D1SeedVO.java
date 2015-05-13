@@ -13,6 +13,7 @@ public class D1SeedVO extends XSeedSheetObj implements DBCommonInterface{
 		super();
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 
 	public D1SeedVO(XSeedSheetObj seedSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

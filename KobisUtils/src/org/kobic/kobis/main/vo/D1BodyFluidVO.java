@@ -18,6 +18,7 @@ public class D1BodyFluidVO extends XBodyFluidSheetObj implements DBCommonInterfa
 		this.id = "";
 
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 
 	@Override

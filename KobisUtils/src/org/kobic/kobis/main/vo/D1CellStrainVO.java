@@ -14,6 +14,7 @@ public class D1CellStrainVO extends XCellStrainSheetObj implements DBCommonInter
 		this.id = "";
 		this.setSource( kvo.getIso_source() );
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	
 	public D1CellStrainVO(XCellStrainSheetObj cellStrainSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

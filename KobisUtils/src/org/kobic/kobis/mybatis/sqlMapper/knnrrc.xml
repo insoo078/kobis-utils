@@ -37,7 +37,7 @@
 				CASE WHEN CATEGORY_SECOND in ('antibody') THEN '기타'
 				WHEN CATEGORY_SECOND in ('bacteria', 'fungi', 'microalgae', 'mushroom', 'phage', 'virus') THEN '균주'
 				WHEN CATEGORY_SECOND in ('microbial extract') THEN '추출물'
-				WHEN CATEGORY_SECOND in ('nucleic acids') THEN 'DNA/RNA/Protein 유래물'
+				WHEN CATEGORY_SECOND in ('nucleic acids', 'amino acid sequence') THEN 'DNA/RNA/Protein 유래물'
 				ELSE 'microorganism-오류'
 				END
 			WHEN CATEGORY_FIRST='plant' THEN

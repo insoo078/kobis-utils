@@ -14,6 +14,7 @@ public class D1ExtractionVO extends XExtractSheetObj implements DBCommonInterfac
 		this.id = "";
 		this.setSource( kvo.getIso_source() );
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	public D1ExtractionVO(XExtractSheetObj extractSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, extractSheetRecordObj );

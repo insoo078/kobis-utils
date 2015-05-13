@@ -13,6 +13,7 @@ public class D1SpecimenVO extends XSpecimenSheetObj implements DBCommonInterface
 		super();
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	
 	public D1SpecimenVO(XSpecimenSheetObj specimenSheetRecordObj) throws IllegalAccessException, InvocationTargetException {

@@ -5,23 +5,18 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.services.AbstractCommonServices;
-import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
-import org.kobic.kobis.main.dao.KobisDAOService;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.unmap2map.dao.Unmap2MapDAOService;
-import org.kobic.kobis.unmapped.dao.UnmappedDAOService;
 
-public class Unmap2MapServices{
+public class Unmap2MapServices extends AbstractCommonServices{
 	private static Logger logger = Logger.getLogger(Unmap2MapServices.class);
-	
-	private SqlSessionFactory sessionFactory;
 
 	private Unmap2MapDAOService unmap2MapService;
 	
 	public Unmap2MapServices(SqlSessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		super(null, sessionFactory);
 
-		this.unmap2MapService = new Unmap2MapDAOService( this.sessionFactory );
+		this.unmap2MapService = new Unmap2MapDAOService( this.getSessionFactory() );
 	}
 	
 	public void read() throws NoSuchMethodException, SecurityException, Exception {
@@ -37,10 +32,11 @@ public class Unmap2MapServices{
 		for(int i=0; i<=noOfPage; i++) {
 			pagingIndex = paging * i;
 			
-			List<D1CommonVO> voList = this.unmap2MapService.getUnmappedCommon(pagingIndex, pagingIndex);
+			List<D1CommonVO> voList = this.unmap2MapService.getUnmappedCommon( pagingIndex, pagingIndex );
 			
-			for(D1CommonVO vo : voList) {
-				String scientificName = vo.getGenus() + " " + vo.getSpecies();
+			for( D1CommonVO vo : voList ) {
+				int uid = this.getKobisService().getUid( vo.getAccession_no(), vo.getIns_cd() );
+				int unUid = this.getUnmapService().getUid( vo.getAccession_no(), vo.getIns_cd() );
 			}
 		}
 	}

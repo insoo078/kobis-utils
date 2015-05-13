@@ -13,6 +13,7 @@ public class D1IndividualVO extends XIndividualSheetObj implements DBCommonInter
 		super();
 		this.id = "";
 		this.setAccess_num( kvo.getSds_no() );
+		this.setUid( kvo.getUid() );
 	}
 	public D1IndividualVO(XIndividualSheetObj individualSheetRecordObj) throws IllegalAccessException, InvocationTargetException {
 		BeanUtils.copyProperties( this, individualSheetRecordObj );
