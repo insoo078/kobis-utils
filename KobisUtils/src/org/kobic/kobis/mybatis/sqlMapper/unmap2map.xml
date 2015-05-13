@@ -7,22 +7,22 @@
 		<id column="cell_type"					property="cellLineType"/>
 		<id column="cell_name"					property="cellLineName"/>
 		<id column="uid"						property="uid"/>
-		<association property="culture" javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
+		<association property="culture" 		javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
 			<id column="culture_medium_name"	property="cultureMediumName"/>
 			<id column="condition"				property="condition"/>
 			<id column="succeed_dt"				property="succeedDt"/>
 			<id column="succeed_time"			property="succeedTime"/>
 		</association>
-		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
-			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
+		<association property="extra" 			javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
+			<association property="dist" 		javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
 				<id column="dist_yn"			property="distYn"/>
 				<id column="dist_url"			property="distUrl"/>
 			</association>
-			<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
+			<association property="patent" 		javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -30,22 +30,22 @@
 	<resultMap id="D1BodyFluidMap"					type="org.kobic.kobis.file.excel.obj.XCBodyFluidSheetObj">
 		<id column="body_fluid_type"			property="bodyFluidType"/>
 		<id column="uid"						property="uid"/>
-		<association property="culture" javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
+		<association property="culture" 		javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
 			<id column="culture_medium_name"	property="cultureMediumName"/>
 			<id column="condition"				property="condition"/>
 			<id column="succeed_dt"				property="succeedDt"/>
 			<id column="succeed_time"			property="succeedTime"/>
 		</association>
-		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
-			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
+		<association property="extra" 			javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
+			<association property="dist" 		javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
 				<id column="dist_yn"			property="distYn"/>
 				<id column="dist_url"			property="distUrl"/>
 			</association>
-			<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
+			<association property="patent" 		javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -133,7 +133,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1EtcMap"						type="org.kobic.kobis.file.excel.obj.XEtcSheetObj">
-		<id column="description"						property="description"/>
+		<id column="description"				property="description"/>
 		<id column="uid"						property="uid"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
@@ -155,9 +155,9 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExpressionMap"					type="org.kobic.kobis.file.excel.obj.XExpressionSheetObj">
-		<id column="source"							property="source"/>
-		<id column="data_type"						property="dataType"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="data_type"					property="dataType"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
 			<id column="open_yn"				property="openYn"/>
@@ -172,12 +172,12 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExtractMap"					type="org.kobic.kobis.file.excel.obj.XExtractSheetObj">
-		<id column="source"							property="source"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="extract" javaType="org.kobic.kobis.file.excel.obj.internal.EObj">
 			<id column="open_yn"				property="openYn"/>
-			<id column="open_url"			property="openUrl"/>
+			<id column="open_url"				property="openUrl"/>
 		</association>
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
@@ -194,28 +194,28 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1IndividualMap"					type="org.kobic.kobis.file.excel.obj.XIndividualSheetObj">
-		<id column="individual_type"				property="individualType"/>
-		<id column="individual_maintenance"			property="individualMaintenance"/>
-		<id column="uid"							property="uid"/>
+		<id column="individual_type"			property="individualType"/>
+		<id column="individual_maintenance"		property="individualMaintenance"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
-				<id column="dist_yn"				property="distYn"/>
-				<id column="dist_url"				property="distUrl"/>
+				<id column="dist_yn"			property="distYn"/>
+				<id column="dist_url"			property="distUrl"/>
 			</association>
 			<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
-				<id column="reg_no"					property="parentNo"/>
-				<id column="application_no"			property="regNo"/>
+				<id column="reg_no"				property="parentNo"/>
+				<id column="application_no"		property="regNo"/>
 			</association>
 			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
-				<id column="reference"				property="reference"/>
+				<id column="reference"			property="reference"/>
 			</association>
 		</association>
 	</resultMap>
 	<resultMap id="D1ObservationMap"				type="org.kobic.kobis.file.excel.obj.XObservationSheetObj">
 		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
-			<id column="latitude"			property="latitude"/>
-			<id column="longitude"			property="longitude"/>
+			<id column="latitude"				property="latitude"/>
+			<id column="longitude"				property="longitude"/>
 		</association>
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
@@ -232,9 +232,9 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1OrganMap"						type="org.kobic.kobis.file.excel.obj.XOrganSheetObj">
-		<id column="organ_type"						property="organType"/>
-		<id column="disease"						property="disease"/>
-		<id column="uid"							property="uid"/>
+		<id column="organ_type"					property="organType"/>
+		<id column="disease"					property="disease"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
 			<id column="store_place"			property="storePlace"/>
@@ -255,15 +255,15 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ProteinSequenceMap"			type="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj">
-		<id column="source"							property="source"/>
-		<id column="protein_name"					property="proteinName"/>
-		<id column="accession_no"					property="accessionNo"/>
-		<id column="sequence"						property="sequence"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="protein_name"				property="proteinName"/>
+		<id column="accession_no"				property="accessionNo"/>
+		<id column="sequence"					property="sequence"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
 			<id column="open_yn"				property="openYn"/>
-			<id column="open_url"			property="openUrl"/>
+			<id column="open_url"				property="openUrl"/>
 		</association>
 		<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
 				<id column="reg_no"				property="parentNo"/>
@@ -274,8 +274,8 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SeedMap"						type="org.kobic.kobis.file.excel.obj.XSeedSheetObj">
-		<id column="seed_status"					property="seedStatus"/>
-		<id column="uid"							property="uid"/>
+		<id column="seed_status"				property="seedStatus"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
 			<id column="store_place"			property="storePlace"/>
@@ -296,9 +296,9 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SourceMap"						type="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
-		<id column="source"							property="source"/>
-		<id column="disease"						property="disease"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="disease"					property="disease"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
 			<id column="store_place"			property="storePlace"/>
@@ -319,22 +319,22 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SpecimenMap"					type="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj">
-		<id column="morphology"						property="morphology"/>
-		<id column="eng_addr"						property="engAddr"/>
-		<id column="kor_addr"						property="korAddr"/>
-		<id column="collect_user"					property="colleUser"/>
-		<id column="collect_dt"						property="collectDt"/>
-		<id column="nation"							property="nation"/>
-		<id column="ocean"							property="ocean"/>
-		<id column="island"							property="island"/>
-		<id column="specimen_type"					property="specimenType"/>
-		<id column="kind_of_specimen"				property="kindOfSpecimen"/>
-		<id column="public_yn"						property="publicYn"/>
-		<id column="uid"							property="uid"/>
+		<id column="morphology"					property="morphology"/>
+		<id column="eng_addr"					property="engAddr"/>
+		<id column="kor_addr"					property="korAddr"/>
+		<id column="collect_user"				property="colleUser"/>
+		<id column="collect_dt"					property="collectDt"/>
+		<id column="nation"						property="nation"/>
+		<id column="ocean"						property="ocean"/>
+		<id column="island"						property="island"/>
+		<id column="specimen_type"				property="specimenType"/>
+		<id column="kind_of_specimen"			property="kindOfSpecimen"/>
+		<id column="public_yn"					property="publicYn"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
-			<id column="latitude"			property="latitude"/>
-			<id column="longitude"			property="longitude"/>
+			<id column="latitude"				property="latitude"/>
+			<id column="longitude"				property="longitude"/>
 		</association>
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
@@ -351,10 +351,10 @@
 		</association>
 	</resultMap>	
 	<resultMap id="D1StrainMap"						type="org.kobic.kobis.file.excel.obj.XStrainSheetObj">
-		<id column="source"							property="source"/>
-		<id column="pathogenic_yn"					property="pathogenicYn"/>
-		<id column="strain_name"					property="strainName"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="pathogenic_yn"				property="pathogenicYn"/>
+		<id column="strain_name"				property="strainName"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="culture" javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
 			<id column="culture_medium_name"	property="cultureMediumName"/>
@@ -377,11 +377,11 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1StructureMap"					type="org.kobic.kobis.file.excel.obj.XStructureSheetObj">
-		<id column="source"							property="source"/>
-		<id column="sturcture_type"					property="sturctureType"/>
-		<id column="accession_no"					property="accessionNo"/>
-		<id column="pdb_format"						property="pdbFormat"/>
-		<id column="uid"							property="uid"/>
+		<id column="source"						property="source"/>
+		<id column="sturcture_type"				property="sturctureType"/>
+		<id column="accession_no"				property="accessionNo"/>
+		<id column="pdb_format"					property="pdbFormat"/>
+		<id column="uid"						property="uid"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
 			<id column="open_yn"				property="openYn"/>
@@ -506,4 +506,85 @@
 		SELECT * FROM T2_UnMappedStructure
 		WHERE uid=${uid}
 	</select>
+	
+	
+	
+	
+	
+	
+	
+	<delete id="deleteUnmappedCommon" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedCommon
+		WHERE uid=${uid}
+	</delete>
+	
+	<delete id="deleteUnmappedCellStrain" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedCellStrain
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedBodyFluid" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedBodyFluid
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedDnaRnaProteinDerivatives" parameterType="java.util.Map">
+		DELETE FROM T2_UnMapped_DNA_RNA_Protein_Derivatives
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedDnaSequence" parameterType="java.util.Map">
+		DELETE FROM T2_UnMapped_Dna_Sequence
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedEmbryo" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedEmbryo
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedEtc" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedEtc
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedExpression" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedExpression
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedExtraction" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedExtraction
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedIndividual" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedIndividual
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedObservation" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedObservation
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedOrgan" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedOrgan
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedProteinSequence" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedProteinSequence
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedSeed" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedSeed
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedSource" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedSource
+		WHERE uid=${uid}
+	</delete>
+	
+	<delete id="deleteUnmappedSpecimen" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedSpecimen
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedStrain" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedStrain
+		WHERE uid=${uid}
+	</delete>
+	<delete id="deleteUnmappedStructure" parameterType="java.util.Map">
+		DELETE FROM T2_UnMappedStructure
+		WHERE uid=${uid}
+	</delete>
 </mapper>
