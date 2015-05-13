@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.file.excel.obj.XCellStrainSheetObj;
 import org.kobic.kobis.knnrrc.mapper.KnnrrcMapper;
 import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
 import org.kobic.kobis.main.vo.D1CommonVO;
@@ -42,5 +43,16 @@ public class Unmap2MapDAOService extends CommonDAOService implements Unmap2MapDA
 		Unmap2MapMapper unmap2MapMapper = session.getMapper( Unmap2MapMapper.class );
 		
 		return unmap2MapMapper.getUnmappedCommonTotalCount();
+	}
+
+	@Override
+	public XCellStrainSheetObj getUnmappedCellStrain(int uid) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+		Unmap2MapMapper unmap2MapMapper = session.getMapper( Unmap2MapMapper.class );
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("uid", uid);
+		return unmap2MapMapper.getUnmappedCellStrain( map );
 	}
 }
