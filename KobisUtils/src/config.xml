@@ -54,6 +54,7 @@
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/rule.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/unmap.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/knnrrc.xml"/>
+		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/naris.xml"/>
 		<mapper resource="org/kobic/kobis/mybatis/sqlMapper/unmap2map.xml"/>
 	</mappers>
 </configuration>

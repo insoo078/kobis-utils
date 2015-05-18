@@ -33,6 +33,38 @@ public class ReadExcel{
 
 		this.sessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();
 	}
+	
+	public SqlSessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SqlSessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	public String getInFile() {
+		return inFile;
+	}
+
+	public void setInFile(String inFile) {
+		this.inFile = inFile;
+	}
+
+	public String getOutput() {
+		return output;
+	}
+
+	public void setOutput(String output) {
+		this.output = output;
+	}
+
+	public String getHeader() {
+		return header;
+	}
+
+	public void setHeader(String header) {
+		this.header = header;
+	}
 
 	public void run( String[] args ) {
 		if( this.checkParameters(args) ) {
@@ -51,7 +83,7 @@ public class ReadExcel{
 			else if( args[i].equals("-header") )							this.header = args[i+1];
 			else {
 				System.err.println("Your option is not valid : " + args[i]);
-				ReadExcel.usage();
+				this.usage();
 				return false;
 			}
 		}
@@ -60,17 +92,17 @@ public class ReadExcel{
 		if( this.header == null ) {	this.header = "none";	}
 		if( this.inFile == null ) {
 			System.err.println("You did not input a excel file : " + inFile);
-			ReadExcel.usage();
+			this.usage();
 			return false;
 		}else if( !new File(this.inFile).exists() ) {
 			System.err.println("There are no a excel file : " + inFile);
-			ReadExcel.usage();
+			this.usage();
 			return false;
 		}
 
 		if( !new File(this.output).isDirectory() ) {
 			System.err.println("Output you input is not a directory : " + output);
-			ReadExcel.usage();
+			this.usage();
 			return false;
 		}
 		
@@ -113,7 +145,7 @@ public class ReadExcel{
 
 				AbstractKobisServices ks = (AbstractKobisServices) obj;
 
-				if( ks instanceof CommonServices )	continue;
+//				if( ks instanceof CommonServices )	continue;
 //				if( ks instanceof IndividualServices )	continue;
 //				if( ks instanceof CellStrainServices)	continue;
 //				if( ks instanceof StrainServices)	continue;
@@ -123,14 +155,14 @@ public class ReadExcel{
 ////				else								continue;
 //				if( ks instanceof DnaRnaProteinDerivativesServices )
 				
-				ks.readRecordsInSheet();
+//				ks.readRecordsInSheet();
 			}
 		}
 
 		inp.close();
 	}
 
-	public static void usage() {
+	public void usage() {
 		System.err.println("####################################");
 		System.err.println("java ReadExel -i [input file] -o [output directory] -header header prefix");
 	}
@@ -148,7 +180,8 @@ public class ReadExcel{
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_수정_국가영장류센터_KOBIS수정본.xlsx", "-header", "INS00003"}, //accession_num 중복문제 존재
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_유전자은행_KOBIS수정본.xlsx", "-header", "INS00004"},
 //				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_201503 06 1차 데이터_IRMRC.xlsx", "-header", "INS00005"},
-				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_정보연계표준_20150403 2차 데이터_IRMRC.xlsx", "-header", "INS00005"}
+//				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_해외소재센터_정보연계표준_20150403 2차 데이터_IRMRC.xlsx", "-header", "INS00005"}
+				{"-o", "/Users/lion/Desktop", "-i", "/Users/lion/git/kobis-utils/KobisUtils/sample/KOBIS_정보연계표준안_국립중앙과학관.xlsx", "-header", "INS00007"}
 		};
 
 		for(int i=0; i<params.length; i++) {

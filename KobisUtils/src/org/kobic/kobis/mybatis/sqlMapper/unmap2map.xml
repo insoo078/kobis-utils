@@ -27,7 +27,7 @@
 			</association>
 		</association>
 	</resultMap>
-	<resultMap id="D1BodyFluidMap"					type="org.kobic.kobis.file.excel.obj.XCBodyFluidSheetObj">
+	<resultMap id="D1BodyFluidMap"					type="org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj">
 		<id column="body_fluid_type"			property="bodyFluidType"/>
 		<id column="uid"						property="uid"/>
 		<association property="culture" 		javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
@@ -175,7 +175,7 @@
 		<id column="source"						property="source"/>
 		<id column="uid"						property="uid"/>
 
-		<association property="extract" javaType="org.kobic.kobis.file.excel.obj.internal.EObj">
+		<association property="extract" javaType="org.kobic.kobis.file.excel.obj.internal.ExtractionObj">
 			<id column="open_yn"				property="openYn"/>
 			<id column="open_url"				property="openUrl"/>
 		</association>
