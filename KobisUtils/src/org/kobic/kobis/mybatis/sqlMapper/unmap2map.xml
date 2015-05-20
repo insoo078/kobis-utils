@@ -50,18 +50,13 @@
 			</association>
 		</association>
 	</resultMap>
+
 	<resultMap id="D1DnaRnaProteinDerivativesMap"	type="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj">
 		<id column="source"						property="source"/>
 		<id column="detail_type"				property="detailType"/>
 		<id column="deposit_type"				property="depositType"/>
 		<id column="uid"						property="uid"/>
 
-		<association property="culture" javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
-			<id column="culture_medium_name"	property="cultureMediumName"/>
-			<id column="condition"				property="condition"/>
-			<id column="succeed_dt"				property="succeedDt"/>
-			<id column="succeed_time"			property="succeedTime"/>
-		</association>
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
 			<id column="store_place"			property="storePlace"/>
 			<id column="store_no"				property="storeNo"/>
@@ -434,6 +429,7 @@
 		SELECT
 			* 
 		FROM T2_UnMappedCommon
+		WHERE CONCAT(genus, ' ', species)='Bos tarurus' 
   		LIMIT #{pagingIndex}, #{paging}
 	</select>
 	

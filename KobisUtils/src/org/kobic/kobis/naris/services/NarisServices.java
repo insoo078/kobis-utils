@@ -87,23 +87,21 @@ public class NarisServices extends AbstractCommonServices{
 		int mappedCnt = 0;
 		for(int i=0; i<=noOfPage; i++) {
 			pagingIndex = paging * i;
-			
+
 			List<D1CommonVO> voList = this.narisService.getNarisDataList(pagingIndex, paging);
 
 			for( D1CommonVO vo : voList ) {
 				wholeCnt++;
-
 				String scientificName = vo.getGenus() + " " + vo.getSpecies();
-				
-				System.out.println( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") " );
 
 				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
 				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
 
+				System.out.println( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") " );
 				if( uid < 0 && unUid < 0 ) {
-//					int ret = this.processCommon( vo, scientificName );
-//
-//					mappedCnt += ret;
+					int ret = this.processCommon( vo, scientificName );
+
+					mappedCnt += ret;
 				}
 			}
 		}

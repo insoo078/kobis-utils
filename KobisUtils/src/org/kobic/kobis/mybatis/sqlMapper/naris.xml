@@ -3,7 +3,7 @@
 
 <mapper namespace="org.kobic.kobis.naris.mapper.NarisMapper">
 	<resultMap id="D1CommonMap" 					type="org.kobic.kobis.main.vo.D1CommonVO">
-		<id column="inst_id"			property="uid"/>
+		<id column="uid"				property="uid"/>
 		<id column="accession_num"		property="access_num"/>
 		<id column="ins_cd"				property="ins_cd"/>
 		<id column="message"			property="message"/>
@@ -32,22 +32,104 @@
 		<id column="family"				property="family"/>
 	</resultMap>
 
+	<resultMap id="D1ObservationMap"				type="org.kobic.kobis.file.excel.obj.XObservationSheetObj">
+		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
+			<id column="latitude"				property="latitude"/>
+			<id column="longitude"				property="longitude"/>
+		</association>
+		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
+			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
+				<id column="dist_yn"			property="distYn"/>
+				<id column="dist_url"			property="distUrl"/>
+			</association>
+			<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
+				<id column="reg_no"				property="parentNo"/>
+				<id column="application_no"		property="regNo"/>
+			</association>
+			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+				<id column="reference"			property="reference"/>
+			</association>
+		</association>
+	</resultMap>
+
+	<resultMap id="D1SpecimenMap"					type="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj">
+		<id column="morphology"					property="morphology"/>
+		<id column="eng_addr"					property="engAddr"/>
+		<id column="kor_addr"					property="korAddr"/>
+		<id column="collect_user"				property="colleUser"/>
+		<id column="collect_dt"					property="collectDt"/>
+		<id column="nation"						property="nation"/>
+		<id column="ocean"						property="ocean"/>
+		<id column="island"						property="island"/>
+		<id column="specimen_type"				property="specimenType"/>
+		<id column="kind_of_specimen"			property="kindOfSpecimen"/>
+		<id column="public_yn"					property="publicYn"/>
+		<id column="uid"						property="uid"/>
+
+		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
+			<id column="latitude"				property="latitude"/>
+			<id column="longitude"				property="longitude"/>
+		</association>
+		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
+			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
+				<id column="dist_yn"			property="distYn"/>
+				<id column="dist_url"			property="distUrl"/>
+			</association>
+			<association property="patent" javaType="org.kobic.kobis.file.excel.obj.internal.PatentObj">
+				<id column="reg_no"				property="parentNo"/>
+				<id column="application_no"		property="regNo"/>
+			</association>
+			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+				<id column="reference"			property="reference"/>
+			</association>
+		</association>
+	</resultMap>
+
 	<select id="getTotalCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM transform.common
 	</select>
 
 	<select id="getNarisDataList" resultMap="D1CommonMap" parameterType="java.util.Map">
-		SELECT
-			0 as uid
-			, a.*
-			, '' as common_name
-			, '' as line_name
-			, '' as taxonomy
-			, 'INS00007' as ins_cd
-		FROM transform.common a
-		LIMIT #{pagingIndex}, #{paging}
+		<![CDATA[
+			SELECT
+				0 as uid
+				, a.accession_num
+				, a.kor_name
+				, a.family
+				, a.genus
+				, a.subgenus
+				, a.species
+				, a.synonym
+				, a.in_species_type
+				, a.in_species_name
+				, a.institution
+				, a.category_1
+				, a.category_2
+				, a.gene_name
+				, a.accession_no
+				, a.sequence
+				, a.keywords
+				, a.detail_url
+				, a.img_url_1
+				, '' as common_name
+				, '' as line_name
+				, '' as taxonomy
+				, 'INS00007' as ins_cd
+			FROM transform.common a
+			LIMIT #{pagingIndex}, #{paging}
+		]]>
 	</select>
 	
+	<select id="getNarisObservation" resultMap="D1ObservationMap" parameterType="java.util.Map">
+		SELECT * FROM transform.observation
+		LIMIT #{pagingIndex}, #{paging}
+	</select>
+
+	<select id="getNarisSpecimen" resultMap="D1SpecimenMap" parameterType="java.util.Map">
+		SELECT * FROM transform.specimen
+		LIMIT #{pagingIndex}, #{paging}
+	</select>
+
 	<select id="getSpeciesKorNameInfo" resultType="org.kobic.kobis.naris.vo.NarisSpeciesInfoVO" parameterType="java.util.Map">
 		SELECT * FROM transform.Sheet3
 		WHERE MATCH(genus, species) AGAINST( #{scientific_name} )
