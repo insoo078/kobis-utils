@@ -92,7 +92,7 @@
 	</insert>
 
 	<select id="getT1ClassificationSystemTable" parameterType="java.util.Map" resultType="java.lang.String">
-		SELECT
+<!-- 		SELECT
 			tab_id 
 		FROM T1_ClassificationSystemTable
 		<where>
@@ -101,7 +101,12 @@
 			<if test="itis_tax_id != null">AND itis_tax_id=#{itis_tax_id}</if>
 			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
 			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
-		</where>
+		</where> -->
+		SELECT
+			tab_id 
+		FROM T1_ClassificationSystemTable
+		WHERE MATCH(scientific_name) AGAINST( #{scientific_name} )
+		HAVING scientific_name=#{scientific_name}
 	</select>
 
 <!--
