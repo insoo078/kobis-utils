@@ -422,80 +422,307 @@
 	</resultMap>
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
-		SELECT
-			* 
-		FROM T2_UnMappedCommon
-		WHERE CONCAT(genus, ' ', species)='Bos tarurus' 
-  		LIMIT #{pagingIndex}, #{paging}
+		SELECT 
+    ''													AS uid,
+    ''													AS family,
+    ''													AS genus,
+    ''													AS subgenus,
+    ''													AS species,
+	(SELECT IFNULL(SYNONYMS,''))						AS synonym,
+    (SELECT IFNULL(COMMON_NAME,''))						AS common_name,
+    (SELECT IFNULL(KOREA_NAME,''))						AS kor_name,
+    ''													AS in_species_type,
+    ''													AS in_species_name,
+    ''													AS line_name,
+    ''													AS variety_name,
+    (SELECT IFNULL(TAXONOMY,''))						AS taxonomy,
+    (SELECT IFNULL(INSTITUTION,''))						AS institution,
+    (SELECT IFNULL(CATEGORY_1,''))						AS category_1,
+    (SELECT IFNULL(CATEGORY_2,''))						AS category_2,
+    ''													AS category_3,
+    (SELECT IFNULL(DETAIL_URL,''))						AS detail_url,
+    ''													AS gene_name,
+    ''													AS accession_no,
+    ''													AS sequence,
+    ''													AS keywords,
+    ''													AS img_url_1,
+    ''													AS ins_user_email,
+    ''													AS message,
+    'INS00009'											AS ins_cd,
+	(SELECT IFNULL(ACCESSION_NUM,''))					AS accession_num   
+	FROM
+    transform.kbr_kobis
 	</select>
 	
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
-		SELECT * FROM T2_UnMappedCellStrain
-		WHERE uid=${uid}
+		SELECT 
+	'' 													AS uid,
+    ''													AS `source`,
+    ''													AS cell_type,
+    ''													AS cell_name,
+	''													AS culture_medium_name,
+    ''													AS `condition`,
+    ''													AS succeed_dt,
+    ''													AS succeed_time,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
-		SELECT * FROM T2_UnMappedBodyFluid
-		WHERE uid=${uid}
+		SELECT 
+    ''													AS uid,
+    ''													AS body_fluid_type,
+	''													AS culture_medium_name,
+    ''													AS `condition`,
+    ''													AS succeed_dt,
+    ''													AS succeed_time,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference   
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
-		SELECT * FROM T2_UnMapped_DNA_RNA_Protein_Derivatives
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS detail_type,
+    ''													AS deposit_type,
+    ''													AS store_place,
+    ''													AS store_no,
+    ''													AS sample_type,
+    ''													AS sample_detail,
+    ''													AS sample_etc,
+	''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference   
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
-		SELECT * FROM T2_UnMapped_Dna_Sequence
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS molecular_type,
+    ''													AS data_type,
+    ''													AS gene_name,
+    ''													AS accession_no,
+    ''													AS sequences,
+    ''													AS open_yn,
+    ''													AS open_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference,  
+    ''													AS gene_full_name,
+    ''													AS gene_alias
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
-		SELECT * FROM T2_UnMappedEmbryo
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS embryo,
+    ''													AS store_place,
+    ''													AS store_no,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
-		SELECT * FROM T2_UnMappedEtc
-		WHERE uid=${uid}
+		SELECT 
+    ''													AS uid,
+    ''													AS description,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS open_yn,
+    ''													AS open_url,
+	''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
-		SELECT * FROM T2_UnMappedExpression
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS open_yn,
+    ''													AS open_url,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+	''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
-		SELECT * FROM T2_UnMappedExtraction
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS solvent,
+    ''													AS extract_time,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
-		SELECT * FROM T2_UnMappedIndividual
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS individual_type,
+    ''													AS individual_maintenance,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference    
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
-		SELECT * FROM T2_UnMappedObservation
-		WHERE uid=${uid}
+		SELECT 
+    ''													AS uid,
+    ''													AS latitude,
+    ''													AS lonitude,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference    
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
-		SELECT * FROM T2_UnMappedOrgan
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+	''													AS organ_type,
+    ''													AS disease,
+    ''													AS store_place,
+    ''													AS store_no,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference    
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
-		SELECT * FROM T2_UnMappedProteinSequence
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS protein_name,
+    ''													AS accession_no,
+    ''													AS sequence,
+    ''													AS open_yn,
+    ''													AS open_url,
+	''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
-		SELECT * FROM T2_UnMappedSeed
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS seed_status,
+	''													AS store_place,
+    ''													AS store_no,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
-		SELECT * FROM T2_UnMappedSource
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+    ''													AS `source`,
+    ''													AS disease,
+    ''													AS store_place,
+    ''													AS store_no,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
-		SELECT * FROM T2_UnMappedSpecimen
-		WHERE uid=${uid}
+		SELECT 
+	'' AS uid,
+	(SELECT IFNULL(SPECIMEN_MORPHOLOGY_CHARACTER,''))	AS morphology,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS kor_addr,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS eng_addr,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS latitude,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS longitude,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS collect_user,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS collect_dt,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS nation,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS ocean,
+    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS island,
+    ''													AS specimen_type,
+    ''													AS kind_of_specimen,
+    ''													AS public_yn ,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference    
+FROM
+	transform.kbr_kobis
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
-		SELECT * FROM T2_UnMappedStrain
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+	'' 													AS `source`,
+    '' 													AS pathogenic_yn,
+    '' 													AS strain_name,
+	'' 													AS culture_medium_name,
+    '' 													AS `condition`,
+    '' 													AS succeed_dt,
+    ''													AS succeed_time,
+    ''													AS dist_yn,
+    ''													AS dist_url,
+    ''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference   
+FROM
+    transform.kbr_kobis
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
-		SELECT * FROM T2_UnMappedStructure
-		WHERE uid=${uid}
+		SELECT 
+	''													AS uid,
+	''													AS `source`,
+    ''													AS structure_type,
+    ''													AS accession_no,
+    ''													AS pdb_format,
+    ''													AS open_yn,
+    ''													AS open_url,
+	''													AS application_no,
+    ''													AS reg_no,
+    ''													AS reference 
+FROM
+    transform.kbr_kobis
 	</select>
 </mapper>
