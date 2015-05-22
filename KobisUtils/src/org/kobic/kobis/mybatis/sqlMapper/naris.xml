@@ -120,6 +120,16 @@
 		]]>
 	</select>
 	
+	
+	<select id="getSpecimenTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM transform.specimen
+	</select>
+	
+	
+	<select id="getObservationTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM transform.observation
+	</select>
+	
 	<select id="getNarisObservation" resultMap="D1ObservationMap" parameterType="java.util.Map">
 		SELECT * FROM transform.observation
 		LIMIT #{pagingIndex}, #{paging}

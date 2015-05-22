@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.dao.CommonDAOService;
+import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
+import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.knnrrc.vo.KnnrrcVO;
 import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.naris.mapper.NarisMapper;
@@ -79,5 +81,51 @@ public class NarisDAOService extends CommonDAOService implements NarisDAO{
 		NarisMapper narisMapper = session.getMapper( NarisMapper.class );
 
 		return narisMapper.getScientificNameGroupByGenusWithSpecies();
+	}
+
+	@Override
+	public List<XObservationSheetObj> getNarisObservation(int pagingIndex, int paging) {
+		SqlSession session = this.getSessionFactory().openSession( true );
+
+		NarisMapper narisMapper = session.getMapper( NarisMapper.class );
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("pagingIndex", pagingIndex);
+		map.put("paging", paging);
+
+		List<XObservationSheetObj> voList = narisMapper.getNarisObservation(map);
+		return voList;
+	}
+
+	@Override
+	public List<XSpecimenSheetObj> getNarisSpecimen(int pagingIndex, int paging) {
+		SqlSession session = this.getSessionFactory().openSession( true );
+
+		NarisMapper narisMapper = session.getMapper( NarisMapper.class );
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("pagingIndex", pagingIndex);
+		map.put("paging", paging);
+
+		List<XSpecimenSheetObj> voList = narisMapper.getNarisSpecimen(map);
+		return voList;
+	}
+
+	@Override
+	public int getSpecimenTotalCount() {
+		SqlSession session = this.getSessionFactory().openSession( true );
+
+		NarisMapper narisMapper = session.getMapper( NarisMapper.class );
+
+		return narisMapper.getSpecimenTotalCount();
+	}
+
+	@Override
+	public int getObservationTotalCount() {
+		SqlSession session = this.getSessionFactory().openSession( true );
+
+		NarisMapper narisMapper = session.getMapper( NarisMapper.class );
+
+		return narisMapper.getObservationTotalCount();
 	}
 }

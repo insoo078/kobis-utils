@@ -102,11 +102,13 @@
 			<if test="gbif_tax_id != null">AND gbif_tax_id=#{gbif_tax_id}</if>
 			<if test="scientific_name != null">AND scientific_name=#{scientific_name}</if>
 		</where> -->
-		SELECT
-			tab_id 
-		FROM T1_ClassificationSystemTable
-		WHERE MATCH(scientific_name) AGAINST( #{scientific_name} )
-		HAVING scientific_name=#{scientific_name}
+		SELECT tab_id FROM (
+			SELECT
+				tab_id, scientific_name
+			FROM T1_ClassificationSystemTable
+			WHERE MATCH(scientific_name) AGAINST( #{scientific_name} )
+			HAVING scientific_name=#{scientific_name}
+		) aa
 	</select>
 
 <!--

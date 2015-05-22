@@ -37,22 +37,36 @@ public class NarisServices extends AbstractCommonServices{
 		return 0;
 	}
 	
-	private int processSpecimen( XSpecimenSheetObj obj2, String insCd, String accessionNumFromMapTab ) throws IllegalAccessException, InvocationTargetException {
+	private int processSpecimen( XSpecimenSheetObj obj2, String insCd, int uid, int unUid ) throws IllegalAccessException, InvocationTargetException {
 		D1SpecimenVO vo2 = new D1SpecimenVO( obj2 );
 
 		int ret = -1;
-		if( !accessionNumFromMapTab.isEmpty() )	ret = this.getKobisService().insertD1Specimen(vo2, insCd);
-		else									ret = this.getUnmapService().insertT2UnmappedSpecimen( obj2 );
+		if( uid > 0 && unUid < 0 )		{
+			ret = this.getKobisService().insertD1Specimen(vo2, insCd);
+			
+			System.out.println( "> [mapped]" );
+		}
+		else{
+			ret = this.getUnmapService().insertT2UnmappedSpecimen( obj2 );
+			
+			System.err.println( "> [unmapped]" );
+		}
 
 		return ret;
 	}
 
-	private int processObservation( XObservationSheetObj obj2, String insCd, String accessionNumFromMapTab ) throws IllegalAccessException, InvocationTargetException {
+	private int processObservation( XObservationSheetObj obj2, String insCd, int uid, int unUid ) throws IllegalAccessException, InvocationTargetException {
 		D1ObservationVO vo2 = new D1ObservationVO( obj2 );
 
 		int ret = -1;
-		if( !accessionNumFromMapTab.isEmpty() )	ret = this.getKobisService().insertD1Observation(vo2, insCd);
-		else									ret = this.getUnmapService().insertT2UnmappedObservation( obj2 );
+		if( uid > 0 && unUid < 0 ){
+			ret = this.getKobisService().insertD1Observation(vo2, insCd);
+			System.out.println( "> [mapped]" );
+		}
+		else{
+			ret = this.getUnmapService().insertT2UnmappedObservation( obj2 );
+			System.err.println( "> [unmapped]" );
+		}
 
 		return ret;
 	}
@@ -94,6 +108,61 @@ public class NarisServices extends AbstractCommonServices{
 
 					int result = this.narisService.updateKorNameWithInspeciesName( map );
 				}
+			}
+		}
+	}
+	
+	public void readSpecimen() throws IllegalAccessException, InvocationTargetException {
+		int totalCnt = this.narisService.getSpecimenTotalCount();
+		System.out.println("total count : "+ totalCnt );
+
+		int paging = 1000;
+		int pagingIndex = 0;
+		
+		double noOfPage = Math.ceil( (double)totalCnt / paging );
+
+		
+		int wholeCnt = 0;
+		for(int i=0; i<=noOfPage; i++) {
+			pagingIndex = paging * i;
+
+			List<XSpecimenSheetObj> voList = this.narisService.getNarisSpecimen(pagingIndex, paging);
+
+			for( XSpecimenSheetObj vo : voList ) {
+				wholeCnt++;
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );	
+				
+				System.out.print( ">" + wholeCnt + "/" + totalCnt );
+				this.processSpecimen( vo, this.getInsCd(), uid, unUid );
+			}
+		}
+	}
+	
+	public void readObservation() throws IllegalAccessException, InvocationTargetException {
+		// TODO Auto-generated method stub
+		int totalCnt = this.narisService.getObservationTotalCount();
+		System.out.println("total count : "+ totalCnt );
+
+		int paging = 1000;
+		int pagingIndex = 0;
+		
+		double noOfPage = Math.ceil( (double)totalCnt / paging );
+		
+		int wholeCnt = 0;
+
+		for(int i=0; i<=noOfPage; i++) {
+			pagingIndex = paging * i;
+
+			List<XObservationSheetObj> voList = this.narisService.getNarisObservation(pagingIndex, paging);
+
+			for( XObservationSheetObj vo : voList ) {
+				wholeCnt++;
+				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );	
+				
+				System.out.print( ">" + wholeCnt + "/" + totalCnt );
+				this.processObservation( vo, this.getInsCd(), uid, unUid );
 			}
 		}
 	}
