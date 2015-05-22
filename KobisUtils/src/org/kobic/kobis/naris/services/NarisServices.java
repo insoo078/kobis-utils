@@ -41,12 +41,13 @@ public class NarisServices extends AbstractCommonServices{
 		D1SpecimenVO vo2 = new D1SpecimenVO( obj2 );
 
 		int ret = -1;
-		if( uid > 0 && unUid < 0 )		{
+		if( uid > 0 && unUid < 0 ){
+			vo2.setUid( uid );
 			ret = this.getKobisService().insertD1Specimen(vo2, insCd);
 			
 			System.out.println( "> [mapped]" );
-		}
-		else{
+		} else if( uid < 0 && unUid > 0 ){
+			vo2.setUid( unUid );
 			ret = this.getUnmapService().insertT2UnmappedSpecimen( obj2 );
 			
 			System.err.println( "> [unmapped]" );
@@ -60,10 +61,11 @@ public class NarisServices extends AbstractCommonServices{
 
 		int ret = -1;
 		if( uid > 0 && unUid < 0 ){
+			vo2.setUid( uid );
 			ret = this.getKobisService().insertD1Observation(vo2, insCd);
 			System.out.println( "> [mapped]" );
-		}
-		else{
+		} else if( uid < 0 && unUid > 0 ){
+			vo2.setUid( unUid );
 			ret = this.getUnmapService().insertT2UnmappedObservation( obj2 );
 			System.err.println( "> [unmapped]" );
 		}
@@ -159,7 +161,7 @@ public class NarisServices extends AbstractCommonServices{
 			for( XObservationSheetObj vo : voList ) {
 				wholeCnt++;
 				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
-				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );	
+				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
 				
 				System.out.print( ">" + wholeCnt + "/" + totalCnt );
 				this.processObservation( vo, this.getInsCd(), uid, unUid );

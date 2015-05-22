@@ -3,6 +3,7 @@
 
 <mapper namespace="org.kobic.kobis.bris.mapper.BrissMapper">
 	<resultMap id="D1CellStrainMap"					type="org.kobic.kobis.file.excel.obj.XCellStrainSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="cell_type"					property="cellLineType"/>
 		<id column="cell_name"					property="cellLineName"/>
@@ -28,6 +29,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1BodyFluidMap"					type="org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="body_fluid_type"			property="bodyFluidType"/>
 		<id column="uid"						property="uid"/>
 		<association property="culture" 		javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
@@ -52,6 +54,7 @@
 	</resultMap>
 
 	<resultMap id="D1DnaRnaProteinDerivativesMap"	type="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="detail_type"				property="detailType"/>
 		<id column="deposit_type"				property="depositType"/>
@@ -81,6 +84,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1DnaSequenceMap" 				type="org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="molecular_type"				property="molecular_type"/>
 		<id column="data_type"					property="data_type"/>
@@ -106,6 +110,7 @@
 		</association>
 	</resultMap>	
 	<resultMap id="D1EmbryoMap"						type="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="embryo"						property="embryo"/>
 		<id column="uid"						property="uid"/>
 
@@ -128,6 +133,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1EtcMap"						type="org.kobic.kobis.file.excel.obj.XEtcSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="description"				property="description"/>
 		<id column="uid"						property="uid"/>
 
@@ -150,6 +156,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExpressionMap"					type="org.kobic.kobis.file.excel.obj.XExpressionSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="data_type"					property="dataType"/>
 		<id column="uid"						property="uid"/>
@@ -167,6 +174,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExtractMap"					type="org.kobic.kobis.file.excel.obj.XExtractSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="uid"						property="uid"/>
 
@@ -189,6 +197,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1IndividualMap"					type="org.kobic.kobis.file.excel.obj.XIndividualSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="individual_type"			property="individualType"/>
 		<id column="individual_maintenance"		property="individualMaintenance"/>
 		<id column="uid"						property="uid"/>
@@ -208,6 +217,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ObservationMap"				type="org.kobic.kobis.file.excel.obj.XObservationSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
 			<id column="latitude"				property="latitude"/>
 			<id column="longitude"				property="longitude"/>
@@ -227,6 +237,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1OrganMap"						type="org.kobic.kobis.file.excel.obj.XOrganSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="organ_type"					property="organType"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
@@ -250,6 +261,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ProteinSequenceMap"			type="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="protein_name"				property="proteinName"/>
 		<id column="accession_no"				property="accessionNo"/>
@@ -269,6 +281,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SeedMap"						type="org.kobic.kobis.file.excel.obj.XSeedSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="seed_status"				property="seedStatus"/>
 		<id column="uid"						property="uid"/>
 
@@ -291,6 +304,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SourceMap"						type="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
@@ -314,6 +328,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SpecimenMap"					type="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="morphology"					property="morphology"/>
 		<id column="eng_addr"					property="engAddr"/>
 		<id column="kor_addr"					property="korAddr"/>
@@ -346,6 +361,7 @@
 		</association>
 	</resultMap>	
 	<resultMap id="D1StrainMap"						type="org.kobic.kobis.file.excel.obj.XStrainSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="pathogenic_yn"				property="pathogenicYn"/>
 		<id column="strain_name"				property="strainName"/>
@@ -372,6 +388,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1StructureMap"					type="org.kobic.kobis.file.excel.obj.XStructureSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="sturcture_type"				property="sturctureType"/>
 		<id column="accession_no"				property="accessionNo"/>
@@ -427,38 +444,38 @@
 		    uid												AS accession_num,    
 		    'INS00008'										AS ins_cd,
 		    ''												AS message,
-		    ifnull(ins_user, '')							AS ins_user_email,
-		    ifnull(img_url_1, '')							AS img_url_1,
+		    IFNULL(ins_user, '')							AS ins_user_email,
+		    IFNULL(img_url_1, '')							AS img_url_1,
 		    ''												AS keywords,
 		    ''												AS sequence,
 		    ''												AS accession_no,
 		    ''												AS gene_name,
-		    ifnull(detail_url, '') 							AS detail_url,
-		    ifnull(category_3, '') 							AS category_3,
-		    ifnull(category_2, '') 							AS category_2,
-		    ifnull(category_1, '') 							AS category_1,
-		    ifnull(institution, '') 						AS institution,
-		    ifnull(taxonomy, '') 							AS taxonomy,
-		    ifnull(variety_name, '')						AS variety_name,
-		    ifnull(line_name, '')							AS line_name,
-		    ifnull(sub_spec, '') 							AS in_species_name,
+		    IFNULL(detail_url, '') 							AS detail_url,
+		    IFNULL(category_3, '') 							AS category_3,
+		    IFNULL(category_2, '') 							AS category_2,
+		    IFNULL(category_1, '') 							AS category_1,
+		    IFNULL(institution, '') 						AS institution,
+		    IFNULL(taxonomy, '') 							AS taxonomy,
+		    IFNULL(variety_name, '')						AS variety_name,
+		    IFNULL(line_name, '')							AS line_name,
+		    IFNULL(sub_spec, '') 							AS in_species_name,
 		    '' 												AS in_species_type,
-		    ifnull(korea_name, '') 							AS korea_name,
-		    ifnull(common_name, '') 						AS common_name,
-		    ifnull(synonyms, '') 							AS synonym,
-		    ifnull(spec, '') 								AS species,
+		    IFNULL(korea_name, '') 							AS korea_name,
+		    IFNULL(common_name, '') 						AS common_name,
+		    IFNULL(synonyms, '') 							AS synonym,
+		    IFNULL(spec, '') 								AS species,
 		    '' 												AS subgenus,
-		    ifnull(genu, '') 								AS genus,
-		    '' 												AS family   
+		    IFNULL(genu, '') 								AS genus,
+		    '' 												AS family
 		FROM
 		    transform.te_gr_standard
 	</select>
 	
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
 		SELECT     
-		    ifnull(cell_source, '') 						AS source,
-		    ifnull(cell_type, '') 							AS cell_type,
-		    ifnull(cell_name, '') 							AS cell_name,
+		    IFNULL(cell_source, '') 						AS source,
+		    IFNULL(cell_type, '') 							AS cell_type,
+		    IFNULL(cell_name, '') 							AS cell_name,
 		    uid 											AS accession_num,
 		    '' 												AS culture_medium_name,
 		    '' 												AS `condition`,
@@ -470,11 +487,11 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
 		SELECT 
-		    ifnull(body_fluid_type, '') 					AS body_fluid_type,
+		    IFNULL(body_fluid_type, '') 					AS body_fluid_type,
 		    uid 											AS accession_num,
 		    '' 												AS culture_medium_name,
 		    '' 												AS `condition`,
@@ -486,13 +503,13 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
 		SELECT     
-		    ifnull(dna_source, '') 							AS source,
-		    ifnull(dna_detail_type, '')						AS detail_type,
-		    ifnull(dna_type, '') 							AS vdeposit_type,
+		    IFNULL(dna_source, '') 							AS source,
+		    IFNULL(dna_detail_type, '')						AS detail_type,
+		    IFNULL(dna_type, '') 							AS vdeposit_type,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -505,30 +522,30 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
 		SELECT 
-		    ifnull(nucleic_source, '') 						AS source,
-		    ifnull(nucleic_molecular_type, '') 				AS molecular_type,
-		    ifnull(nucleic_data_type, '') 					AS data_type,
+		    IFNULL(nucleic_source, '') 						AS source,
+		    IFNULL(nucleic_molecular_type, '') 				AS molecular_type,
+		    IFNULL(nucleic_data_type, '') 					AS data_type,
 		    '' 												AS gene_full_name,
 		    '' 												AS gene_alias,
 		    uid 											AS accession_num,
 		    '' 												AS gene_name,
 		    '' 												AS accession_no,
-		    ifnull(nucleic_sequence_file, '') 				AS sequence,
+		    IFNULL(nucleic_sequence_file, '') 				AS sequence,
 		    '' 												AS opne_yn,
 		    '' 												AS opne_url,
 		    '' 												AS reg_no,
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
 		SELECT     
-		    ifnull(embryo_embryo_type, '') 					AS embryo,
+		    IFNULL(embryo_embryo_type, '') 					AS embryo,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -538,7 +555,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
 		SELECT     
@@ -552,13 +569,13 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
 		SELECT 
 		    '' 												AS expression_id,
-		    ifnull(expression_source, '') 					AS source,
-		    ifnull(expression_data_type, '') 				AS data_type,
+		    IFNULL(expression_source, '') 					AS source,
+		    IFNULL(expression_data_type, '') 				AS data_type,
 		    uid 											AS accession_num,
 		    '' 												AS open_yn,
 		    '' 												AS open_url,
@@ -566,11 +583,11 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
 		SELECT     
-		    ifnull(extract_source, '') 						AS source,
+		    IFNULL(extract_source, '') 						AS source,
 		    uid 											AS accession_num,
 		    '' 												AS open_yn,
 		    '' 												AS open_url,
@@ -580,12 +597,12 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
 		SELECT 
-		    ifnull(individual_stock_type, '') 				AS individual_type,
-		    ifnull(individual_stock_maintain, '') 			AS individual_maintenance,
+		    IFNULL(individual_stock_type, '') 				AS individual_type,
+		    IFNULL(individual_stock_maintain, '') 			AS individual_maintenance,
 		    uid 											AS accession_num,
 		    '' 												AS dist_yn,
 		    '' 												AS dist_url,
@@ -593,7 +610,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
 		SELECT 
@@ -606,12 +623,12 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
 		SELECT 
-		    ifnull(organ_type, '') 							AS organ_type,
-		    ifnull(organ_disease, '')						AS disease,
+		    IFNULL(organ_type, '') 							AS organ_type,
+		    IFNULL(organ_disease, '')						AS disease,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -621,14 +638,14 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
 		SELECT 
-		    ifnull(protein_soruce, '') 						AS source,
-		    ifnull(protein_protein_name, '') 				AS protein_name,
-		    ifnull(protein_sequence_file, '') 				AS accession_no,
-		    ifnull(protein_sequence_file, '') 				AS sequence,
+		    IFNULL(protein_soruce, '') 						AS source,
+		    IFNULL(protein_protein_name, '') 				AS protein_name,
+		    IFNULL(protein_sequence_file, '') 				AS accession_no,
+		    IFNULL(protein_sequence_file, '') 				AS sequence,
 		    uid 											AS accession_num,
 		    '' 												AS open_yn,
 		    '' 												AS open_url,
@@ -636,11 +653,11 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
 		SELECT 
-		    ifnull(seed_seed_status, '') 					AS seed_status,
+		    IFNULL(seed_seed_status, '') 					AS seed_status,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -650,12 +667,12 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
 		SELECT 
-		    ifnull(tissue_source, '') 						AS source,
-		    ifnull(tissue_disease, '') 						AS disease,
+		    IFNULL(tissue_source, '') 						AS source,
+		    IFNULL(tissue_disease, '') 						AS disease,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -665,14 +682,14 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
 		SELECT 
-		    ifnull(specimen_morphology_character, '')		AS morphology,    
+		    IFNULL(specimen_morphology_character, '')		AS morphology,    
 		    '' 												AS eng_addr,
-		    ifnull(specimen_locality, '')					AS kor_addr,
+		    IFNULL(specimen_locality, '')					AS kor_addr,
 		    '' 												AS collect_user,
 		    '' 												AS collect_dt,
 		    '' 												AS nation,
@@ -690,13 +707,13 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference   
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
 		SELECT     
-		    ifnull(source, '') 								AS source,
-		    ifnull(pathogenic, '') 							AS pathogenic_yn,
-		    ifnull(strain, '') 								AS strain_name,
+		    IFNULL(source, '') 								AS source,
+		    IFNULL(pathogenic, '') 							AS pathogenic_yn,
+		    IFNULL(strain, '') 								AS strain_name,
 		    uid 											AS accession_num,
 		    '' 												AS culture_medium_name,
 		    '' 												AS `condition`,
@@ -708,15 +725,15 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
 		SELECT 
 		    '' 												AS structure_id,
-		    ifnull(structure_source, '') 					AS source,
-		    ifnull(structure_type, '') 						AS structure_type,
+		    IFNULL(structure_source, '') 					AS source,
+		    IFNULL(structure_type, '') 						AS structure_type,
 		    ''										 		AS accession_no,
-		    ifnull(structure_structure_file, '') 			AS pdb_format,
+		    IFNULL(structure_structure_file, '') 			AS pdb_format,
 		    uid 											AS accession_num,
 		    '' 												AS open_yn,
 		    '' 												AS open_url,
@@ -724,6 +741,6 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard
+		    transform.te_gr_standard WHERE uid=#uid#
 	</select>
 </mapper>

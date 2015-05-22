@@ -3,6 +3,7 @@
 
 <mapper namespace="org.kobic.kobis.kbr.mapper.KbrMapper">
 	<resultMap id="D1CellStrainMap"					type="org.kobic.kobis.file.excel.obj.XCellStrainSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="cell_type"					property="cellLineType"/>
 		<id column="cell_name"					property="cellLineName"/>
@@ -28,6 +29,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1BodyFluidMap"					type="org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="body_fluid_type"			property="bodyFluidType"/>
 		<id column="uid"						property="uid"/>
 		<association property="culture" 		javaType="org.kobic.kobis.file.excel.obj.internal.CultureObj">
@@ -52,6 +54,7 @@
 	</resultMap>
 
 	<resultMap id="D1DnaRnaProteinDerivativesMap"	type="org.kobic.kobis.file.excel.obj.XDnaRnaProteinDerivativesSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="detail_type"				property="detailType"/>
 		<id column="deposit_type"				property="depositType"/>
@@ -81,6 +84,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1DnaSequenceMap" 				type="org.kobic.kobis.file.excel.obj.XDnaSequenceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="molecular_type"				property="molecular_type"/>
 		<id column="data_type"					property="data_type"/>
@@ -106,6 +110,7 @@
 		</association>
 	</resultMap>	
 	<resultMap id="D1EmbryoMap"						type="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="embryo"						property="embryo"/>
 		<id column="uid"						property="uid"/>
 
@@ -128,6 +133,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1EtcMap"						type="org.kobic.kobis.file.excel.obj.XEtcSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="description"				property="description"/>
 		<id column="uid"						property="uid"/>
 
@@ -150,6 +156,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExpressionMap"					type="org.kobic.kobis.file.excel.obj.XExpressionSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="data_type"					property="dataType"/>
 		<id column="uid"						property="uid"/>
@@ -167,6 +174,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ExtractMap"					type="org.kobic.kobis.file.excel.obj.XExtractSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="uid"						property="uid"/>
 
@@ -189,6 +197,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1IndividualMap"					type="org.kobic.kobis.file.excel.obj.XIndividualSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="individual_type"			property="individualType"/>
 		<id column="individual_maintenance"		property="individualMaintenance"/>
 		<id column="uid"						property="uid"/>
@@ -208,6 +217,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ObservationMap"				type="org.kobic.kobis.file.excel.obj.XObservationSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<association property="gps" javaType="org.kobic.kobis.file.excel.obj.internal.GpsObj">
 			<id column="latitude"				property="latitude"/>
 			<id column="longitude"				property="longitude"/>
@@ -227,6 +237,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1OrganMap"						type="org.kobic.kobis.file.excel.obj.XOrganSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="organ_type"					property="organType"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
@@ -250,6 +261,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1ProteinSequenceMap"			type="org.kobic.kobis.file.excel.obj.XProteinSequenceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="protein_name"				property="proteinName"/>
 		<id column="accession_no"				property="accessionNo"/>
@@ -269,6 +281,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SeedMap"						type="org.kobic.kobis.file.excel.obj.XSeedSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="seed_status"				property="seedStatus"/>
 		<id column="uid"						property="uid"/>
 
@@ -291,6 +304,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SourceMap"						type="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
@@ -314,6 +328,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1SpecimenMap"					type="org.kobic.kobis.file.excel.obj.XSpecimenSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="morphology"					property="morphology"/>
 		<id column="eng_addr"					property="engAddr"/>
 		<id column="kor_addr"					property="korAddr"/>
@@ -346,6 +361,7 @@
 		</association>
 	</resultMap>	
 	<resultMap id="D1StrainMap"						type="org.kobic.kobis.file.excel.obj.XStrainSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="pathogenic_yn"				property="pathogenicYn"/>
 		<id column="strain_name"				property="strainName"/>
@@ -372,6 +388,7 @@
 		</association>
 	</resultMap>
 	<resultMap id="D1StructureMap"					type="org.kobic.kobis.file.excel.obj.XStructureSheetObj">
+		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
 		<id column="sturcture_type"				property="sturctureType"/>
 		<id column="accession_no"				property="accessionNo"/>
@@ -423,306 +440,323 @@
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
 		SELECT 
-    ''													AS uid,
-    ''													AS family,
-    ''													AS genus,
-    ''													AS subgenus,
-    ''													AS species,
-	(SELECT IFNULL(SYNONYMS,''))						AS synonym,
-    (SELECT IFNULL(COMMON_NAME,''))						AS common_name,
-    (SELECT IFNULL(KOREA_NAME,''))						AS kor_name,
-    ''													AS in_species_type,
-    ''													AS in_species_name,
-    ''													AS line_name,
-    ''													AS variety_name,
-    (SELECT IFNULL(TAXONOMY,''))						AS taxonomy,
-    (SELECT IFNULL(INSTITUTION,''))						AS institution,
-    (SELECT IFNULL(CATEGORY_1,''))						AS category_1,
-    (SELECT IFNULL(CATEGORY_2,''))						AS category_2,
-    ''													AS category_3,
-    (SELECT IFNULL(DETAIL_URL,''))						AS detail_url,
-    ''													AS gene_name,
-    ''													AS accession_no,
-    ''													AS sequence,
-    ''													AS keywords,
-    ''													AS img_url_1,
-    ''													AS ins_user_email,
-    ''													AS message,
-    'INS00009'											AS ins_cd,
-	(SELECT IFNULL(ACCESSION_NUM,''))					AS accession_num   
-	FROM
-    transform.kbr_kobis
+		    ''													AS uid,
+		    ''													AS family,
+		    ''													AS genus,
+		    ''													AS subgenus,
+		    ''													AS species,
+			IFNULL(SYNONYMS,'')									AS synonym,
+		    IFNULL(COMMON_NAME,'')								AS common_name,
+		    IFNULL(KOREA_NAME,'')								AS kor_name,
+		    ''													AS in_species_type,
+		    ''													AS in_species_name,
+		    ''													AS line_name,
+		    ''													AS variety_name,
+		    IFNULL(TAXONOMY,'')									AS taxonomy,
+		    IFNULL(INSTITUTION,'')								AS institution,
+		    IFNULL(CATEGORY_1,'')								AS category_1,
+		    IFNULL(CATEGORY_2,'')								AS category_2,
+		    ''													AS category_3,
+		    IFNULL(DETAIL_URL,'')								AS detail_url,
+		    ''													AS gene_name,
+		    ''													AS accession_no,
+		    ''													AS sequence,
+		    ''													AS keywords,
+		    ''													AS img_url_1,
+		    ''													AS ins_user_email,
+		    ''													AS message,
+		    'INS00009'											AS ins_cd,
+			uid													AS accession_num
+		FROM
+	    transform.kbr_kobis
 	</select>
-	
+
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
 		SELECT 
-	'' 													AS uid,
-    ''													AS `source`,
-    ''													AS cell_type,
-    ''													AS cell_name,
-	''													AS culture_medium_name,
-    ''													AS `condition`,
-    ''													AS succeed_dt,
-    ''													AS succeed_time,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			'' 													AS uid,
+		    ''													AS `source`,
+		    ''													AS cell_type,
+		    ''													AS cell_name,
+			''													AS culture_medium_name,
+		    ''													AS `condition`,
+		    ''													AS succeed_dt,
+		    ''													AS succeed_time,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
 		SELECT 
-    ''													AS uid,
-    ''													AS body_fluid_type,
-	''													AS culture_medium_name,
-    ''													AS `condition`,
-    ''													AS succeed_dt,
-    ''													AS succeed_time,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference   
-FROM
-    transform.kbr_kobis
+		    ''													AS uid,
+		    ''													AS body_fluid_type,
+			''													AS culture_medium_name,
+		    ''													AS `condition`,
+		    ''													AS succeed_dt,
+		    ''													AS succeed_time,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS detail_type,
-    ''													AS deposit_type,
-    ''													AS store_place,
-    ''													AS store_no,
-    ''													AS sample_type,
-    ''													AS sample_detail,
-    ''													AS sample_etc,
-	''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference   
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS detail_type,
+		    ''													AS deposit_type,
+		    ''													AS store_place,
+		    ''													AS store_no,
+		    ''													AS sample_type,
+		    ''													AS sample_detail,
+		    ''													AS sample_etc,
+			''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS molecular_type,
-    ''													AS data_type,
-    ''													AS gene_name,
-    ''													AS accession_no,
-    ''													AS sequences,
-    ''													AS open_yn,
-    ''													AS open_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference,  
-    ''													AS gene_full_name,
-    ''													AS gene_alias
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS molecular_type,
+		    ''													AS data_type,
+		    ''													AS gene_name,
+		    ''													AS accession_no,
+		    ''													AS sequences,
+		    ''													AS open_yn,
+		    ''													AS open_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,  
+		    ''													AS gene_full_name,
+		    ''													AS gene_alias,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
 		SELECT 
-	''													AS uid,
-    ''													AS embryo,
-    ''													AS store_place,
-    ''													AS store_no,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS embryo,
+		    ''													AS store_place,
+		    ''													AS store_no,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
 		SELECT 
-    ''													AS uid,
-    ''													AS description,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS open_yn,
-    ''													AS open_url,
-	''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+		    ''													AS uid,
+		    ''													AS description,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS open_yn,
+		    ''													AS open_url,
+			''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS open_yn,
-    ''													AS open_url,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-	''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS open_yn,
+		    ''													AS open_url,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+			''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS solvent,
-    ''													AS extract_time,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS solvent,
+		    ''													AS extract_time,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
 		SELECT 
-	''													AS uid,
-    ''													AS individual_type,
-    ''													AS individual_maintenance,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference    
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS individual_type,
+		    ''													AS individual_maintenance,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
 		SELECT 
-    ''													AS uid,
-    ''													AS latitude,
-    ''													AS lonitude,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference    
-FROM
-    transform.kbr_kobis
+		    ''													AS uid,
+		    ''													AS latitude,
+		    ''													AS lonitude,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
 		SELECT 
-	''													AS uid,
-	''													AS organ_type,
-    ''													AS disease,
-    ''													AS store_place,
-    ''													AS store_no,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference    
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+			''													AS organ_type,
+		    ''													AS disease,
+		    ''													AS store_place,
+		    ''													AS store_no,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS protein_name,
-    ''													AS accession_no,
-    ''													AS sequence,
-    ''													AS open_yn,
-    ''													AS open_url,
-	''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS protein_name,
+		    ''													AS accession_no,
+		    ''													AS sequence,
+		    ''													AS open_yn,
+		    ''													AS open_url,
+			''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
 		SELECT 
-	''													AS uid,
-    ''													AS seed_status,
-	''													AS store_place,
-    ''													AS store_no,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS seed_status,
+			''													AS store_place,
+		    ''													AS store_no,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
 		SELECT 
-	''													AS uid,
-    ''													AS `source`,
-    ''													AS disease,
-    ''													AS store_place,
-    ''													AS store_no,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+		    ''													AS `source`,
+		    ''													AS disease,
+		    ''													AS store_place,
+		    ''													AS store_no,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
 		SELECT 
-	'' AS uid,
-	(SELECT IFNULL(SPECIMEN_MORPHOLOGY_CHARACTER,''))	AS morphology,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS kor_addr,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS eng_addr,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS latitude,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS longitude,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS collect_user,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS collect_dt,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS nation,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS ocean,
-    (SELECT IFNULL(SPECIMEN_LOCALITY,''))				AS island,
-    ''													AS specimen_type,
-    ''													AS kind_of_specimen,
-    ''													AS public_yn ,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference    
-FROM
-	transform.kbr_kobis
+			'' AS uid,
+			IFNULL(SPECIMEN_MORPHOLOGY_CHARACTER,'')			AS morphology,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS kor_addr,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS eng_addr,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS latitude,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS longitude,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS collect_user,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS collect_dt,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS nation,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS ocean,
+		    IFNULL(SPECIMEN_LOCALITY,'')						AS island,
+		    ''													AS specimen_type,
+		    ''													AS kind_of_specimen,
+		    ''													AS public_yn ,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num    
+		FROM
+			transform.kbr_kobis
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
 		SELECT 
-	''													AS uid,
-	'' 													AS `source`,
-    '' 													AS pathogenic_yn,
-    '' 													AS strain_name,
-	'' 													AS culture_medium_name,
-    '' 													AS `condition`,
-    '' 													AS succeed_dt,
-    ''													AS succeed_time,
-    ''													AS dist_yn,
-    ''													AS dist_url,
-    ''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference   
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+			'' 													AS `source`,
+		    '' 													AS pathogenic_yn,
+		    '' 													AS strain_name,
+			'' 													AS culture_medium_name,
+		    '' 													AS `condition`,
+		    '' 													AS succeed_dt,
+		    ''													AS succeed_time,
+		    ''													AS dist_yn,
+		    ''													AS dist_url,
+		    ''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num   
+		FROM
+		    transform.kbr_kobis
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
 		SELECT 
-	''													AS uid,
-	''													AS `source`,
-    ''													AS structure_type,
-    ''													AS accession_no,
-    ''													AS pdb_format,
-    ''													AS open_yn,
-    ''													AS open_url,
-	''													AS application_no,
-    ''													AS reg_no,
-    ''													AS reference 
-FROM
-    transform.kbr_kobis
+			''													AS uid,
+			''													AS `source`,
+		    ''													AS structure_type,
+		    ''													AS accession_no,
+		    ''													AS pdb_format,
+		    ''													AS open_yn,
+		    ''													AS open_url,
+			''													AS application_no,
+		    ''													AS reg_no,
+		    ''													AS reference,
+		    uid													AS accession_num
+		FROM
+		    transform.kbr_kobis
 	</select>
 </mapper>
