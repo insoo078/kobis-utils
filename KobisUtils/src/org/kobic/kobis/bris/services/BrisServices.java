@@ -1,5 +1,7 @@
 package org.kobic.kobis.bris.services;
 
+import java.io.File;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.services.AbstractCommonServices;

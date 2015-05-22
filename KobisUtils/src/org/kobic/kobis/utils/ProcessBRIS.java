@@ -1,5 +1,6 @@
 package org.kobic.kobis.utils;
 
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.bris.services.BrisServices;
@@ -10,16 +11,14 @@ public class ProcessBRIS {
 
 	private SqlSessionFactory sessionFactory;
 	
-	private String[] files = new String[]{"common.csv"};
 	
 	public ProcessBRIS() {
 		this.sessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();
 	}
 
-	public void doSomething( String insCd ) {
+	public void doSomething( String insCd ) throws NoSuchMethodException, SecurityException, Exception {
 		BrisServices service = new BrisServices( insCd, this.sessionFactory );
 		
-//		for(int )
 		service.read();
 	}
 
