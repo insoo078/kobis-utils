@@ -1,4 +1,5 @@
 package org.kobic.kobis.naris.services;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -6,7 +7,11 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.kobic.kobis.common.services.AbstractCommonServices;
+import org.kobic.kobis.file.excel.obj.XObservationSheetObj;
+import org.kobic.kobis.file.excel.obj.XSpecimenSheetObj;
 import org.kobic.kobis.main.vo.D1CommonVO;
+import org.kobic.kobis.main.vo.D1ObservationVO;
+import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.naris.dao.NarisDAOService;
 import org.kobic.kobis.naris.vo.NarisSpeciesInfoVO;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
@@ -32,6 +37,26 @@ public class NarisServices extends AbstractCommonServices{
 		return 0;
 	}
 	
+	private int processSpecimen( XSpecimenSheetObj obj2, String insCd, String accessionNumFromMapTab ) throws IllegalAccessException, InvocationTargetException {
+		D1SpecimenVO vo2 = new D1SpecimenVO( obj2 );
+
+		int ret = -1;
+		if( !accessionNumFromMapTab.isEmpty() )	ret = this.getKobisService().insertD1Specimen(vo2, insCd);
+		else									ret = this.getUnmapService().insertT2UnmappedSpecimen( obj2 );
+
+		return ret;
+	}
+
+	private int processObservation( XObservationSheetObj obj2, String insCd, String accessionNumFromMapTab ) throws IllegalAccessException, InvocationTargetException {
+		D1ObservationVO vo2 = new D1ObservationVO( obj2 );
+
+		int ret = -1;
+		if( !accessionNumFromMapTab.isEmpty() )	ret = this.getKobisService().insertD1Observation(vo2, insCd);
+		else									ret = this.getUnmapService().insertT2UnmappedObservation( obj2 );
+
+		return ret;
+	}
+
 	public void updateKoreanWithInSpecies() throws NoSuchMethodException, SecurityException, Exception {
 		// TODO Auto-generated method stub
 //		int totalCnt = this.narisService.getTotalCount();
