@@ -436,15 +436,16 @@
 		<id column="subgenus"			property="subgenus"/>
 		<id column="genus"				property="genus"/>
 		<id column="family"				property="family"/>
+		<id column="code"				property="code"/>
 	</resultMap>
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
 		SELECT 
 		    ''													AS uid,
 		    ''													AS family,
-		    ''													AS genus,
+		    IFNULL(GENU, '')									AS genus,
 		    ''													AS subgenus,
-		    ''													AS species,
+		    IFNULL(SPEC, '')									AS species,
 			IFNULL(SYNONYMS,'')									AS synonym,
 		    IFNULL(COMMON_NAME,'')								AS common_name,
 		    IFNULL(KOREA_NAME,'')								AS kor_name,
@@ -466,9 +467,11 @@
 		    ''													AS ins_user_email,
 		    ''													AS message,
 		    'INS00009'											AS ins_cd,
-			uid													AS accession_num
+			uid													AS accession_num,
+			IFNULL(tab_id, '')									AS code
 		FROM
-	    transform.kbr_kobis
+	    transform.new_kbr_kobis
+	    LIMIT #{pagingIndex}, #{paging}
 	</select>
 
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
@@ -488,7 +491,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
 		SELECT 
@@ -505,7 +508,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
 		SELECT 
@@ -525,7 +528,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
 		SELECT 
@@ -545,7 +548,7 @@
 		    ''													AS gene_alias,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
 		SELECT 
@@ -560,7 +563,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
 		SELECT 
@@ -575,7 +578,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
 		SELECT 
@@ -590,7 +593,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
 		SELECT 
@@ -605,7 +608,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
 		SELECT 
@@ -619,7 +622,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
 		SELECT 
@@ -633,7 +636,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
 		SELECT 
@@ -649,7 +652,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
 		SELECT 
@@ -665,7 +668,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
 		SELECT 
@@ -680,7 +683,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
 		SELECT 
@@ -696,7 +699,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
@@ -722,7 +725,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num    
 		FROM
-			transform.kbr_kobis
+			transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
 		SELECT 
@@ -741,7 +744,7 @@
 		    ''													AS reference,
 		    uid													AS accession_num   
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
 		SELECT 
@@ -757,6 +760,6 @@
 		    ''													AS reference,
 		    uid													AS accession_num
 		FROM
-		    transform.kbr_kobis
+		    transform.new_kbr_kobis WHERE uid=#uid#
 	</select>
 </mapper>

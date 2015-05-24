@@ -30,7 +30,7 @@ public class NarisServices extends AbstractCommonServices{
 		MultipleClassificationProc classifyObj = new MultipleClassificationProc( this.getSessionFactory() );
 		
 		classifyObj.validate( scientificName );
-		
+
 		boolean canValidateToDatabase = classifyObj.updateDatabase( d1CommonVo, scientificName );
 		if ( canValidateToDatabase )	return 1;
 		

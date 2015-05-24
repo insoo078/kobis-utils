@@ -146,6 +146,47 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	return ret;
     }
     
+    
+    public int insertDirectD1Common( D1CommonVO d1CommonVo ) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    	int ret = 0;
+    	try {
+    		// T1_ClassificationSystemTable에서 입력된 환경부, ITIS, GBIF, NCBI의 분류체계로 코드가 존재하는지 조회
+    		String tab_id = d1CommonVo.getCode();
+
+    		if( !Utils.nullToEmpty( tab_id ).isEmpty() ) {
+    			// 매핑된 분류코드를 record에 삽입한뒤 D1_Common 테이블에 입력
+    			ret = kobisMapper.insertD1Common(d1CommonVo);
+    			
+    			Map<String, Object> map = new HashMap<String, Object>();
+    			map.put("access_num", d1CommonVo.getAccess_num());
+        		map.put("ins_cd", d1CommonVo.getIns_cd());
+
+    			int uid = kobisMapper.getUid( map );
+
+    			if( uid > 0 ) {
+    				d1CommonVo.setUid(uid);
+
+		    		if( !Utils.nullToEmpty( d1CommonVo.getSynonym().trim() ).isEmpty() ) {
+		    			// 만약 record에 Synonym이 존재하면 E1_Synonym 테이블에 등록
+		    			ret += kobisMapper.insertE1Synonyms(d1CommonVo);
+		    		}
+    			}
+    		}
+
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		session.rollback();
+    		logger.error( e.getMessage() );
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+    }
+    
     public boolean existE1Culture( Map<String, Object> map ) {
     	String str = 
     			Utils.nullToEmpty( map.get("culture_medium_name") ).trim()

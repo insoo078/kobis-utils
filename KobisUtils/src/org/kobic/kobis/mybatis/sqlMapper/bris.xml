@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.kobic.kobis.bris.mapper.BrissMapper">
+<mapper namespace="org.kobic.kobis.bris.mapper.BrisMapper">
 	<resultMap id="D1CellStrainMap"					type="org.kobic.kobis.file.excel.obj.XCellStrainSheetObj">
 		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
@@ -436,6 +436,7 @@
 		<id column="subgenus"			property="subgenus"/>
 		<id column="genus"				property="genus"/>
 		<id column="family"				property="family"/>
+		<id column="code"				property="code"/>
 	</resultMap>
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
@@ -466,9 +467,10 @@
 		    IFNULL(spec, '') 								AS species,
 		    '' 												AS subgenus,
 		    IFNULL(genu, '') 								AS genus,
-		    '' 												AS family
-		FROM
-		    transform.te_gr_standard
+		    '' 												AS family,
+		    IFNULL(tab_id, '')								AS code
+		FROM transform.new_te_gr_standard
+		LIMIT #{pagingIndex}, #{paging}
 	</select>
 	
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
@@ -487,7 +489,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
 		SELECT 
@@ -503,7 +505,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
 		SELECT     
@@ -522,7 +524,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
 		SELECT 
@@ -541,7 +543,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
 		SELECT     
@@ -555,7 +557,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
 		SELECT     
@@ -569,7 +571,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
 		SELECT 
@@ -583,7 +585,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
 		SELECT     
@@ -597,7 +599,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
 		SELECT 
@@ -610,7 +612,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
 		SELECT 
@@ -623,7 +625,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
 		SELECT 
@@ -638,7 +640,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
 		SELECT 
@@ -653,7 +655,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
 		SELECT 
@@ -667,7 +669,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
 		SELECT 
@@ -682,7 +684,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
@@ -707,7 +709,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference   
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
 		SELECT     
@@ -725,7 +727,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
 		SELECT 
@@ -741,6 +743,10 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#uid#
+	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM transform.new_te_gr_standard
 	</select>
 </mapper>

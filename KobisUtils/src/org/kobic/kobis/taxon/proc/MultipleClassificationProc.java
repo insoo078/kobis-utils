@@ -42,12 +42,21 @@ public class MultipleClassificationProc {
 	}
 
 	public String validate( String scientificName ){
-		this.taxons.put( TaxonProc.CLS_TAB_KOBIC,	new TaxonProc( TaxonProc.CLS_TAB_KOBIC,	this.taxonService.getScientificNameFromKobicTaxonomy( scientificName ) ) );
-		this.taxons.put( TaxonProc.CLS_TAB_NCBI,	new TaxonProc( TaxonProc.CLS_TAB_NCBI,	this.taxonService.getScientificNameFromNcbiTaxonomy( scientificName ) ) );
-		this.taxons.put( TaxonProc.CLS_TAB_ITIS,	new TaxonProc( TaxonProc.CLS_TAB_ITIS,	this.taxonService.getScientificNameFromItisTaxonomy( scientificName ) ) );
-		this.taxons.put( TaxonProc.CLS_TAB_GBIF,	new TaxonProc( TaxonProc.CLS_TAB_GBIF,	this.taxonService.getScientificNameFromGbifTaxonomy( scientificName ) ) );
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("scientific_name", scientificName);
+		String tabId = this.taxonService.getT1ClassificationSystemTable(map);
 
-		return this.errorCode1Check();
+		if( tabId != null )	this.errorCode = MultipleClassificationProc.FINE_MAPPING;
+		else {
+			this.taxons.put( TaxonProc.CLS_TAB_KOBIC,	new TaxonProc( TaxonProc.CLS_TAB_KOBIC,	this.taxonService.getScientificNameFromKobicTaxonomy( scientificName ) ) );
+			this.taxons.put( TaxonProc.CLS_TAB_NCBI,	new TaxonProc( TaxonProc.CLS_TAB_NCBI,	this.taxonService.getScientificNameFromNcbiTaxonomy( scientificName ) ) );
+			this.taxons.put( TaxonProc.CLS_TAB_ITIS,	new TaxonProc( TaxonProc.CLS_TAB_ITIS,	this.taxonService.getScientificNameFromItisTaxonomy( scientificName ) ) );
+			this.taxons.put( TaxonProc.CLS_TAB_GBIF,	new TaxonProc( TaxonProc.CLS_TAB_GBIF,	this.taxonService.getScientificNameFromGbifTaxonomy( scientificName ) ) );
+
+			this.errorCode1Check();
+		}
+
+		return this.errorCode;
 	}
 
 	private String errorCode1Check( ) {
