@@ -54,6 +54,14 @@
 		VALUES( #{uid}, SF_GET_NEW_SYNONYM_ID(#{uid}), #{synonym} )
 	</insert>
 	
+	<insert id="insertE1SynonymsList" parameterType="java.util.List">
+		INSERT INTO E1_Synonym( uid, synonym_id, synonym )
+		VALUES
+		<foreach collection="list" item="item" separator=", ">
+			( #{item.uid}, SF_GET_NEW_SYNONYM_ID(#{item.uid}), #{item.synonym} )
+		</foreach>
+	</insert>
+	
 
 	<select id="getNewObservationId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT SF_GET_NEW_OBSERVATION_ID(#{ins_cd})
@@ -176,7 +184,7 @@
 		SELECT SF_GET_NEW_STRUCTURE_ID(#{ins_cd})
 	</select>
 	<insert id="insertD1Structure" parameterType="D1_Structure">
-		INSERT INTO D1_Sturcture( uid, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
+		INSERT INTO D1_Structure( uid, structure_id, source, structure_type, accession_no, pdb_format, open_yn, open_url )
 		VALUES( #{uid}, #{id}, #{source}, #{sturctureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl} )
 	</insert>
 

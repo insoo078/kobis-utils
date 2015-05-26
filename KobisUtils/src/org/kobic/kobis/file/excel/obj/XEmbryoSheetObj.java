@@ -18,6 +18,8 @@ public class XEmbryoSheetObj extends AbstractSheetObj implements DistPatentRefer
 		this.extra = new DistPatentReferenceObj();
 	}
 
+
+
 	public String getEmbryo() {
 		return embryo;
 	}

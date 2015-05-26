@@ -12,9 +12,19 @@ public class XExpressionSheetObj extends AbstractSheetObj implements OpenPatentR
 	private String source;
 	private String sequence;
 	private String dataType;
+	private String expression_data;
 	private OpenObj open;
 	private PatentObj patent;
 	private ReferenceObj reference;
+
+	
+	public String getExpression_data() {
+		return expression_data;
+	}
+
+	public void setExpression_data(String expression_data) {
+		this.expression_data = expression_data;
+	}
 
 	public String getSource() {
 		return source;

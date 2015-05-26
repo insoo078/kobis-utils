@@ -23,7 +23,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" 	javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -47,7 +47,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -78,7 +78,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -105,13 +105,13 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>	
 	<resultMap id="D1EmbryoMap"						type="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj">
 		<id column="accession_num"				property="access_num"/>
-		<id column="embryo"						property="embryo"/>
+		<id column="embryo_type"				property="embryo"/>
 		<id column="uid"						property="uid"/>
 
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
@@ -127,7 +127,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -150,7 +150,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -160,6 +160,7 @@
 		<id column="source"						property="source"/>
 		<id column="data_type"					property="dataType"/>
 		<id column="uid"						property="uid"/>
+		<id column="expression_data"			property="expression_data"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
 			<id column="open_yn"				property="openYn"/>
@@ -169,7 +170,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -179,8 +180,8 @@
 		<id column="uid"						property="uid"/>
 
 		<association property="extract" javaType="org.kobic.kobis.file.excel.obj.internal.ExtractionObj">
-			<id column="open_yn"				property="openYn"/>
-			<id column="open_url"				property="openUrl"/>
+			<id column="solvent"				property="solvent"/>
+			<id column="extractTime"			property="extractTime"/>
 		</association>
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
@@ -191,7 +192,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -211,7 +212,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -231,7 +232,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -255,7 +256,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -276,7 +277,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -298,7 +299,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -306,6 +307,7 @@
 	<resultMap id="D1SourceMap"						type="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
 		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
+		<id column="source_type"				property="source_type"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
 
@@ -322,7 +324,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -355,7 +357,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -382,7 +384,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -403,7 +405,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -472,6 +474,12 @@
 		FROM
 	    transform.new_kbr_kobis
 	    LIMIT #{pagingIndex}, #{paging}
+	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM transform.new_kbr_kobis
+		]]>
 	</select>
 
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">

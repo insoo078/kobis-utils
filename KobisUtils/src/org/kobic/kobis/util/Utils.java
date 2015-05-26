@@ -48,6 +48,10 @@ public class Utils {
 		return value.matches("-?\\d+(\\.\\d+)?");
 	}
 	
+	public static String lpad( String value, int size ) {
+		return org.apache.commons.lang.StringUtils.leftPad( value, size, '0' );
+	}
+
 	public static Object getValueByField( Object obj, String fieldName ) throws IntrospectionException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		BeanInfo info = Introspector.getBeanInfo(obj.getClass(), Object.class);
 	    PropertyDescriptor[] props = info.getPropertyDescriptors();

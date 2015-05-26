@@ -10,6 +10,7 @@ import org.kobic.kobis.file.excel.obj.internal.StoreObj;
 public class XSourceSheetObj extends AbstractSheetObj implements DistPatentReferenceInterface{
 	private String source;
 	private String disease;
+	private String source_type;
 	private StoreObj store;
 	private DistPatentReferenceObj extra;
 	
@@ -19,6 +20,20 @@ public class XSourceSheetObj extends AbstractSheetObj implements DistPatentRefer
 		this.store = new StoreObj();
 		this.extra = new DistPatentReferenceObj();
 	}
+	
+	
+
+	public String getSource_type() {
+		return source_type;
+	}
+
+
+
+	public void setSource_type(String source_type) {
+		this.source_type = source_type;
+	}
+
+
 
 	public String getSource() {
 		return source;

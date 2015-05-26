@@ -52,6 +52,7 @@ public interface KobisMapper {
     public int insertE1Reference( Map<String, Object> cultureSheet );
     public int insertE1Patent( Map<String, Object> cultureSheet );
     public int insertT2MappedCommon( D1CommonVO commonSheet );
+    public int insertE1SynonymsList(List<D1CommonVO> list);
 
 	public String getNewObservationId( String access_num );
 	public String getNewIndividualId( String access_num );

@@ -23,7 +23,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" 	javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -47,7 +47,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" 		javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -78,7 +78,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -105,13 +105,13 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>	
 	<resultMap id="D1EmbryoMap"						type="org.kobic.kobis.file.excel.obj.XEmbryoSheetObj">
 		<id column="accession_num"				property="access_num"/>
-		<id column="embryo"						property="embryo"/>
+		<id column="embryo_type"				property="embryo"/>
 		<id column="uid"						property="uid"/>
 
 		<association property="store" javaType="org.kobic.kobis.file.excel.obj.internal.StoreObj">
@@ -127,7 +127,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -150,7 +150,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -160,6 +160,7 @@
 		<id column="source"						property="source"/>
 		<id column="data_type"					property="dataType"/>
 		<id column="uid"						property="uid"/>
+		<id column="expression_data"			property="expression_data"/>
 
 		<association property="open" javaType="org.kobic.kobis.file.excel.obj.internal.OpenObj">
 			<id column="open_yn"				property="openYn"/>
@@ -169,7 +170,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -179,8 +180,8 @@
 		<id column="uid"						property="uid"/>
 
 		<association property="extract" javaType="org.kobic.kobis.file.excel.obj.internal.ExtractionObj">
-			<id column="open_yn"				property="openYn"/>
-			<id column="open_url"				property="openUrl"/>
+			<id column="solvent"				property="solvent"/>
+			<id column="extractTime"			property="extractTime"/>
 		</association>
 		<association property="extra" javaType="org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj">
 			<association property="dist" javaType="org.kobic.kobis.file.excel.obj.internal.DistributionObj">
@@ -191,7 +192,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -211,7 +212,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -231,7 +232,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -255,7 +256,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -276,7 +277,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -298,7 +299,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -306,6 +307,7 @@
 	<resultMap id="D1SourceMap"						type="org.kobic.kobis.file.excel.obj.XSourceSheetObj">
 		<id column="accession_num"				property="access_num"/>
 		<id column="source"						property="source"/>
+		<id column="source_type"				property="source_type"/>
 		<id column="disease"					property="disease"/>
 		<id column="uid"						property="uid"/>
 
@@ -322,7 +324,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -355,7 +357,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -382,7 +384,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 			</association>
-			<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+			<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 			</association>
 		</association>
@@ -403,7 +405,7 @@
 				<id column="reg_no"				property="parentNo"/>
 				<id column="application_no"		property="regNo"/>
 		</association>
-		<association property="ref" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
+		<association property="reference" javaType="org.kobic.kobis.file.excel.obj.internal.ReferenceObj">
 				<id column="reference"			property="reference"/>
 		</association>
 	</resultMap>
@@ -440,8 +442,9 @@
 	</resultMap>
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
+		<![CDATA[
 		SELECT
-		    ''												AS uid,
+		    muid											AS uid,
 		    uid												AS accession_num,    
 		    'INS00008'										AS ins_cd,
 		    ''												AS message,
@@ -470,8 +473,15 @@
 		    '' 												AS family,
 		    IFNULL(tab_id, '')								AS code
 		FROM transform.new_te_gr_standard
-		WHERE uid > 479169
+		WHERE umuid is null
 		LIMIT #{pagingIndex}, #{paging}
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM transform.new_te_gr_standard WHERE umuid is null
+		]]>
 	</select>
 	
 	<select id="getCellStrain" parameterType="java.util.Map" resultMap="D1CellStrainMap">
@@ -490,7 +500,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getBodyFluid" parameterType="java.util.Map" resultMap="D1BodyFluidMap">
 		SELECT 
@@ -506,7 +516,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getDnaRnaProteinDerivatives" parameterType="java.util.Map" resultMap="D1DnaRnaProteinDerivativesMap">
 		SELECT     
@@ -525,7 +535,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getDnaSequence" parameterType="java.util.Map" resultMap="D1DnaSequenceMap">
 		SELECT 
@@ -538,17 +548,17 @@
 		    '' 												AS gene_name,
 		    '' 												AS accession_no,
 		    IFNULL(nucleic_sequence_file, '') 				AS sequence,
-		    '' 												AS opne_yn,
-		    '' 												AS opne_url,
+		    '' 												AS open_yn,
+		    '' 												AS open_url,
 		    '' 												AS reg_no,
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getEmbryo" parameterType="java.util.Map" resultMap="D1EmbryoMap">
 		SELECT     
-		    IFNULL(embryo_embryo_type, '') 					AS embryo,
+		    IFNULL(embryo_embryo_type, '') 					AS embryo_type,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
 		    '' 												AS store_no,
@@ -558,7 +568,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getEtc" parameterType="java.util.Map" resultMap="D1EtcMap">
 		SELECT     
@@ -572,7 +582,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getExpression" parameterType="java.util.Map" resultMap="D1ExpressionMap">
 		SELECT 
@@ -585,8 +595,9 @@
 		    '' 												AS reg_no,
 		    '' 												AS application_no,    
 		    '' 												AS reference
+		    ''												AS expression_data
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getExtraction" parameterType="java.util.Map" resultMap="D1ExtractMap">
 		SELECT     
@@ -598,9 +609,11 @@
 		    '' 												AS dist_url,
 		    '' 												AS reg_no,
 		    '' 												AS application_no,    
-		    '' 												AS reference 
+		    '' 												AS reference, 
+		    ''												AS solvent,
+		    ''												AS extractTime
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getIndividual" parameterType="java.util.Map" resultMap="D1IndividualMap">
 		SELECT 
@@ -613,7 +626,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getObservation" parameterType="java.util.Map" resultMap="D1ObservationMap">
 		SELECT 
@@ -626,7 +639,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getOrgan" parameterType="java.util.Map" resultMap="D1OrganMap">
 		SELECT 
@@ -641,7 +654,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getProteinSequence" parameterType="java.util.Map" resultMap="D1ProteinSequenceMap">
 		SELECT 
@@ -656,7 +669,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getSeed" parameterType="java.util.Map" resultMap="D1SeedMap">
 		SELECT 
@@ -669,8 +682,9 @@
 		    '' 												AS reg_no,
 		    '' 												AS application_no,
 		    '' 												AS reference 
+		    ''												AS seed_status
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getSource" parameterType="java.util.Map" resultMap="D1SourceMap">
 		SELECT 
@@ -678,6 +692,7 @@
 		    IFNULL(tissue_disease, '') 						AS disease,
 		    uid 											AS accession_num,
 		    '' 												AS store_place,
+		    ''												AS source_type,
 		    '' 												AS store_no,
 		    '' 												AS dist_yn,
 		    '' 												AS dist_url,
@@ -685,7 +700,7 @@
 		    '' 												AS application_no,
 		    '' 												AS reference 
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	
 	<select id="getSpecimen" parameterType="java.util.Map" resultMap="D1SpecimenMap">
@@ -710,7 +725,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference   
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getStrain" parameterType="java.util.Map" resultMap="D1StrainMap">
 		SELECT     
@@ -728,7 +743,7 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference    
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 	<select id="getStructure" parameterType="java.util.Map" resultMap="D1StructureMap">
 		SELECT 
@@ -744,10 +759,6 @@
 		    '' 												AS application_no,    
 		    '' 												AS reference
 		FROM
-		    transform.new_te_gr_standard WHERE uid=#uid#
-	</select>
-	
-	<select id="getTotalCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM transform.new_te_gr_standard
+		    transform.new_te_gr_standard WHERE uid=#{uid}
 	</select>
 </mapper>

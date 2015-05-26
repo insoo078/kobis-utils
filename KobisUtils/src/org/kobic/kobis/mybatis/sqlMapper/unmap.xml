@@ -26,7 +26,7 @@
 	</insert>
 	
 	 	<insert id="insertT2UnmappedCommonList" parameterType="java.util.List">
-		INSERT INTO D1_Common(
+		INSERT INTO T2_UnMappedCommon(
 			uid, accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
 			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
 			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
@@ -218,9 +218,9 @@
 	</insert>
 
 	<insert id="insertT2UnmappedStructure" parameterType="D1_Structure">
-		INSERT INTO T2_UnMappedSturcture( 
+		INSERT INTO T2_UnMappedStructure( 
 			`uid`, `source`, `structure_type`, `accession_no`, `pdb_format`, `open_yn`, `open_url`
-			, `reference`, application_no`, `reg_no` 
+			, `reference`, `application_no`, `reg_no` 
 		)
 		VALUES( 
 			#{uid}, #{source}, #{structureType}, #{accessionNo}, #{pdbFormat}, #{open.openYn}, #{open.openUrl}

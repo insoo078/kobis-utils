@@ -1,5 +1,6 @@
 package org.kobic.kobis.main.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.kobic.kobis.main.vo.D1CommonVO;
@@ -31,6 +32,7 @@ public interface KobisDAO{
     public String getInstitutionId(String insCd);    
     public String getAccessionNum(String accession_num, String ins_cd);
 
+    public int insertE1SynonymsList(List<D1CommonVO> list);
     public int insertD1Common( D1CommonVO d1CommonVo, Map<String, String> crossTaxonMap );
     public int insertD1Organ( D1OrganVO observationSheet, String ins_cd );
     public int insertD1Observation( D1ObservationVO observationSheet, String ins_cd );
