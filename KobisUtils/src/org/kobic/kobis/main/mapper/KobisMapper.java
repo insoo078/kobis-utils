@@ -1,5 +1,6 @@
 package org.kobic.kobis.main.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.kobic.kobis.main.vo.D1BodyFluidVO;
@@ -26,6 +27,7 @@ public interface KobisMapper {
     public String getInstitutionId(String insCd);    
     public String getAccessionNum( Map<String, String> map );
     public int insertD1Common( D1CommonVO d1CommonVo );
+    public int insertD1CommonList( List<D1CommonVO> d1CommonVo );
     public int insertD1Organ( D1OrganVO observationSheet );
     public int insertD1Observation( D1ObservationVO observationSheet );
     public int insertD1Individual( D1IndividualVO individualSheet );

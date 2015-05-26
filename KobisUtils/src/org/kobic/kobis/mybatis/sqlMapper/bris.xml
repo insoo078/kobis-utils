@@ -470,6 +470,7 @@
 		    '' 												AS family,
 		    IFNULL(tab_id, '')								AS code
 		FROM transform.new_te_gr_standard
+		WHERE uid > 479169
 		LIMIT #{pagingIndex}, #{paging}
 	</select>
 	

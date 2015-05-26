@@ -145,8 +145,25 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	}
     	return ret;
     }
-    
-    
+
+    public int insertDirectD1Common( List<D1CommonVO> list ) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    	int ret = 0;
+    	try {
+    		ret = kobisMapper.insertD1CommonList(list);
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		session.rollback();
+    		logger.error( e.getMessage() );
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+    }
+
     public int insertDirectD1Common( D1CommonVO d1CommonVo ) {
     	SqlSession session = this.getSessionFactory().openSession( false );
 

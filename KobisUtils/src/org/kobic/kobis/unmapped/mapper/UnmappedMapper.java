@@ -1,5 +1,6 @@
 package org.kobic.kobis.unmapped.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.kobic.kobis.file.excel.obj.XBodyFluidSheetObj;
@@ -25,6 +26,7 @@ public interface UnmappedMapper {
 	public String getAccessionNum( Map<String, String> map );
 
 	public int insertT2UnmappedCommon( D1CommonVO commonSheet );
+	public int insertT2UnmappedCommonList( List<D1CommonVO> commonSheet );
 	public int insertT2UnmappedEtc( XEtcSheetObj etcSheet);
 	public int insertT2UnmappedDnaSequence( XDnaSequenceSheetObj dnaSequenceSheet );
 	public int insertT2UnmappedStructure( XStructureSheetObj structureSheet );

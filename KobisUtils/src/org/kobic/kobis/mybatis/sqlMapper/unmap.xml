@@ -24,6 +24,20 @@
 			, #{img_url_1}, #{ins_user_email}, #{ins_cd}, #{message}
 		)
 	</insert>
+	
+	 	<insert id="insertT2UnmappedCommonList" parameterType="java.util.List">
+		INSERT INTO D1_Common(
+			uid, accession_num, family, genus, subgenus, species, synonym, common_name, kor_name, in_species_type, in_species_name,
+			line_name, variety_name, taxonomy, institution,	category_1, category_2, category_3, detail_url, gene_name,
+			accession_no, sequence, keywords, img_url_1, ins_user_email, ins_cd, message
+		) VALUES
+		<foreach collection="list" item="item" separator=", ">
+			(#{item.uid}, #{item.access_num}, #{item.family}, #{item.genus}, #{item.subgenus}, #{item.species}, #{item.synonym}, #{item.common_name}, #{item.kor_name}
+			, #{item.in_species_type}, #{item.in_species_name}, #{item.line_name}, #{item.variety_name}, #{item.taxonomy}, #{item.institution}, #{item.category_1}
+			, #{item.category_2}, #{item.category_3}, #{item.detail_url}, #{item.gene_name}, #{item.accession_no}, #{item.sequence}, #{item.keywords}
+			, #{item.img_url_1}, #{item.ins_user_email}, #{item.ins_cd}, #{item.message})
+		</foreach>
+	</insert>
 
 	<insert id="insertT2UnmappedObservation" parameterType="D1_Observation">
 		INSERT INTO T2_UnMappedObservation( 

@@ -1,6 +1,7 @@
 package org.kobic.kobis.unmapped.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,7 +27,6 @@ import org.kobic.kobis.file.excel.obj.XStrainSheetObj;
 import org.kobic.kobis.file.excel.obj.XStructureSheetObj;
 import org.kobic.kobis.main.mapper.KobisMapper;
 import org.kobic.kobis.main.vo.D1CommonVO;
-import org.kobic.kobis.taxon.proc.TaxonProc;
 import org.kobic.kobis.unmapped.mapper.UnmappedMapper;
 import org.kobic.kobis.util.Utils;
 
@@ -88,6 +88,24 @@ public class UnmappedDAOService extends CommonDAOService implements UnmappedDAO{
     		ret = 0;
     		logger.error( e.getMessage() );
     		session.rollback();
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+    }
+	
+    public int insertT2UnmappedCommon( List<D1CommonVO> list ) {
+    	SqlSession session = this.getSessionFactory().openSession( false );
+
+    	UnmappedMapper unmappedMapper = session.getMapper( UnmappedMapper.class );
+    	int ret = 0;
+    	try {
+    		ret = unmappedMapper.insertT2UnmappedCommonList(list);
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		session.rollback();
+    		logger.error( e.getMessage() );
     	}finally{
     		session.close();
     	}

@@ -26,11 +26,27 @@
 			, category_1, category_2, category_3, detail_url, barcode, keywords, img_url_1, ins_user_email
 			, family, genus, subgenus, species, in_species_type, in_species_name, ins_cd, in_dt
 		) VALUES(
-			#{access_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{ins_cd}), #{code}, #{common_name}, #{kor_name}
+			<!-- #{access_num}, SF_GET_NEW_KOBIS_UNIQUE_ID(DATE_FORMAT(CURDATE(), '%Y%m%d'), #{ins_cd}), #{code}, #{common_name}, #{kor_name} -->
+			#{access_num}, CONCAT('KBS-', #{item.ins_cd}, '-', #{item.access_num}), #{code}, #{common_name}, #{kor_name}
 			, #{line_name}, #{variety_name}, #{taxonomy}, #{institution}
 			, #{category_1}, #{category_2}, #{category_3}, #{detail_url}, null, #{keywords}, #{img_url_1}, #{ins_user_email}
 			, #{family}, #{genus}, #{subgenus}, #{species}, #{in_species_type}, #{in_species_name}, #{ins_cd}, CURRENT_TIMESTAMP()
 		) 
+	</insert>
+
+ 	<insert id="insertD1CommonList" parameterType="java.util.List">
+		INSERT INTO D1_Common(
+			accession_num, kobis_id, tab_id, common_name, kor_name
+			, line_name, variety_name, taxonomy, institution
+			, category_1, category_2, category_3, detail_url, barcode, keywords, img_url_1, ins_user_email
+			, family, genus, subgenus, species, in_species_type, in_species_name, ins_cd, in_dt
+		) VALUES
+		<foreach collection="list" item="item" separator=", ">
+			(#{item.access_num}, CONCAT('KBS-', #{item.ins_cd}, '-', #{item.access_num}), #{item.code}, #{item.common_name}, #{item.kor_name}
+			, #{item.line_name}, #{item.variety_name}, #{item.taxonomy}, #{item.institution}
+			, #{item.category_1}, #{item.category_2}, #{item.category_3}, #{item.detail_url}, null, #{item.keywords}, #{item.img_url_1}, #{item.ins_user_email}
+			, #{item.family}, #{item.genus}, #{item.subgenus}, #{item.species}, #{item.in_species_type}, #{item.in_species_name}, #{item.ins_cd}, CURRENT_TIMESTAMP())
+		</foreach>
 	</insert>
 
 	<insert id="insertE1Synonyms" parameterType="D1_Common">

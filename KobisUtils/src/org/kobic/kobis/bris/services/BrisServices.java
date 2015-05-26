@@ -1,6 +1,7 @@
 package org.kobic.kobis.bris.services;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -202,6 +203,11 @@ public class BrisServices extends AbstractCommonServices{
 
 		int wholeCnt = 0;
 		int mappedCnt = 0;
+
+		
+		List<D1CommonVO> mapList = new ArrayList<D1CommonVO>();
+		List<D1CommonVO> unMapList = new ArrayList<D1CommonVO>();
+		
 		for(int i=0; i<=noOfPage; i++) {
 			pagingIndex = paging * i;
 
@@ -209,25 +215,70 @@ public class BrisServices extends AbstractCommonServices{
 
 			for( D1CommonVO vo : voList ) {
 				wholeCnt++;
-				String scientificName = vo.getGenus() + " " + vo.getSpecies();
+//				String scientificName = vo.getGenus() + " " + vo.getSpecies();
 
 				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
 				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
 
-				System.out.println( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") [" + vo.getCategory_2() + "]");
 				if( uid < 0 && unUid < 0 ) {
 					if( !Utils.nullToEmpty( vo.getCode() ).isEmpty() ) {
-						int ret = this.getKobisService().insertDirectD1Common( vo );
-
-//						this.mappedProc(vo);
-						mappedCnt += ret;
+						mapList.add( vo );
 					}else {
-						this.getUnmapService().insertT2UnmappedCommon( vo );
-//						this.unMappedProc(vo);
+						unMapList.add( vo );
 					}
+				}
+
+				String scientificName = vo.getGenus() + " " + vo.getSpecies();
+				System.out.println( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") [" + vo.getCategory_2() + "]");
+				if( mapList.size() == 500 ) {
+					this.getKobisService().insertDirectD1Common( mapList );
+					mapList = null;
+					mapList = new ArrayList<D1CommonVO>();
+					System.out.println( "maplist clear : " + mapList.size() );
+				}
+				
+				if( unMapList.size() == 500 ) {
+					this.getUnmapService().insertT2UnmappedCommon( unMapList );
+					unMapList = null;
+					unMapList = new ArrayList<D1CommonVO>();
+					System.out.println( "unMaplist clear : " + unMapList.size() );
 				}
 			}
 		}
+
+//		for(int i=0; i<=noOfPage; i++) {
+//			pagingIndex = paging * i;
+//
+//			List<D1CommonVO> voList = this.brisService.getCommon( pagingIndex, paging );
+//
+//			for( D1CommonVO vo : voList ) {
+//				wholeCnt++;
+//				String scientificName = vo.getGenus() + " " + vo.getSpecies();
+//
+//				int uid = this.getKobisService().getUid( vo.getAccess_num(), this.getInsCd() );
+//				int unUid = this.getUnmapService().getUid( vo.getAccess_num(), this.getInsCd() );
+//
+//				System.out.print( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") [" + vo.getCategory_2() + "]");
+//				if( uid < 0 && unUid < 0 ) {
+//					if( !Utils.nullToEmpty( vo.getCode() ).isEmpty() ) {
+//						long a = System.currentTimeMillis();
+//						int ret = this.getKobisService().insertDirectD1Common( vo );
+//
+//						long b = System.currentTimeMillis();
+//						System.out.println( " (" + (double)b/a + "sec)" );
+////						this.mappedProc(vo);
+//						mappedCnt += ret;
+//					}else {
+//						this.getUnmapService().insertT2UnmappedCommon( vo );
+//						
+//						long a = System.currentTimeMillis();
+//						long b = System.currentTimeMillis();
+//						System.err.println( " (" + (double)b/a + "sec)" );
+////						this.unMappedProc(vo);
+//					}
+//				}
+//			}
+//		}
 		System.out.println( "=======================================================" );
 		System.out.println( "== Total records : " + totalCnt);
 		System.out.println( "== Mapped records : " + mappedCnt);
