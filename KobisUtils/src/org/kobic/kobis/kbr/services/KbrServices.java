@@ -90,4 +90,48 @@ public class KbrServices  extends AbstractCommonServices{
 		System.out.println( "=======================================================" );
 	}
 
+	// Synonym 처리
+	public void read3() throws NoSuchMethodException, SecurityException, Exception {
+		// TODO Auto-generated method stub
+		int totalCnt = this.kbrService.getTotalCount();
+		System.out.println("total count : "+ totalCnt );
+
+		int paging = 1000;
+		int pagingIndex = 0;
+		
+		double noOfPage = Math.ceil( (double)totalCnt / paging );
+
+		int wholeCnt = 0;
+		int mappedCnt = 0;
+
+		List<D1CommonVO> mapList = new ArrayList<D1CommonVO>();
+		
+		for(int i=0; i<=noOfPage; i++) {
+			pagingIndex = paging * i;
+
+			List<D1CommonVO> voList = this.kbrService.getCommon( pagingIndex, paging );
+
+			for( D1CommonVO vo : voList ) {
+				wholeCnt++;
+				mapList.add( vo );
+
+				String scientificName = vo.getGenus() + " " + vo.getSpecies();
+				System.out.println( ">" + wholeCnt + "/" + totalCnt + " (" + scientificName + ") [" + vo.getCategory_2() + "]");
+				if( mapList.size() == 500 ) {
+					this.getKobisService().insertE1SynonymsList( mapList );
+					mapList = null;
+					mapList = new ArrayList<D1CommonVO>();
+					System.out.println( "maplist clear : " + mapList.size() );
+				}
+			}
+		}
+		this.getKobisService().insertE1SynonymsList( mapList );
+		
+		System.out.println( "=======================================================" );
+		System.out.println( "== Total records : " + totalCnt);
+		System.out.println( "== Mapped records : " + mappedCnt);
+		System.out.println( "== Unmapped records : " + (totalCnt-mappedCnt) );
+		System.out.println( "== Mapping ratio : " + ((double)mappedCnt/totalCnt) + "%");
+		System.out.println( "=======================================================" );
+	}
 }

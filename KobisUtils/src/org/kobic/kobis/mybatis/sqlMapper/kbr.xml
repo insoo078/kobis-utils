@@ -442,8 +442,9 @@
 	</resultMap>
 
 	<select id="getCommon" parameterType="java.util.Map" resultMap="D1CommonMap">
+	<![CDATA[
 		SELECT 
-		    ''													AS uid,
+		    muid												AS uid,
 		    ''													AS family,
 		    IFNULL(GENU, '')									AS genus,
 		    ''													AS subgenus,
@@ -473,12 +474,14 @@
 			IFNULL(tab_id, '')									AS code
 		FROM
 	    transform.new_kbr_kobis
+	    WHERE muid IS NOT NULL AND SYNONYMS <> ''
 	    LIMIT #{pagingIndex}, #{paging}
+	    ]]>
 	</select>
 	
 	<select id="getTotalCount" resultType="java.lang.Integer">
 		<![CDATA[
-		SELECT COUNT(*) FROM transform.new_kbr_kobis
+		SELECT COUNT(*) FROM transform.new_kbr_kobis WHERE muid IS NOT NULL AND SYNONYMS <> ''
 		]]>
 	</select>
 

@@ -25,7 +25,7 @@ public class ProcessKBR {
 	public void doSomething( String insCd ) throws NoSuchMethodException, SecurityException, Exception {
 		KbrServices service = new KbrServices( insCd, this.sessionFactory );
 		
-		service.read();
+		service.read3();
 	}
 
 	public static void main(String[] args) {
