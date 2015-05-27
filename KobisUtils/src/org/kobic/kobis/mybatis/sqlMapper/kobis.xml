@@ -259,7 +259,27 @@
 		)
 	</insert>
 	
-		<insert id="insertL3ExtendLink" parameterType="java.util.Map">
+	<insert id="insertL3ExtendLink" parameterType="java.util.Map">
 		INSERT INTO L3_ExtendLink( uid, id ) VALUES( #{uid}, #{id} )
+	</insert>
+	
+	
+	 <insert id="insertTextParsing" parameterType="java.util.List">
+		INSERT INTO transform.result_text_parsing(
+			uid
+			, kor_name
+			, line_name
+			, varierty_name
+			, institution
+			, category1
+			, category2
+			, category3
+			, keywords
+			, taxonomy
+		) VALUES
+		<foreach collection="list" item="item" separator=", ">
+			(#{item.uid}, #{item.kor_name}, #{item.line_name}, #{item.varierty_name}
+			, #{item.institution}, #{item.category1}, #{item.category2}, #{item.category3}, #{item.keywords}, #{item.taxonomy})
+		</foreach>
 	</insert>
 </mapper>

@@ -15,6 +15,7 @@ import org.kobic.kobis.main.vo.D1CommonVO;
 import org.kobic.kobis.taxon.mapper.TaxonMapper;
 import org.kobic.kobis.taxon.vo.PhylogeneticTreeVO;
 import org.kobic.kobis.util.Utils;
+import org.kobic.kobis.utils.KobisTextParser.LineObj;
 import org.kobic.kobis.file.excel.obj.internal.CultureObj;
 import org.kobic.kobis.file.excel.obj.internal.DistPatentReferenceObj;
 import org.kobic.kobis.file.excel.obj.internal.PatentObj;
@@ -1122,6 +1123,25 @@ public class KobisDAOService extends CommonDAOService implements KobisDAO{
     	int ret = 0;
     	try {
     		ret = kobisMapper.insertE1SynonymsList(list);
+    		session.commit();
+    	}catch(Exception e) {
+    		ret = 0;
+    		session.rollback();
+    		logger.error( e.getMessage() );
+    	}finally{
+    		session.close();
+    	}
+    	return ret;
+	}
+
+	@Override
+	public int insertTextParsing(List<LineObj> list) {
+		SqlSession session = this.getSessionFactory().openSession( false );
+
+    	KobisMapper kobisMapper = session.getMapper( KobisMapper.class );
+    	int ret = 0;
+    	try {
+    		ret = kobisMapper.insertTextParsing(list);
     		session.commit();
     	}catch(Exception e) {
     		ret = 0;

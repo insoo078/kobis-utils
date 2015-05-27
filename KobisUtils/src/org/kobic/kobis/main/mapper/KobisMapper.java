@@ -21,6 +21,7 @@ import org.kobic.kobis.main.vo.D1SourceVO;
 import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.main.vo.D1StrainVO;
 import org.kobic.kobis.main.vo.D1StructureVO;
+import org.kobic.kobis.utils.KobisTextParser.LineObj;
 
 
 public interface KobisMapper {
@@ -77,4 +78,6 @@ public interface KobisMapper {
 	
 	
 	public int insertL3ExtendLink( Map<String, Object> map );
+	
+	public int insertTextParsing( List<LineObj> list );
 }

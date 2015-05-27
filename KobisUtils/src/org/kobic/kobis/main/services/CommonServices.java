@@ -7,6 +7,8 @@ package org.kobic.kobis.main.services;
 //import java.util.Map;
 
 //import org.apache.commons.beanutils.BeanUtils;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -18,6 +20,7 @@ import org.kobic.kobis.rule.Rule;
 //import org.kobic.kobis.util.Utils;
 import org.kobic.kobis.taxon.proc.MultipleClassificationProc;
 import org.kobic.kobis.util.Utils;
+import org.kobic.kobis.utils.KobisTextParser.LineObj;
 
 public class CommonServices extends AbstractKobisServices{
 	private static Logger logger = Logger.getLogger(CommonServices.class);
@@ -85,5 +88,9 @@ public class CommonServices extends AbstractKobisServices{
 			System.out.println( "== Mapping ratio : " + ((double)mappedCnt/totalCnt) + "%");
 			System.out.println( "=======================================================" );
 		}
+	}
+	
+	public int textParsing( List<LineObj> list ) {
+		return this.getKobisService().insertTextParsing( list );
 	}
 }

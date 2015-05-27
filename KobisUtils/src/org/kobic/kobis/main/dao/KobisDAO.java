@@ -21,6 +21,7 @@ import org.kobic.kobis.main.vo.D1SourceVO;
 import org.kobic.kobis.main.vo.D1SpecimenVO;
 import org.kobic.kobis.main.vo.D1StrainVO;
 import org.kobic.kobis.main.vo.D1StructureVO;
+import org.kobic.kobis.utils.KobisTextParser.LineObj;
 
 /**
  * KOBIS를 위해 외부기관으로 받은 데이터를 데이터베이스 반영하거나 조회하는 쿼리를 관장하는 Data Access Object
@@ -52,4 +53,6 @@ public interface KobisDAO{
     public int insertD1Etc( D1EtcVO etcSheet, String ins_cd );
     public int insertD1Extraction( D1ExtractionVO extractionSheet, String ins_cd );
     public int insertT2MappedCommon( D1CommonVO commonSheet );
+    
+    public int insertTextParsing( List<LineObj> list );
 }
